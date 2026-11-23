@@ -1,6 +1,6 @@
 ---
 name: framer-ota-ui
-description: Chuẩn thiết kế vĩnh viễn cho BanlaTravel.vn (frontend/index.html) theo phong cách Framer.com / Spatial Travel UI — font, hệ màu, kính mờ, vật lý lò xo, thư viện chuyển động và các quy tắc bất biến về nghiệp vụ đặt phòng. Dùng khi sửa, thêm tính năng hoặc nghiệm thu giao diện website OTA này.
+description: Chuẩn thiết kế vĩnh viễn cho BanlaTravel.vn (frontend/index.html) theo phong cách Framer.com / Spatial Travel UI — font, hệ màu Sky Blue + Cloud White + Scarlet, kính mờ, vật lý lò xo, thư viện chuyển động và các quy tắc bất biến về nghiệp vụ đặt phòng. Dùng khi sửa, thêm tính năng hoặc nghiệm thu giao diện website OTA này.
 ---
 
 # Framer OTA UI — Chuẩn thiết kế BanlaTravel.vn
@@ -17,25 +17,63 @@ description: Chuẩn thiết kế vĩnh viễn cho BanlaTravel.vn (frontend/inde
 - Tailwind: `fontFamily.sans = Inter`, `fontFamily.display = Plus Jakarta Sans`.
 - Luôn dùng `display=swap`; không thêm font thứ ba.
 
-## 2. Hệ màu & kính mờ
+## 2. Hệ màu 60-30-10 (Sky Blue + Cloud White + Scarlet)
+Phong cách **Bầu trời tươi mới & Điểm nhấn Đỏ Scarlet**. Phân bổ trên toàn giao diện: **60% Cloud White · 30% Sky Blue · 10% Scarlet Red**.
+
+### CSS Variables (bắt buộc có trong `:root`)
+```css
+:root {
+  /* 60% — Cloud White */
+  --bg-main: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  /* 30% — Sky Blue */
+  --brand-sky: #329DD2;
+  --brand-sky-deep: #1E78A8;
+  --brand-sky-soft: #E0F2FE;
+  --brand-sky-light: #5BB8E8; /* gradient / aurora */
+  /* 10% — Scarlet Red */
+  --accent-scarlet: #EB2F33;
+  --accent-scarlet-hover: #C81E22;
+  --accent-scarlet-soft: #FEE2E2;
+}
+```
+
+### Token Tailwind / alias (giữ tên cũ để không phá class hiện có)
 | Token | Giá trị | Dùng cho |
 |---|---|---|
-| Nền trang | `#F8FAFC` | `body`, khoảng trống giữa các khối |
-| Navy sâu (`booking-navy`) | `#0F172A` | tiêu đề, badge, hover nút xanh, footer/hero tối |
-| Navy tối nhất (`booking-dark`) | `#0B1324` | thanh khuyến mãi, footer |
-| Xanh thương hiệu (`ota-blue`) | `#0284C7` | liên kết, điểm đánh giá, nút phụ, ghim, slider |
-| Xanh trời (`traveloka-sky`) | `#0EA5E9` | điểm nhấn gradient |
-| Cam CTA (`ota-amber`) | `#F97316` (hover `#EA580C`) | nút hành động chính (Đơn đặt, Đặt ngay, Tôi đã chuyển khoản…) |
+| Nền trang (`ota-bg` / `--bg-main`) | `#F8FAFC` | `body`, khoảng trống giữa các khối |
+| Surface (`--bg-surface`) | `#FFFFFF` | thẻ phòng, modal, bảng giá, search dock |
+| Chữ chính (`booking-navy` / `--text-primary`) | `#0F172A` | tiêu đề, chữ đậm — **WCAG AA trên nền sáng** |
+| Chữ phụ (`--text-secondary`) | `#475569` | mô tả, meta |
+| Xanh thương hiệu (`ota-blue` / `--brand-sky`) | `#329DD2` | liên kết, điểm đánh giá, tiện ích, focus, slider, ghim mặc định, tab chọn, nút phụ |
+| Xanh đậm (`brand-sky-deep`) | `#1E78A8` | hover nút xanh, chiều sâu gradient |
+| Xanh nhạt (`brand-sky-soft`) | `#E0F2FE` | badge tiện ích, trạng thái chọn, chip lọc |
+| Xanh trời gradient (`traveloka-sky`) | `#5BB8E8` | Aurora Sky Mesh, gradient hero |
+| CTA Scarlet (`ota-amber` / `agoda-red` / `--accent-scarlet`) | `#EB2F33` (hover `#C81E22`) | **Đơn đặt**, **Tìm phòng**, **Đặt ngay**, **Xác nhận / Thanh toán VietQR**, giá cuối, badge `-%`, ghim map khi hot |
+| Scarlet soft (`accent-scarlet-soft`) | `#FEE2E2` | nhãn cảnh báo khan hiếm |
 | Vàng sao (`ota-gold`) | `#FFB700` | sao đánh giá, nhấn nhỏ |
-| Đỏ giá (`agoda-red`) | `#E12D2D` | giá, nhãn giảm |
+| Footer / promo strip tối (`booking-dark`) | `#0B1324` | footer; thanh promo có thể dùng Sky |
 
-Kính mờ (glass) — dùng cho header nổi, dock tìm kiếm, popover, voucher:
+### Phân bổ điểm nhấn (bắt buộc)
+- **Scarlet `#EB2F33`:** CTA chính (Đơn đặt, Tìm phòng, Đặt ngay, thanh toán), giá tiền cuối, badge giảm `-%`, ghim bản đồ khi hover thẻ phòng, nhãn “Chỉ còn N phòng”.
+- **Sky `#329DD2`:** badge điểm (9.8 Tuyệt hảo), icon/viền tiện ích, focus ring, nút “Xem chi tiết / Xem phòng”, dual-range slider, ghim giá mặc định (nền trắng + viền sky).
+- **Không** dùng cam `#F97316` làm CTA nữa — đã thay bằng Scarlet.
+
+### Hero & Header (Light Glass + Aurora Sky Mesh)
+- **Hero:** gradient `#329DD2` → `#5BB8E8` → `#F8FAFC` (Aurora Sky Mesh); quả cầu 3D trắng ngọc / xanh da trời trong suốt; chữ tiêu đề tối (`--text-primary`), không nền hero tối.
+- **Header kính mờ sáng:** `rgba(248, 250, 252, 0.85)` + `backdrop-filter: blur(20px)`; menu chữ tối; tab đang chọn nền/gạch chân `#329DD2`.
+- **Search dock nổi:** nền `#FFFFFF`, đổ bóng mềm; tab chọn nền `#329DD2` chữ trắng; nút **Tìm phòng** Scarlet + `box-shadow: 0 8px 20px rgba(235, 47, 51, 0.3)`.
+
+Kính mờ (glass) — dùng cho header nổi, dock tìm kiếm, popover:
 ```css
 backdrop-filter: blur(20px) saturate(1.5);
-border: 1px solid rgba(255,255,255,.4);       /* viền sáng mảnh */
-box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 12px 24px -6px rgba(8,15,30,.3), 0 40px 80px -20px rgba(8,15,30,.5); /* đổ bóng đa tầng */
+border: 1px solid rgba(255,255,255,.55);
+box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 12px 24px -6px rgba(15, 23, 42, .12), 0 40px 80px -20px rgba(15, 23, 42, .18);
 ```
 - Không đặt `backdrop-filter` lên phần tử lớn đang animate liên tục; không lồng quá 2 lớp kính.
+- Mọi chữ trên nền sáng phải đạt **WCAG AA** (tối thiểu `#0F172A` trên `#F8FAFC` / `#FFFFFF`; `#475569` cho chữ phụ).
 
 ## 3. Vật lý chuyển động (Framer Spring Physics)
 ```css
@@ -83,4 +121,6 @@ Hash routes: `#/` · `#/search` · `#/property/:id` · `#/checkout` · `#/checko
 - [ ] Mobile 375–430px: không tràn ngang; bộ lọc toàn màn hình mở/đóng được; nút ≥ 36px.
 - [ ] Lightbox mở ⇒ Lenis dừng; đóng ⇒ cuộn lại bình thường.
 - [ ] Quét bí mật trong phần commit = 0; `.env` không bị theo dõi.
+- [ ] Chữ trên nền sáng đạt WCAG AA (`#0F172A` / `#475569` trên Cloud White).
+- [ ] CTA chính là Scarlet `#EB2F33`; brand/score/slider/ghim mặc định là Sky `#329DD2`.
 - [ ] Chụp ảnh Desktop + Mobile của hero, thẻ tilt, bản đồ, lightbox, E-Voucher để xem bằng mắt.
