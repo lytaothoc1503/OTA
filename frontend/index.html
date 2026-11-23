@@ -658,7 +658,7 @@
     (function () {
       'use strict';
 
-      const DEFAULT_PROXY_WEBHOOK_URL = 'http://127.0.0.1:8787/order';
+      const DEFAULT_PROXY_WEBHOOK_URL = 'https://banla-order-bridge.h30188410.workers.dev/order';
       const VND_PER_USD = 25400;
 
       const PROPERTIES = [
@@ -801,7 +801,10 @@
       const checkinEl = document.getElementById('checkin-date');
       const checkoutEl = document.getElementById('checkout-date');
       const bridgeUrlInput = document.getElementById('bridge-url-input');
-      bridgeUrlInput.value = localStorage.getItem('banla_bridge_url') || DEFAULT_PROXY_WEBHOOK_URL;
+      const savedUrl = localStorage.getItem('banla_bridge_url');
+      const initialUrl = (savedUrl && !savedUrl.includes('127.0.0.1')) ? savedUrl : DEFAULT_PROXY_WEBHOOK_URL;
+      bridgeUrlInput.value = initialUrl;
+      localStorage.setItem('banla_bridge_url', initialUrl);
       bridgeUrlInput.addEventListener('change', () => localStorage.setItem('banla_bridge_url', bridgeUrlInput.value.trim()));
 
       // Init default dates
@@ -1275,16 +1278,33 @@
         document.getElementById('vietqr-img').src =
           `https://img.vietqr.io/image/${BANK_CONFIG.bankSlug}-${BANK_CONFIG.accountNo}-compact2.png?amount=${totals.payNowVnd}&addInfo=${encodeURIComponent(memo)}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
 
-        const bridgeUrl = bridgeUrlInput.value.trim();
+        let bridgeUrl = bridgeUrlInput.value.trim() || DEFAULT_PROXY_WEBHOOK_URL;
         botStatusLine.textContent = 'Đang gửi phiếu đặt phòng sang Telegram @CSN1503_ai_Bot...';
         botStatusLine.className = 'rounded-xl bg-blue-50 px-3 py-2 text-xs font-bold text-ota-blue';
 
-        try {
-          const resp = await fetch(bridgeUrl, {
+        async function postOrder(url) {
+          return fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ source: 'BanlaTravel OTA', order }),
           });
+        }
+
+        try {
+          let resp;
+          try {
+            resp = await postOrder(bridgeUrl);
+          } catch (netErr) {
+            if (bridgeUrl !== DEFAULT_PROXY_WEBHOOK_URL) {
+              bridgeUrl = DEFAULT_PROXY_WEBHOOK_URL;
+              bridgeUrlInput.value = bridgeUrl;
+              localStorage.setItem('banla_bridge_url', bridgeUrl);
+              resp = await postOrder(bridgeUrl);
+            } else {
+              throw netErr;
+            }
+          }
+
           const resJson = await resp.json();
           if (resp.ok && resJson.ok) {
             botStatusLine.textContent = '✓ Đã bắn đơn kèm nút [✅ Duyệt cọc] / [❌ Báo hết phòng] về Telegram!';

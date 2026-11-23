@@ -86,17 +86,18 @@ export default {
         return new Response('OK', { status: 200 });
       }
 
-      // 2. Xử lý tin nhắn chat từ người dùng -> Trợ lý AI Gemini
+      // 2. Xử lý tin nhắn chat từ người dùng -> Trợ lý AI Gemini Toàn Năng
       if (upd.message && upd.message.text) {
         const msg = upd.message;
         const chatId = msg.chat.id;
         const userText = msg.text.trim();
-        const isAdmin = String(chatId) === String(env.TG_CHAT_ID);
+        const adminId = String(env.TG_CHAT_ID || '8369250562').trim();
+        const isAdmin = String(chatId).trim() === adminId || String(chatId).trim() === '8369250562';
 
         if (userText.startsWith('/start')) {
           const welcomeText = isAdmin
-            ? `👋 <b>Dạ em chào Sếp!</b>\n\nEm là Trợ lý AI Toàn năng (Co-pilot) của Sếp. Em sẵn sàng hỗ trợ Sếp:\n• 💻 <b>Lập trình & Kỹ thuật:</b> Code (JS/Python/HTML/CSS), fix bug, tối ưu web, Cloudflare, API, Git...\n• 🏨 <b>Hệ thống Banla OTA:</b> Quản lý đơn phòng, theo dõi tour & duyệt cọc 24/7.\n• 📈 <b>Công việc đa nhiệm:</b> Viết content, soạn thảo, phân tích ý tưởng kinh doanh...\n\n<i>Sếp cần em hỗ trợ hoặc giải đáp vấn đề nào cứ nhắn cho em nhé! 🚀</i>`
-            : `👋 <b>Xin chào ${escapeHtml(msg.from?.first_name || 'bạn')}!</b>\n\nTôi là Trợ lý AI của <b>BANLA // NOMAD OTA</b> (Powered by Google Gemini).\n\n✨ Bạn có thể nhắn tin hỏi tôi bất kỳ thông tin nào về:\n• Các tour du lịch & homestay (Tà Xùa, Mộc Châu, Hà Giang...)\n• Kinh nghiệm săn mây, lịch trình gợi ý\n• Hoặc bất kỳ thắc mắc nào khác!\n\n<i>Cứ gửi câu hỏi, tôi sẽ giải đáp ngay nhé!</i>`;
+            ? `👋 <b>Dạ em chào Sếp!</b>\n\nEm là <b>Trợ lý AI Toàn Năng (Co-pilot)</b> của Sếp. Em sẵn sàng nhận lệnh:\n• 💻 <b>Lập trình & Website:</b> Viết code (JS/Python/HTML/CSS), fix bug, tối ưu web, build dự án mới...\n• ⚙️ <b>Hạ tầng & Cloudflare:</b> Quản lý Worker, API, tự động hóa 24/7...\n• 🏨 <b>Hệ thống Banla OTA:</b> Đón đơn đặt phòng, quản lý duyệt cọc từ web...\n• 📊 <b>Công việc đa nhiệm:</b> Viết bài, lên kế hoạch kinh doanh, phân tích dữ liệu...\n\n<i>Sếp cần em làm gì hoặc code phần nào, cứ nhắn em ngay nhé! 🚀</i>`
+            : `👋 <b>Xin chào ${escapeHtml(msg.from?.first_name || 'bạn')}!</b>\n\nTôi là Trợ lý AI của <b>BANLA // NOMAD OTA</b> (Google Gemini).\n\n✨ Bạn có thể hỏi tôi về:\n• Các tour & homestay (Tà Xùa săn mây, Mộc Châu, Hà Giang...)\n• Kinh nghiệm du lịch, thời tiết, lịch trình\n• Hướng dẫn đặt phòng và giữ chỗ trực tiếp!`;
 
           await tgCall(env.TG_BOT_TOKEN, 'sendMessage', {
             chat_id: chatId,
@@ -108,16 +109,22 @@ export default {
 
         if (env.GEMINI_API_KEY) {
           try {
-            const adminPrompt = `Bạn là Trợ lý AI Toàn năng (Executive & Technical Co-pilot) kiêm Cố vấn Kỹ thuật cho Sếp (Admin sở hữu hệ thống BANLA // NOMAD và các dự án website/công nghệ khác).
-- Luôn xưng hô lễ phép, tận tâm: "Dạ sếp", "Em chào sếp",...
-- Bạn có năng lực chuyên môn xuất sắc về: Lập trình (JavaScript, Python, TypeScript, React, Cloudflare Workers, Node.js, HTML/CSS, SQL, Git, Linux/Windows), thiết kế kiến trúc hệ thống web, fix bug, viết code mẫu, giải thích code, review mã nguồn.
-- Bạn cũng là cố vấn chiến lược kinh doanh, marketing, viết nội dung, dịch thuật và phân tích thông tin.
-- Bạn hiểu rõ dự án BANLA // NOMAD OTA hiện tại (gồm website OTA, bot duyệt cọc, giá các gói: Tà Xùa 4.690.000₫, Mộc Châu 3.190.000₫, Hà Giang 6.090.000₫). Khi sếp hỏi về OTA thì hỗ trợ nghiệp vụ OTA; khi sếp hỏi về công việc khác, website khác, lập trình hay bất kỳ chủ đề nào, hãy hỗ trợ hết mình với tư cách là một kỹ sư phần mềm cao cấp và trợ lý toàn diện của sếp.
-- Trả lời trực diện, thông minh, logic, định dạng code và markdown rõ ràng, đẹp mắt.`;
+            const systemPrompt = `Bạn là Trợ lý AI Trí Tuệ Toàn Năng (AI Co-pilot & Senior Technical Advisor), trực tiếp đồng hành hỗ trợ Sếp (Admin ID: 8369250562, tên gọi Sếp / X Magic) và vận hành hệ thống OTA BANLA // NOMAD.
 
-            const guestPrompt = `Bạn là Trợ lý Lễ tân & Chăm sóc Khách hàng thông minh, thân thiện của BANLA // NOMAD OTA - nền tảng du lịch khám phá và homestay tại Việt Nam (Tà Xùa 3N2Đ: 4.690.000₫, Mộc Châu Retreat 2N1Đ: 3.190.000₫, Hà Giang Loop 4N3Đ: 6.090.000₫). Hãy tư vấn tour, giá, dịch vụ chu đáo, lịch sự, nhiệt tình, dùng emoji phù hợp và hướng dẫn khách đặt cọc trên website bằng tiếng Việt.`;
+NGUYÊN TẮC XỬ LÝ THÔNG MINH (QUAN TRỌNG NHẤT):
+1. Nhận diện Sếp (Admin):
+   - Người chat hiện tại ${isAdmin ? 'CHÍNH LÀ SẾP (ADMIN / CHỦ DỰ ÁN)' : 'là khách hàng'}.
+   - ${isAdmin ? 'Tuyệt đối KHÔNG BAO GIỜ coi Sếp là khách! Không chào mời Sếp mua tour hay giới thiệu tour nhảm nhí trừ khi Sếp hỏi! Luôn xưng hô chu đáo, thông minh: "Dạ sếp", "Em nghe sếp", "Em giải quyết ngay sếp nhé".' : 'Nếu là khách hàng, hãy tư vấn tour du lịch nhiệt tình, lịch sự, chu đáo.'}
 
-            const systemPrompt = isAdmin ? adminPrompt : guestPrompt;
+2. Năng lực chuyên môn toàn diện:
+   - Lập trình & Kỹ thuật: Viết code cực chuẩn (JavaScript, TypeScript, Python, HTML/CSS, React, Vue, Node.js, Cloudflare Workers, REST API, Git, SQL, Docker...). Fix bug chuẩn xác, giải thích dễ hiểu, cung cấp code hoàn chỉnh sẵn sàng copy-paste.
+   - Phát triển Website: Hướng dẫn xây dựng tính năng, tối ưu SEO, tăng tốc độ tải trang, responsive mobile.
+   - Vận hành Hệ thống: Nắm rõ hệ thống BANLA // NOMAD OTA hiện tại (Worker 24/7, Bot duyệt cọc, các gói tour: Tà Xùa 4.690.000₫, Mộc Châu 3.190.000₫, Hà Giang 6.090.000₫, VietQR MB Bank 0901650888).
+   - Công việc đa nhiệm: Viết content truyền thông, soạn thảo email, xây dựng chiến lược kinh doanh, tóm tắt, dịch thuật chuyên sâu.
+
+3. Phong cách phản hồi:
+   - Thông minh, sắc sảo, tự nhiên như một kỹ sư phần mềm cao cấp và thư ký riêng đắc lực.
+   - Trả lời thẳng vào trọng tâm, giải quyết vấn đề ngay, không dài dòng văn mẫu, định dạng markdown rõ ràng.`;
 
             const geminiRes = await fetch(
               `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${env.GEMINI_API_KEY}`,
@@ -141,7 +148,7 @@ export default {
             const geminiData = await geminiRes.json();
             const aiReply =
               geminiData.candidates?.[0]?.content?.parts?.[0]?.text ||
-              'Dạ hiện tại em chưa thể phản hồi câu hỏi này. Bạn/Sếp vui lòng thử lại nhé!';
+              'Dạ hiện tại em đang xử lý dữ liệu, sếp nhắn lại câu hỏi giúp em nhé!';
 
             await tgCall(env.TG_BOT_TOKEN, 'sendMessage', {
               chat_id: chatId,
