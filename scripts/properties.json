@@ -1,0 +1,1940 @@
+{
+ "regions": [
+  {
+   "batch": 1,
+   "slug": "sapa",
+   "name": "Sapa",
+   "province": "Lào Cai"
+  },
+  {
+   "batch": 1,
+   "slug": "ta-xua",
+   "name": "Tà Xùa",
+   "province": "Sơn La"
+  },
+  {
+   "batch": 1,
+   "slug": "mu-cang-chai",
+   "name": "Mù Cang Chải",
+   "province": "Lào Cai (Yên Bái cũ)"
+  },
+  {
+   "batch": 1,
+   "slug": "lao-cai-khac",
+   "name": "Lào Cai khác (Bắc Hà, Y Tý, TP. Lào Cai)",
+   "province": "Lào Cai"
+  },
+  {
+   "batch": 2,
+   "slug": "ha-noi",
+   "name": "Hà Nội",
+   "province": "Hà Nội"
+  },
+  {
+   "batch": 2,
+   "slug": "ninh-binh",
+   "name": "Ninh Bình",
+   "province": "Ninh Bình"
+  },
+  {
+   "batch": 2,
+   "slug": "hue",
+   "name": "Huế",
+   "province": "TP. Huế"
+  },
+  {
+   "batch": 2,
+   "slug": "tau-di-san",
+   "name": "Tuyến Tàu Di Sản & Du Lịch",
+   "province": "Liên tỉnh"
+  },
+  {
+   "batch": 3,
+   "slug": "da-lat",
+   "name": "Đà Lạt",
+   "province": "Lâm Đồng"
+  },
+  {
+   "batch": 3,
+   "slug": "lam-dong-khac",
+   "name": "Lâm Đồng khác (Bảo Lộc, Di Linh, Lạc Dương)",
+   "province": "Lâm Đồng"
+  },
+  {
+   "batch": 3,
+   "slug": "vung-tau-thuy-van",
+   "name": "Đường Thùy Vân – Vũng Tàu",
+   "province": "TP. Hồ Chí Minh (Bà Rịa – Vũng Tàu cũ)"
+  },
+  {
+   "batch": 4,
+   "slug": "cam-ranh",
+   "name": "Cam Ranh",
+   "province": "Khánh Hòa"
+  },
+  {
+   "batch": 4,
+   "slug": "nha-trang",
+   "name": "Nha Trang",
+   "province": "Khánh Hòa"
+  },
+  {
+   "batch": 4,
+   "slug": "khanh-hoa-khac",
+   "name": "Khánh Hòa khác (Ninh Hòa, Vạn Ninh / Điệp Sơn)",
+   "province": "Khánh Hòa"
+  },
+  {
+   "batch": 4,
+   "slug": "phu-quoc",
+   "name": "Phú Quốc",
+   "province": "An Giang (Kiên Giang cũ)"
+  },
+  {
+   "batch": 4,
+   "slug": "an-giang",
+   "name": "An Giang (Châu Đốc, Tri Tôn, Núi Cấm, Long Xuyên)",
+   "province": "An Giang"
+  }
+ ],
+ "items": [
+  {
+   "id": "sapa-hotel-de-la-coupole-mgallery",
+   "slug": "hotel-de-la-coupole-mgallery",
+   "seq": 1,
+   "name": "Hotel de la Coupole - MGallery",
+   "batch": 1,
+   "region": "sapa",
+   "region_name": "Sapa",
+   "province": "Lào Cai",
+   "area": "Sa Pa",
+   "category": "hotel",
+   "search_place": "Sapa",
+   "match": [
+    [
+     "coupole"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "sapa-silk-path-grand-sapa-resort-spa",
+   "slug": "silk-path-grand-sapa-resort-spa",
+   "seq": 2,
+   "name": "Silk Path Grand Sapa Resort & Spa",
+   "batch": 1,
+   "region": "sapa",
+   "region_name": "Sapa",
+   "province": "Lào Cai",
+   "area": "Sa Pa",
+   "category": "resort",
+   "search_place": "Sapa",
+   "match": [
+    [
+     "silk path"
+    ],
+    [
+     "sapa"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "sapa-pao-s-sapa-leisure-hotel",
+   "slug": "pao-s-sapa-leisure-hotel",
+   "seq": 3,
+   "name": "Pao's Sapa Leisure Hotel",
+   "batch": 1,
+   "region": "sapa",
+   "region_name": "Sapa",
+   "province": "Lào Cai",
+   "area": "Sa Pa",
+   "category": "hotel",
+   "search_place": "Sapa",
+   "match": [
+    [
+     "pao"
+    ],
+    [
+     "sapa"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "sapa-jade-hill-resort-spa",
+   "slug": "sapa-jade-hill-resort-spa",
+   "seq": 4,
+   "name": "Sapa Jade Hill Resort & Spa",
+   "batch": 1,
+   "region": "sapa",
+   "region_name": "Sapa",
+   "province": "Lào Cai",
+   "area": "Sa Pa",
+   "category": "resort",
+   "search_place": "Sapa",
+   "match": [
+    [
+     "jade hill"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "sapa-lady-hill-sapa-resort",
+   "slug": "lady-hill-sapa-resort",
+   "seq": 5,
+   "name": "Lady Hill Sapa Resort",
+   "batch": 1,
+   "region": "sapa",
+   "region_name": "Sapa",
+   "province": "Lào Cai",
+   "area": "Sa Pa",
+   "category": "resort",
+   "search_place": "Sapa",
+   "match": [
+    [
+     "lady hill"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "sapa-viettrekking-sapa",
+   "slug": "viettrekking-sapa",
+   "seq": 6,
+   "name": "Viettrekking Sapa",
+   "batch": 1,
+   "region": "sapa",
+   "region_name": "Sapa",
+   "province": "Lào Cai",
+   "area": "Sa Pa",
+   "category": "homestay",
+   "search_place": "Sapa",
+   "match": [
+    [
+     "viettrekking",
+     "viet trekking"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "sapa-delasol-sapa-hotel",
+   "slug": "delasol-sapa-hotel",
+   "seq": 7,
+   "name": "Delasol Sapa Hotel",
+   "batch": 1,
+   "region": "sapa",
+   "region_name": "Sapa",
+   "province": "Lào Cai",
+   "area": "Sa Pa",
+   "category": "hotel",
+   "search_place": "Sapa",
+   "match": [
+    [
+     "delasol"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ta-xua-cloud-forest-ta-xua",
+   "slug": "cloud-forest-ta-xua",
+   "seq": 8,
+   "name": "Cloud Forest Tà Xùa",
+   "batch": 1,
+   "region": "ta-xua",
+   "region_name": "Tà Xùa",
+   "province": "Sơn La",
+   "area": "Tà Xùa, Bắc Yên",
+   "category": "homestay",
+   "search_place": "Tà Xùa",
+   "match": [
+    [
+     "cloud forest"
+    ],
+    [
+     "ta xua",
+     "taxua"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ta-xua-ecolodge",
+   "slug": "ta-xua-ecolodge",
+   "seq": 9,
+   "name": "Tà Xùa Ecolodge",
+   "batch": 1,
+   "region": "ta-xua",
+   "region_name": "Tà Xùa",
+   "province": "Sơn La",
+   "area": "Tà Xùa, Bắc Yên",
+   "category": "homestay",
+   "search_place": "Sơn La",
+   "match": [
+    [
+     "ecolodge",
+     "eco lodge"
+    ],
+    [
+     "ta xua",
+     "taxua"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ta-xua-a-loi-homestay",
+   "slug": "a-loi-homestay",
+   "seq": 10,
+   "name": "À Lôi Homestay",
+   "batch": 1,
+   "region": "ta-xua",
+   "region_name": "Tà Xùa",
+   "province": "Sơn La",
+   "area": "Tà Xùa, Bắc Yên",
+   "category": "homestay",
+   "search_place": "Tà Xùa",
+   "match": [
+    [
+     "a loi"
+    ],
+    [
+     "ta xua",
+     "taxua",
+     "homestay"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ta-xua-may-mo-mang-homestay-ta-xua",
+   "slug": "may-mo-mang-homestay-ta-xua",
+   "seq": 11,
+   "name": "Mây Mơ Màng Homestay Tà Xùa",
+   "batch": 1,
+   "region": "ta-xua",
+   "region_name": "Tà Xùa",
+   "province": "Sơn La",
+   "area": "Tà Xùa, Bắc Yên",
+   "category": "homestay",
+   "search_place": "Tà Xùa",
+   "match": [
+    [
+     "may mo mang"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ta-xua-hills-homestay",
+   "slug": "ta-xua-hills-homestay",
+   "seq": 12,
+   "name": "Tà Xùa Hills Homestay",
+   "batch": 1,
+   "region": "ta-xua",
+   "region_name": "Tà Xùa",
+   "province": "Sơn La",
+   "area": "Tà Xùa, Bắc Yên",
+   "category": "homestay",
+   "search_place": "Sơn La",
+   "match": [
+    [
+     "ta xua hills",
+     "taxua hills"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ta-xua-nha-cua-an-homestay-ta-xua",
+   "slug": "nha-cua-an-homestay-ta-xua",
+   "seq": 13,
+   "name": "Nhà của An Homestay Tà Xùa",
+   "batch": 1,
+   "region": "ta-xua",
+   "region_name": "Tà Xùa",
+   "province": "Sơn La",
+   "area": "Tà Xùa, Bắc Yên",
+   "category": "homestay",
+   "search_place": "Tà Xùa",
+   "match": [
+    [
+     "nha cua an"
+    ],
+    [
+     "ta xua",
+     "taxua"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "mu-cang-chai-garrya-mu-cang-chai",
+   "slug": "garrya-mu-cang-chai",
+   "seq": 14,
+   "name": "Garrya Mù Cang Chải",
+   "batch": 1,
+   "region": "mu-cang-chai",
+   "region_name": "Mù Cang Chải",
+   "province": "Lào Cai (Yên Bái cũ)",
+   "area": "Mù Cang Chải",
+   "category": "resort",
+   "search_place": "Mù Cang Chải",
+   "match": [
+    [
+     "garrya"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "mu-cang-chai-le-champ-tu-le-resort-hot-spring-spa",
+   "slug": "le-champ-tu-le-resort-hot-spring-spa",
+   "seq": 15,
+   "name": "Le Champ Tu Le Resort Hot Spring & Spa",
+   "batch": 1,
+   "region": "mu-cang-chai",
+   "region_name": "Mù Cang Chải",
+   "province": "Lào Cai (Yên Bái cũ)",
+   "area": "Tú Lệ",
+   "category": "resort",
+   "search_place": "Yên Bái",
+   "match": [
+    [
+     "le champ",
+     "lechamp"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "mu-cang-chai-ecolodge",
+   "slug": "mu-cang-chai-ecolodge",
+   "seq": 16,
+   "name": "Mù Cang Chải Ecolodge",
+   "batch": 1,
+   "region": "mu-cang-chai",
+   "region_name": "Mù Cang Chải",
+   "province": "Lào Cai (Yên Bái cũ)",
+   "area": "Mù Cang Chải",
+   "category": "homestay",
+   "search_place": "Yên Bái",
+   "match": [
+    [
+     "ecolodge",
+     "eco lodge"
+    ],
+    [
+     "mu cang chai"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "mu-cang-chai-hello-mu-cang-chai-homestay",
+   "slug": "hello-mu-cang-chai-homestay",
+   "seq": 17,
+   "name": "Hello Mù Cang Chải Homestay",
+   "batch": 1,
+   "region": "mu-cang-chai",
+   "region_name": "Mù Cang Chải",
+   "province": "Lào Cai (Yên Bái cũ)",
+   "area": "Mù Cang Chải",
+   "category": "homestay",
+   "search_place": "Yên Bái",
+   "match": [
+    [
+     "hello mu cang chai",
+     "hello mucangchai"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "mu-cang-chai-a-pao-homestay-mu-cang-chai",
+   "slug": "a-pao-homestay-mu-cang-chai",
+   "seq": 18,
+   "name": "A Páo Homestay Mù Cang Chải",
+   "batch": 1,
+   "region": "mu-cang-chai",
+   "region_name": "Mù Cang Chải",
+   "province": "Lào Cai (Yên Bái cũ)",
+   "area": "Mù Cang Chải",
+   "category": "homestay",
+   "search_place": "Yên Bái",
+   "match": [
+    [
+     "a pao"
+    ],
+    [
+     "mu cang chai",
+     "mucangchai"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lao-cai-khac-muong-thanh-grand-lao-cai-hotel",
+   "slug": "muong-thanh-grand-lao-cai-hotel",
+   "seq": 19,
+   "name": "Mường Thanh Grand Lào Cai Hotel",
+   "batch": 1,
+   "region": "lao-cai-khac",
+   "region_name": "Lào Cai khác (Bắc Hà, Y Tý, TP. Lào Cai)",
+   "province": "Lào Cai",
+   "area": "TP. Lào Cai",
+   "category": "hotel",
+   "search_place": "Lào Cai",
+   "match": [
+    [
+     "muong thanh"
+    ],
+    [
+     "lao cai"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lao-cai-khac-sapaly-hotel-lao-cai",
+   "slug": "sapaly-hotel-lao-cai",
+   "seq": 20,
+   "name": "Sapaly Hotel Lào Cai",
+   "batch": 1,
+   "region": "lao-cai-khac",
+   "region_name": "Lào Cai khác (Bắc Hà, Y Tý, TP. Lào Cai)",
+   "province": "Lào Cai",
+   "area": "TP. Lào Cai",
+   "category": "hotel",
+   "search_place": "Lào Cai",
+   "match": [
+    [
+     "sapaly"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lao-cai-khac-ngai-thau-xanh-homestay",
+   "slug": "ngai-thau-xanh-homestay",
+   "seq": 21,
+   "name": "Ngải Thầu Xanh Homestay",
+   "batch": 1,
+   "region": "lao-cai-khac",
+   "region_name": "Lào Cai khác (Bắc Hà, Y Tý, TP. Lào Cai)",
+   "province": "Lào Cai",
+   "area": "Y Tý, Bát Xát",
+   "category": "homestay",
+   "search_place": "Y Tý",
+   "match": [
+    [
+     "ngai thau"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lao-cai-khac-a-ho-homestay",
+   "slug": "a-ho-homestay",
+   "seq": 22,
+   "name": "A Hờ Homestay",
+   "batch": 1,
+   "region": "lao-cai-khac",
+   "region_name": "Lào Cai khác (Bắc Hà, Y Tý, TP. Lào Cai)",
+   "province": "Lào Cai",
+   "area": "Y Tý, Bát Xát",
+   "category": "homestay",
+   "search_place": "Y Tý",
+   "match": [
+    [
+     "a ho"
+    ],
+    [
+     "y ty"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lao-cai-khac-bac-ha-boutique-homestay",
+   "slug": "bac-ha-boutique-homestay",
+   "seq": 23,
+   "name": "Bắc Hà Boutique Homestay",
+   "batch": 1,
+   "region": "lao-cai-khac",
+   "region_name": "Lào Cai khác (Bắc Hà, Y Tý, TP. Lào Cai)",
+   "province": "Lào Cai",
+   "area": "Bắc Hà",
+   "category": "homestay",
+   "search_place": "Bắc Hà Lào Cai",
+   "match": [
+    [
+     "bac ha"
+    ],
+    [
+     "boutique"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ha-noi-sofitel-legend-metropole-hanoi",
+   "slug": "sofitel-legend-metropole-hanoi",
+   "seq": 24,
+   "name": "Sofitel Legend Metropole Hanoi",
+   "batch": 2,
+   "region": "ha-noi",
+   "region_name": "Hà Nội",
+   "province": "Hà Nội",
+   "area": "Hoàn Kiếm",
+   "category": "hotel",
+   "search_place": "Hanoi",
+   "match": [
+    [
+     "metropole"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ha-noi-capella-hanoi",
+   "slug": "capella-hanoi",
+   "seq": 25,
+   "name": "Capella Hanoi",
+   "batch": 2,
+   "region": "ha-noi",
+   "region_name": "Hà Nội",
+   "province": "Hà Nội",
+   "area": "Hoàn Kiếm",
+   "category": "hotel",
+   "search_place": "Hanoi",
+   "match": [
+    [
+     "capella"
+    ],
+    [
+     "hanoi",
+     "ha noi"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ha-noi-jw-marriott-hotel-hanoi",
+   "slug": "jw-marriott-hotel-hanoi",
+   "seq": 26,
+   "name": "JW Marriott Hotel Hanoi",
+   "batch": 2,
+   "region": "ha-noi",
+   "region_name": "Hà Nội",
+   "province": "Hà Nội",
+   "area": "Nam Từ Liêm",
+   "category": "hotel",
+   "search_place": "Hanoi",
+   "match": [
+    [
+     "jw marriott"
+    ],
+    [
+     "hanoi",
+     "ha noi"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ha-noi-intercontinental-hanoi-westlake",
+   "slug": "intercontinental-hanoi-westlake",
+   "seq": 27,
+   "name": "InterContinental Hanoi Westlake",
+   "batch": 2,
+   "region": "ha-noi",
+   "region_name": "Hà Nội",
+   "province": "Hà Nội",
+   "area": "Tây Hồ",
+   "category": "hotel",
+   "search_place": "Hanoi",
+   "match": [
+    [
+     "intercontinental"
+    ],
+    [
+     "westlake",
+     "west lake",
+     "ho tay"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ha-noi-la-siesta-classic-ma-may-hotel",
+   "slug": "la-siesta-classic-ma-may-hotel",
+   "seq": 28,
+   "name": "La Siesta Classic Ma May Hotel",
+   "batch": 2,
+   "region": "ha-noi",
+   "region_name": "Hà Nội",
+   "province": "Hà Nội",
+   "area": "Hoàn Kiếm",
+   "category": "hotel",
+   "search_place": "Hanoi",
+   "match": [
+    [
+     "la siesta"
+    ],
+    [
+     "ma may"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ninh-binh-emeralda-resort-tam-coc",
+   "slug": "emeralda-resort-tam-coc",
+   "seq": 29,
+   "name": "Emeralda Resort Tam Coc",
+   "batch": 2,
+   "region": "ninh-binh",
+   "region_name": "Ninh Bình",
+   "province": "Ninh Bình",
+   "area": "Tam Cốc, Hoa Lư",
+   "category": "resort",
+   "search_place": "Ninh Binh",
+   "match": [
+    [
+     "emeralda"
+    ],
+    [
+     "tam coc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ninh-binh-tam-coc-garden-resort",
+   "slug": "tam-coc-garden-resort",
+   "seq": 30,
+   "name": "Tam Coc Garden Resort",
+   "batch": 2,
+   "region": "ninh-binh",
+   "region_name": "Ninh Bình",
+   "province": "Ninh Bình",
+   "area": "Tam Cốc, Hoa Lư",
+   "category": "resort",
+   "search_place": "Ninh Binh",
+   "match": [
+    [
+     "tam coc garden"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ninh-binh-hidden-charm-hotel-resort",
+   "slug": "ninh-binh-hidden-charm-hotel-resort",
+   "seq": 31,
+   "name": "Ninh Binh Hidden Charm Hotel & Resort",
+   "batch": 2,
+   "region": "ninh-binh",
+   "region_name": "Ninh Bình",
+   "province": "Ninh Bình",
+   "area": "Hoa Lư",
+   "category": "resort",
+   "search_place": "Ninh Binh",
+   "match": [
+    [
+     "hidden charm"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ninh-binh-vedana-resort-ninh-binh",
+   "slug": "vedana-resort-ninh-binh",
+   "seq": 32,
+   "name": "Vedana Resort Ninh Binh",
+   "batch": 2,
+   "region": "ninh-binh",
+   "region_name": "Ninh Bình",
+   "province": "Ninh Bình",
+   "area": "Cúc Phương",
+   "category": "resort",
+   "search_place": "Ninh Binh",
+   "match": [
+    [
+     "vedana"
+    ],
+    [
+     "ninh binh"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ninh-binh-aravinda-resort-ninh-binh",
+   "slug": "aravinda-resort-ninh-binh",
+   "seq": 33,
+   "name": "Aravinda Resort Ninh Binh",
+   "batch": 2,
+   "region": "ninh-binh",
+   "region_name": "Ninh Bình",
+   "province": "Ninh Bình",
+   "area": "Gia Viễn",
+   "category": "resort",
+   "search_place": "Ninh Binh",
+   "match": [
+    [
+     "aravinda"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ninh-binh-clau-hotel-ninh-binh",
+   "slug": "clau-hotel-ninh-binh",
+   "seq": 34,
+   "name": "Clau Hotel Ninh Bình",
+   "batch": 2,
+   "region": "ninh-binh",
+   "region_name": "Ninh Bình",
+   "province": "Ninh Bình",
+   "area": "TP. Ninh Bình",
+   "category": "hotel",
+   "search_place": "Ninh Bình",
+   "match": [
+    [
+     "clau"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "ninh-binh-pho-co-hotel-ninh-binh",
+   "slug": "pho-co-hotel-ninh-binh",
+   "seq": 35,
+   "name": "Phố Cổ Hotel Ninh Bình",
+   "batch": 2,
+   "region": "ninh-binh",
+   "region_name": "Ninh Bình",
+   "province": "Ninh Bình",
+   "area": "Ninh Bình",
+   "category": "hotel",
+   "search_place": "Ninh Bình",
+   "match": [
+    [
+     "pho co hotel",
+     "khach san pho co",
+     "phoco hotel"
+    ],
+    [
+     "ninh binh"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "hue-azerai-la-residence-hue",
+   "slug": "azerai-la-residence-hue",
+   "seq": 36,
+   "name": "Azerai La Residence, Hue",
+   "batch": 2,
+   "region": "hue",
+   "region_name": "Huế",
+   "province": "TP. Huế",
+   "area": "TP. Huế",
+   "category": "hotel",
+   "search_place": "Hue",
+   "match": [
+    [
+     "azerai",
+     "la residence"
+    ],
+    [
+     "hue"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "hue-banyan-tree-lang-co",
+   "slug": "banyan-tree-lang-co",
+   "seq": 37,
+   "name": "Banyan Tree Lang Co",
+   "batch": 2,
+   "region": "hue",
+   "region_name": "Huế",
+   "province": "TP. Huế",
+   "area": "Lăng Cô, Chân Mây",
+   "category": "resort",
+   "search_place": "Lang Co",
+   "match": [
+    [
+     "banyan tree"
+    ],
+    [
+     "lang co"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "hue-vedana-lagoon-resort-spa",
+   "slug": "vedana-lagoon-resort-spa",
+   "seq": 38,
+   "name": "Vedana Lagoon Resort & Spa",
+   "batch": 2,
+   "region": "hue",
+   "region_name": "Huế",
+   "province": "TP. Huế",
+   "area": "Phá Tam Giang – Cầu Hai",
+   "category": "resort",
+   "search_place": "Hue",
+   "match": [
+    [
+     "vedana lagoon"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "hue-pilgrimage-village-boutique-resort-spa",
+   "slug": "pilgrimage-village-boutique-resort-spa",
+   "seq": 39,
+   "name": "Pilgrimage Village Boutique Resort & Spa",
+   "batch": 2,
+   "region": "hue",
+   "region_name": "Huế",
+   "province": "TP. Huế",
+   "area": "TP. Huế",
+   "category": "resort",
+   "search_place": "Hue",
+   "match": [
+    [
+     "pilgrimage village"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "hue-indochine-palace",
+   "slug": "indochine-palace",
+   "seq": 40,
+   "name": "Indochine Palace",
+   "batch": 2,
+   "region": "hue",
+   "region_name": "Huế",
+   "province": "TP. Huế",
+   "area": "TP. Huế",
+   "category": "hotel",
+   "search_place": "Hue hotel",
+   "match": [
+    [
+     "indochine palace"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "tau-di-san-ket-noi-mien-trung",
+   "slug": "tau-di-san-ket-noi-mien-trung",
+   "seq": 41,
+   "name": "Tàu Di Sản Kết Nối Miền Trung (Huế – Đà Nẵng: HĐ1/HĐ2/HĐ3/HĐ4)",
+   "batch": 2,
+   "region": "tau-di-san",
+   "region_name": "Tuyến Tàu Di Sản & Du Lịch",
+   "province": "Liên tỉnh",
+   "area": "Huế – Đà Nẵng",
+   "category": "train",
+   "search_place": "Kết nối di sản miền Trung tàu Huế Đà Nẵng",
+   "match": [
+    [
+     "tau",
+     "train",
+     "toa"
+    ],
+    [
+     "di san",
+     "heritage"
+    ]
+   ],
+   "extra_queries": [
+    "tàu Kết nối di sản miền Trung toa xe",
+    "tàu HĐ1 HĐ2 Huế Đà Nẵng đèo Hải Vân",
+    "Hue Da Nang heritage train carriage"
+   ]
+  },
+  {
+   "id": "tau-di-san-tau-du-lich-di-san-hue-phong-nha",
+   "slug": "tau-du-lich-di-san-hue-phong-nha",
+   "seq": 42,
+   "name": "Tàu Du Lịch Di Sản Huế – Phong Nha (HQ1/HQ2)",
+   "batch": 2,
+   "region": "tau-di-san",
+   "region_name": "Tuyến Tàu Di Sản & Du Lịch",
+   "province": "Liên tỉnh",
+   "area": "Huế – Đồng Hới (Quảng Trị)",
+   "category": "train",
+   "search_place": "tàu du lịch Huế Phong Nha",
+   "match": [
+    [
+     "tau",
+     "train",
+     "toa"
+    ],
+    [
+     "phong nha",
+     "dong hoi"
+    ]
+   ],
+   "extra_queries": [
+    "tàu HQ1 HQ2 Huế Đồng Hới",
+    "tàu di sản Huế Phong Nha khai trương"
+   ]
+  },
+  {
+   "id": "tau-di-san-tau-du-lich-5-cua-o-ha-noi",
+   "slug": "tau-du-lich-5-cua-o-ha-noi",
+   "seq": 43,
+   "name": "Tàu Du Lịch 5 Cửa Ô Hà Nội (The Hanoi Train)",
+   "batch": 2,
+   "region": "tau-di-san",
+   "region_name": "Tuyến Tàu Di Sản & Du Lịch",
+   "province": "Liên tỉnh",
+   "area": "Hà Nội",
+   "category": "train",
+   "search_place": "tàu du lịch 5 cửa ô Hà Nội",
+   "match": [
+    [
+     "tau",
+     "train",
+     "toa"
+    ],
+    [
+     "cua o",
+     "hanoi train"
+    ]
+   ],
+   "extra_queries": [
+    "The Hanoi Train 5 cửa ô toa xe",
+    "tàu 5 cửa ô Hà Nội nội thất"
+   ]
+  },
+  {
+   "id": "tau-di-san-tau-hoa-hang-sang-sjourney",
+   "slug": "tau-hoa-hang-sang-sjourney",
+   "seq": 44,
+   "name": "Tàu Hỏa Hạng Sang SJourney (Xuyên Việt khởi hành từ Hà Nội)",
+   "batch": 2,
+   "region": "tau-di-san",
+   "region_name": "Tuyến Tàu Di Sản & Du Lịch",
+   "province": "Liên tỉnh",
+   "area": "Hà Nội – TP.HCM",
+   "category": "train",
+   "search_place": "SJourney tàu hạng sang",
+   "match": [
+    [
+     "sjourney",
+     "s journey"
+    ]
+   ],
+   "extra_queries": [
+    "SJourney luxury train Vietnam",
+    "tàu SJourney toa xe hạng sang"
+   ]
+  },
+  {
+   "id": "tau-di-san-tau-du-lich-dem-da-lat-trai-mat",
+   "slug": "tau-du-lich-dem-da-lat-trai-mat",
+   "seq": 45,
+   "name": "Tàu Du Lịch Đêm Đà Lạt – Trại Mát (ĐL11/ĐL12)",
+   "batch": 2,
+   "region": "tau-di-san",
+   "region_name": "Tuyến Tàu Di Sản & Du Lịch",
+   "province": "Liên tỉnh",
+   "area": "Đà Lạt – Trại Mát",
+   "category": "train",
+   "search_place": "tàu đêm Đà Lạt Trại Mát",
+   "match": [
+    [
+     "tau",
+     "train",
+     "toa",
+     "ga"
+    ],
+    [
+     "trai mat",
+     "da lat",
+     "dalat"
+    ]
+   ],
+   "extra_queries": [
+    "ga Đà Lạt tàu đêm Trại Mát",
+    "tàu ĐL11 ĐL12 Đà Lạt"
+   ]
+  },
+  {
+   "id": "da-lat-merperle-dalat-hotel",
+   "slug": "merperle-dalat-hotel",
+   "seq": 46,
+   "name": "MerPerle Dalat Hotel",
+   "batch": 3,
+   "region": "da-lat",
+   "region_name": "Đà Lạt",
+   "province": "Lâm Đồng",
+   "area": "Đà Lạt",
+   "category": "hotel",
+   "search_place": "Dalat",
+   "match": [
+    [
+     "merperle",
+     "mer perle"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "da-lat-grand-mercure-dalat",
+   "slug": "grand-mercure-dalat",
+   "seq": 47,
+   "name": "Grand Mercure Dalat",
+   "batch": 3,
+   "region": "da-lat",
+   "region_name": "Đà Lạt",
+   "province": "Lâm Đồng",
+   "area": "Đà Lạt",
+   "category": "hotel",
+   "search_place": "Dalat",
+   "match": [
+    [
+     "grand mercure"
+    ],
+    [
+     "dalat",
+     "da lat"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "da-lat-ana-mandara-villas-dalat-resort-spa",
+   "slug": "ana-mandara-villas-dalat-resort-spa",
+   "seq": 48,
+   "name": "Ana Mandara Villas Dalat Resort & Spa",
+   "batch": 3,
+   "region": "da-lat",
+   "region_name": "Đà Lạt",
+   "province": "Lâm Đồng",
+   "area": "Đà Lạt",
+   "category": "resort",
+   "search_place": "Dalat",
+   "match": [
+    [
+     "ana mandara"
+    ],
+    [
+     "dalat",
+     "da lat"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "da-lat-hotel-colline-da-lat",
+   "slug": "hotel-colline-da-lat",
+   "seq": 49,
+   "name": "Hôtel Colline Đà Lạt",
+   "batch": 3,
+   "region": "da-lat",
+   "region_name": "Đà Lạt",
+   "province": "Lâm Đồng",
+   "area": "Đà Lạt",
+   "category": "hotel",
+   "search_place": "Dalat",
+   "match": [
+    [
+     "colline"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "da-lat-dalat-wonder-resort",
+   "slug": "dalat-wonder-resort",
+   "seq": 50,
+   "name": "Dalat Wonder Resort",
+   "batch": 3,
+   "region": "da-lat",
+   "region_name": "Đà Lạt",
+   "province": "Lâm Đồng",
+   "area": "Hồ Tuyền Lâm, Đà Lạt",
+   "category": "resort",
+   "search_place": "Dalat",
+   "match": [
+    [
+     "wonder"
+    ],
+    [
+     "dalat",
+     "da lat"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lam-dong-khac-doi-dep-tea-resort",
+   "slug": "doi-dep-tea-resort",
+   "seq": 51,
+   "name": "Đôi Dép Tea Resort",
+   "batch": 3,
+   "region": "lam-dong-khac",
+   "region_name": "Lâm Đồng khác (Bảo Lộc, Di Linh, Lạc Dương)",
+   "province": "Lâm Đồng",
+   "area": "Bảo Lộc",
+   "category": "resort",
+   "search_place": "Bảo Lộc",
+   "match": [
+    [
+     "doi dep"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lam-dong-khac-sandals-vista-hotel",
+   "slug": "sandals-vista-hotel",
+   "seq": 52,
+   "name": "Sandals Vista Hotel",
+   "batch": 3,
+   "region": "lam-dong-khac",
+   "region_name": "Lâm Đồng khác (Bảo Lộc, Di Linh, Lạc Dương)",
+   "province": "Lâm Đồng",
+   "area": "Bảo Lộc",
+   "category": "hotel",
+   "search_place": "Bảo Lộc",
+   "match": [
+    [
+     "sandals vista"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lam-dong-khac-memories-hotel-bao-loc",
+   "slug": "memories-hotel-bao-loc",
+   "seq": 53,
+   "name": "Memories Hotel Bảo Lộc",
+   "batch": 3,
+   "region": "lam-dong-khac",
+   "region_name": "Lâm Đồng khác (Bảo Lộc, Di Linh, Lạc Dương)",
+   "province": "Lâm Đồng",
+   "area": "Bảo Lộc",
+   "category": "hotel",
+   "search_place": "Bảo Lộc",
+   "match": [
+    [
+     "memories"
+    ],
+    [
+     "bao loc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lam-dong-khac-twin-beans-farm",
+   "slug": "twin-beans-farm",
+   "seq": 54,
+   "name": "Twin Beans Farm",
+   "batch": 3,
+   "region": "lam-dong-khac",
+   "region_name": "Lâm Đồng khác (Bảo Lộc, Di Linh, Lạc Dương)",
+   "province": "Lâm Đồng",
+   "area": "Lạc Dương",
+   "category": "homestay",
+   "search_place": "Đà Lạt",
+   "match": [
+    [
+     "twin beans"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "lam-dong-khac-zenna-glamping-farm",
+   "slug": "zenna-glamping-farm",
+   "seq": 55,
+   "name": "Zenna Glamping & Farm",
+   "batch": 3,
+   "region": "lam-dong-khac",
+   "region_name": "Lâm Đồng khác (Bảo Lộc, Di Linh, Lạc Dương)",
+   "province": "Lâm Đồng",
+   "area": "Lạc Dương",
+   "category": "homestay",
+   "search_place": "Đà Lạt",
+   "match": [
+    [
+     "zenna"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "vung-tau-thuy-van-the-imperial-hotel-vung-tau",
+   "slug": "the-imperial-hotel-vung-tau",
+   "seq": 56,
+   "name": "The IMPERIAL Hotel Vung Tau",
+   "batch": 3,
+   "region": "vung-tau-thuy-van",
+   "region_name": "Đường Thùy Vân – Vũng Tàu",
+   "province": "TP. Hồ Chí Minh (Bà Rịa – Vũng Tàu cũ)",
+   "area": "Thùy Vân, Vũng Tàu",
+   "category": "hotel",
+   "search_place": "Vung Tau",
+   "match": [
+    [
+     "imperial"
+    ],
+    [
+     "vung tau"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "vung-tau-thuy-van-vias-hotel-vung-tau",
+   "slug": "vias-hotel-vung-tau",
+   "seq": 57,
+   "name": "Vias Hotel Vung Tau",
+   "batch": 3,
+   "region": "vung-tau-thuy-van",
+   "region_name": "Đường Thùy Vân – Vũng Tàu",
+   "province": "TP. Hồ Chí Minh (Bà Rịa – Vũng Tàu cũ)",
+   "area": "Thùy Vân, Vũng Tàu",
+   "category": "hotel",
+   "search_place": "Vung Tau",
+   "match": [
+    [
+     "vias"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "vung-tau-thuy-van-pullman-vung-tau",
+   "slug": "pullman-vung-tau",
+   "seq": 58,
+   "name": "Pullman Vung Tau",
+   "batch": 3,
+   "region": "vung-tau-thuy-van",
+   "region_name": "Đường Thùy Vân – Vũng Tàu",
+   "province": "TP. Hồ Chí Minh (Bà Rịa – Vũng Tàu cũ)",
+   "area": "Thùy Vân, Vũng Tàu",
+   "category": "hotel",
+   "search_place": "Vung Tau",
+   "match": [
+    [
+     "pullman"
+    ],
+    [
+     "vung tau"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "vung-tau-thuy-van-malibu-hotel-vung-tau",
+   "slug": "malibu-hotel-vung-tau",
+   "seq": 59,
+   "name": "Malibu Hotel Vung Tau",
+   "batch": 3,
+   "region": "vung-tau-thuy-van",
+   "region_name": "Đường Thùy Vân – Vũng Tàu",
+   "province": "TP. Hồ Chí Minh (Bà Rịa – Vũng Tàu cũ)",
+   "area": "Thùy Vân, Vũng Tàu",
+   "category": "hotel",
+   "search_place": "Vung Tau",
+   "match": [
+    [
+     "malibu"
+    ],
+    [
+     "vung tau"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "vung-tau-thuy-van-premier-pearl-hotel-vung-tau",
+   "slug": "premier-pearl-hotel-vung-tau",
+   "seq": 60,
+   "name": "Premier Pearl Hotel Vung Tau",
+   "batch": 3,
+   "region": "vung-tau-thuy-van",
+   "region_name": "Đường Thùy Vân – Vũng Tàu",
+   "province": "TP. Hồ Chí Minh (Bà Rịa – Vũng Tàu cũ)",
+   "area": "Thùy Vân, Vũng Tàu",
+   "category": "hotel",
+   "search_place": "Vung Tau",
+   "match": [
+    [
+     "premier pearl"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "vung-tau-thuy-van-thuy-van-hotel",
+   "slug": "thuy-van-hotel",
+   "seq": 61,
+   "name": "Thùy Vân Hotel",
+   "batch": 3,
+   "region": "vung-tau-thuy-van",
+   "region_name": "Đường Thùy Vân – Vũng Tàu",
+   "province": "TP. Hồ Chí Minh (Bà Rịa – Vũng Tàu cũ)",
+   "area": "Thùy Vân, Vũng Tàu",
+   "category": "hotel",
+   "search_place": "Vũng Tàu",
+   "match": [
+    [
+     "thuy van hotel",
+     "khach san thuy van"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "cam-ranh-the-anam-cam-ranh",
+   "slug": "the-anam-cam-ranh",
+   "seq": 62,
+   "name": "The Anam Cam Ranh",
+   "batch": 4,
+   "region": "cam-ranh",
+   "region_name": "Cam Ranh",
+   "province": "Khánh Hòa",
+   "area": "Bãi Dài, Cam Ranh",
+   "category": "resort",
+   "search_place": "Cam Ranh",
+   "match": [
+    [
+     "anam"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "cam-ranh-alma-resort-cam-ranh",
+   "slug": "alma-resort-cam-ranh",
+   "seq": 63,
+   "name": "Alma Resort Cam Ranh",
+   "batch": 4,
+   "region": "cam-ranh",
+   "region_name": "Cam Ranh",
+   "province": "Khánh Hòa",
+   "area": "Bãi Dài, Cam Ranh",
+   "category": "resort",
+   "search_place": "Cam Ranh",
+   "match": [
+    [
+     "alma"
+    ],
+    [
+     "cam ranh"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "cam-ranh-movenpick-resort-cam-ranh",
+   "slug": "movenpick-resort-cam-ranh",
+   "seq": 64,
+   "name": "Mövenpick Resort Cam Ranh",
+   "batch": 4,
+   "region": "cam-ranh",
+   "region_name": "Cam Ranh",
+   "province": "Khánh Hòa",
+   "area": "Bãi Dài, Cam Ranh",
+   "category": "resort",
+   "search_place": "Cam Ranh",
+   "match": [
+    [
+     "movenpick"
+    ],
+    [
+     "cam ranh"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "cam-ranh-fusion-resort-cam-ranh",
+   "slug": "fusion-resort-cam-ranh",
+   "seq": 65,
+   "name": "Fusion Resort Cam Ranh",
+   "batch": 4,
+   "region": "cam-ranh",
+   "region_name": "Cam Ranh",
+   "province": "Khánh Hòa",
+   "area": "Bãi Dài, Cam Ranh",
+   "category": "resort",
+   "search_place": "Cam Ranh",
+   "match": [
+    [
+     "fusion"
+    ],
+    [
+     "cam ranh"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "cam-ranh-radisson-blu-resort-cam-ranh",
+   "slug": "radisson-blu-resort-cam-ranh",
+   "seq": 66,
+   "name": "Radisson Blu Resort Cam Ranh",
+   "batch": 4,
+   "region": "cam-ranh",
+   "region_name": "Cam Ranh",
+   "province": "Khánh Hòa",
+   "area": "Bãi Dài, Cam Ranh",
+   "category": "resort",
+   "search_place": "Cam Ranh",
+   "match": [
+    [
+     "radisson"
+    ],
+    [
+     "cam ranh"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "nha-trang-six-senses-ninh-van-bay",
+   "slug": "six-senses-ninh-van-bay",
+   "seq": 67,
+   "name": "Six Senses Ninh Van Bay",
+   "batch": 4,
+   "region": "nha-trang",
+   "region_name": "Nha Trang",
+   "province": "Khánh Hòa",
+   "area": "Vịnh Ninh Vân",
+   "category": "resort",
+   "search_place": "Nha Trang",
+   "match": [
+    [
+     "six senses"
+    ],
+    [
+     "ninh van"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "nha-trang-amiana-resort-nha-trang",
+   "slug": "amiana-resort-nha-trang",
+   "seq": 68,
+   "name": "Amiana Resort Nha Trang",
+   "batch": 4,
+   "region": "nha-trang",
+   "region_name": "Nha Trang",
+   "province": "Khánh Hòa",
+   "area": "Nha Trang",
+   "category": "resort",
+   "search_place": "Nha Trang",
+   "match": [
+    [
+     "amiana"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "nha-trang-vinpearl-resort-spa-nha-trang-bay",
+   "slug": "vinpearl-resort-spa-nha-trang-bay",
+   "seq": 69,
+   "name": "Vinpearl Resort & Spa Nha Trang Bay",
+   "batch": 4,
+   "region": "nha-trang",
+   "region_name": "Nha Trang",
+   "province": "Khánh Hòa",
+   "area": "Hòn Tre, Nha Trang",
+   "category": "resort",
+   "search_place": "Nha Trang",
+   "match": [
+    [
+     "vinpearl"
+    ],
+    [
+     "nha trang"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "nha-trang-intercontinental-nha-trang",
+   "slug": "intercontinental-nha-trang",
+   "seq": 70,
+   "name": "InterContinental Nha Trang",
+   "batch": 4,
+   "region": "nha-trang",
+   "region_name": "Nha Trang",
+   "province": "Khánh Hòa",
+   "area": "Trần Phú, Nha Trang",
+   "category": "hotel",
+   "search_place": "Nha Trang",
+   "match": [
+    [
+     "intercontinental"
+    ],
+    [
+     "nha trang"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "nha-trang-mia-resort-nha-trang",
+   "slug": "mia-resort-nha-trang",
+   "seq": 71,
+   "name": "Mia Resort Nha Trang",
+   "batch": 4,
+   "region": "nha-trang",
+   "region_name": "Nha Trang",
+   "province": "Khánh Hòa",
+   "area": "Bãi Đông, Cam Lâm",
+   "category": "resort",
+   "search_place": "Nha Trang",
+   "match": [
+    [
+     "mia"
+    ],
+    [
+     "nha trang"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "khanh-hoa-khac-an-lam-retreats-ninh-van-bay",
+   "slug": "an-lam-retreats-ninh-van-bay",
+   "seq": 72,
+   "name": "An Lam Retreats Ninh Van Bay",
+   "batch": 4,
+   "region": "khanh-hoa-khac",
+   "region_name": "Khánh Hòa khác (Ninh Hòa, Vạn Ninh / Điệp Sơn)",
+   "province": "Khánh Hòa",
+   "area": "Vịnh Ninh Vân, Ninh Hòa",
+   "category": "resort",
+   "search_place": "Nha Trang",
+   "match": [
+    [
+     "an lam"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "khanh-hoa-khac-l-alya-ninh-van-bay",
+   "slug": "l-alya-ninh-van-bay",
+   "seq": 73,
+   "name": "L'Alya Ninh Van Bay",
+   "batch": 4,
+   "region": "khanh-hoa-khac",
+   "region_name": "Khánh Hòa khác (Ninh Hòa, Vạn Ninh / Điệp Sơn)",
+   "province": "Khánh Hòa",
+   "area": "Vịnh Ninh Vân, Ninh Hòa",
+   "category": "resort",
+   "search_place": "Nha Trang",
+   "match": [
+    [
+     "alya"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "khanh-hoa-khac-gm-doc-let-beach-resort-spa",
+   "slug": "gm-doc-let-beach-resort-spa",
+   "seq": 74,
+   "name": "GM Doc Let Beach Resort & Spa",
+   "batch": 4,
+   "region": "khanh-hoa-khac",
+   "region_name": "Khánh Hòa khác (Ninh Hòa, Vạn Ninh / Điệp Sơn)",
+   "province": "Khánh Hòa",
+   "area": "Dốc Lết, Ninh Hòa",
+   "category": "resort",
+   "search_place": "Ninh Hòa",
+   "match": [
+    [
+     "gm doc let",
+     "gm doclet"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "khanh-hoa-khac-pax-ana-doc-let-resort-spa",
+   "slug": "pax-ana-doc-let-resort-spa",
+   "seq": 75,
+   "name": "Pax Ana Doc Let Resort & Spa",
+   "batch": 4,
+   "region": "khanh-hoa-khac",
+   "region_name": "Khánh Hòa khác (Ninh Hòa, Vạn Ninh / Điệp Sơn)",
+   "province": "Khánh Hòa",
+   "area": "Dốc Lết, Ninh Hòa",
+   "category": "resort",
+   "search_place": "Ninh Hòa",
+   "match": [
+    [
+     "pax ana"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "khanh-hoa-khac-whale-island-resort",
+   "slug": "whale-island-resort",
+   "seq": 76,
+   "name": "Whale Island Resort (Đảo Cá Ông – Vịnh Vân Phong)",
+   "batch": 4,
+   "region": "khanh-hoa-khac",
+   "region_name": "Khánh Hòa khác (Ninh Hòa, Vạn Ninh / Điệp Sơn)",
+   "province": "Khánh Hòa",
+   "area": "Đảo Hòn Ông, Vạn Ninh",
+   "category": "resort",
+   "search_place": "Van Phong Nha Trang",
+   "match": [
+    [
+     "whale island",
+     "dao ca ong",
+     "hon ong"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "phu-quoc-la-festa-phu-quoc-curio-collection-by-hilton",
+   "slug": "la-festa-phu-quoc-curio-collection-by-hilton",
+   "seq": 77,
+   "name": "La Festa Phu Quoc, Curio Collection by Hilton",
+   "batch": 4,
+   "region": "phu-quoc",
+   "region_name": "Phú Quốc",
+   "province": "An Giang (Kiên Giang cũ)",
+   "area": "Sunset Town, An Thới",
+   "category": "hotel",
+   "search_place": "Phu Quoc",
+   "match": [
+    [
+     "la festa"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "phu-quoc-jw-marriott-phu-quoc-emerald-bay-resort-spa",
+   "slug": "jw-marriott-phu-quoc-emerald-bay-resort-spa",
+   "seq": 78,
+   "name": "JW Marriott Phu Quoc Emerald Bay Resort & Spa",
+   "batch": 4,
+   "region": "phu-quoc",
+   "region_name": "Phú Quốc",
+   "province": "An Giang (Kiên Giang cũ)",
+   "area": "Bãi Khem, An Thới",
+   "category": "resort",
+   "search_place": "Phu Quoc",
+   "match": [
+    [
+     "jw marriott"
+    ],
+    [
+     "phu quoc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "phu-quoc-premier-village-phu-quoc-resort",
+   "slug": "premier-village-phu-quoc-resort",
+   "seq": 79,
+   "name": "Premier Village Phu Quoc Resort",
+   "batch": 4,
+   "region": "phu-quoc",
+   "region_name": "Phú Quốc",
+   "province": "An Giang (Kiên Giang cũ)",
+   "area": "Mũi Ông Đội, An Thới",
+   "category": "resort",
+   "search_place": "Phu Quoc",
+   "match": [
+    [
+     "premier village"
+    ],
+    [
+     "phu quoc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "phu-quoc-regent-phu-quoc",
+   "slug": "regent-phu-quoc",
+   "seq": 80,
+   "name": "Regent Phu Quoc",
+   "batch": 4,
+   "region": "phu-quoc",
+   "region_name": "Phú Quốc",
+   "province": "An Giang (Kiên Giang cũ)",
+   "area": "Bãi Trường",
+   "category": "resort",
+   "search_place": "Phu Quoc",
+   "match": [
+    [
+     "regent"
+    ],
+    [
+     "phu quoc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "phu-quoc-ve-show-su-kien-sunset-town",
+   "slug": "ve-show-su-kien-sunset-town",
+   "seq": 81,
+   "name": "Vé Show & Sự Kiện Sunset Town (Kiss of the Sea, Symphony of the Sea, Cầu Hôn, Cáp treo Hòn Thơm)",
+   "batch": 4,
+   "region": "phu-quoc",
+   "region_name": "Phú Quốc",
+   "province": "An Giang (Kiên Giang cũ)",
+   "area": "Sunset Town / Hòn Thơm, An Thới",
+   "category": "ticket",
+   "search_place": "Phú Quốc",
+   "match": [
+    [
+     "kiss of the sea",
+     "symphony of the sea",
+     "hon thom",
+     "sunset town",
+     "cau hon"
+    ]
+   ],
+   "extra_queries": [
+    "Kiss of the Sea show Phú Quốc",
+    "Symphony of the Sea Sunset Town",
+    "cáp treo Hòn Thơm Phú Quốc",
+    "Cầu Hôn Sunset Town Phú Quốc"
+   ]
+  },
+  {
+   "id": "an-giang-victoria-nui-sam-lodge",
+   "slug": "victoria-nui-sam-lodge",
+   "seq": 82,
+   "name": "Victoria Nui Sam Lodge",
+   "batch": 4,
+   "region": "an-giang",
+   "region_name": "An Giang (Châu Đốc, Tri Tôn, Núi Cấm, Long Xuyên)",
+   "province": "An Giang",
+   "area": "Núi Sam, Châu Đốc",
+   "category": "resort",
+   "search_place": "Chau Doc",
+   "match": [
+    [
+     "nui sam"
+    ],
+    [
+     "victoria",
+     "lodge"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "an-giang-victoria-chau-doc-hotel",
+   "slug": "victoria-chau-doc-hotel",
+   "seq": 83,
+   "name": "Victoria Chau Doc Hotel",
+   "batch": 4,
+   "region": "an-giang",
+   "region_name": "An Giang (Châu Đốc, Tri Tôn, Núi Cấm, Long Xuyên)",
+   "province": "An Giang",
+   "area": "Châu Đốc",
+   "category": "hotel",
+   "search_place": "Chau Doc",
+   "match": [
+    [
+     "victoria"
+    ],
+    [
+     "chau doc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "an-giang-sang-nhu-ngoc-resort",
+   "slug": "sang-nhu-ngoc-resort",
+   "seq": 84,
+   "name": "Sang Như Ngọc Resort (Núi Cấm)",
+   "batch": 4,
+   "region": "an-giang",
+   "region_name": "An Giang (Châu Đốc, Tri Tôn, Núi Cấm, Long Xuyên)",
+   "province": "An Giang",
+   "area": "Núi Cấm, Tịnh Biên",
+   "category": "resort",
+   "search_place": "Núi Cấm",
+   "match": [
+    [
+     "sang nhu ngoc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "an-giang-ben-da-nui-sam-hotel",
+   "slug": "ben-da-nui-sam-hotel",
+   "seq": 85,
+   "name": "Bến Đá Núi Sam Hotel",
+   "batch": 4,
+   "region": "an-giang",
+   "region_name": "An Giang (Châu Đốc, Tri Tôn, Núi Cấm, Long Xuyên)",
+   "province": "An Giang",
+   "area": "Núi Sam, Châu Đốc",
+   "category": "hotel",
+   "search_place": "Châu Đốc",
+   "match": [
+    [
+     "ben da"
+    ],
+    [
+     "nui sam",
+     "chau doc"
+    ]
+   ],
+   "extra_queries": []
+  },
+  {
+   "id": "an-giang-dong-xuyen-hotel",
+   "slug": "dong-xuyen-hotel",
+   "seq": 86,
+   "name": "Đông Xuyên Hotel (Long Xuyên)",
+   "batch": 4,
+   "region": "an-giang",
+   "region_name": "An Giang (Châu Đốc, Tri Tôn, Núi Cấm, Long Xuyên)",
+   "province": "An Giang",
+   "area": "Long Xuyên",
+   "category": "hotel",
+   "search_place": "Long Xuyên",
+   "match": [
+    [
+     "dong xuyen"
+    ]
+   ],
+   "extra_queries": []
+  }
+ ]
+}
