@@ -77,6 +77,7 @@ border: 1px solid rgba(255,255,255,.55);
 box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 12px 24px -6px rgba(15, 23, 42, .12), 0 40px 80px -20px rgba(15, 23, 42, .18);
 ```
 - Không đặt `backdrop-filter` lên phần tử lớn đang animate liên tục; không lồng quá 2 lớp kính.
+- **Luôn giao diện sáng, kể cả khi máy bật Dark Mode:** giữ `<meta name="color-scheme" content="only light">`, `<meta name="darkreader-lock">` và `:root { color-scheme: only light; }` trong `frontend/index.html`. Không thêm theme tối, không dùng chữ gradient trong suốt (`background-clip: text`) cho tiêu đề — khi trình duyệt tự tô tối, kiểu chữ này bị mờ gần như không đọc được.
 - Mọi chữ trên nền sáng phải đạt **WCAG AA** (tối thiểu `#0F172A` trên `#F8FAFC` / `#FFFFFF`; `#475569` cho chữ phụ).
 
 ## 3. Vật lý chuyển động (Framer Spring Physics)
