@@ -1,0 +1,20 @@
+# Bảo mật tuyệt đối - Không đẩy file chứa Token thật lên GitHub
+.env
+*.env
+local-telegram-bot/.env
+cloudflare-worker/.dev.vars
+.wrangler/
+*/.wrangler/
+
+# Python & Logs
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.log
+*.jsonl
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/

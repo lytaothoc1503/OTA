@@ -1,0 +1,4 @@
+# Script bot_listener.py sử dụng thư viện chuẩn của Python 3.9+ (không bắt buộc cài thêm gói ngoài).
+# Nếu muốn mở rộng kết nối nâng cao, có thể cài thêm:
+requests>=2.31.0
+python-dotenv>=1.0.1

@@ -1,0 +1,8 @@
+name = "banla-order-bridge"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+# Lưu ý bảo mật: KHÔNG ghi trực tiếp TG_BOT_TOKEN vào file này.
+# Chạy 2 lệnh sau hoặc nhập trong Cloudflare Dashboard -> Workers -> Settings -> Variables & Secrets:
+# npx wrangler secret put TG_BOT_TOKEN
+# npx wrangler secret put TG_CHAT_ID

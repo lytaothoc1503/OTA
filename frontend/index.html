@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BANLA // NOMAD — Expeditions & Boutique Stays</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            mist: '#F8F9FA',
+            obsidian: '#0B0C0E',
+            'obsidian-elevated': '#111215',
+            carbon: '#0D0E11',
+            muted: '#6B7280',
+            crimson: '#E63946',
+            pine: '#10B981',
+            cloud: '#9CA3AF',
+            ocean: '#3B82F6',
+            golden: '#EAB308',
+            'telemetry-alert': '#FF4D4D',
+            'telemetry-ok': '#34D399',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      background-color: #F8F9FA;
+      color: #0D0E11;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .mono-label {
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .swiss-grid-light {
+      background-image: linear-gradient(to right, rgba(13, 14, 17, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(13, 14, 17, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .swiss-grid-dark {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    @keyframes radar-ping {
+      0% {
+        transform: scale(1);
+        opacity: 0.85;
+      }
+
+      75%,
+      100% {
+        transform: scale(2.4);
+        opacity: 0;
+      }
+    }
+
+    .radar-ring {
+      animation: radar-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes pendulum-sway {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      20% {
+        transform: rotate(4.2deg);
+      }
+
+      45% {
+        transform: rotate(-3.2deg);
+      }
+
+      68% {
+        transform: rotate(1.8deg);
+      }
+
+      85% {
+        transform: rotate(-0.8deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    .hang-tag-pivot {
+      transform-origin: 50% 0%;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+    }
+
+    .hang-tag-pivot:hover,
+    .hang-tag-pivot.is-swinging {
+      animation: pendulum-sway 1.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .hang-tag-pivot.is-active {
+      box-shadow: 0 22px 45px -16px rgba(13, 14, 17, 0.22);
+    }
+
+    .blueprint-layer {
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, filter 0.35s ease;
+      cursor: pointer;
+    }
+
+    .blueprint-svg.has-focus .blueprint-layer:not(.is-highlighted) {
+      opacity: 0.28;
+    }
+
+    .blueprint-layer.is-highlighted {
+      transform: translateY(-7px);
+      filter: drop-shadow(0 12px 18px rgba(230, 57, 70, 0.14));
+    }
+
+    .blueprint-layer.is-highlighted .layer-stroke-primary {
+      stroke: #E63946;
+      stroke-width: 2;
+    }
+
+    .blueprint-layer.is-highlighted .layer-fill-tint {
+      fill: rgba(230, 57, 70, 0.08);
+    }
+
+    .blueprint-node {
+      transition: transform 0.3s ease, fill 0.3s ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .blueprint-layer.is-highlighted .blueprint-node {
+      fill: #E63946;
+      transform: scale(1.35);
+    }
+
+    .telemetry-curve-draw {
+      stroke-dasharray: 520;
+      stroke-dashoffset: 520;
+      transition: stroke-dashoffset 1.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .telemetry-curve-draw.is-drawn {
+      stroke-dashoffset: 0;
+    }
+
+    @keyframes subtle-float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .cabin-float {
+      animation: subtle-float 5.5s ease-in-out infinite;
+    }
+
+    @keyframes counter-pop {
+      0% {
+        transform: scale(1);
+      }
+
+      40% {
+        transform: scale(1.12);
+        background-color: #E63946;
+        color: #FFFFFF;
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .bag-pop {
+      animation: counter-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .payment-option.is-selected {
+      border-color: #0D0E11;
+      background-color: #FFFFFF;
+      box-shadow: 0 10px 26px -14px rgba(13, 14, 17, 0.22);
+    }
+  </style>
+</head>
+
+<body class="bg-mist text-carbon antialiased selection:bg-crimson selection:text-white">
+
+  <!-- 1. STICKY NAVIGATION HEADER -->
+  <header class="backdrop-blur-md bg-white/80 border-b border-black/5 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="#strategy" class="flex items-center gap-2.5">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="radar-ring absolute inline-flex h-full w-full rounded-full bg-[#E63946] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E63946]"></span>
+        </span>
+        <span class="font-mono font-bold text-sm sm:text-[15px] tracking-[0.08em] text-[#0D0E11]">BANLA // NOMAD</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 lg:gap-9">
+        <a href="#strategy" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Strategy</a>
+        <a href="#destinations" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Destinations</a>
+        <a href="#blueprint" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Blueprint</a>
+        <a href="#telemetry" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Live Weather</a>
+        <a href="#packages" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Packages</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button id="header-bot-status-btn" type="button"
+          class="hidden sm:inline-flex items-center gap-1.5 mono-label text-[10px] font-semibold px-2.5 py-1.5 rounded-full border border-[#229ED9]/30 bg-[#229ED9]/10 text-[#0284C7] hover:bg-[#229ED9] hover:text-white transition-colors cursor-pointer">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>
+          <span>@CSN1503_ai_Bot</span>
+        </button>
+
+        <button id="currency-toggle" type="button"
+          class="mono-label text-[11px] font-medium text-[#6B7280] hover:text-[#0D0E11] px-2.5 py-1.5 rounded-full border border-black/10 bg-white/70 cursor-pointer">
+          VN / USD
+        </button>
+
+        <button id="booking-bag-btn" type="button"
+          class="mono-label text-[11px] font-semibold bg-[#0D0E11] text-white hover:bg-[#E63946] px-4 py-2 rounded-full transition-colors flex items-center gap-2 cursor-pointer">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>
+          <span id="booking-bag-label">Booking (0)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION WITH TOPOGRAPHIC CONTOUR SVG -->
+  <section id="strategy"
+    class="relative overflow-hidden swiss-grid-light pt-12 pb-16 sm:pt-16 sm:pb-24 border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <div class="lg:col-span-6 flex flex-col items-start">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-black/10 mb-7">
+            <span class="relative flex h-2 w-2">
+              <span class="radar-ring absolute inline-flex h-full w-full rounded-full bg-[#E63946] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#E63946]"></span>
+            </span>
+            <span class="mono-label text-[10px] sm:text-[11px] font-semibold text-[#0D0E11]">CURATED STAYS FOR DEEP
+              EXPLORERS</span>
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-[68px] leading-[1.03] tracking-[-0.03em] text-[#0D0E11] mb-6">
+            <span class="block font-light">Quiet luxury</span>
+            <span class="block font-extrabold italic">for wild horizons.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-[#6B7280] leading-relaxed max-w-xl mb-9">
+            Architectural retreats and private cloud-hunting itineraries for travelers who plan every detail twice.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3.5 mb-12">
+            <a href="#packages"
+              class="inline-flex items-center justify-center rounded-full bg-[#0D0E11] text-white hover:bg-[#E63946] px-6 py-3.5 text-sm font-medium transition-all">
+              [ Explore packages -&gt; ]
+            </a>
+            <a href="#telemetry"
+              class="inline-flex items-center justify-center rounded-full bg-white/80 hover:bg-white text-[#0D0E11] border border-black/15 hover:border-[#0D0E11] px-6 py-3.5 text-sm font-medium transition-all">
+              [ Live altitude &amp; weather ]
+            </a>
+          </div>
+
+          <div class="w-full grid grid-cols-3 gap-3 pt-6 border-t border-black/10">
+            <div class="bg-white/90 border border-black/[0.06] rounded-xl px-3.5 py-3">
+              <div class="mono-label text-[9px] text-[#6B7280] mb-1">ELEVATION</div>
+              <div class="text-xs sm:text-sm font-semibold text-[#0D0E11]">1,650 m Peak View</div>
+            </div>
+            <div class="bg-white/90 border border-black/[0.06] rounded-xl px-3.5 py-3">
+              <div class="mono-label text-[9px] text-[#6B7280] mb-1">OCCUPANCY</div>
+              <div class="text-xs sm:text-sm font-semibold text-[#0D0E11]">94% Guest Return</div>
+            </div>
+            <div class="bg-white/90 border border-black/[0.06] rounded-xl px-3.5 py-3">
+              <div class="mono-label text-[9px] text-[#6B7280] mb-1">BOT BRIDGE</div>
+              <div class="text-xs sm:text-sm font-semibold text-[#0D0E11]">Secure Proxy Push</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div
+            class="relative bg-white border border-black/10 rounded-3xl p-4 sm:p-6 shadow-[0_24px_60px_-24px_rgba(13,14,17,0.12)] overflow-hidden">
+            <div class="flex items-center justify-between pb-3 mb-2 border-b border-black/5">
+              <div class="mono-label text-[10px] text-[#6B7280] flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                TOPO // RIDGE SECTOR 21.25°N 104.46°E
+              </div>
+              <div class="mono-label text-[10px] text-[#0D0E11] font-semibold">SCALE 1:25,000</div>
+            </div>
+
+            <div class="relative w-full aspect-[4/3.3]">
+              <svg viewBox="0 0 640 520" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="ridgeGlow" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#10B981" stop-opacity="0.14" />
+                    <stop offset="55%" stop-color="#3B82F6" stop-opacity="0.06" />
+                    <stop offset="100%" stop-color="#E63946" stop-opacity="0.08" />
+                  </linearGradient>
+                  <linearGradient id="cabinGlass" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.22" />
+                    <stop offset="100%" stop-color="#10B981" stop-opacity="0.10" />
+                  </linearGradient>
+                  <pattern id="microGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+                    <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#0D0E11" stroke-opacity="0.045"
+                      stroke-width="0.75" />
+                  </pattern>
+                </defs>
+                <rect x="0" y="0" width="640" height="520" rx="16" fill="#F8F9FA" />
+                <rect x="0" y="0" width="640" height="520" rx="16" fill="url(#microGrid)" />
+                <ellipse cx="325" cy="275" rx="230" ry="155" fill="url(#ridgeGlow)" />
+                <path
+                  d="M42 425 C 110 360, 145 255, 225 205 C 315 148, 430 142, 520 212 C 585 262, 605 348, 578 415 C 545 488, 390 495, 265 480 C 165 468, 82 470, 42 425 Z"
+                  stroke="#0D0E11" stroke-opacity="0.10" stroke-width="1" />
+                <path
+                  d="M128 378 C 170 330, 198 262, 260 228 C 328 190, 408 192, 470 242 C 512 276, 524 332, 498 374 C 468 422, 368 430, 282 420 C 214 412, 155 410, 128 378 Z"
+                  stroke="#0D0E11" stroke-opacity="0.18" stroke-width="1.1" />
+                <path
+                  d="M222 328 C 244 300, 262 270, 302 252 C 344 234, 388 238, 418 268 C 440 290, 444 318, 426 338 C 406 360, 352 365, 306 360 C 268 355, 236 346, 222 328 Z"
+                  stroke="#0D0E11" stroke-opacity="0.34" stroke-width="1.35" stroke-dasharray="4 3" />
+                <path
+                  d="M268 308 C 282 290, 298 274, 324 266 C 350 258, 378 262, 394 282 C 406 296, 404 314, 390 326 C 374 338, 340 340, 314 336 C 292 332, 274 320, 268 308 Z"
+                  stroke="#E63946" stroke-opacity="0.45" stroke-width="1.4" />
+                <g class="cabin-float">
+                  <polygon points="262,286 334,250 412,284 340,320" fill="#FFFFFF" stroke="#0D0E11"
+                    stroke-width="1.6" />
+                  <polygon points="282,276 334,250 334,212 282,238" fill="#0D0E11" fill-opacity="0.92" stroke="#0D0E11"
+                    stroke-width="1.4" />
+                  <polygon points="334,250 392,275 392,237 334,212" fill="url(#cabinGlass)" stroke="#0D0E11"
+                    stroke-width="1.4" />
+                  <polygon points="268,236 336,202 406,233 338,267" fill="#FFFFFF" stroke="#0D0E11"
+                    stroke-width="1.75" />
+                </g>
+                <g>
+                  <polyline points="274,288 188,164 166,164" stroke="#0D0E11" stroke-width="1.2" fill="none" />
+                  <circle cx="274" cy="288" r="4" fill="#E63946" />
+                  <rect x="20" y="138" width="232" height="46" rx="10" fill="#FFFFFF" stroke="#0D0E11"
+                    stroke-opacity="0.15" />
+                  <text x="36" y="158" font-family="JetBrains Mono" font-size="10.5" font-weight="600"
+                    fill="#0D0E11">panoramic glass deck</text>
+                  <text x="36" y="173" font-family="JetBrains Mono" font-size="10" fill="#6B7280">[1,650m] // ZERO
+                    OBSTRUCTION</text>
+                </g>
+                <g>
+                  <polyline points="384,268 444,398 462,398" stroke="#0D0E11" stroke-width="1.2" fill="none" />
+                  <circle cx="384" cy="268" r="4" fill="#0D0E11" />
+                  <rect x="358" y="376" width="262" height="46" rx="10" fill="#0D0E11" />
+                  <text x="374" y="396" font-family="JetBrains Mono" font-size="10.5" font-weight="600"
+                    fill="#FFFFFF">cloudflare -> @CSN1503_ai_Bot</text>
+                  <text x="374" y="411" font-family="JetBrains Mono" font-size="10" fill="#9CA3AF">[ZERO TOKEN LEAK] //
+                    LIVE PUSH</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INTERACTIVE 5-TAG HANGING RACK -->
+  <section id="destinations" class="scroll-mt-16 py-20 sm:py-28 bg-[#F8F9FA] border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14">
+        <div class="mono-label text-[11px] font-semibold text-[#E63946] mb-3">01 // CURATED DESTINATIONS</div>
+        <h2 class="text-3xl sm:text-5xl font-bold tracking-[-0.025em] text-[#0D0E11] mb-4">Pick your whole journey.</h2>
+        <p class="text-base sm:text-lg text-[#6B7280]">Color-coded regional itineraries matching seasonal
+          micro-climates.</p>
+      </div>
+
+      <div class="relative pt-6 pb-4">
+        <div class="relative w-full h-3 flex items-center">
+          <div class="w-4 h-4 rounded-full bg-[#0D0E11] border-2 border-white shadow"></div>
+          <div class="flex-1 h-[3px] bg-gradient-to-r from-[#0D0E11] via-[#6B7280] to-[#0D0E11]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#0D0E11] border-2 border-white shadow"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-4 -mt-1.5 relative z-10">
+          <div class="flex flex-col items-center">
+            <div class="w-[1.5px] h-8 bg-[#0D0E11]"></div>
+            <button type="button" data-route-id="sunset-town"
+              class="destination-tag hang-tag-pivot is-active w-full text-left bg-white rounded-2xl border-2 border-[#E63946] p-4 cursor-pointer">
+              <div class="h-1.5 w-full rounded-full bg-[#E63946] mb-3"></div>
+              <span class="mono-label text-[10px] font-semibold text-[#E63946]">RT-01 // 4.98★</span>
+              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Sunset Town</h3>
+              <p class="mono-label text-[10px] text-[#6B7280] mt-1">42m // COASTAL CLIFF</p>
+            </button>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-[1.5px] h-10 bg-[#0D0E11]"></div>
+            <button type="button" data-route-id="ta-xua"
+              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
+              <div class="h-1.5 w-full rounded-full bg-[#9CA3AF] mb-3"></div>
+              <span class="mono-label text-[10px] font-semibold text-[#6B7280]">RT-02 // 4.98★</span>
+              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Ta Xua Ridge</h3>
+              <p class="mono-label text-[10px] text-[#6B7280] mt-1">1,650m // SEA OF CLOUDS</p>
+            </button>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-[1.5px] h-7 bg-[#0D0E11]"></div>
+            <button type="button" data-route-id="phu-quoc"
+              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
+              <div class="h-1.5 w-full rounded-full bg-[#3B82F6] mb-3"></div>
+              <span class="mono-label text-[10px] font-semibold text-[#3B82F6]">RT-03 // 4.98★</span>
+              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Phu Quoc Bay</h3>
+              <p class="mono-label text-[10px] text-[#6B7280] mt-1">12m // ISLAND HORIZON</p>
+            </button>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-[1.5px] h-11 bg-[#0D0E11]"></div>
+            <button type="button" data-route-id="dalat"
+              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
+              <div class="h-1.5 w-full rounded-full bg-[#10B981] mb-3"></div>
+              <span class="mono-label text-[10px] font-semibold text-[#10B981]">RT-04 // 4.98★</span>
+              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Dalat Highlands</h3>
+              <p class="mono-label text-[10px] text-[#6B7280] mt-1">1,500m // PINE MIST</p>
+            </button>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-[1.5px] h-9 bg-[#0D0E11]"></div>
+            <button type="button" data-route-id="bavaria"
+              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
+              <div class="h-1.5 w-full rounded-full bg-[#EAB308] mb-3"></div>
+              <span class="mono-label text-[10px] font-semibold text-[#CA8A04]">RT-05 // 4.98★</span>
+              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Bavaria Dinner</h3>
+              <p class="mono-label text-[10px] text-[#6B7280] mt-1">18:00 // GASTRO SHOW</p>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-10 bg-white border border-black/10 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div id="route-swatch" class="w-3 h-12 rounded-full bg-[#E63946]"></div>
+          <div>
+            <div id="route-code" class="mono-label text-[10px] font-bold text-[#0D0E11]">ACTIVE ROUTE // RT-01</div>
+            <h3 id="route-title" class="text-lg sm:text-xl font-bold text-[#0D0E11]">Sunset Town — Mediterranean
+              Cliffside &amp; Dusk Fireworks</h3>
+            <p id="route-desc" class="text-sm text-[#6B7280]">Optimal dry coastal breeze window (17:15–21:30).</p>
+          </div>
+        </div>
+        <a href="#packages"
+          class="mono-label text-[10px] font-semibold bg-[#0D0E11] hover:bg-[#E63946] text-white px-4 py-2.5 rounded-full transition-colors self-start md:self-auto">VIEW
+          PACKAGE →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. EXPERIENCE BLUEPRINT EXPLODED VIEW -->
+  <section id="blueprint" class="scroll-mt-16 py-20 sm:py-28 bg-white border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-14">
+        <div class="mono-label text-[11px] font-semibold text-[#E63946] mb-3">02 // EXPERIENCE BLUEPRINT</div>
+        <h2 class="text-3xl sm:text-5xl tracking-[-0.025em] text-[#0D0E11]">
+          <span class="font-bold">Four layers.</span><span class="font-extrabold italic"> Zero guesswork.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6">
+          <div class="bg-[#F8F9FA] border border-black/10 rounded-3xl p-4 sm:p-6">
+            <svg id="blueprint-svg" viewBox="0 0 540 500" class="blueprint-svg w-full h-auto" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <line x1="255" y1="36" x2="255" y2="470" stroke="#0D0E11" stroke-opacity="0.14" stroke-dasharray="4 5" />
+              <g class="blueprint-layer" data-layer="4">
+                <polygon points="255,336 395,402 255,468 115,402" class="layer-stroke-primary layer-fill-tint"
+                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.35" />
+                <ellipse cx="255" cy="402" rx="52" ry="24" stroke="#10B981" stroke-width="1.2" stroke-dasharray="3 3" />
+                <circle class="blueprint-node" cx="395" cy="402" r="4.5" fill="#0D0E11" />
+              </g>
+              <g class="blueprint-layer" data-layer="3">
+                <polygon points="255,246 395,312 255,378 115,312" class="layer-stroke-primary layer-fill-tint"
+                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.35" />
+                <path d="M158 312 L 246 312 L 298 288" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" />
+                <circle class="blueprint-node" cx="395" cy="312" r="4.5" fill="#0D0E11" />
+              </g>
+              <g class="blueprint-layer" data-layer="2">
+                <polygon points="255,156 395,222 255,288 115,222" class="layer-stroke-primary layer-fill-tint"
+                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.35" />
+                <polygon points="222,216 266,196 302,213 258,233" fill="#EAB308" fill-opacity="0.18" stroke="#0D0E11"
+                  stroke-width="1.2" />
+                <circle class="blueprint-node" cx="395" cy="222" r="4.5" fill="#0D0E11" />
+              </g>
+              <g class="blueprint-layer" data-layer="1">
+                <polygon points="255,74 395,140 255,206 115,140" class="layer-stroke-primary layer-fill-tint"
+                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.4" />
+                <polygon points="255,38 352,84 255,130 158,84" class="layer-stroke-primary" fill="#FFFFFF"
+                  stroke="#0D0E11" stroke-width="1.5" />
+                <circle class="blueprint-node" cx="395" cy="140" r="4.5" fill="#0D0E11" />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 flex flex-col gap-4">
+          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
+            data-layer="1">
+            <h3 class="text-base font-bold text-[#0D0E11]">01. Sanctuary - Acoustic timber suite (verified)</h3>
+            <p class="text-sm text-[#6B7280] mt-1">Double-glazed valley view framing sea-of-clouds sunrises.</p>
+          </div>
+          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
+            data-layer="2">
+            <h3 class="text-base font-bold text-[#0D0E11]">02. Gastronomy - Private sunset table (verified)</h3>
+            <p class="text-sm text-[#6B7280] mt-1">Curated coastal &amp; highland tasting menus with reserved front-row
+              seating.</p>
+          </div>
+          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
+            data-layer="3">
+            <h3 class="text-base font-bold text-[#0D0E11]">03. Logistics - Seamless door-to-door transfer (verified)
+            </h3>
+            <p class="text-sm text-[#6B7280] mt-1">Direct airport fast-track and private SUV transit.</p>
+          </div>
+          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
+            data-layer="4">
+            <h3 class="text-base font-bold text-[#0D0E11]">04. Guarantee - Flexible 100% weather-shift policy (verified)
+            </h3>
+            <p class="text-sm text-[#6B7280] mt-1">Complimentary date rescheduling for peak atmospheric conditions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. LIVE FIELD TELEMETRY HUD -->
+  <section id="telemetry" class="scroll-mt-16 py-24 bg-[#0B0C0E] text-white swiss-grid-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+        <div>
+          <div class="mono-label text-[11px] font-semibold text-[#FF4D4D] mb-3">03 // LIVE FIELD TELEMETRY</div>
+          <h2 class="text-3xl sm:text-5xl font-bold">Built for the golden hour.</h2>
+        </div>
+        <span id="telemetry-clock"
+          class="mono-label text-xs text-[#34D399] bg-white/5 border border-white/10 px-4 py-2 rounded-full">ICT
+          --:--:--</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="rounded-3xl bg-[#111215] border border-white/10 p-6">
+          <span class="mono-label text-[11px] text-[#9CA3AF]">CLOUD SEA PROBABILITY</span>
+          <div class="font-mono text-5xl font-bold text-white my-3"><span id="counter-cloud"
+              data-target="88.5">0.0</span>%</div>
+          <div class="w-full h-2.5 rounded-full bg-white/10 overflow-hidden">
+            <div id="bar-cloud"
+              class="h-full rounded-full bg-gradient-to-r from-[#3B82F6] to-[#34D399] transition-all duration-1000"
+              style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-[#111215] border border-white/10 p-6">
+          <span class="mono-label text-[11px] text-[#9CA3AF]">PEAK SEASON OCCUPANCY</span>
+          <div class="font-mono text-5xl font-bold text-[#FF4D4D] my-3"><span id="counter-occupancy"
+              data-target="94.2">0.0</span>%</div>
+          <div class="w-full h-2.5 rounded-full bg-white/10 overflow-hidden">
+            <div id="bar-occupancy"
+              class="h-full rounded-full bg-gradient-to-r from-[#EAB308] to-[#FF4D4D] transition-all duration-1000"
+              style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-[#111215] border border-white/10 p-6 flex flex-col justify-between">
+          <div
+            class="mono-label text-sm font-bold text-[#34D399] bg-[#34D399]/10 border border-[#34D399]/25 rounded-xl px-3.5 py-2.5 inline-block">
+            ✓ PASS // ZERO HIDDEN FEE
+          </div>
+          <svg viewBox="0 0 320 90" class="w-full h-24 mt-4" fill="none">
+            <path id="telemetry-elev-path" class="telemetry-curve-draw"
+              d="M 8 76 C 52 70, 72 24, 108 18 C 148 12, 185 38, 228 28 C 265 20, 290 42, 312 36" stroke="#34D399"
+              stroke-width="2.2" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PACKAGES -->
+  <section id="packages" class="scroll-mt-16 py-20 sm:py-28 bg-[#F8F9FA]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div>
+          <div class="mono-label text-[11px] font-semibold text-[#E63946] mb-3">04 // READY TO DEPART</div>
+          <h2 class="text-3xl sm:text-5xl font-bold text-[#0D0E11]">One booking. Every detail.</h2>
+        </div>
+        <div class="mono-label text-[10px] text-[#6B7280]">CLOUDFLARE WORKER / PYTHON BOT READY // ZERO SECRET LEAK
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-white rounded-3xl border border-black/10 p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <span
+              class="mono-label text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#9CA3AF]/15 text-[#374151] inline-block mb-4">TA
+              XUA // 1,650m</span>
+            <h3 class="text-xl font-bold text-[#0D0E11] mb-3">Ta Xua Cloud-Hunting Escape (3D2N)</h3>
+            <p class="text-sm text-[#6B7280] mb-6">2 Nights Panoramic Ridge Suite, SUV Transfer &amp; 100% Weather-Shift
+              Guarantee.</p>
+          </div>
+          <div class="pt-5 border-t border-black/10">
+            <div class="flex items-end justify-between mb-4">
+              <div class="package-price-sub font-mono text-xs font-semibold text-[#E63946]" data-usd="185"
+                data-vnd="4690000">4.690.000₫</div>
+              <span class="package-price font-mono text-3xl font-bold text-[#0D0E11]" data-usd="185"
+                data-vnd="4690000">$185</span>
+            </div>
+            <button type="button"
+              class="quick-checkout-btn w-full rounded-full bg-[#0D0E11] hover:bg-[#E63946] text-white py-3.5 px-5 text-sm font-semibold transition-all cursor-pointer"
+              data-package-id="pkg-taxua">
+              Đặt ngay &amp; Bắn về Bot →
+            </button>
+          </div>
+        </article>
+
+        <article class="bg-[#0D0E11] text-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl">
+          <div>
+            <span
+              class="mono-label text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#10B981]/20 text-[#34D399] inline-block mb-4">DALAT
+              // MOST CURATED</span>
+            <h3 class="text-xl font-bold mb-3">Dalat Boutique Retreat &amp; Dining (3D2N)</h3>
+            <p class="text-sm text-[#9CA3AF] mb-6">2 Nights Pine Mist Villa, Highland Tasting Menu &amp; Private Airport
+              SUV.</p>
+          </div>
+          <div class="pt-5 border-t border-white/15">
+            <div class="flex items-end justify-between mb-4">
+              <div class="package-price-sub font-mono text-xs font-semibold text-[#34D399]" data-usd="240"
+                data-vnd="6090000">6.090.000₫</div>
+              <span class="package-price font-mono text-3xl font-bold text-white" data-usd="240"
+                data-vnd="6090000">$240</span>
+            </div>
+            <button type="button"
+              class="quick-checkout-btn w-full rounded-full bg-[#E63946] hover:bg-white hover:text-[#0D0E11] text-white py-3.5 px-5 text-sm font-semibold transition-all cursor-pointer"
+              data-package-id="pkg-dalat">
+              Đặt ngay &amp; Bắn về Bot →
+            </button>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-3xl border border-black/10 p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <span
+              class="mono-label text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#3B82F6]/15 text-[#2563EB] inline-block mb-4">PHU
+              QUOC // COASTAL</span>
+            <h3 class="text-xl font-bold text-[#0D0E11] mb-3">Phu Quoc Sunset Show &amp; VIP Pass</h3>
+            <p class="text-sm text-[#6B7280] mb-6">VIP Front-Row Sunset Show, Reserved Sun Bavaria Dinner Table &amp;
+              Private Transfer.</p>
+          </div>
+          <div class="pt-5 border-t border-black/10">
+            <div class="flex items-end justify-between mb-4">
+              <div class="package-price-sub font-mono text-xs font-semibold text-[#E63946]" data-usd="125"
+                data-vnd="3190000">3.190.000₫</div>
+              <span class="package-price font-mono text-3xl font-bold text-[#0D0E11]" data-usd="125"
+                data-vnd="3190000">$125</span>
+            </div>
+            <button type="button"
+              class="quick-checkout-btn w-full rounded-full bg-[#0D0E11] hover:bg-[#E63946] text-white py-3.5 px-5 text-sm font-semibold transition-all cursor-pointer"
+              data-package-id="pkg-phuquoc">
+              Đặt ngay &amp; Bắn về Bot →
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-black/10 py-10">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B7280]">
+      <div class="mono-label font-semibold text-[#0D0E11]">BANLA // NOMAD © 2026 // Curated in Vietnam.</div>
+      <div class="mono-label">TELEGRAM BOT: <a href="https://t.me/CSN1503_ai_Bot" target="_blank"
+          rel="noopener noreferrer" class="font-bold text-[#0D0E11]">@CSN1503_ai_Bot</a></div>
+    </div>
+  </footer>
+
+  <!-- SECURE CHECKOUT DRAWER -->
+  <div id="bag-overlay"
+    class="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <aside id="bag-drawer"
+    class="fixed top-0 right-0 h-full w-full max-w-xl bg-white z-50 shadow-2xl border-l border-black/10 translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="px-6 py-4 border-b border-black/10 flex items-center justify-between">
+      <div>
+        <div class="mono-label text-[10px] text-[#E63946] font-bold">BANLA // SECURE ORDER BRIDGE</div>
+        <h3 class="text-lg font-bold text-[#0D0E11]">Đặt chỗ &amp; Bắn đơn về @CSN1503_ai_Bot</h3>
+      </div>
+      <button id="close-bag-btn" type="button"
+        class="p-2 rounded-full border border-black/10 hover:bg-black/5 cursor-pointer">✕</button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 space-y-5">
+      <div id="bag-items-container" class="space-y-2.5"></div>
+
+      <!-- Voucher Box -->
+      <div class="flex gap-2">
+        <input id="voucher-input" type="text" placeholder="Mã ưu đãi (BANLA10 hoặc CLOUDVIP)"
+          class="flex-1 rounded-xl border border-black/15 px-3.5 py-2 text-xs font-mono uppercase" />
+        <button id="apply-voucher-btn" type="button"
+          class="mono-label text-[10px] font-semibold px-4 py-2 rounded-xl bg-[#0D0E11] text-white cursor-pointer">ÁP
+          DỤNG</button>
+      </div>
+      <div id="voucher-feedback" class="hidden text-xs font-semibold"></div>
+
+      <!-- Customer Form -->
+      <div class="rounded-2xl border border-black/10 bg-[#F8F9FA] p-4 space-y-3">
+        <div class="mono-label text-[10px] font-bold text-[#0D0E11]">THÔNG TIN KHÁCH HÀNG &amp; LỊCH TRÌNH</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input id="cust-name" type="text" placeholder="Họ và tên *"
+            class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm" />
+          <input id="cust-phone" type="tel" placeholder="Số điện thoại Zalo *"
+            class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm font-mono" />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input id="cust-date" type="date"
+            class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm font-mono" />
+          <select id="cust-guests" class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm">
+            <option value="2 người lớn" selected>2 người lớn</option>
+            <option value="1 người lớn">1 người lớn</option>
+            <option value="3-4 người">3–4 người</option>
+            <option value="5+ người (Đoàn riêng)">5+ người (Đoàn riêng)</option>
+          </select>
+        </div>
+        <textarea id="cust-note" rows="2" placeholder="Ghi chú đón sân bay, yêu cầu đặc biệt..."
+          class="w-full rounded-xl border border-black/15 bg-white px-3.5 py-2 text-xs"></textarea>
+
+        <div class="pt-2 flex flex-wrap gap-2">
+          <button type="button" data-ratio="0.3"
+            class="deposit-ratio-btn bg-[#0D0E11] text-white mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer">Cọc
+            VietQR 30%</button>
+          <button type="button" data-ratio="1"
+            class="deposit-ratio-btn bg-white text-[#0D0E11] border border-black/15 mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer">Thanh
+            toán 100%</button>
+        </div>
+      </div>
+
+      <!-- Secure Bridge Endpoint (Local Python Port 8787 or Cloudflare Worker) -->
+      <div class="rounded-2xl border border-[#229ED9]/35 bg-[#229ED9]/[0.04] p-4 space-y-2">
+        <div class="mono-label text-[10px] font-bold text-[#0284C7]">⚙ ENDPOINT NHẬN ĐƠN (LOCAL PYTHON / CLOUDFLARE
+          WORKER)</div>
+        <p class="text-[11px] text-[#6B7280]">
+          An toàn 100% khi đẩy lên GitHub Pages (không chứa Bot Token). Mặc định trỏ về
+          <code>http://127.0.0.1:8787/order</code> hoặc URL Cloudflare Worker của bạn.
+        </p>
+        <input id="bridge-url-input" type="url" value="http://127.0.0.1:8787/order"
+          class="w-full rounded-xl border border-black/15 bg-white px-3 py-2 text-xs font-mono" />
+      </div>
+
+      <div id="checkout-error"
+        class="hidden rounded-xl bg-[#FF4D4D]/10 border border-[#FF4D4D]/30 px-4 py-2.5 text-xs font-semibold text-[#DC2626]">
+      </div>
+
+      <!-- VietQR & Bot Confirmation Receipt -->
+      <div id="receipt-box" class="hidden rounded-2xl border border-black/15 bg-white p-4 space-y-3">
+        <div id="bot-status-line" class="rounded-xl bg-[#229ED9]/10 px-3 py-2 text-xs font-semibold text-[#0369A1]">
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <img id="vietqr-img" src="" alt="VietQR" class="w-40 h-40 rounded-xl border border-black/10 object-contain" />
+          <div class="text-xs space-y-1.5">
+            <div class="mono-label text-[10px] text-[#6B7280]">MÃ ĐƠN: <strong id="receipt-code"
+                class="text-[#0D0E11]"></strong></div>
+            <div>Ngân hàng: <strong>MB Bank — BANLA NOMAD EXPEDITIONS</strong></div>
+            <div>STK: <strong class="font-mono">0901650888</strong></div>
+            <div>Cần chuyển: <strong id="receipt-pay-now" class="font-mono text-[#E63946] text-sm"></strong></div>
+            <div class="pt-1 text-[11px] text-[#047857] font-medium">✓ Admin sẽ bấm [Duyệt cọc] ngay trên Telegram sau
+              khi nhận khoản chuyển.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-5 border-t border-black/10 bg-[#F8F9FA]">
+      <div class="flex items-center justify-between mb-3">
+        <span class="mono-label text-[10px] text-[#6B7280]">TỔNG THANH TOÁN</span>
+        <span id="bag-total-vnd" class="font-mono text-2xl font-bold text-[#0D0E11]">0₫</span>
+      </div>
+      <button id="submit-order-btn" type="button"
+        class="w-full rounded-full bg-[#E63946] hover:bg-[#0D0E11] text-white py-3.5 px-5 text-sm font-bold transition-colors cursor-pointer">
+        Tạo VietQR &amp; Bắn đơn kèm nút [Duyệt cọc] về Bot
+      </button>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Grok Bot sẽ tự động thay thế hằng số này bằng URL Cloudflare Worker khi deploy lên GitHub Pages
+      const DEFAULT_PROXY_WEBHOOK_URL = 'https://banla-order-bridge.h30188410.workers.dev/order';
+
+      const OFFICIAL_PACKAGES = {
+        'pkg-taxua': { id: 'pkg-taxua', name: 'Ta Xua Cloud-Hunting Escape (3D2N)', priceUsd: 185, priceVnd: 4690000 },
+        'pkg-dalat': { id: 'pkg-dalat', name: 'Dalat Boutique Retreat & Dining (3D2N)', priceUsd: 240, priceVnd: 6090000 },
+        'pkg-phuquoc': { id: 'pkg-phuquoc', name: 'Phu Quoc Sunset Show & VIP Pass', priceUsd: 125, priceVnd: 3190000 },
+      };
+
+      const VOUCHERS = {
+        BANLA10: { type: 'percent', value: 0.10, label: 'BANLA10 (-10%)' },
+        CLOUDVIP: { type: 'fixed', value: 300000, label: 'CLOUDVIP (-300.000₫)' },
+      };
+
+      const routeCatalog = {
+        'sunset-town': { code: 'ACTIVE ROUTE // RT-01', color: '#E63946', title: 'Sunset Town — Mediterranean Cliffside & Dusk Fireworks', desc: 'Optimal dry coastal breeze window (17:15–21:30).' },
+        'ta-xua': { code: 'ACTIVE ROUTE // RT-02', color: '#9CA3AF', title: 'Ta Xua Ridge — Cloud-Hunting Spine & Timber Sanctuary', desc: 'Timed 05:15 ascent to the ridge crest before sunrise.' },
+        'phu-quoc': { code: 'ACTIVE ROUTE // RT-03', color: '#3B82F6', title: 'Phu Quoc Bay — Turquoise Cove & Private Charter', desc: 'Calm western swell window with private speedboat access.' },
+        'dalat': { code: 'ACTIVE ROUTE // RT-04', color: '#10B981', title: 'Dalat Highlands — Pine Mist Architectural Retreats', desc: 'Cool highland micro-climate framed by ancient pine forests.' },
+        'bavaria': { code: 'ACTIVE ROUTE // RT-05', color: '#EAB308', title: 'Bavaria Dinner — Golden Hour Waterfront Tasting', desc: 'Front-row sunset dining experience at 18:00 & 19:30 show.' },
+      };
+
+      const BANK_CONFIG = { bankSlug: 'MB', accountNo: '0901650888', accountName: 'BANLA NOMAD EXPEDITIONS' };
+
+      let displayCurrency = 'USD';
+      let bookingBag = [];
+      let activeVoucher = null;
+      let depositRatio = 0.3;
+
+      const bridgeUrlInput = document.getElementById('bridge-url-input');
+      bridgeUrlInput.value = localStorage.getItem('banla_bridge_url') || DEFAULT_PROXY_WEBHOOK_URL;
+      bridgeUrlInput.addEventListener('change', () => localStorage.setItem('banla_bridge_url', bridgeUrlInput.value.trim()));
+
+      const custDateInput = document.getElementById('cust-date');
+      const today = new Date();
+      custDateInput.min = today.toISOString().split('T')[0];
+      custDateInput.value = new Date(today.getTime() + 3 * 86400000).toISOString().split('T')[0];
+
+      function formatVnd(n) { return Math.round(n).toLocaleString('vi-VN') + '₫'; }
+      function formatUsd(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+
+      function calcTotals() {
+        const subVnd = bookingBag.reduce((s, i) => s + i.priceVnd * i.qty, 0);
+        const subUsd = bookingBag.reduce((s, i) => s + i.priceUsd * i.qty, 0);
+        let disc = 0;
+        if (activeVoucher && VOUCHERS[activeVoucher] && subVnd > 0) {
+          const v = VOUCHERS[activeVoucher];
+          disc = v.type === 'percent' ? Math.round(subVnd * v.value) : Math.min(v.value, subVnd);
+        }
+        const totalVnd = Math.max(0, subVnd - disc);
+        const totalUsd = subVnd > 0 ? Math.round(subUsd * (totalVnd / subVnd)) : 0;
+        return { subVnd, disc, totalVnd, totalUsd, payNowVnd: Math.round(totalVnd * depositRatio) };
+      }
+
+      // Destination rack click
+      document.querySelectorAll('.destination-tag').forEach((tag) => {
+        tag.addEventListener('click', () => {
+          const d = routeCatalog[tag.dataset.routeId];
+          if (!d) return;
+          document.querySelectorAll('.destination-tag').forEach((t) => {
+            t.classList.remove('is-active', 'border-2');
+            t.style.borderColor = '';
+          });
+          tag.classList.add('is-active', 'border-2');
+          tag.style.borderColor = d.color;
+          document.getElementById('route-swatch').style.backgroundColor = d.color;
+          document.getElementById('route-code').textContent = d.code;
+          document.getElementById('route-title').textContent = d.title;
+          document.getElementById('route-desc').textContent = d.desc;
+        });
+      });
+
+      // Blueprint hover sync
+      const bpSvg = document.getElementById('blueprint-svg');
+      const bpLayers = document.querySelectorAll('.blueprint-layer');
+      const bpCards = document.querySelectorAll('.blueprint-card');
+      function syncBp(id) {
+        bpSvg.classList.toggle('has-focus', Boolean(id));
+        bpLayers.forEach((l) => l.classList.toggle('is-highlighted', l.dataset.layer === id));
+        bpCards.forEach((c) => {
+          const m = c.dataset.layer === id;
+          c.classList.toggle('border-[#E63946]', m);
+          c.classList.toggle('bg-[#F8F9FA]', m);
+        });
+      }
+      bpCards.forEach((c) => {
+        c.addEventListener('mouseenter', () => syncBp(c.dataset.layer));
+        c.addEventListener('mouseleave', () => syncBp(null));
+      });
+      bpLayers.forEach((l) => {
+        l.addEventListener('mouseenter', () => syncBp(l.dataset.layer));
+        l.addEventListener('mouseleave', () => syncBp(null));
+      });
+
+      // Telemetry observer & clock
+      let telDone = false;
+      const telObs = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !telDone) {
+          telDone = true;
+          document.getElementById('counter-cloud').textContent = '88.5';
+          document.getElementById('counter-occupancy').textContent = '94.2';
+          document.getElementById('bar-cloud').style.width = '88%';
+          document.getElementById('bar-occupancy').style.width = '94%';
+          document.getElementById('telemetry-elev-path').classList.add('is-drawn');
+        }
+      }, { threshold: 0.2 });
+      telObs.observe(document.getElementById('telemetry'));
+
+      setInterval(() => {
+        const now = new Date();
+        const ict = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + 7 * 3600000);
+        document.getElementById('telemetry-clock').textContent = `ICT ${String(ict.getHours()).padStart(2, '0')}:${String(ict.getMinutes()).padStart(2, '0')}:${String(ict.getSeconds()).padStart(2, '0')}`;
+      }, 1000);
+
+      // Currency switch
+      document.getElementById('currency-toggle').addEventListener('click', () => {
+        displayCurrency = displayCurrency === 'USD' ? 'VND' : 'USD';
+        document.querySelectorAll('.package-price').forEach((el) => {
+          el.textContent = displayCurrency === 'VND' ? formatVnd(Number(el.dataset.vnd)) : formatUsd(Number(el.dataset.usd));
+        });
+        document.querySelectorAll('.package-price-sub').forEach((el) => {
+          el.textContent = displayCurrency === 'VND' ? '≈ ' + formatUsd(Number(el.dataset.usd)) : formatVnd(Number(el.dataset.vnd));
+        });
+      });
+
+      // Bag & Voucher
+      function renderBag() {
+        const count = bookingBag.reduce((s, i) => s + i.qty, 0);
+        const totals = calcTotals();
+        document.getElementById('booking-bag-label').textContent = `Booking (${count})`;
+        document.getElementById('bag-total-vnd').textContent = formatVnd(totals.totalVnd);
+
+        const container = document.getElementById('bag-items-container');
+        if (bookingBag.length === 0) {
+          container.innerHTML = '<div class="text-xs text-[#6B7280] py-4 text-center">Chưa có gói nào. Hãy chọn gói từ mục Packages.</div>';
+          return;
+        }
+        container.innerHTML = bookingBag.map((item) => `
+          <div class="rounded-xl border border-black/10 bg-[#F8F9FA] p-3 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-xs font-bold text-[#0D0E11]">${item.name}</div>
+              <div class="font-mono text-xs text-[#E63946]">${formatVnd(item.priceVnd)} × ${item.qty}</div>
+            </div>
+            <div class="flex items-center gap-1">
+              <button type="button" data-id="${item.id}" data-d="-1" class="qty-btn w-7 h-7 rounded border border-black/15 bg-white text-xs font-bold cursor-pointer">−</button>
+              <button type="button" data-id="${item.id}" data-d="1" class="qty-btn w-7 h-7 rounded border border-black/15 bg-white text-xs font-bold cursor-pointer">+</button>
+            </div>
+          </div>
+        `).join('');
+
+        container.querySelectorAll('.qty-btn').forEach((b) => {
+          b.addEventListener('click', () => {
+            const idx = bookingBag.findIndex((x) => x.id === b.dataset.id);
+            if (idx !== -1) {
+              bookingBag[idx].qty += Number(b.dataset.d);
+              if (bookingBag[idx].qty <= 0) bookingBag.splice(idx, 1);
+              renderBag();
+            }
+          });
+        });
+      }
+
+      document.getElementById('apply-voucher-btn').addEventListener('click', () => {
+        const code = document.getElementById('voucher-input').value.trim().toUpperCase();
+        const fb = document.getElementById('voucher-feedback');
+        fb.classList.remove('hidden', 'text-[#10B981]', 'text-[#DC2626]');
+        if (VOUCHERS[code]) {
+          activeVoucher = code;
+          fb.textContent = '✓ Đã áp dụng ' + VOUCHERS[code].label;
+          fb.classList.add('text-[#10B981]');
+        } else {
+          activeVoucher = null;
+          fb.textContent = '✕ Mã không hợp lệ (Thử BANLA10 hoặc CLOUDVIP)';
+          fb.classList.add('text-[#DC2626]');
+        }
+        renderBag();
+      });
+
+      function openDrawer() {
+        renderBag();
+        const ov = document.getElementById('bag-overlay');
+        const dr = document.getElementById('bag-drawer');
+        ov.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          ov.classList.remove('opacity-0');
+          dr.classList.remove('translate-x-full');
+        });
+      }
+
+      function closeDrawer() {
+        const ov = document.getElementById('bag-overlay');
+        const dr = document.getElementById('bag-drawer');
+        ov.classList.add('opacity-0');
+        dr.classList.add('translate-x-full');
+        setTimeout(() => ov.classList.add('hidden'), 300);
+      }
+
+      document.getElementById('booking-bag-btn').addEventListener('click', openDrawer);
+      document.getElementById('header-bot-status-btn').addEventListener('click', openDrawer);
+      document.getElementById('close-bag-btn').addEventListener('click', closeDrawer);
+      document.getElementById('bag-overlay').addEventListener('click', closeDrawer);
+
+      document.querySelectorAll('.quick-checkout-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const pkg = OFFICIAL_PACKAGES[btn.dataset.packageId];
+          if (pkg) {
+            const ex = bookingBag.find((x) => x.id === pkg.id);
+            if (ex) ex.qty += 1;
+            else bookingBag.push({ ...pkg, qty: 1 });
+          }
+          document.getElementById('receipt-box').classList.add('hidden');
+          openDrawer();
+        });
+      });
+
+      document.querySelectorAll('.deposit-ratio-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          depositRatio = Number(btn.dataset.ratio);
+          document.querySelectorAll('.deposit-ratio-btn').forEach((b) => {
+            b.className = 'deposit-ratio-btn bg-white text-[#0D0E11] border border-black/15 mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer';
+          });
+          btn.className = 'deposit-ratio-btn bg-[#0D0E11] text-white mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer';
+        });
+      });
+
+      document.getElementById('submit-order-btn').addEventListener('click', async () => {
+        const errEl = document.getElementById('checkout-error');
+        errEl.classList.add('hidden');
+
+        if (bookingBag.length === 0) {
+          errEl.textContent = 'Vui lòng chọn ít nhất 1 gói hành trình.';
+          errEl.classList.remove('hidden');
+          return;
+        }
+
+        const name = document.getElementById('cust-name').value.trim();
+        const phone = document.getElementById('cust-phone').value.replace(/\s+/g, '');
+        const date = custDateInput.value;
+        const guests = document.getElementById('cust-guests').value;
+        const note = document.getElementById('cust-note').value.trim();
+
+        if (!name || !/^(\+84|84|0)(3|5|7|8|9)[0-9]{8}$/.test(phone)) {
+          errEl.textContent = 'Vui lòng nhập đầy đủ Họ tên và Số điện thoại Việt Nam hợp lệ.';
+          errEl.classList.remove('hidden');
+          return;
+        }
+
+        const totals = calcTotals();
+        const now = new Date();
+        const orderCode = `BNL-${String(now.getFullYear()).slice(-2)}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${Math.floor(100 + Math.random() * 900)}`;
+
+        const order = {
+          orderCode,
+          customer: { name, phone, date, guests, note },
+          items: bookingBag.map((x) => ({ ...x })),
+          voucherCode: activeVoucher,
+          discountVnd: totals.disc,
+          totalVnd: totals.totalVnd,
+          totalUsd: totals.totalUsd,
+          paymentMethod: 'vietqr',
+          depositRatio,
+          payNowVnd: totals.payNowVnd,
+        };
+
+        const receiptBox = document.getElementById('receipt-box');
+        const botStatusLine = document.getElementById('bot-status-line');
+        receiptBox.classList.remove('hidden');
+        document.getElementById('receipt-code').textContent = orderCode;
+        document.getElementById('receipt-pay-now').textContent = formatVnd(totals.payNowVnd);
+
+        const memo = orderCode.replace(/-/g, ' ');
+        document.getElementById('vietqr-img').src = `https://img.vietqr.io/image/${BANK_CONFIG.bankSlug}-${BANK_CONFIG.accountNo}-compact2.png?amount=${totals.payNowVnd}&addInfo=${encodeURIComponent(memo)}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
+
+        const bridgeUrl = bridgeUrlInput.value.trim();
+        botStatusLine.textContent = 'Đang bắn đơn sang @CSN1503_ai_Bot...';
+        botStatusLine.className = 'rounded-xl bg-[#229ED9]/10 px-3 py-2 text-xs font-semibold text-[#0369A1]';
+
+        try {
+          const resp = await fetch(bridgeUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ source: 'BANLA // NOMAD', order }),
+          });
+          const resJson = await resp.json();
+          if (resp.ok && resJson.ok) {
+            botStatusLine.textContent = '✓ Đã bắn đơn kèm nút [✅ Duyệt cọc] / [❌ Báo hết phòng] về Telegram!';
+            botStatusLine.className = 'rounded-xl bg-[#10B981]/15 px-3 py-2 text-xs font-semibold text-[#047857]';
+          } else {
+            botStatusLine.textContent = '⚠ Cầu nối báo lỗi: ' + (resJson.error || resJson.description || resp.status);
+            botStatusLine.className = 'rounded-xl bg-[#EAB308]/20 px-3 py-2 text-xs font-semibold text-[#A16207]';
+          }
+        } catch (_) {
+          botStatusLine.textContent = '⚠ Chưa bật bot_listener.py (cổng 8787) hoặc chưa gắn URL Cloudflare Worker.';
+          botStatusLine.className = 'rounded-xl bg-[#FF4D4D]/15 px-3 py-2 text-xs font-semibold text-[#DC2626]';
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
