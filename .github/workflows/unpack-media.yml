@@ -1,0 +1,44 @@
+name: Unpack media bundles
+# WebP photos are uploaded as base64 tar.gz bundles in scripts/media-bundles/ because the
+# upload channel (GitHub connector) only carries text. This job unpacks them into the repo
+# (frontend/assets/places/...) and removes the bundles. Safe to keep: it does nothing when
+# there are no bundles.
+on:
+  push:
+    paths:
+      - 'scripts/media-bundles/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: unpack-media-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Unpack
+        run: |
+          set -e
+          git config user.name "banla-media-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          shopt -s nullglob
+          files=(scripts/media-bundles/*.b64)
+          if [ -d frontend/assets/places/_test ]; then git rm -rq frontend/assets/places/_test; fi
+          for f in "${files[@]}"; do
+            echo "unpacking $f"
+            base64 -d "$f" | tar -xzf - -C .
+            git rm -q "$f"
+          done
+          git add frontend/assets
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -q -m "chore(media): unpack WebP bundles (${#files[@]} bundle(s))"
+          for i in 1 2 3 4 5; do
+            git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i*5)); git pull --rebase origin "${GITHUB_REF_NAME}"
+          done
+          exit 1
