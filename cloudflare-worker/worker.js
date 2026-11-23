@@ -48,9 +48,11 @@ export default {
       );
     }
 
-    // Endpoint 2: Telegram Interactive Button Webhook (/telegram-webhook)
+    // Endpoint 2: Telegram Interactive Button & Gemini AI Assistant Webhook (/telegram-webhook)
     if (request.method === 'POST' && url.pathname === '/telegram-webhook') {
       const upd = await request.json();
+
+      // 1. Xử lý nút bấm Inline [✅ Duyệt cọc] / [❌ Báo hết phòng]
       if (upd.callback_query) {
         const cb = upd.callback_query;
         const parts = String(cb.data || '').split('|');
@@ -81,7 +83,68 @@ export default {
           callback_query_id: cb.id,
           text: statusLine,
         });
+        return new Response('OK', { status: 200 });
       }
+
+      // 2. Xử lý tin nhắn chat từ người dùng -> Trợ lý AI Gemini
+      if (upd.message && upd.message.text) {
+        const msg = upd.message;
+        const chatId = msg.chat.id;
+        const userText = msg.text.trim();
+
+        if (userText.startsWith('/start')) {
+          await tgCall(env.TG_BOT_TOKEN, 'sendMessage', {
+            chat_id: chatId,
+            parse_mode: 'HTML',
+            text: `👋 <b>Xin chào ${escapeHtml(msg.from?.first_name || 'bạn')}!</b>\n\nTôi là Trợ lý AI của <b>BANLA // NOMAD OTA</b> (Powered by Google Gemini).\n\n✨ Bạn có thể nhắn tin hỏi tôi bất kỳ thông tin nào về:\n• Các tour du lịch & homestay (Tà Xùa, Mộc Châu, Hà Giang...)\n• Kinh nghiệm săn mây, lịch trình gợi ý\n• Hoặc bất kỳ thắc mắc nào khác!\n\n<i>Cứ gửi câu hỏi, tôi sẽ giải đáp ngay nhé!</i>`,
+          });
+          return new Response('OK', { status: 200 });
+        }
+
+        if (env.GEMINI_API_KEY) {
+          try {
+            const geminiRes = await fetch(
+              `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${env.GEMINI_API_KEY}`,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  system_instruction: {
+                    parts: [
+                      {
+                        text: 'Bạn là Trợ lý AI thông minh, nhiệt tình của BANLA // NOMAD OTA - nền tảng du lịch khám phá và homestay tại Việt Nam (Tà Xùa 3N2Đ: 4.690.000₫, Mộc Châu Retreat 2N1Đ: 3.190.000₫, Hà Giang Loop 4N3Đ: 6.090.000₫). Trả lời súc tích, lịch sự, thân thiện, dùng emoji phù hợp và tư vấn chu đáo bằng tiếng Việt.',
+                      },
+                    ],
+                  },
+                  contents: [
+                    {
+                      role: 'user',
+                      parts: [{ text: userText }],
+                    },
+                  ],
+                }),
+              }
+            );
+
+            const geminiData = await geminiRes.json();
+            const aiReply =
+              geminiData.candidates?.[0]?.content?.parts?.[0]?.text ||
+              'Xin lỗi, hiện tại tôi chưa thể phản hồi câu hỏi này. Bạn vui lòng thử lại nhé!';
+
+            await tgCall(env.TG_BOT_TOKEN, 'sendMessage', {
+              chat_id: chatId,
+              text: aiReply,
+            });
+          } catch (err) {
+            await tgCall(env.TG_BOT_TOKEN, 'sendMessage', {
+              chat_id: chatId,
+              text: `⚠️ Lỗi xử lý AI: ${err.message}`,
+            });
+          }
+        }
+        return new Response('OK', { status: 200 });
+      }
+
       return new Response('OK', { status: 200 });
     }
 
