@@ -3,9 +3,26 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#0F172A" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230284C7'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EB%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230EA5E9'/%3E%3Cstop offset='1' stop-color='%230F172A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath fill='white' fill-rule='evenodd' d='M20 14H35C42 14 46 18 46 24C46 28 44 31 40.500 32.500C45 34 48 37.500 48 42C48 48 43.500 51 36 51H20ZM29 21.500V28.500H34.500C37.500 28.500 39 27 39 25C39 22.800 37.500 21.500 34.500 21.500ZM29 36V44H35.500C38.500 44 40.500 42.500 40.500 40C40.500 37.500 38.500 36 35.500 36Z'/%3E%3C/svg%3E" />
+  <link rel="canonical" href="https://lytaothoc1503.github.io/OTA/frontend/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BanlaTravel.vn" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:url" content="https://lytaothoc1503.github.io/OTA/frontend/" />
+  <meta property="og:title" content="BanlaTravel.vn — Đặt Khách Sạn, Homestay, Resort &amp; Villa Giá Tốt" />
+  <meta property="og:description" content="Đặt phòng trực tiếp tại Đà Lạt, Tà Xùa, Phú Quốc, Sa Pa: giá minh bạch, ưu đãi đến 15% theo số đêm, thanh toán VietQR và xác nhận giữ phòng 24/7." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Phòng suite ấm cúng tại BanlaTravel.vn" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BanlaTravel.vn — Đặt Khách Sạn, Homestay, Resort &amp; Villa Giá Tốt" />
+  <meta name="twitter:description" content="Giá minh bạch, ưu đãi đến 15% theo số đêm, thanh toán VietQR và xác nhận giữ phòng 24/7." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"BanlaTravel.vn","url":"https://lytaothoc1503.github.io/OTA/frontend/","telephone":"+84358341934","description":"Nền tảng đặt phòng trực tuyến: khách sạn, homestay săn mây, resort, căn hộ dịch vụ và villa tại Đà Lạt, Tà Xùa, Phú Quốc, Sa Pa.","areaServed":"VN","sameAs":["https://t.me/CSN1503_ai_Bot"]}</script>
   <title>BanlaTravel.vn — Đặt Khách Sạn, Homestay, Resort &amp; Villa Giá Tốt</title>
   <meta name="description"
     content="BanlaTravel.vn — Nền tảng đặt phòng trực tuyến: khách sạn, homestay săn mây, resort, căn hộ dịch vụ và villa tại Đà Lạt, Tà Xùa, Phú Quốc, Sa Pa. Thanh toán VietQR, xác nhận tức thì." />
@@ -611,6 +628,67 @@
     .hero-content > :nth-child(4) { animation-delay: .29s; }
 
     @media (prefers-reduced-motion: reduce) { .hero-content > * { animation: none; } }
+    /* ---------- Quick Compare ---------- */
+    .cmp-btn {
+      height: 36px; padding: 0 12px; border-radius: 999px; white-space: nowrap;
+      background: rgba(255, 255, 255, .95); color: #0F172A; font-size: 11px; font-weight: 800;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+    }
+
+    .cmp-btn:hover { background: #fff; }
+    .cmp-btn.is-on { background: #0284C7; color: #fff; }
+
+    .compare-bar {
+      position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 45;
+      display: flex; align-items: center; gap: 12px; width: max-content; max-width: calc(100vw - 24px);
+      padding: 8px 10px 8px 14px; border-radius: 999px; color: #fff;
+      background: linear-gradient(135deg, rgba(15, 23, 42, .88), rgba(11, 19, 36, .82));
+      -webkit-backdrop-filter: blur(20px) saturate(1.5); backdrop-filter: blur(20px) saturate(1.5);
+      border: 1px solid rgba(255, 255, 255, .25); box-shadow: 0 20px 40px -12px rgba(8, 15, 30, .55);
+      transform: translate3d(-50%, 160%, 0); opacity: 0; pointer-events: none;
+      transition: transform .6s var(--spring-bounce), opacity .3s ease;
+    }
+
+    .compare-bar.is-in { transform: translate3d(-50%, 0, 0); opacity: 1; pointer-events: auto; }
+    .compare-bar img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+    .compare-bar .cmp-go { height: 40px; padding: 0 16px; border-radius: 999px; background: #F97316; color: #fff; font-weight: 800; font-size: 13px; white-space: nowrap; }
+    .compare-bar .cmp-clear { width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, .14); font-weight: 800; flex: 0 0 auto; }
+    .has-compare #toast-banner { bottom: 92px; }
+
+    dialog#compare-dialog {
+      padding: 0; border: 0; border-radius: 24px; width: min(1040px, calc(100vw - 24px)); max-width: none;
+      max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); overflow: hidden;
+      background: #F8FAFC; color: #0F172A; box-shadow: 0 40px 80px -20px rgba(8, 15, 30, .6);
+    }
+
+    dialog#compare-dialog:modal { overscroll-behavior: contain; }
+    dialog#compare-dialog::backdrop { background: rgba(8, 15, 30, .6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); overflow: hidden; overscroll-behavior: contain; }
+    dialog#compare-dialog[open] { animation: cardIn .5s var(--spring-smooth); }
+
+    .cmp-shell { display: flex; flex-direction: column; max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); }
+    .cmp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; background: #fff; border-bottom: 1px solid #E2E8F0; }
+    .cmp-scroll { overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+
+    .cmp-table { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: fixed; }
+    .cmp-table th, .cmp-table td { padding: 12px; vertical-align: top; border-bottom: 1px solid #E2E8F0; font-size: 13px; text-align: left; }
+    .cmp-table th[scope="row"] { position: sticky; left: 0; z-index: 2; width: 112px; background: #F1F5F9; font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: .02em; }
+    .cmp-table thead th { position: sticky; top: 0; z-index: 3; background: #fff; font-weight: 400; }
+    .cmp-table thead th.cmp-corner { left: 0; z-index: 4; width: 112px; background: #F1F5F9; }
+    .cmp-table td.cmp-best { background: #ECFDF5; }
+    .cmp-tag { display: inline-block; margin-top: 6px; font-size: 10px; font-weight: 800; color: #047857; background: #D1FAE5; padding: 2px 8px; border-radius: 999px; }
+
+    #evoucher { touch-action: pan-y; }
+
+    /* ---------- Safari / Firefox: nền đặc khi trình duyệt không hỗ trợ backdrop-filter ---------- */
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+      .glass-header { background: rgba(15, 23, 42, .94); }
+      .glass-dock { background: rgba(15, 23, 42, .6); }
+      .hero-pill { background: rgba(255, 255, 255, .2); }
+      .support-pop { background: #fff; }
+      .compare-bar { background: #0F172A; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { .compare-bar { transition: opacity .2s; } dialog#compare-dialog[open] { animation: none; } }
   </style>
 </head>
 
@@ -646,7 +724,7 @@
             <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
             <span class="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]"></span>
             <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]"></span>
-            <span class="text-[10px] text-white/75 ml-1 font-medium">OTA Direct Booking</span>
+            <span class="text-[10px] text-white/75 ml-1 font-medium">Đặt phòng trực tiếp</span>
           </div>
         </div>
       </a>
@@ -755,12 +833,12 @@
             <span class="bg-white text-[#1A1F71] text-xs font-extrabold px-3 py-1.5 rounded-md">VISA</span>
             <span class="bg-white text-[#EB001B] text-xs font-extrabold px-3 py-1.5 rounded-md">Mastercard</span>
           </div>
-          <p class="text-xs text-white/65 mt-3">Đơn đặt được đẩy tới lễ tân qua Telegram để duyệt cọc thủ công (human-in-the-loop).</p>
+          <p class="text-xs text-white/65 mt-3">Hệ thống tiếp nhận yêu cầu &amp; xác nhận giữ phòng trực tiếp 24/7 bởi đội ngũ BanlaTravel.vn</p>
         </div>
       </div>
       <div class="pt-6 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/65">
         <div>© 2026 <strong>BanlaTravel.vn</strong> — Banla Boutique Hotel Đà Lạt · Nhà của An Tà Xùa · Phú Quốc Sunset.</div>
-        <div>Telegram: <a class="text-ota-gold hover:underline" href="https://t.me/CSN1503_ai_Bot" target="_blank" rel="noopener noreferrer">@CSN1503_ai_Bot</a></div>
+        <div>Trợ lý AI 24/7: <a class="text-ota-gold hover:underline" href="https://t.me/CSN1503_ai_Bot" target="_blank" rel="noopener noreferrer">@CSN1503_ai_Bot</a></div>
       </div>
     </div>
   </footer>
@@ -778,6 +856,21 @@
       <button type="button" data-act="lb-close" class="absolute top-3 right-3 sm:top-5 sm:right-5 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white text-xl font-bold" aria-label="Đóng thư viện ảnh">✕</button>
     </div>
   </dialog>
+
+  <!-- ================= QUICK COMPARE ================= -->
+  <dialog id="compare-dialog" closedby="any" aria-labelledby="cmp-title">
+    <div class="cmp-shell">
+      <div class="cmp-head">
+        <div>
+          <h2 id="cmp-title" class="text-lg sm:text-xl font-extrabold">So sánh chỗ nghỉ</h2>
+          <p id="cmp-sub" class="text-xs text-slate-500 mt-0.5"></p>
+        </div>
+        <button type="button" autofocus data-act="compare-close" aria-label="Đóng bảng so sánh" class="w-10 h-10 shrink-0 rounded-full bg-slate-100 hover:bg-slate-200 font-bold">✕</button>
+      </div>
+      <div id="cmp-body" class="cmp-scroll" data-lenis-prevent></div>
+    </div>
+  </dialog>
+  <div id="compare-bar" class="compare-bar" inert></div>
 
   <!-- ================= TOAST ================= -->
   <div id="toast-banner" role="status" aria-live="polite"
@@ -854,6 +947,7 @@
       ];
 
       const P = (o) => o; // readability helper
+      // ⚠ DỮ LIỆU MẪU (điểm số, lượt đánh giá, "vừa có người đặt", bài đánh giá khách): thay bằng dữ liệu thật trước khi vận hành chính thức.
       const PROPERTIES = [
         P({
           id: 'pkg-dalat', category: 'hotel', dest: 'dalat', stars: 5, score: 9.6, reviews: 428,
@@ -862,7 +956,7 @@
           images: ['photo-1566665797739-1674de7a421a', 'photo-1590490360182-c33d57733427', 'photo-1611892440504-42a792e24d32', 'photo-1578683010236-d716f9a3f461', 'photo-1445019980597-93fa8acb246c'],
           quick: ['freeCancel', 'breakfast', 'airport', 'instant'], amen: ['wifi', 'parking', 'fireplace', 'gym'],
           recent: 'Vừa có người đặt 4 phút trước',
-          desc: 'Khách sạn boutique giữa đồi thông trung tâm Đà Lạt, cửa kính lớn đón nắng sớm, tặng cocktail buổi tối tại The Roof by Banla. Cách chợ Đà Lạt 1,2 km.',
+          desc: 'Khách sạn boutique nằm giữa đồi thông trung tâm Đà Lạt, chỉ cách chợ Đà Lạt 1,2 km. Phòng Suite ấm áp với cửa kính lớn đón nắng sớm, bữa sáng tinh tế và ly cocktail chào đón tại The Roof by Banla mỗi buổi tối.',
           rooms: [
             { id: 'deluxe', name: 'Phòng Deluxe Đồi Thông', size: 28, bed: '1 giường đôi lớn', capacity: 2, image: 'photo-1590490360182-c33d57733427', priceVnd: 1290000, originalVnd: 1650000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Ban công', 'Bồn tắm', 'Smart TV'] },
             { id: 'suite', name: 'Pine View Suite', size: 38, bed: '1 giường King + sofa bed', capacity: 3, image: 'photo-1611892440504-42a792e24d32', priceVnd: 1690000, originalVnd: 2100000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View đồi thông', 'Bồn tắm', 'Máy pha cà phê'] },
@@ -876,7 +970,7 @@
           images: ['photo-1510798831971-661eb04b3739', 'photo-1506905925346-21bda4d32df4', 'photo-1464822759023-fed622ff2c3b', 'photo-1505693416388-ac5ce068fe85', 'photo-1470071459604-3b5ec3a7fe05'],
           quick: ['freeCancel', 'breakfast', 'instant'], amen: ['cloud', 'fireplace', 'wifi', 'parking'],
           recent: 'Vừa có người đặt 9 phút trước',
-          desc: 'Tọa lạc ở độ cao 1.650m nhìn thẳng ra thung lũng mây Tà Xùa ngay từ trên giường ngủ. Lò sưởi, trà nóng và bữa tối đồ nướng bản địa mỗi tối.',
+          desc: 'Đặt chân ở độ cao 1.650 m, mở cửa kính là thung lũng mây Tà Xùa trải dài ngay trước giường ngủ. Lò sưởi ấm, trà nóng và bữa tối đồ nướng bản địa được chuẩn bị riêng mỗi tối — nơi lý tưởng để săn mây bình minh.',
           rooms: [
             { id: 'wood', name: 'Phòng Tiêu chuẩn Gỗ Thông', size: 20, bed: '1 giường đôi', capacity: 2, image: 'photo-1505693416388-ac5ce068fe85', priceVnd: 790000, originalVnd: 990000, left: 4, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Chăn điện', 'Trà nóng'] },
             { id: 'glass', name: 'Bungalow Kính View Săn Mây', size: 26, bed: '1 giường đôi lớn', capacity: 2, image: 'photo-1510798831971-661eb04b3739', priceVnd: 1090000, originalVnd: 1450000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Vách kính 180°', 'Ban công săn mây', 'Lò sưởi'] },
@@ -890,7 +984,7 @@
           images: ['photo-1571896349842-33c89424de2d', 'photo-1499793983690-e29da59ef1c2', 'photo-1584132967334-10e028bd69f7', 'photo-1520250497591-112f2f40a3f4', 'photo-1507525428034-b723cf961d3e'],
           quick: ['breakfast', 'airport', 'instant'], amen: ['pool', 'beach', 'spa', 'wifi'],
           recent: 'Vừa có người đặt 2 phút trước',
-          desc: 'Trọn gói nghỉ dưỡng hướng biển Nam Đảo kết hợp bàn VIP Buffet tối 18:00 và xem trình diễn pháo hoa lúc 19:30 tại Sunset Town.',
+          desc: 'Kỳ nghỉ trọn gói hướng biển Nam đảo: phòng nghỉ nhìn ra đại dương, bàn VIP buffet tối lúc 18:00 và vé xem trình diễn pháo hoa lúc 19:30 tại Sunset Town, kèm xe đưa đón sân bay.',
           rooms: [
             { id: 'combo-deluxe', name: 'Combo Deluxe Hướng Biển + Dinner Show', size: 35, bed: '1 giường King', capacity: 2, image: 'photo-1571896349842-33c89424de2d', priceVnd: 3190000, originalVnd: 3890000, left: 4, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['2N1Đ', 'Vé show 19:30', 'Buffet tối'] },
             { id: 'combo-pool', name: 'Combo Pool Villa + Dinner Show', size: 70, bed: '1 King + 1 Queen', capacity: 4, image: 'photo-1584132967334-10e028bd69f7', priceVnd: 5490000, originalVnd: 6500000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['2N1Đ', 'Hồ bơi riêng', 'Xe điện nội khu'] },
@@ -903,7 +997,7 @@
           images: ['photo-1613490493576-7fde63acd811', 'photo-1564501049412-61c2a3083791', 'photo-1505693416388-ac5ce068fe85', 'photo-1631049307264-da0ec9d70304', 'photo-1501785888041-af3ef285b470'],
           quick: ['freeCancel', 'airport'], amen: ['kitchen', 'parking', 'wifi', 'fireplace'],
           recent: 'Vừa có người đặt 18 phút trước',
-          desc: 'Villa biệt lập cho gia đình hoặc nhóm bạn 6–10 khách, sân nướng BBQ ngoài trời, lò sưởi phòng khách và quản gia hỗ trợ 24/7.',
+          desc: 'Biệt thự riêng tư giữa khuôn viên sân vườn Đà Lạt, phù hợp gia đình hoặc nhóm bạn 6–10 khách. Sân nướng BBQ ngoài trời, lò sưởi phòng khách và quản gia hỗ trợ 24/7 để kỳ nghỉ của bạn trọn vẹn.',
           rooms: [
             { id: 'v3', name: 'Villa Nguyên Căn 3 phòng ngủ', size: 160, bed: '3 giường King', capacity: 8, image: 'photo-1613490493576-7fde63acd811', priceVnd: 3590000, originalVnd: 4500000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp đầy đủ', 'Sân BBQ', 'Lò sưởi'] },
             { id: 'v4', name: 'Villa Nguyên Căn 4 phòng ngủ + Karaoke', size: 220, bed: '4 King + 2 đơn', capacity: 10, image: 'photo-1564501049412-61c2a3083791', priceVnd: 4690000, originalVnd: 5600000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Karaoke', 'Sân vườn 300m²', 'Bãi đỗ 3 xe'] },
@@ -916,7 +1010,7 @@
           images: ['photo-1522708323590-d24dbb6b0267', 'photo-1496417263034-38ec4f0b665a', 'photo-1631049307264-da0ec9d70304', 'photo-1590490360182-c33d57733427', 'photo-1505693416388-ac5ce068fe85'],
           quick: ['freeCancel', 'instant'], amen: ['kitchen', 'wifi', 'parking'],
           recent: 'Vừa có người đặt 25 phút trước',
-          desc: 'Căn hộ dịch vụ hiện đại đầy đủ bếp nấu, máy giặt sấy, bàn làm việc và ban công đón gió — tối ưu cho kỳ nghỉ dài ngày hoặc workation.',
+          desc: 'Căn hộ dịch vụ hiện đại với bếp đầy đủ, máy giặt sấy, bàn làm việc rộng và ban công đón gió mát. Không gian tiện nghi như ở nhà, lý tưởng cho kỳ nghỉ dài ngày hoặc làm việc từ xa.',
           rooms: [
             { id: 'studio', name: 'Studio Panorama', size: 32, bed: '1 giường Queen', capacity: 2, image: 'photo-1522708323590-d24dbb6b0267', priceVnd: 990000, originalVnd: 1350000, left: 3, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp riêng', 'Máy giặt', 'Bàn làm việc'] },
             { id: 'one-bed', name: 'Căn 1 Phòng ngủ có Bếp', size: 48, bed: '1 King + sofa bed', capacity: 3, image: 'photo-1496417263034-38ec4f0b665a', priceVnd: 1290000, originalVnd: 1690000, left: 2, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Phòng khách', 'Ban công', 'Máy sấy'] },
@@ -929,7 +1023,7 @@
           images: ['photo-1542314831-068cd1dbfeeb', 'photo-1445019980597-93fa8acb246c', 'photo-1611892440504-42a792e24d32', 'photo-1578683010236-d716f9a3f461', 'photo-1564501049412-61c2a3083791'],
           quick: ['freeCancel', 'breakfast', 'airport'], amen: ['pool', 'spa', 'gym', 'wifi'],
           recent: 'Vừa có người đặt 12 phút trước',
-          desc: 'Gói 3 ngày 2 đêm giữa những căn biệt thự Pháp cổ kính, gồm buffet sáng Âu-Á hàng ngày, spa thư giãn và xe SUV riêng đón sân bay Liên Khương.',
+          desc: 'Hành trình 3 ngày 2 đêm trong biệt thự kiến trúc Pháp cổ kính: buffet sáng Âu – Á mỗi ngày, liệu trình spa thư giãn và xe SUV riêng đón tại sân bay Liên Khương.',
           rooms: [
             { id: 'sup', name: 'Combo 3N2Đ Phòng Superior + Xe đón', size: 30, bed: '1 giường Queen', capacity: 2, image: 'photo-1611892440504-42a792e24d32', priceVnd: 5690000, originalVnd: 6900000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['3N2Đ', 'SUV đón Liên Khương', 'Buffet sáng'] },
             { id: 'jr', name: 'Combo 3N2Đ Junior Suite + Spa 60 phút', size: 45, bed: '1 giường King', capacity: 3, image: 'photo-1578683010236-d716f9a3f461', priceVnd: 6890000, originalVnd: 8200000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['3N2Đ', 'Spa 60 phút', 'Ban công vườn hoa'] },
@@ -942,7 +1036,7 @@
           images: ['photo-1496417263034-38ec4f0b665a', 'photo-1464822759023-fed622ff2c3b', 'photo-1505693416388-ac5ce068fe85', 'photo-1506905925346-21bda4d32df4', 'photo-1631049307264-da0ec9d70304'],
           quick: ['breakfast', 'instant'], amen: ['cloud', 'parking', 'wifi'],
           recent: 'Vừa có người đặt 31 phút trước',
-          desc: 'Khách sạn mới nằm trên cung đường săn mây, cách Sống Lưng Khủng Long 3 km. Có xe máy cho thuê và hướng dẫn viên địa phương.',
+          desc: 'Khách sạn mới nằm trên cung đường săn mây, cách Sống Lưng Khủng Long khoảng 3 km. Phòng sạch sẽ, ấm cúng; hỗ trợ thuê xe máy và hướng dẫn viên địa phương để bạn khám phá trọn vẹn.',
           rooms: [
             { id: 'double', name: 'Phòng Đôi Tiêu chuẩn', size: 22, bed: '1 giường đôi', capacity: 2, image: 'photo-1496417263034-38ec4f0b665a', priceVnd: 650000, originalVnd: 850000, left: 5, perks: { breakfast: true, freeChange: false, deposit30: true }, feats: ['Chăn điện', 'Nước nóng'] },
             { id: 'fam', name: 'Phòng Gia đình View Núi', size: 34, bed: '2 giường đôi', capacity: 4, image: 'photo-1631049307264-da0ec9d70304', priceVnd: 1150000, originalVnd: 1450000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View núi', 'Ban công săn mây'] },
@@ -955,7 +1049,7 @@
           images: ['photo-1520250497591-112f2f40a3f4', 'photo-1470071459604-3b5ec3a7fe05', 'photo-1590490360182-c33d57733427', 'photo-1584132967334-10e028bd69f7', 'photo-1445019980597-93fa8acb246c'],
           quick: ['freeCancel', 'breakfast'], amen: ['spa', 'cloud', 'fireplace', 'pool', 'wifi'],
           recent: 'Vừa có người đặt 7 phút trước',
-          desc: 'Resort nhìn trọn thung lũng Mường Hoa, hồ bơi nước ấm vô cực, spa thảo dược người Dao Đỏ và lò sưởi trong từng phòng.',
+          desc: 'Resort nhìn trọn thung lũng Mường Hoa với hồ bơi nước ấm vô cực, spa thảo dược Dao Đỏ và lò sưởi riêng trong từng phòng — chốn nghỉ dưỡng yên tĩnh giữa núi rừng Tây Bắc.',
           rooms: [
             { id: 'valley', name: 'Phòng Deluxe View Thung Lũng', size: 32, bed: '1 giường King', capacity: 2, image: 'photo-1590490360182-c33d57733427', priceVnd: 1890000, originalVnd: 2400000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View thung lũng', 'Lò sưởi'] },
             { id: 'cloud-suite', name: 'Suite Ban Công Săn Mây', size: 48, bed: '1 King + 1 đơn', capacity: 3, image: 'photo-1445019980597-93fa8acb246c', priceVnd: 2690000, originalVnd: 3300000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Ban công 15m²', 'Bồn tắm gỗ'] },
@@ -968,7 +1062,7 @@
           images: ['photo-1499793983690-e29da59ef1c2', 'photo-1522708323590-d24dbb6b0267', 'photo-1496417263034-38ec4f0b665a', 'photo-1507525428034-b723cf961d3e', 'photo-1631049307264-da0ec9d70304'],
           quick: ['freeCancel', 'instant'], amen: ['beach', 'kitchen', 'pool', 'wifi'],
           recent: 'Vừa có người đặt 15 phút trước',
-          desc: 'Căn hộ hướng biển ngay đường Trần Phú, hồ bơi tầng thượng, đi bộ 2 phút ra bãi biển. Phù hợp gia đình và nhóm bạn.',
+          desc: 'Căn hộ hướng biển ngay đường Trần Phú, hồ bơi tầng thượng ngắm hoàng hôn và chỉ 2 phút đi bộ ra bãi biển. Không gian rộng rãi, phù hợp cho gia đình và nhóm bạn.',
           rooms: [
             { id: 'sea-studio', name: 'Studio Hướng Biển', size: 35, bed: '1 giường Queen', capacity: 2, image: 'photo-1522708323590-d24dbb6b0267', priceVnd: 890000, originalVnd: 1150000, left: 4, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['View biển', 'Bếp nhỏ'] },
             { id: 'sea-2br', name: 'Căn 2 Phòng ngủ Hướng Biển', size: 72, bed: '2 giường Queen', capacity: 5, image: 'photo-1496417263034-38ec4f0b665a', priceVnd: 1790000, originalVnd: 2250000, left: 2, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['2 phòng tắm', 'Bếp đầy đủ', 'Máy giặt'] },
@@ -981,7 +1075,7 @@
           images: ['photo-1584132967334-10e028bd69f7', 'photo-1613490493576-7fde63acd811', 'photo-1564501049412-61c2a3083791', 'photo-1499793983690-e29da59ef1c2', 'photo-1631049307264-da0ec9d70304'],
           quick: ['freeCancel', 'airport'], amen: ['pool', 'kitchen', 'beach', 'parking', 'wifi'],
           recent: 'Vừa có người đặt 22 phút trước',
-          desc: 'Pool villa riêng tư trên bán đảo Sơn Trà, cách biển Mỹ Khê 5 phút lái xe. Hồ bơi riêng, bếp BBQ và xe đón sân bay miễn phí.',
+          desc: 'Biệt thự riêng tư trên bán đảo Sơn Trà, cách biển Mỹ Khê 5 phút lái xe. Hồ bơi riêng, khu BBQ ngoài trời, quản gia chăm sóc và xe đưa đón sân bay miễn phí.',
           rooms: [
             { id: 'pv3', name: 'Villa 3 phòng ngủ Hồ Bơi Riêng', size: 180, bed: '3 giường King', capacity: 8, image: 'photo-1584132967334-10e028bd69f7', priceVnd: 4290000, originalVnd: 5200000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Hồ bơi riêng', 'Sân BBQ', 'Quản gia'] },
           ],
@@ -993,7 +1087,7 @@
           images: ['photo-1507525428034-b723cf961d3e', 'photo-1499793983690-e29da59ef1c2', 'photo-1505693416388-ac5ce068fe85', 'photo-1571896349842-33c89424de2d', 'photo-1590490360182-c33d57733427'],
           quick: ['freeCancel', 'breakfast'], amen: ['beach', 'parking', 'wifi'],
           recent: 'Vừa có người đặt 40 phút trước',
-          desc: 'Bungalow mái lá giữa vườn dừa, 50m ra bãi biển hoàng hôn Bãi Trường. Bữa sáng hải sản và cho thuê xe máy giá tốt.',
+          desc: 'Bungalow mái lá giữa vườn dừa, chỉ cách bãi biển hoàng hôn Bãi Trường 50 m. Bữa sáng hải sản tươi, hiên võng thư giãn và dịch vụ thuê xe máy tiện lợi.',
           rooms: [
             { id: 'garden', name: 'Bungalow Vườn Dừa', size: 24, bed: '1 giường đôi', capacity: 2, image: 'photo-1505693416388-ac5ce068fe85', priceVnd: 690000, originalVnd: 890000, left: 4, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Hiên võng', 'Vòi sen ngoài trời'] },
             { id: 'beachfront', name: 'Bungalow Sát Biển', size: 30, bed: '1 giường King', capacity: 3, image: 'photo-1590490360182-c33d57733427', priceVnd: 1190000, originalVnd: 1490000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View hoàng hôn', 'Hiên riêng'] },
@@ -1001,24 +1095,25 @@
         }),
       ];
 
+      // ⚠ Bài đánh giá MẪU: thay bằng đánh giá thật của khách đã lưu trú trước khi vận hành chính thức.
       const REVIEWS = [
-        { propId: 'pkg-taxua', name: 'Minh Anh', from: 'Hà Nội', type: 'Cặp đôi', month: '10/2026', score: 9.8, photo: 'photo-1506905925346-21bda4d32df4', text: 'Mở rèm ra là biển mây ngay dưới chân. Chủ nhà nhiệt tình, bữa tối gà nướng rất ngon. Sẽ quay lại mùa săn mây năm sau!' },
-        { propId: 'pkg-dalat', name: 'Quốc Bảo', from: 'TP. HCM', type: 'Gia đình', month: '09/2026', score: 9.6, photo: 'photo-1611892440504-42a792e24d32', text: 'Phòng Suite rộng, sạch, view đồi thông cực chill. Xe đón sân bay đúng giờ, lễ tân xác nhận đơn chưa tới 3 phút.' },
-        { propId: 'pkg-phuquoc', name: 'Thu Trang', from: 'Đà Nẵng', type: 'Bạn bè', month: '11/2026', score: 10, photo: 'photo-1571896349842-33c89424de2d', text: 'Combo quá hời: phòng hướng biển, buffet tối và bàn VIP xem pháo hoa. Thanh toán VietQR nhanh gọn.' },
-        { propId: 'sapa-mountain-resort', name: 'Hoàng Long', from: 'Hải Phòng', type: 'Công tác', month: '08/2026', score: 9.2, photo: 'photo-1520250497591-112f2f40a3f4', text: 'Hồ bơi nước ấm nhìn ra thung lũng là điểm cộng lớn. Spa thảo dược rất thư giãn sau chuyến trekking.' },
-        { propId: 'velora-dalat-villa', name: 'Ngọc Hân', from: 'Cần Thơ', type: 'Nhóm 8 người', month: '07/2026', score: 9.4, photo: 'photo-1613490493576-7fde63acd811', text: 'Villa rộng, sân BBQ thoải mái, quản gia hỗ trợ chuẩn bị đồ nướng. Rất hợp đi nhóm đông.' },
-        { propId: 'danang-villa', name: 'David Tran', from: 'Sydney', type: 'Gia đình', month: '06/2026', score: 9.5, photo: 'photo-1584132967334-10e028bd69f7', text: 'Private pool, quiet location and free airport pickup. The kids loved it. Booking and deposit were very easy.' },
-        { propId: 'nhatrang-beach-apt', name: 'Phương Linh', from: 'Huế', type: 'Cặp đôi', month: '10/2026', score: 8.9, photo: 'photo-1499793983690-e29da59ef1c2', text: 'Căn hộ sạch, view biển đẹp, hồ bơi tầng thượng lúc hoàng hôn tuyệt vời. Vị trí trung tâm dễ đi ăn uống.' },
-        { propId: 'panorama-studio-apt', name: 'Tuấn Kiệt', from: 'Hà Nội', type: 'Workation', month: '09/2026', score: 9.1, photo: 'photo-1522708323590-d24dbb6b0267', text: 'Wi-Fi mạnh, bàn làm việc ổn, có bếp và máy giặt. Ở 10 ngày rất tiện, giá dài ngày được giảm thêm.' },
-        { propId: 'mercure-resort-combo', name: 'Bảo Ngọc', from: 'Vũng Tàu', type: 'Cặp đôi', month: '05/2026', score: 9.4, photo: 'photo-1542314831-068cd1dbfeeb', text: 'Kiến trúc Pháp rất đẹp để chụp ảnh, buffet sáng đa dạng, xe SUV đón tận sân bay.' },
-        { propId: 'taxua-cloud-hotel', name: 'Văn Hùng', from: 'Thái Nguyên', type: 'Phượt', month: '11/2026', score: 8.6, photo: 'photo-1464822759023-fed622ff2c3b', text: 'Giá tốt, gần điểm săn mây, chủ khách sạn chỉ đường lên Sống Lưng Khủng Long rất kỹ.' },
-        { propId: 'phuquoc-sunset-homestay', name: 'Mai Chi', from: 'TP. HCM', type: 'Bạn bè', month: '04/2026', score: 8.8, photo: 'photo-1507525428034-b723cf961d3e', text: 'Bungalow xinh, ra biển ngắm hoàng hôn chỉ vài bước. Bữa sáng hải sản bất ngờ ngon.' },
+        { propId: 'pkg-taxua', name: 'Minh Anh', from: 'Hà Nội', type: 'Cặp đôi', month: '10/2026', score: 9.8, photo: 'photo-1506905925346-21bda4d32df4', text: 'Thức dậy giữa biển mây trắng xóa ngay trước cửa kính là trải nghiệm khó quên. Chủ nhà chu đáo, bữa tối nướng ấm cúng — chúng tôi chắc chắn sẽ quay lại vào mùa săn mây năm sau.' },
+        { propId: 'pkg-dalat', name: 'Quốc Bảo', from: 'TP. HCM', type: 'Gia đình', month: '09/2026', score: 9.6, photo: 'photo-1611892440504-42a792e24d32', text: 'Phòng Suite rộng rãi, sạch sẽ, nhìn ra đồi thông rất thư thái. Xe đón sân bay đúng giờ và lễ tân xác nhận đặt phòng chỉ sau vài phút. Cả nhà đều hài lòng.' },
+        { propId: 'pkg-phuquoc', name: 'Thu Trang', from: 'Đà Nẵng', type: 'Bạn bè', month: '11/2026', score: 10, photo: 'photo-1571896349842-33c89424de2d', text: 'Combo rất đáng giá: phòng hướng biển, buffet tối và vị trí xem pháo hoa ngay trước mắt. Thanh toán VietQR nhanh gọn, mọi thứ đúng như mô tả.' },
+        { propId: 'sapa-mountain-resort', name: 'Hoàng Long', from: 'Hải Phòng', type: 'Công tác', month: '08/2026', score: 9.2, photo: 'photo-1520250497591-112f2f40a3f4', text: 'Hồ bơi nước ấm nhìn ra thung lũng là điểm nhấn tuyệt vời. Liệu trình spa thảo dược giúp tôi hồi phục hoàn toàn sau chuyến trekking dài.' },
+        { propId: 'velora-dalat-villa', name: 'Ngọc Hân', from: 'Cần Thơ', type: 'Nhóm 8 người', month: '07/2026', score: 9.4, photo: 'photo-1613490493576-7fde63acd811', text: 'Biệt thự rộng rãi, sân BBQ thoải mái cho cả nhóm. Quản gia hỗ trợ chuẩn bị đồ nướng rất chu đáo — một kỳ nghỉ cuối tuần trọn vẹn bên bạn bè.' },
+        { propId: 'danang-villa', name: 'David Tran', from: 'Sydney', type: 'Gia đình', month: '06/2026', score: 9.5, photo: 'photo-1584132967334-10e028bd69f7', text: 'Private pool, quiet surroundings and a complimentary airport pickup — our children loved every moment. Booking and deposit were effortless.' },
+        { propId: 'nhatrang-beach-apt', name: 'Phương Linh', from: 'Huế', type: 'Cặp đôi', month: '10/2026', score: 8.9, photo: 'photo-1499793983690-e29da59ef1c2', text: 'Căn hộ sạch đẹp, hướng biển và hồ bơi tầng thượng ngắm hoàng hôn thật tuyệt. Vị trí trung tâm, đi bộ vài phút là tới biển và các quán ăn.' },
+        { propId: 'panorama-studio-apt', name: 'Tuấn Kiệt', from: 'Hà Nội', type: 'Làm việc từ xa', month: '09/2026', score: 9.1, photo: 'photo-1522708323590-d24dbb6b0267', text: 'Wi-Fi ổn định, bàn làm việc thoải mái cùng bếp và máy giặt đầy đủ giúp tôi làm việc suốt 10 ngày rất dễ chịu. Ưu đãi lưu trú dài ngày cũng rất hợp lý.' },
+        { propId: 'mercure-resort-combo', name: 'Bảo Ngọc', from: 'Vũng Tàu', type: 'Cặp đôi', month: '05/2026', score: 9.4, photo: 'photo-1542314831-068cd1dbfeeb', text: 'Kiến trúc Pháp cổ điển lên hình cực đẹp, buffet sáng phong phú và xe SUV đón tận sân bay giúp chuyến đi nhẹ nhàng, sang trọng từ đầu đến cuối.' },
+        { propId: 'taxua-cloud-hotel', name: 'Văn Hùng', from: 'Thái Nguyên', type: 'Phượt', month: '11/2026', score: 8.6, photo: 'photo-1464822759023-fed622ff2c3b', text: 'Giá hợp lý, gần điểm săn mây. Chủ khách sạn chỉ dẫn tận tình lộ trình lên Sống Lưng Khủng Long nên chuyến đi rất thuận lợi.' },
+        { propId: 'phuquoc-sunset-homestay', name: 'Mai Chi', from: 'TP. HCM', type: 'Bạn bè', month: '04/2026', score: 8.8, photo: 'photo-1507525428034-b723cf961d3e', text: 'Bungalow xinh xắn, ra biển ngắm hoàng hôn chỉ vài bước chân. Bữa sáng hải sản tươi ngon là điều bất ngờ thú vị.' },
       ];
 
       const PROMOS = [
         { code: 'BANLA10', title: 'Giảm 10% khi thanh toán VietQR', desc: 'Áp dụng mọi chỗ nghỉ, nhập mã ở bước thanh toán.', color: 'from-booking-navy to-ota-blue', img: 'photo-1566665797739-1674de7a421a' },
         { code: null, title: 'Ưu đãi đặt dài ngày đến 15%', desc: 'Tự động: 1 đêm -5% · 2 đêm -10% · 3+ đêm -15% giá phòng.', color: 'from-ota-amber to-[#FF5A00]', img: 'photo-1611892440504-42a792e24d32' },
-        { code: 'CLOUDVIP', title: 'Combo săn mây Tà Xùa -300.000₫', desc: 'Giảm trực tiếp 300.000₫ cho đơn homestay săn mây.', color: 'from-[#0F766E] to-[#10B981]', img: 'photo-1506905925346-21bda4d32df4' },
+        { code: 'CLOUDVIP', title: 'Giảm ngay 300.000₫ cho đơn đặt phòng', desc: 'Nhập mã ở bước thanh toán để được trừ trực tiếp 300.000₫.', color: 'from-[#0F766E] to-[#10B981]', img: 'photo-1506905925346-21bda4d32df4' },
         { code: null, title: 'Đổi lịch miễn phí do thời tiết', desc: 'Bảo lưu hoặc dời ngày khi có mưa bão, không mất cọc.', color: 'from-[#6D28D9] to-[#8B5CF6]', img: 'photo-1470071459604-3b5ec3a7fe05' },
       ];
 
@@ -1068,6 +1163,7 @@
         currency: 'VND',
         search: loadSearch(),
         favorites: LS.get('bt_favs', []),
+        compare: LS.get('bt_compare', []).filter((id) => PROPERTIES.some((p) => p.id === id)).slice(0, 3),
         bookings: LS.get('bt_bookings', []),
         selection: LS.get('bt_selection', null),
         filters: defaultFilters(),
@@ -1235,8 +1331,8 @@
                 <div class="card-track">
                   ${imgs.map((im, i) => `<img src="${U(im, 600)}" alt="${esc(p.name)} – ảnh ${i + 1}" ${i ? 'loading="lazy"' : ''} decoding="async" draggable="false" ${ONERR} />`).join('')}
                 </div>
-                <span class="absolute top-3 left-3 z-[2] bg-booking-navy/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">${CATS[p.category].label}</span>
-                <div class="absolute top-3 right-3 z-[2]">${heartBtn(p.id)}</div>
+                <span class="absolute top-3 left-3 z-[2] max-w-[36%] truncate bg-booking-navy/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">${CATS[p.category].label}</span>
+                <div class="absolute top-3 right-3 z-[2] flex items-center gap-1.5">${cmpBtn(p.id)}${heartBtn(p.id)}</div>
                 <div class="card-dots" aria-hidden="true">${imgs.map((_, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('')}</div>
                 <button type="button" data-act="card-img" data-dir="-1" class="card-nav l" aria-label="Ảnh trước">‹</button>
                 <button type="button" data-act="card-img" data-dir="1" class="card-nav r" aria-label="Ảnh sau">›</button>
@@ -1296,7 +1392,7 @@
                   <div class="flex items-center gap-2 text-xs">${stars(p.stars)}<span class="bg-slate-100 text-slate-700 font-bold px-2 py-0.5 rounded text-[10px]">${CATS[p.category].label}</span></div>
                   <a href="#/property/${p.id}" class="block text-lg font-extrabold text-slate-900 leading-snug hover:text-ota-blue mt-1">${esc(p.name)}</a>
                 </div>
-                ${heartBtn(p.id, 'shrink-0 border border-slate-200')}
+                <div class="flex items-center gap-1.5 shrink-0">${cmpBtn(p.id, 'border border-slate-200')}${heartBtn(p.id, 'border border-slate-200')}</div>
               </div>
               <div class="text-xs font-semibold text-ota-blue mt-1">📍 ${esc(p.location)}</div>
               <div class="text-[11px] text-emerald-700 font-bold mt-1">⚡ ${esc(p.recent)}</div>
@@ -1444,7 +1540,7 @@
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
               <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
                 <div>
-                  <div class="text-xs font-extrabold text-ota-blue uppercase">● Lịch phòng &amp; giá đồng bộ trực tiếp</div>
+                  <div class="text-xs font-extrabold text-ota-blue uppercase">● Giá &amp; lịch phòng cập nhật trực tiếp</div>
                   <h2 class="text-2xl font-extrabold text-slate-900">Chỗ nghỉ &amp; Combo được đánh giá cao nhất</h2>
                 </div>
                 <a href="#/search" class="text-sm font-extrabold text-ota-blue hover:underline">Xem tất cả ${PROPERTIES.length} chỗ nghỉ →</a>
@@ -1490,7 +1586,7 @@
 
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14">
               <div class="bg-booking-navy rounded-3xl p-6 sm:p-10 text-white shadow-xl grid grid-cols-1 md:grid-cols-4 gap-5" data-stagger>
-                ${[['📷', 'Ảnh & hạng phòng thật 100%', 'Diện tích, hướng nhìn và tiện nghi đúng thực tế.'], ['📅', 'Đồng bộ lịch – chống overbooking', 'Giữ phòng 15 phút ngay khi tạo mã đơn.'], ['💳', 'Cọc chỉ từ 30% qua VietQR', 'Tự điền số tiền & nội dung, không phí ẩn.'], ['🛡️', 'Đổi lịch do thời tiết', 'Linh hoạt dời ngày cho hành trình săn mây.']]
+                ${[['📷', 'Ảnh & hạng phòng thật 100%', 'Diện tích, hướng nhìn và tiện nghi đúng thực tế.'], ['📅', 'Lịch phòng luôn chính xác', 'Phòng được giữ 15 phút ngay khi bạn tạo mã thanh toán.'], ['💳', 'Cọc chỉ từ 30% qua VietQR', 'Tự điền số tiền & nội dung, không phí ẩn.'], ['🛡️', 'Đổi lịch do thời tiết', 'Linh hoạt dời ngày cho hành trình săn mây.']]
                   .map(([i, t, d]) => `<div class="bg-white/10 border border-white/10 rounded-2xl p-4"><div class="w-9 h-9 rounded-lg bg-ota-amber flex items-center justify-center mb-2" aria-hidden="true">${i}</div><h3 class="font-bold text-sm mb-1">${t}</h3><p class="text-xs text-white/75">${d}</p></div>`).join('')}
               </div>
             </section>
@@ -2072,7 +2168,7 @@
                     </div>
                     <div id="voucher-feedback" class="text-xs font-bold mt-1.5 ${state.voucher ? 'text-emerald-600' : 'hidden'}">${state.voucher ? '✓ Đã áp dụng ' + VOUCHERS[state.voucher].label : ''}</div>
                   </div>
-                  <details class="mt-4 rounded-xl border border-blue-200 bg-blue-50/60 p-3 text-xs">
+                  <details id="dev-bridge" class="${/[?&]dev=1/.test(location.search) ? '' : 'hidden'} mt-4 rounded-xl border border-blue-200 bg-blue-50/60 p-3 text-xs">
                     <summary class="font-bold text-booking-navy cursor-pointer">⚙️ Cổng nhận đơn Telegram Bot (@CSN1503_ai_Bot)</summary>
                     <p class="text-slate-600 mt-2 mb-2">Mặc định Cloudflare Worker 24/7 (không lộ Token). Có thể dán <code>http://127.0.0.1:8787/order</code> khi chạy bot_listener.py ở máy.</p>
                     <input id="bridge-url-input" type="url" value="${esc(bridgeVal)}" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-mono" aria-label="URL cổng nhận đơn" />
@@ -2214,7 +2310,7 @@
                     </dl>
                   </div>
                   <div id="bot-status-line" class="mt-4 rounded-xl px-3 py-2.5 text-sm font-bold ${b.status === 'pending_approval' ? 'bg-emerald-50 text-emerald-700' : b.status === 'expired' ? 'bg-slate-100 text-slate-600' : 'bg-blue-50 text-ota-blue'}">
-                    ${b.status === 'pending_approval' ? '✓ Đã gửi yêu cầu duyệt cọc tới lễ tân qua Telegram. Bạn sẽ được liên hệ qua Zalo/SĐT để xác nhận.'
+                    ${b.status === 'pending_approval' ? '✓ Đã gửi yêu cầu duyệt cọc tới lễ tân . Bạn sẽ được liên hệ qua Zalo/SĐT để xác nhận.'
                       : b.status === 'expired' ? 'Đơn đã hết thời gian giữ phòng. Vui lòng đặt lại để nhận mã thanh toán mới.'
                       : 'Quét mã bằng app ngân hàng, sau đó bấm "Tôi đã chuyển khoản" để lễ tân duyệt cọc.'}
                   </div>
@@ -2257,7 +2353,7 @@
                       <div class="text-[11px] font-extrabold tracking-[.2em] text-white/70">E-VOUCHER</div>
                       <div class="font-extrabold text-lg leading-none mt-1">BanlaTravel<span class="text-ota-gold">.vn</span></div>
                     </div>
-                    <span class="text-[11px] font-extrabold bg-white/20 border border-white/30 px-3 py-1.5 rounded-full">⏳ CHỜ LỄ TÂN DUYỆT CỌC</span>
+                    <span class="text-[11px] font-extrabold bg-white/20 border border-white/30 px-3 py-1.5 rounded-full">⏳ CHỜ XÁC NHẬN</span>
                   </div>
                   <div class="mt-5 text-xl sm:text-2xl font-extrabold leading-snug">${esc(p.name)}</div>
                   <div class="text-sm text-white/80 mt-1">📍 ${esc(p.location)}</div>
@@ -2294,6 +2390,7 @@
 
             <div class="flex flex-wrap items-center justify-center gap-3 mt-8">
               <button type="button" data-act="print" class="rounded-xl bg-ota-blue hover:bg-booking-navy text-white font-extrabold text-sm px-6 py-3.5 shadow-md">🖨 Lưu / In E-Voucher</button>
+              <button type="button" id="motion-perm" data-act="motion-permission" class="hidden rounded-xl bg-white border border-slate-300 hover:border-ota-blue text-booking-navy font-extrabold text-sm px-6 py-3.5">✨ Bật nghiêng 3D theo cảm biến</button>
               <a href="#/bookings" class="rounded-xl bg-white border border-slate-300 hover:border-ota-blue text-booking-navy font-extrabold text-sm px-6 py-3.5">Xem đơn đặt của tôi</a>
               <a href="#/" class="rounded-xl bg-ota-amber hover:bg-[#EA580C] text-white font-extrabold text-sm px-6 py-3.5">Tiếp tục khám phá</a>
             </div>
@@ -2355,7 +2452,7 @@
         btn.disabled = true;
         btn.textContent = 'Đang gửi yêu cầu duyệt cọc…';
         line.className = 'mt-4 rounded-xl px-3 py-2.5 text-sm font-bold bg-blue-50 text-ota-blue';
-        line.textContent = 'Đang gửi phiếu đặt phòng sang Telegram @CSN1503_ai_Bot…';
+        line.textContent = 'Đang gửi yêu cầu giữ phòng tới BanlaTravel.vn…';
 
         const saved = localStorage.getItem('banla_bridge_url');
         let bridgeUrl = saved && saved.trim() ? saved.trim() : DEFAULT_PROXY_WEBHOOK_URL;
@@ -2383,7 +2480,8 @@
           throw new Error(resJson.error || resJson.description || `HTTP ${resp.status}`);
         } catch (err) {
           line.className = 'mt-4 rounded-xl px-3 py-2.5 text-sm font-bold bg-red-50 text-red-600';
-          line.textContent = '⚠ Chưa gửi được tới Telegram: ' + (err && err.message ? err.message : 'lỗi mạng') + '. Vui lòng thử lại hoặc gọi Hotline 0358 341 934.';
+          console.warn('[BanlaTravel] Gửi yêu cầu giữ phòng thất bại:', err);
+          line.textContent = '⚠ Chưa gửi được yêu cầu giữ phòng. Vui lòng kiểm tra kết nối và thử lại, hoặc gọi Hotline 0358 341 934.';
           btn.disabled = false;
           btn.textContent = '↻ Thử gửi lại — Tôi đã chuyển khoản';
         }
@@ -2571,11 +2669,16 @@
       });
       document.documentElement.addEventListener('mouseleave', () => { if (tiltEl) { tiltLeave(tiltEl); tiltEl = null; } });
 
-      function bindVoucherOrientation() {
+      // ---- E-Voucher: nghiêng theo cảm biến (Android tự động; iOS cần người dùng bấm cấp quyền) hoặc chạm/vuốt nhẹ ----
+      let motionGranted = false;
+      let orientSeen = false;
+      function attachOrientation() {
         const v = $('#evoucher');
-        if (!v || reduced() || !('DeviceOrientationEvent' in window)) return;
+        if (!v || orientHandler) return;
         orientHandler = (e) => {
-          if (e.gamma == null || tiltEl === v) return;
+          if (e.gamma == null) return;
+          orientSeen = true;
+          if (tiltEl === v) return;
           const rx = Math.max(-10, Math.min(10, ((e.beta || 0) - 45) * 0.25));
           const ry = Math.max(-12, Math.min(12, (e.gamma || 0) * 0.35));
           v.classList.add('is-tilting');
@@ -2585,6 +2688,53 @@
           v.style.setProperty('--gpy', (rx * 10).toFixed(1) + 'px');
         };
         window.addEventListener('deviceorientation', orientHandler);
+      }
+      function enableMotionSensor() {
+        const Ctor = window.DeviceOrientationEvent;
+        if (!Ctor) { showToast('Thiết bị không hỗ trợ cảm biến chuyển động'); return; }
+        if (typeof Ctor.requestPermission !== 'function') { attachOrientation(); return; }
+        Ctor.requestPermission().then((state) => {
+          if (state === 'granted') {
+            motionGranted = true;
+            attachOrientation();
+            const b = $('#motion-perm');
+            if (b) b.classList.add('hidden');
+            showToast('Đã bật hiệu ứng nghiêng theo cảm biến');
+          } else showToast('Bạn chưa cấp quyền cảm biến chuyển động');
+        }).catch(() => showToast('Không thể bật cảm biến chuyển động trên thiết bị này'));
+      }
+      function bindVoucherTouch(v) {
+        const aim = (e) => {
+          const r = v.getBoundingClientRect();
+          const nx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+          const ny = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+          v.classList.add('is-tilting');
+          v.style.setProperty('--rx', ((0.5 - ny) * 18).toFixed(2) + 'deg');
+          v.style.setProperty('--ry', ((nx - 0.5) * 18).toFixed(2) + 'deg');
+          v.style.setProperty('--gpx', ((nx - 0.5) * r.width).toFixed(1) + 'px');
+          v.style.setProperty('--gpy', ((ny - 0.5) * r.height).toFixed(1) + 'px');
+        };
+        const release = (e) => { if (e.pointerType !== 'mouse') tiltLeave(v); };
+        v.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') aim(e); });
+        v.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse' && e.buttons) aim(e); });
+        v.addEventListener('pointerup', release);
+        v.addEventListener('pointercancel', release);
+      }
+      function bindVoucherOrientation() {
+        const v = $('#evoucher');
+        if (!v || reduced()) return;
+        bindVoucherTouch(v);
+        if (!('DeviceOrientationEvent' in window)) return;
+        attachOrientation();
+        // Android/Chrome: sự kiện nghiêng tự đến → không cần nút. iOS Safari: chưa cấp quyền nên không có sự kiện → hiện nút xin quyền.
+        const needsAsk = typeof window.DeviceOrientationEvent.requestPermission === 'function' && !motionGranted
+          && !!window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        if (needsAsk) {
+          setTimeout(() => {
+            const b = $('#motion-perm');
+            if (!orientSeen && !motionGranted && b && $('#evoucher')) b.classList.remove('hidden');
+          }, 1200);
+        }
       }
 
       // ---- Momentum drag-to-scroll carousel (mouse) — touch dùng cuộn gốc có quán tính ----
@@ -2785,9 +2935,10 @@
         return libPromises[key];
       }
 
+      const finePointer = () => !!(window.matchMedia && window.matchMedia('(pointer: fine)').matches);
       let lenis = null;
       function initLenis() {
-        if (lenis || reduced() || typeof window.Lenis !== 'function') return;
+        if (lenis || reduced() || !finePointer() || typeof window.Lenis !== 'function') return;
         lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true, autoRaf: true });
       }
       function lockScroll(on) { if (!lenis) return; if (on) lenis.stop(); else lenis.start(); }
@@ -2810,6 +2961,129 @@
         if (!w || w.dataset.entered) return;
         w.dataset.entered = '1';
         springAnimate(w, { opacity: [0, 1], y: [40, 0], scale: [0.94, 1] }, { delay: 0.1 });
+      }
+
+      // =====================================================================
+      // QUICK COMPARE — so sánh song song 2–3 chỗ nghỉ
+      // =====================================================================
+      const cmpDialog = $('#compare-dialog');
+      const cmpBar = $('#compare-bar');
+      const isCmp = (id) => state.compare.includes(id);
+      function cmpBtn(id, extra) {
+        const on = isCmp(id);
+        return `<button type="button" data-act="compare" data-id="${id}" aria-pressed="${on}" class="cmp-btn ${on ? 'is-on' : ''} ${extra || ''}">${on ? '✓ Đã chọn' : '+ So sánh'}</button>`;
+      }
+      function saveCompare() { LS.set('bt_compare', state.compare); syncCompareUI(); }
+      function toggleCompare(id) {
+        const i = state.compare.indexOf(id);
+        if (i === -1) {
+          if (state.compare.length >= 3) { showToast('Bạn có thể so sánh tối đa 3 chỗ nghỉ cùng lúc'); return; }
+          state.compare.push(id);
+          showToast(state.compare.length === 1 ? 'Đã thêm. Hãy chọn thêm ít nhất 1 chỗ nghỉ để so sánh' : `Đã thêm vào so sánh (${state.compare.length}/3)`);
+        } else {
+          state.compare.splice(i, 1);
+          showToast('Đã bỏ khỏi danh sách so sánh');
+        }
+        saveCompare();
+      }
+      let cmpBarKey = null;
+      function updateCompareBar() {
+        const page = currentRoute().page;
+        const show = state.compare.length >= 2 && (page === '' || page === 'search');
+        document.body.classList.toggle('has-compare', show);
+        cmpBar.inert = !show;
+        cmpBar.classList.toggle('is-in', show);
+        const key = state.compare.join('|');
+        if (key === cmpBarKey) return;
+        cmpBarKey = key;
+        const props = state.compare.map(propById).filter(Boolean);
+        cmpBar.innerHTML = `
+          <div class="flex items-center -space-x-2" aria-hidden="true">${props.map((p) => `<img src="${U(p.images[0], 120)}" alt="" ${ONERR} />`).join('')}</div>
+          <div class="min-w-0 leading-tight">
+            <div class="text-sm font-extrabold whitespace-nowrap">${props.length} chỗ nghỉ đã chọn</div>
+            <div class="text-[11px] text-white/70 hidden sm:block">Tối đa 3 · đối chiếu giá, điểm &amp; chính sách</div>
+          </div>
+          <button type="button" data-act="compare-open" class="cmp-go">So sánh ngay</button>
+          <button type="button" data-act="compare-clear" class="cmp-clear" aria-label="Xóa danh sách so sánh">✕</button>`;
+      }
+      function syncCompareUI() {
+        $$('.cmp-btn').forEach((b) => {
+          const on = isCmp(b.dataset.id);
+          b.classList.toggle('is-on', on);
+          b.setAttribute('aria-pressed', String(on));
+          b.textContent = on ? '✓ Đã chọn' : '+ So sánh';
+        });
+        updateCompareBar();
+      }
+      function renderCompare() {
+        const props = state.compare.map(propById).filter(Boolean);
+        const n = props.length;
+        const multi = n > 1;
+        const nights = getNights();
+        const rooms = state.search.rooms;
+        const pct = Math.round(getNightDiscountRate(nights) * 100);
+        const prices = props.map((p) => propFrom(p));
+        const bestPrice = Math.min(...prices);
+        const bestScore = Math.max(...props.map((p) => p.score));
+        const comparable = props.every((p) => !cheapestRoom(p).isPackage);
+        $('#cmp-sub').textContent = `${n} chỗ nghỉ · ${fmtDate(state.search.checkin)} → ${fmtDate(state.search.checkout)} · ${nights} đêm · ${guestsLabel()}`;
+        const row = (label, cell, best) => `<tr><th scope="row">${label}</th>${props.map((p, i) => `<td class="${best && best(p, i) ? 'cmp-best' : ''}">${cell(p, i)}</td>`).join('')}</tr>`;
+        const sizes = (p) => { const s = p.rooms.map((r) => r.size); const lo = Math.min(...s), hi = Math.max(...s); return lo === hi ? `${lo} m²` : `${lo} – ${hi} m²`; };
+        $('#cmp-body').innerHTML = `
+          <table class="cmp-table" style="min-width:${112 + n * 230}px">
+            <caption class="sr-only">Bảng so sánh ${n} chỗ nghỉ</caption>
+            <thead><tr>
+              <th class="cmp-corner"><span class="sr-only">Tiêu chí</span></th>
+              ${props.map((p) => `
+                <th scope="col">
+                  <div class="relative">
+                    <img src="${U(p.images[0], 500)}" alt="${esc(p.name)}" ${ONERR} class="w-full aspect-[16/10] object-cover rounded-xl" />
+                    <button type="button" data-act="compare-remove" data-id="${p.id}" aria-label="Bỏ ${esc(p.name)} khỏi so sánh" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/95 font-bold shadow">✕</button>
+                  </div>
+                  <div class="font-extrabold leading-snug mt-2 text-[14px]">${esc(p.name)}</div>
+                  <div class="text-[11px] font-semibold text-ota-blue mt-0.5">📍 ${esc(p.location)}</div>
+                </th>`).join('')}
+            </tr></thead>
+            <tbody>
+              ${row('Điểm đánh giá', (p) => `<div class="flex items-center gap-2"><span class="bg-ota-blue text-white font-extrabold px-2 py-1 rounded-t-lg rounded-br-lg">${p.score.toFixed(1)}</span><div><div class="font-extrabold leading-tight">${scoreLabel(p.score)}</div><div class="text-[11px] text-slate-500">${p.reviews} đánh giá</div></div></div>${multi && p.score === bestScore ? '<div class="cmp-tag">★ Điểm cao nhất</div>' : ''}`, (p) => multi && p.score === bestScore)}
+              ${row('Giá sau ưu đãi', (p) => { const r = cheapestRoom(p); return `<div class="text-xs text-slate-400 line-through">${formatMoney(r.originalVnd)}</div><div class="text-xl font-extrabold text-agoda-red leading-none">${formatMoney(propFrom(p))}</div><div class="text-[11px] text-slate-500">${r.isPackage ? 'combo trọn gói' : `/ đêm · đã giảm ${pct}% (${nights} đêm)`}</div>${multi && comparable && propFrom(p) === bestPrice ? '<div class="cmp-tag">Giá tốt nhất</div>' : ''}`; }, (p) => multi && comparable && propFrom(p) === bestPrice)}
+              ${row('Tổng kỳ lưu trú', (p) => { const r = cheapestRoom(p); const total = (r.isPackage ? r.priceVnd : roomNightly(r) * nights) * rooms; return `<div class="font-extrabold">${formatMoney(total)}</div><div class="text-[11px] text-slate-500">${r.isPackage ? 'Combo trọn gói' : `${nights} đêm`} · ${rooms} phòng · đã gồm thuế &amp; phí</div>`; })}
+              ${row('Loại hình', (p) => `<div class="font-bold">${CATS[p.category].icon} ${CATS[p.category].label}</div><div class="text-xs">${stars(p.stars)}</div>`)}
+              ${row('Diện tích phòng', (p) => `<div class="font-bold">${sizes(p)}</div><div class="text-[11px] text-slate-500">${p.rooms.length} hạng phòng</div>`)}
+              ${row('Sức chứa', (p) => `Tối đa ${propMaxCap(p)} khách / phòng`)}
+              ${row('Tiện ích nổi bật', (p) => p.amen.slice(0, 5).map((a) => `<div class="py-0.5">${AMEN[a]}</div>`).join(''))}
+              ${row('Ưu đãi kèm theo', (p) => (p.quick.length ? p.quick.map((q) => `<div class="py-0.5 text-emerald-700 font-semibold">✓ ${QUICK[q]}</div>`).join('') : '<span class="text-slate-500">—</span>'))}
+              ${row('Chính sách hoàn hủy', (p) => `<div class="${p.quick.includes('freeCancel') ? 'text-emerald-700 font-semibold' : 'text-slate-600'}">${p.quick.includes('freeCancel') ? '✓ Hủy miễn phí trước 72 giờ so với ngày nhận phòng' : 'Không hoàn tiền cọc · hỗ trợ đổi lịch theo tình trạng phòng'}</div><div class="text-[11px] text-slate-500 mt-1">Đổi lịch miễn phí khi có cảnh báo thời tiết xấu</div>`)}
+              <tr><th scope="row"><span class="sr-only">Hành động</span></th>${props.map((p) => `<td><button type="button" data-act="compare-pick" data-id="${p.id}" class="w-full rounded-xl bg-ota-amber hover:bg-[#EA580C] text-white font-extrabold text-sm py-3 shadow-sm">Chọn phòng này</button></td>`).join('')}</tr>
+            </tbody>
+          </table>`;
+      }
+      function openCompare() {
+        if (state.compare.length < 2) { showToast('Hãy chọn ít nhất 2 chỗ nghỉ để so sánh'); return; }
+        renderCompare();
+        if (!cmpDialog.open) { cmpDialog.showModal(); lockScroll(true); }
+      }
+      function closeCompare() { if (cmpDialog.open) cmpDialog.close(); }
+      function clearCompare() { state.compare = []; saveCompare(); closeCompare(); showToast('Đã xóa danh sách so sánh'); }
+      function removeFromCompare(id) {
+        state.compare = state.compare.filter((x) => x !== id);
+        saveCompare();
+        if (state.compare.length < 2) { closeCompare(); showToast('Cần ít nhất 2 chỗ nghỉ để so sánh'); } else renderCompare();
+      }
+      function pickFromCompare(id) {
+        const p = propById(id);
+        if (!p) return;
+        roomQtyProp = id;
+        roomQty = { [cheapestRoom(p).id]: 1 };
+        closeCompare();
+        location.hash = '#/property/' + id;
+      }
+      cmpDialog.addEventListener('close', () => lockScroll(false));
+      if (!('closedBy' in HTMLDialogElement.prototype)) {
+        const outside = (e) => { const r = cmpDialog.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+        let pressedOutside = false;
+        cmpDialog.addEventListener('pointerdown', (e) => { pressedOutside = outside(e); });
+        cmpDialog.addEventListener('pointerup', (e) => { if (pressedOutside && outside(e)) cmpDialog.close(); });
       }
 
       function currentRoute() {
@@ -2844,6 +3118,7 @@
         });
 
         bindDrag();
+        syncCompareUI();
         setupReveal(!!keepScroll);
         initHeroFx();
         positionDockPill();
@@ -2976,6 +3251,13 @@
           case 'card-img': e.preventDefault(); cardStep(el, Number(el.dataset.dir)); break;
           case 'chip-remove': removeFilter(el.dataset.key); break;
           case 'print': window.print(); break;
+          case 'compare': e.preventDefault(); toggleCompare(id); break;
+          case 'compare-open': openCompare(); break;
+          case 'compare-close': closeCompare(); break;
+          case 'compare-clear': clearCompare(); break;
+          case 'compare-remove': removeFromCompare(id); break;
+          case 'compare-pick': pickFromCompare(id); break;
+          case 'motion-permission': enableMotionSensor(); break;
           case 'fav-list': state.filters = defaultFilters(); state.filters.favOnly = true; goSearch(); break;
           case 'copy': copyCode(el.dataset.code); break;
           case 'carousel': { const t = document.getElementById(el.dataset.target); if (t) scrollCarousel(t, Number(el.dataset.dir)); break; }
@@ -3160,7 +3442,7 @@
       });
 
       window.addEventListener('hashchange', () => route());
-      loadLib('lenis').then((ok) => { if (ok) initLenis(); });
+      if (finePointer() && !reduced()) loadLib('lenis').then((ok) => { if (ok) initLenis(); });
       loadLib('motion');
       updateHeaderCounts();
       route();
