@@ -91,18 +91,34 @@ export default {
         const msg = upd.message;
         const chatId = msg.chat.id;
         const userText = msg.text.trim();
+        const isAdmin = String(chatId) === String(env.TG_CHAT_ID);
 
         if (userText.startsWith('/start')) {
+          const welcomeText = isAdmin
+            ? `👋 <b>Dạ em chào Sếp!</b>\n\nEm là Trợ lý AI Toàn năng (Co-pilot) của Sếp. Em sẵn sàng hỗ trợ Sếp:\n• 💻 <b>Lập trình & Kỹ thuật:</b> Code (JS/Python/HTML/CSS), fix bug, tối ưu web, Cloudflare, API, Git...\n• 🏨 <b>Hệ thống Banla OTA:</b> Quản lý đơn phòng, theo dõi tour & duyệt cọc 24/7.\n• 📈 <b>Công việc đa nhiệm:</b> Viết content, soạn thảo, phân tích ý tưởng kinh doanh...\n\n<i>Sếp cần em hỗ trợ hoặc giải đáp vấn đề nào cứ nhắn cho em nhé! 🚀</i>`
+            : `👋 <b>Xin chào ${escapeHtml(msg.from?.first_name || 'bạn')}!</b>\n\nTôi là Trợ lý AI của <b>BANLA // NOMAD OTA</b> (Powered by Google Gemini).\n\n✨ Bạn có thể nhắn tin hỏi tôi bất kỳ thông tin nào về:\n• Các tour du lịch & homestay (Tà Xùa, Mộc Châu, Hà Giang...)\n• Kinh nghiệm săn mây, lịch trình gợi ý\n• Hoặc bất kỳ thắc mắc nào khác!\n\n<i>Cứ gửi câu hỏi, tôi sẽ giải đáp ngay nhé!</i>`;
+
           await tgCall(env.TG_BOT_TOKEN, 'sendMessage', {
             chat_id: chatId,
             parse_mode: 'HTML',
-            text: `👋 <b>Xin chào ${escapeHtml(msg.from?.first_name || 'bạn')}!</b>\n\nTôi là Trợ lý AI của <b>BANLA // NOMAD OTA</b> (Powered by Google Gemini).\n\n✨ Bạn có thể nhắn tin hỏi tôi bất kỳ thông tin nào về:\n• Các tour du lịch & homestay (Tà Xùa, Mộc Châu, Hà Giang...)\n• Kinh nghiệm săn mây, lịch trình gợi ý\n• Hoặc bất kỳ thắc mắc nào khác!\n\n<i>Cứ gửi câu hỏi, tôi sẽ giải đáp ngay nhé!</i>`,
+            text: welcomeText,
           });
           return new Response('OK', { status: 200 });
         }
 
         if (env.GEMINI_API_KEY) {
           try {
+            const adminPrompt = `Bạn là Trợ lý AI Toàn năng (Executive & Technical Co-pilot) kiêm Cố vấn Kỹ thuật cho Sếp (Admin sở hữu hệ thống BANLA // NOMAD và các dự án website/công nghệ khác).
+- Luôn xưng hô lễ phép, tận tâm: "Dạ sếp", "Em chào sếp",...
+- Bạn có năng lực chuyên môn xuất sắc về: Lập trình (JavaScript, Python, TypeScript, React, Cloudflare Workers, Node.js, HTML/CSS, SQL, Git, Linux/Windows), thiết kế kiến trúc hệ thống web, fix bug, viết code mẫu, giải thích code, review mã nguồn.
+- Bạn cũng là cố vấn chiến lược kinh doanh, marketing, viết nội dung, dịch thuật và phân tích thông tin.
+- Bạn hiểu rõ dự án BANLA // NOMAD OTA hiện tại (gồm website OTA, bot duyệt cọc, giá các gói: Tà Xùa 4.690.000₫, Mộc Châu 3.190.000₫, Hà Giang 6.090.000₫). Khi sếp hỏi về OTA thì hỗ trợ nghiệp vụ OTA; khi sếp hỏi về công việc khác, website khác, lập trình hay bất kỳ chủ đề nào, hãy hỗ trợ hết mình với tư cách là một kỹ sư phần mềm cao cấp và trợ lý toàn diện của sếp.
+- Trả lời trực diện, thông minh, logic, định dạng code và markdown rõ ràng, đẹp mắt.`;
+
+            const guestPrompt = `Bạn là Trợ lý Lễ tân & Chăm sóc Khách hàng thông minh, thân thiện của BANLA // NOMAD OTA - nền tảng du lịch khám phá và homestay tại Việt Nam (Tà Xùa 3N2Đ: 4.690.000₫, Mộc Châu Retreat 2N1Đ: 3.190.000₫, Hà Giang Loop 4N3Đ: 6.090.000₫). Hãy tư vấn tour, giá, dịch vụ chu đáo, lịch sự, nhiệt tình, dùng emoji phù hợp và hướng dẫn khách đặt cọc trên website bằng tiếng Việt.`;
+
+            const systemPrompt = isAdmin ? adminPrompt : guestPrompt;
+
             const geminiRes = await fetch(
               `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${env.GEMINI_API_KEY}`,
               {
@@ -110,11 +126,7 @@ export default {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                   system_instruction: {
-                    parts: [
-                      {
-                        text: 'Bạn là Trợ lý AI thông minh, nhiệt tình của BANLA // NOMAD OTA - nền tảng du lịch khám phá và homestay tại Việt Nam (Tà Xùa 3N2Đ: 4.690.000₫, Mộc Châu Retreat 2N1Đ: 3.190.000₫, Hà Giang Loop 4N3Đ: 6.090.000₫). Trả lời súc tích, lịch sự, thân thiện, dùng emoji phù hợp và tư vấn chu đáo bằng tiếng Việt.',
-                      },
-                    ],
+                    parts: [{ text: systemPrompt }],
                   },
                   contents: [
                     {
@@ -129,7 +141,7 @@ export default {
             const geminiData = await geminiRes.json();
             const aiReply =
               geminiData.candidates?.[0]?.content?.parts?.[0]?.text ||
-              'Xin lỗi, hiện tại tôi chưa thể phản hồi câu hỏi này. Bạn vui lòng thử lại nhé!';
+              'Dạ hiện tại em chưa thể phản hồi câu hỏi này. Bạn/Sếp vui lòng thử lại nhé!';
 
             await tgCall(env.TG_BOT_TOKEN, 'sendMessage', {
               chat_id: chatId,
