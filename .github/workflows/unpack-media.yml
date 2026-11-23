@@ -1,0 +1,33 @@
+name: Unpack media bundles
+# Media (WebP) is uploaded as base64 tar bundles in scripts/media-bundles/ because the
+# upload channel only carries text. This job unpacks them into the repo and removes the bundles.
+on:
+  push:
+    paths:
+      - 'scripts/media-bundles/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Unpack
+        run: |
+          set -e
+          shopt -s nullglob
+          files=(scripts/media-bundles/*.b64)
+          [ ${#files[@]} -eq 0 ] && { echo "nothing to unpack"; exit 0; }
+          for f in "${files[@]}"; do
+            echo "unpacking $f"
+            base64 -d "$f" | tar -xzf - -C .
+            git rm -q "$f"
+          done
+          git config user.name "banla-media-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add frontend/assets
+          git commit -m "chore(media): unpack WebP bundles" || echo "no changes"
+          git push
