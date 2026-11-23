@@ -95,16 +95,7 @@
     .snap-track::-webkit-scrollbar { display: none; }
     .snap-track > * { scroll-snap-align: start; }
 
-    .skeleton {
-      background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 37%, #e2e8f0 63%);
-      background-size: 400% 100%;
-      animation: shimmer 1.2s ease infinite;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 100% 0; }
-      100% { background-position: 0 0; }
-    }
+    .skeleton { position: relative; overflow: hidden; background: #E2E8F0; }
 
     /* Dual range price slider (2 native range inputs overlaid) */
     .range-dual { position: relative; height: 36px; }
@@ -460,8 +451,8 @@
     .tilt.is-tilting .glare { opacity: 1; }
 
     /* ---------- Card image slider ---------- */
-    .card-track { display: flex; height: 100%; transition: transform .65s var(--spring-smooth); will-change: transform; }
-    .card-track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; }
+    .card-track { position: absolute; inset: 0; display: flex; transition: transform .65s var(--spring-smooth); will-change: transform; }
+    .card-track > .ib { flex: 0 0 100%; height: 100%; }
 
     .card-nav {
       position: absolute; top: 50%; margin-top: -16px; width: 32px; height: 32px; border-radius: 50%;
@@ -529,7 +520,7 @@
     .lb-thumbs { display: flex; gap: 8px; overflow-x: auto; max-width: 100%; padding: 10px 6px 2px; scrollbar-width: none; }
     .lb-thumbs::-webkit-scrollbar { display: none; }
     .lb-thumb { flex: 0 0 auto; width: 64px; height: 48px; border-radius: 10px; overflow: hidden; opacity: .55; border: 2px solid transparent; }
-    .lb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .lb-thumb .ib { width: 100%; height: 100%; }
     .lb-thumb.on { opacity: 1; border-color: #fff; scale: 1.08; }
 
     /* ---------- E-Voucher 3D ---------- */
@@ -650,7 +641,7 @@
     }
 
     .compare-bar.is-in { transform: translate3d(-50%, 0, 0); opacity: 1; pointer-events: auto; }
-    .compare-bar img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+    .compare-bar .cmp-av { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; flex: 0 0 auto; }
     .compare-bar .cmp-go { height: 40px; padding: 0 16px; border-radius: 999px; background: #F97316; color: #fff; font-weight: 800; font-size: 13px; white-space: nowrap; }
     .compare-bar .cmp-clear { width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, .14); font-weight: 800; flex: 0 0 auto; }
     .has-compare #toast-banner { bottom: 92px; }
@@ -689,6 +680,42 @@
     }
 
     @media (prefers-reduced-motion: reduce) { .compare-bar { transition: opacity .2s; } dialog#compare-dialog[open] { animation: none; } }
+    /* ---------- Image performance: ô giữ chỗ chống CLS + shimmer (chỉ transform/opacity) + fade-in 300ms ---------- */
+    :where(.ib) { position: relative; display: block; overflow: hidden; background: #E2E8F0; }
+
+    .ib > img.lz {
+      position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover;
+      opacity: 0; transition: opacity .3s ease, transform .5s var(--spring-smooth);
+    }
+
+    .ib > img.lz.is-loaded { opacity: 1; }
+
+    .ib::after, .skeleton::after, .lb-skel::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(100deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, .7) 50%, rgba(255, 255, 255, 0) 80%);
+      transform: translate3d(-100%, 0, 0); animation: ibShimmer 1.4s ease-in-out infinite;
+    }
+
+    .ib.is-ready::after, .ib.ib-idle::after { display: none; }
+
+    @keyframes ibShimmer { to { transform: translate3d(100%, 0, 0); } }
+
+    #lb-img { opacity: 0; transition: opacity .3s ease; }
+    #lb-img.is-loaded { opacity: 1; }
+
+    .lb-skel {
+      position: absolute; left: 50%; top: 50%; width: min(80vw, 880px); height: min(56vh, 520px);
+      transform: translate(-50%, -50%); border-radius: 16px; background: rgba(255, 255, 255, .1);
+      overflow: hidden; pointer-events: none;
+    }
+
+    .lb-skel[hidden] { display: none; }
+    .lb-skel::after { background: linear-gradient(100deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, .22) 50%, rgba(255, 255, 255, 0) 80%); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ib::after, .skeleton::after, .lb-skel::after { animation: none; }
+      .ib > img.lz, #lb-img { transition: none; }
+    }
   </style>
 </head>
 
@@ -847,7 +874,8 @@
   <dialog id="lightbox" closedby="any" aria-label="Thư viện ảnh toàn màn hình">
     <div class="w-full h-full flex flex-col items-center justify-center p-3 sm:p-6 relative">
       <div class="flex-1 min-h-0 w-full flex items-center justify-center relative">
-        <img id="lb-img" src="" alt="" class="max-w-full max-h-full rounded-2xl object-contain shadow-2xl" style="will-change:transform" />
+        <img id="lb-img" alt="" class="lz max-w-full max-h-full rounded-2xl object-contain shadow-2xl" style="will-change:transform" />
+        <div id="lb-skel" class="lb-skel" hidden aria-hidden="true"></div>
         <button type="button" data-act="lb-prev" class="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 text-white text-2xl font-bold" aria-label="Ảnh trước">‹</button>
         <button type="button" data-act="lb-next" class="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 text-white text-2xl font-bold" aria-label="Ảnh sau">›</button>
       </div>
@@ -903,9 +931,126 @@
       const PRICE_MAX = 6000000;
       const PRICE_STEP = 100000;
 
-      const U = (id, w = 900) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
-      const FALLBACK_IMG = U('photo-1566665797739-1674de7a421a');
-      const ONERR = `onerror="this.onerror=null;this.src='${FALLBACK_IMG}'"`;
+      // =====================================================================
+      // IMAGE PERFORMANCE — URL tối ưu · ưu tiên tải · skeleton shimmer · ảnh dự phòng
+      // =====================================================================
+      /* IMG-HELPERS:START */
+      const IMG_W = { thumb: 240, card: 720, full: 1600 }; // 3 mức theo khung hiển thị: thumbnail · thẻ/slider · lightbox
+      const IMG_EAGER_COUNT = 4;                            // số thẻ đầu tiên (above-the-fold) tải ưu tiên
+      const IMG_CFG = { cloudflareResizing: false };        // true khi site chạy sau Cloudflare: ảnh nội bộ → /cdn-cgi/image/...
+      const IMG_PARAM_HOSTS = /(^|\.)(images|plus)\.unsplash\.com$|\.imgix\.net$/i;
+      const imgUrlCache = new Map();
+      const fbCache = new Map();
+
+      // Chuẩn hóa URL ảnh: ép WebP/AVIF (auto=format), nén q=80, giới hạn chiều rộng theo khung hiển thị.
+      // Hỗ trợ: id Unsplash rút gọn ("photo-…"), URL Unsplash/imgix, và ảnh nội bộ qua Cloudflare Image Resizing.
+      function optimizeImgUrl(url, width = 800, quality = 80) {
+        if (!url) return '';
+        const w = Math.min(4000, Math.max(16, Math.round(Number(width) || 800)));
+        const q = Math.min(100, Math.max(30, Math.round(Number(quality) || 80)));
+        const key = `${url}|${w}|${q}|${IMG_CFG.cloudflareResizing ? 1 : 0}`;
+        const hit = imgUrlCache.get(key);
+        if (hit) return hit;
+        let src = String(url).trim();
+        if (/^photo-[\w-]+$/.test(src)) src = 'https://images.unsplash.com/' + src;
+        let out = src;
+        if (!/^(data|blob):/i.test(src)) {
+          let u = null;
+          try { u = new URL(src, location.href); } catch (_) { /* giữ nguyên URL gốc */ }
+          if (u && IMG_PARAM_HOSTS.test(u.hostname)) {
+            u.searchParams.set('auto', 'format'); // WebP/AVIF theo khả năng trình duyệt
+            u.searchParams.set('fit', 'crop');
+            u.searchParams.set('w', String(w));
+            u.searchParams.set('q', String(q));
+            u.searchParams.delete('h');           // để object-fit quyết định tỉ lệ khung
+            out = u.toString();
+          } else if (u && u.origin === location.origin && IMG_CFG.cloudflareResizing) {
+            out = `/cdn-cgi/image/width=${w},quality=${q},format=auto,fit=cover/${u.pathname.replace(/^\//, '')}${u.search}`;
+          }
+        }
+        imgUrlCache.set(key, out);
+        return out;
+      }
+
+      function imgSrcset(src, widths, quality = 80) {
+        return widths.map((w) => `${optimizeImgUrl(src, w, quality)} ${w}w`).join(', ');
+      }
+
+      // Ảnh dự phòng (Data URI SVG gradient + logo BanlaTravel.vn + tên điểm đến) — không bao giờ để lộ icon ảnh lỗi của trình duyệt
+      function fallbackSvg(place, kind) {
+        const key = `${kind || ''}|${place || ''}`;
+        if (fbCache.has(key)) return fbCache.get(key);
+        const x = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const label = x(String(place || '').slice(0, 42));
+        const B = 'M20 14H35C42 14 46 18 46 24C46 28 44 31 40.500 32.500C45 34 48 37.500 48 42C48 48 43.500 51 36 51H20ZM29 21.500V28.500H34.500C37.500 28.500 39 27 39 25C39 22.800 37.500 21.500 34.500 21.500ZM29 36V44H35.500C38.500 44 40.500 42.500 40.500 40C40.500 37.500 38.500 36 35.500 36Z';
+        const font = 'font-family="Plus Jakarta Sans, Inter, Arial, sans-serif"';
+        let svg;
+        if (kind === 'qr') {
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" rx="24" fill="#F8FAFC"/><rect x="12" y="12" width="376" height="376" rx="18" fill="none" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="10 8"/><g transform="translate(164 96)"><rect width="72" height="72" rx="18" fill="#0F172A"/><path transform="scale(1.125)" fill="#fff" fill-rule="evenodd" d="${B}"/></g><text x="200" y="220" text-anchor="middle" ${font} font-size="22" font-weight="800" fill="#0F172A">Không tải được mã QR</text><text x="200" y="256" text-anchor="middle" ${font} font-size="15" font-weight="500" fill="#475569">Vui lòng chuyển khoản theo</text><text x="200" y="278" text-anchor="middle" ${font} font-size="15" font-weight="500" fill="#475569">thông tin bên cạnh</text></svg>`;
+        } else {
+          const sub = label
+            ? `<rect x="372" y="268" width="56" height="3" rx="1.5" fill="#FFB700"/><text x="400" y="314" text-anchor="middle" ${font} font-size="26" font-weight="600" fill="#BAE6FD" letter-spacing="1">${label}</text>`
+            : `<text x="400" y="296" text-anchor="middle" ${font} font-size="20" font-weight="500" fill="#BAE6FD">Đặt phòng trực tiếp · Giá minh bạch</text>`;
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0C4A6E"/><stop offset=".6" stop-color="#0F172A"/><stop offset="1" stop-color="#020617"/></linearGradient><radialGradient id="a" cx=".18" cy=".1" r=".75"><stop offset="0" stop-color="#0EA5E9" stop-opacity=".6"/><stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/></radialGradient><radialGradient id="b" cx=".9" cy=".95" r=".65"><stop offset="0" stop-color="#10B981" stop-opacity=".45"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></radialGradient></defs><rect width="800" height="500" fill="url(#g)"/><rect width="800" height="500" fill="url(#a)"/><rect width="800" height="500" fill="url(#b)"/><path d="M0 350H800M0 400H800M0 455H800M120 330L-40 500M310 330L250 500M490 330L550 500M680 330L840 500" stroke="#7DD3FC" stroke-opacity=".14" stroke-width="1.500" fill="none"/><g transform="translate(364 112)"><rect width="72" height="72" rx="18" fill="#fff"/><path transform="scale(1.125)" fill="#0F172A" fill-rule="evenodd" d="${B}"/></g><text x="400" y="244" text-anchor="middle" ${font} font-size="40" font-weight="800" fill="#fff">BanlaTravel<tspan fill="#FFB700">.vn</tspan></text>${sub}</svg>`;
+        }
+        const uri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+        fbCache.set(key, uri);
+        return uri;
+      }
+      /* IMG-HELPERS:END */
+
+      // URL ảnh đã tải thành công trong phiên (render lại không nháy skeleton/fade)
+      const seenImg = new Set();
+
+      // Hộp ảnh chống CLS: khung giữ chỗ (aspect-ratio / kích thước cố định từ class) + nền #E2E8F0 + shimmer; ảnh fade-in 300ms khi onload
+      function imgBox(o) {
+        const url = optimizeImgUrl(o.src, o.w || IMG_W.card);
+        const seen = !o.lazySrc && seenImg.has(url);
+        const parts = String(o.ratio || '').split('/').map((n) => parseFloat(n));
+        const hasRatio = parts.length === 2 && parts[0] > 0 && parts[1] > 0;
+        const dims = hasRatio ? ` width="800" height="${Math.round((800 * parts[1]) / parts[0])}"` : '';
+        const style = [hasRatio ? `aspect-ratio:${parts[0]} / ${parts[1]}` : '', o.style || ''].filter(Boolean).join(';');
+        const src = o.lazySrc
+          ? `data-src="${esc(url)}"`
+          : `src="${esc(url)}"${o.srcset ? ` srcset="${esc(o.srcset)}" sizes="${esc(o.sizes || '100vw')}"` : ''}`;
+        const load = o.lazySrc ? '' : o.priority ? ' loading="eager" fetchpriority="high"' : ' loading="lazy"';
+        return `<span class="ib${seen ? ' is-ready' : ''}${o.lazySrc ? ' ib-idle' : ''} ${o.box || ''}"${style ? ` style="${style}"` : ''}><img class="lz${seen ? ' is-loaded' : ''} ${o.img || ''}" ${src} alt="${esc(o.alt || '')}"${dims}${load} decoding="async" draggable="false" data-place="${esc(o.place || '')}"${o.attrs ? ' ' + o.attrs : ''}></span>`;
+      }
+
+      function markImg(img) {
+        img.classList.add('is-loaded');
+        const box = img.parentElement;
+        if (box && box.classList.contains('ib')) box.classList.add('is-ready');
+        if (img.id === 'lb-img') { const sk = document.getElementById('lb-skel'); if (sk) sk.hidden = true; }
+      }
+
+      // Toàn cục: load → fade-in & tắt shimmer; error → thay ảnh dự phòng thương hiệu (chỉ với ảnh của hệ thống: .lz hoặc data-fb)
+      document.addEventListener('load', (e) => {
+        const t = e.target;
+        if (!t || t.tagName !== 'IMG' || !(t.classList.contains('lz') || t.dataset.fb)) return;
+        markImg(t);
+        if (!t.dataset.fbDone) { const s = t.getAttribute('src'); if (s) seenImg.add(s); }
+      }, true);
+
+      document.addEventListener('error', (e) => {
+        const t = e.target;
+        if (!t || t.tagName !== 'IMG' || !(t.classList.contains('lz') || t.dataset.fb)) return;
+        if (t.dataset.fbDone) return; // chống vòng lặp
+        t.dataset.fbDone = '1';
+        t.removeAttribute('srcset');
+        t.removeAttribute('sizes');
+        t.src = fallbackSvg(t.dataset.place, t.dataset.fb === 'qr' ? 'qr' : '');
+      }, true);
+
+      // Đổi ảnh chính khi rê thumbnail: tải sẵn ảnh mới rồi mới thay → không nháy, không vỡ khung
+      function swapImg(img, url) {
+        if (!img || img.dataset.cur === url) return;
+        img.dataset.cur = url;
+        const pre = new Image();
+        pre.onload = () => { if (img.dataset.cur === url) { img.removeAttribute('srcset'); delete img.dataset.fbDone; img.src = url; } };
+        pre.onerror = () => { if (img.dataset.cur === url) img.dataset.cur = ''; };
+        pre.src = url;
+      }
 
       // =====================================================================
       // MOCK DATA
@@ -1318,18 +1463,19 @@
       // =====================================================================
       // CARDS
       // =====================================================================
-      function vCard(p) {
+      function vCard(p, idx = 99) {
         const room = cheapestRoom(p);
         const from = roomNightly(room);
         const save = Math.max(0, Math.round(((room.originalVnd - from) / room.originalVnd) * 100));
         const left = propLeft(p);
         const imgs = p.images.slice(0, 4);
+        const prio = idx < IMG_EAGER_COUNT;
         return `
           <div class="flex">
             <article class="tilt group w-full bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col" data-tilt="6">
-              <div class="card-media relative h-48 overflow-hidden bg-slate-200 cursor-pointer" data-act="prop" data-id="${p.id}" data-idx="0">
+              <div class="card-media relative aspect-[16/10] shrink-0 overflow-hidden bg-slate-200 cursor-pointer" data-act="prop" data-id="${p.id}" data-idx="0">
                 <div class="card-track">
-                  ${imgs.map((im, i) => `<img src="${U(im, 600)}" alt="${esc(p.name)} – ảnh ${i + 1}" ${i ? 'loading="lazy"' : ''} decoding="async" draggable="false" ${ONERR} />`).join('')}
+                  ${imgs.map((im, i) => imgBox({ src: im, w: IMG_W.card, alt: `${p.name} – ảnh ${i + 1}`, place: destName(p.dest), priority: prio && i === 0, lazySrc: i > 0 })).join('')}
                 </div>
                 <span class="absolute top-3 left-3 z-[2] max-w-[36%] truncate bg-booking-navy/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">${CATS[p.category].label}</span>
                 <div class="absolute top-3 right-3 z-[2] flex items-center gap-1.5">${cmpBtn(p.id)}${heartBtn(p.id)}</div>
@@ -1378,12 +1524,12 @@
         return `
           <article class="stagger-in bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-shadow overflow-hidden grid grid-cols-1 md:grid-cols-12" style="--i:${Math.min(i, 8)}">
             <div class="md:col-span-4 p-3">
-              <div class="relative h-48 md:h-44 rounded-xl overflow-hidden bg-slate-200 cursor-pointer" data-act="prop" data-id="${p.id}">
-                <img src="${U(p.images[0], 700)}" alt="${esc(p.name)}" loading="lazy" ${ONERR} class="main-img w-full h-full object-cover" />
+              <div class="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-200 cursor-pointer" data-act="prop" data-id="${p.id}">
+                ${imgBox({ src: p.images[0], w: IMG_W.card, alt: p.name, place: destName(p.dest), priority: i < IMG_EAGER_COUNT, box: 'absolute inset-0', img: 'main-img' })}
                 ${left <= 2 ? `<span class="absolute bottom-2 left-2 bg-agoda-red text-white text-[11px] font-bold px-2 py-0.5 rounded">Chỉ còn ${left} phòng</span>` : ''}
               </div>
               <div class="grid grid-cols-3 gap-1.5 mt-1.5">
-                ${p.images.slice(1, 4).map((im) => `<button type="button" data-swap="${im}" data-act="prop" data-id="${p.id}" class="h-14 rounded-lg overflow-hidden bg-slate-200" aria-label="Xem ảnh ${esc(p.name)}"><img src="${U(im, 240)}" alt="" loading="lazy" ${ONERR} class="w-full h-full object-cover hover:opacity-80" /></button>`).join('')}
+                ${p.images.slice(1, 4).map((im) => `<button type="button" data-swap="${im}" data-act="prop" data-id="${p.id}" class="h-14 rounded-lg overflow-hidden bg-slate-200" aria-label="Xem ảnh ${esc(p.name)}">${imgBox({ src: im, w: IMG_W.thumb, place: destName(p.dest), box: 'w-full h-full hover:opacity-80' })}</button>`).join('')}
               </div>
             </div>
             <div class="md:col-span-5 p-4 md:pl-1">
@@ -1448,7 +1594,7 @@
         const promoSlides = PROMOS.map((pr, i) => `
           <div role="group" aria-roledescription="slide" aria-label="${i + 1} trên ${PROMOS.length}"
             class="shrink-0 w-[85%] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)] rounded-2xl overflow-hidden bg-gradient-to-br ${pr.color} text-white shadow-md relative min-h-[170px]">
-            <img src="${U(pr.img, 500)}" alt="" loading="lazy" ${ONERR} class="absolute right-0 top-0 h-full w-2/5 object-cover opacity-35" />
+            ${imgBox({ src: pr.img, w: IMG_W.thumb, box: 'absolute right-0 top-0 h-full w-2/5 opacity-35' })}
             <div class="relative p-5 pr-[40%] sm:pr-[38%] flex flex-col h-full">
               <span class="text-[10px] font-extrabold uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded w-fit">${pr.code ? 'Mã giảm giá' : 'Tự động áp dụng'}</span>
               <h3 class="text-base font-extrabold mt-2 leading-snug">${pr.title}</h3>
@@ -1465,8 +1611,8 @@
           const count = PROPERTIES.filter((p) => p.dest === d.key).length;
           return `
             <button type="button" role="group" aria-roledescription="slide" aria-label="${d.name}, ${i + 1} trên ${DESTS.length}" data-act="dest" data-dest="${d.key}"
-              class="group shrink-0 w-[60%] sm:w-[calc((100%-2rem)/3)] lg:w-[calc((100%-3rem)/4)] h-56 rounded-2xl overflow-hidden relative text-left shadow-sm">
-              <img src="${U(d.img, 600)}" alt="" loading="lazy" ${ONERR} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              class="group shrink-0 w-[60%] sm:w-[calc((100%-2rem)/3)] lg:w-[calc((100%-3rem)/4)] aspect-[4/3] rounded-2xl overflow-hidden relative text-left shadow-sm">
+              ${imgBox({ src: d.img, w: IMG_W.card, place: d.name, box: 'absolute inset-0', img: 'group-hover:scale-105' })}
               <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
               <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
                 <div class="text-lg font-extrabold">${d.name}</div>
@@ -1564,7 +1710,7 @@
                   const p = propById(r.propId);
                   return `
                   <figure class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col">
-                    <img src="${U(r.photo, 600)}" alt="Ảnh thực tế tại ${esc(p.name)}" loading="lazy" ${ONERR} class="h-36 w-full object-cover" />
+                    ${imgBox({ src: r.photo, w: IMG_W.card, alt: `Ảnh thực tế tại ${p.name}`, place: destName(p.dest), ratio: '2 / 1', box: 'w-full' })}
                     <div class="p-4 flex-1 flex flex-col">
                       <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
@@ -1775,7 +1921,7 @@
                 <div data-lenis-prevent class="xl:col-span-2 space-y-3 xl:max-h-[640px] xl:overflow-y-auto pr-1">
                   ${list.map((p) => `
                     <a href="#/property/${p.id}" class="map-item flex gap-3 bg-white border border-slate-200 rounded-xl p-2.5" data-map-item="${p.id}">
-                      <img src="${U(p.images[0], 240)}" alt="" loading="lazy" ${ONERR} class="w-24 h-20 rounded-lg object-cover shrink-0" />
+                      ${imgBox({ src: p.images[0], w: IMG_W.thumb, place: destName(p.dest), box: 'w-24 h-20 rounded-lg shrink-0' })}
                       <div class="min-w-0">
                         <div class="text-sm font-extrabold leading-snug line-clamp-2">${esc(p.name)}</div>
                         <div class="text-[11px] text-slate-500">${stars(p.stars)} · ${p.score.toFixed(1)} ${scoreLabel(p.score)}</div>
@@ -1840,7 +1986,7 @@
           const icon = L.divIcon({ className: 'leaflet-div-icon-reset', html: `<span class="price-pin">${formatMoney(propFrom(p))}</span>`, iconSize: null });
           const m = L.marker([p.lat, p.lng], { icon, title: p.name })
             .addTo(map)
-            .bindPopup(`<div style="font-family:inherit;min-width:180px"><img src="${U(p.images[0], 300)}" style="width:100%;height:90px;object-fit:cover;border-radius:8px" alt=""/><div style="font-weight:800;margin-top:6px">${esc(p.name)}</div><div style="color:#E12D2D;font-weight:800">${formatMoney(propFrom(p))}</div><a href="#/property/${p.id}" style="color:#0284C7;font-weight:700">Xem chi tiết →</a></div>`);
+            .bindPopup(`<div style="font-family:inherit;min-width:180px">${imgBox({ src: p.images[0], w: IMG_W.thumb, place: destName(p.dest), style: 'width:100%;height:90px;border-radius:8px' })}<div style="font-weight:800;margin-top:6px">${esc(p.name)}</div><div style="color:#E12D2D;font-weight:800">${formatMoney(propFrom(p))}</div><a href="#/property/${p.id}" style="color:#0284C7;font-weight:700">Xem chi tiết →</a></div>`);
           m.on('mouseover', () => item(p.id)?.classList.add('is-hot-item'));
           m.on('mouseout', () => item(p.id)?.classList.remove('is-hot-item'));
           m.on('click', () => item(p.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
@@ -1884,7 +2030,7 @@
           return `
             <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 border-b border-slate-100 last:border-b-0">
               <div class="md:col-span-4 flex gap-3">
-                <img src="${U(r.image, 400)}" alt="${esc(r.name)}" loading="lazy" ${ONERR} class="w-28 h-24 rounded-lg object-cover shrink-0 cursor-zoom-in" data-act="lightbox-room" data-img="${r.image}" />
+                ${imgBox({ src: r.image, w: IMG_W.thumb, alt: r.name, place: destName(p.dest), box: 'w-28 h-24 rounded-lg shrink-0 cursor-zoom-in', attrs: `data-act="lightbox-room" data-img="${r.image}"` })}
                 <div class="min-w-0">
                   <div class="font-extrabold text-ota-blue leading-snug">${esc(r.name)}</div>
                   <div class="text-xs text-slate-600 mt-1">📐 ${r.size} m² · 🛏 ${esc(r.bed)}</div>
@@ -1941,7 +2087,7 @@
               <div class="grid grid-cols-4 grid-rows-2 gap-2 h-[260px] sm:h-[420px] rounded-2xl overflow-hidden">
                 ${p.images.slice(0, 5).map((im, i) => `
                   <button type="button" data-act="lightbox" data-idx="${i}" class="relative overflow-hidden bg-slate-200 ${i === 0 ? 'col-span-4 sm:col-span-2 row-span-2' : 'hidden sm:block'}" aria-label="Mở ảnh ${i + 1}">
-                    <img src="${U(im, i === 0 ? 1200 : 600)}" alt="${esc(p.name)} – ảnh ${i + 1}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} ${ONERR} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                    ${imgBox({ src: im, w: IMG_W.card, alt: `${p.name} – ảnh ${i + 1}`, place: destName(p.dest), priority: i === 0, srcset: i === 0 ? imgSrcset(im, [IMG_W.card, 1280]) : '', sizes: '(min-width: 1280px) 600px, (min-width: 640px) 50vw, 100vw', box: 'w-full h-full', img: 'hover:scale-105' })}
                     ${i === 4 || (i === 0) ? `<span class="${i === 0 ? 'sm:hidden' : ''} absolute bottom-3 right-3 bg-black/65 text-white text-xs font-bold px-3 py-1.5 rounded-lg">📷 Xem tất cả ${p.images.length} ảnh</span>` : ''}
                   </button>`).join('')}
               </div>
@@ -2112,7 +2258,7 @@
         return `
           <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
             <div class="flex gap-3 p-4 border-b border-slate-100">
-              <img src="${U(p.images[0], 300)}" alt="" ${ONERR} class="w-20 h-20 rounded-xl object-cover" />
+              ${imgBox({ src: p.images[0], w: IMG_W.thumb, place: destName(p.dest), box: 'w-20 h-20 rounded-xl shrink-0' })}
               <div><div class="text-xs">${stars(p.stars)}</div><div class="font-extrabold leading-snug text-sm">${esc(p.name)}</div><div class="text-[11px] text-ota-blue font-semibold">📍 ${esc(p.location)}</div></div>
             </div>
             <div class="p-4 space-y-2 text-sm">
@@ -2301,7 +2447,7 @@
                   </div>
                   ${b.status === 'awaiting_payment' ? '<div class="h-1.5 bg-slate-100 rounded-full mb-4"><div id="cd-bar" class="h-1.5 bg-agoda-red rounded-full transition-all" style="width:100%"></div></div>' : ''}
                   <div class="flex flex-col sm:flex-row items-center gap-5 ${b.status === 'expired' ? 'opacity-50' : ''}">
-                    <img id="vietqr-img" src="${vietqrUrl(b)}" alt="Mã VietQR MB Bank cho đơn ${esc(b.code)}" class="w-56 h-56 rounded-xl border border-slate-200 object-contain bg-white" />
+                    <img id="vietqr-img" data-fb="qr" width="224" height="224" src="${vietqrUrl(b)}" alt="Mã VietQR MB Bank cho đơn ${esc(b.code)}" class="w-56 h-56 rounded-xl border border-slate-200 object-contain bg-white" />
                     <dl class="text-sm space-y-2 w-full">
                       <div><dt class="text-[11px] font-bold text-slate-500 uppercase">Ngân hàng</dt><dd class="font-bold">MB Bank — ${BANK_CONFIG.accountName}</dd></div>
                       <div><dt class="text-[11px] font-bold text-slate-500 uppercase">Số tài khoản</dt><dd class="font-mono text-lg font-extrabold flex items-center gap-2">${BANK_CONFIG.accountNo} <button type="button" data-act="copy" data-code="${BANK_CONFIG.accountNo}" class="text-xs font-bold text-ota-blue border border-ota-blue rounded px-2 py-0.5">Sao chép</button></dd></div>
@@ -2398,7 +2544,7 @@
             <details class="mt-8 max-w-2xl mx-auto bg-white rounded-2xl border border-slate-200 p-4">
               <summary class="font-extrabold text-sm text-booking-navy cursor-pointer">Xem lại mã VietQR &amp; thông tin chuyển khoản</summary>
               <div class="flex flex-col sm:flex-row items-center gap-5 mt-4">
-                <img src="${vietqrUrl(b)}" alt="Mã VietQR MB Bank cho đơn ${esc(b.code)}" class="w-44 h-44 rounded-xl border border-slate-200 object-contain bg-white" />
+                <img data-fb="qr" width="176" height="176" src="${vietqrUrl(b)}" alt="Mã VietQR MB Bank cho đơn ${esc(b.code)}" class="w-44 h-44 rounded-xl border border-slate-200 object-contain bg-white" />
                 <dl class="text-sm space-y-2 w-full">
                   <div><dt class="text-[11px] font-bold text-slate-500 uppercase">Ngân hàng</dt><dd class="font-bold">MB Bank — ${BANK_CONFIG.accountName}</dd></div>
                   <div><dt class="text-[11px] font-bold text-slate-500 uppercase">Số tài khoản</dt><dd class="font-mono font-extrabold">${BANK_CONFIG.accountNo}</dd></div>
@@ -2521,7 +2667,7 @@
           const st = STATUS[b.status] || STATUS.awaiting_payment;
           return `
             <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden grid grid-cols-1 sm:grid-cols-12">
-              <img src="${U(p.images[0], 400)}" alt="" loading="lazy" ${ONERR} class="sm:col-span-3 h-40 sm:h-full w-full object-cover" />
+              ${imgBox({ src: p.images[0], w: IMG_W.card, place: destName(p.dest), box: 'sm:col-span-3 h-40 sm:h-auto w-full' })}
               <div class="sm:col-span-6 p-4">
                 <div class="flex flex-wrap items-center gap-2"><span class="font-mono font-extrabold text-booking-navy">${esc(b.code)}</span><span class="text-[11px] font-extrabold px-2 py-0.5 rounded-full ${st.cls}">${st.label}</span></div>
                 <div class="font-extrabold mt-1">${esc(p.name)}</div>
@@ -2797,6 +2943,14 @@
       }
 
       // ---- Card image slider ----
+      // Slide phụ của thẻ chỉ được nạp khi người dùng hover / bấm ‹ › (không nạp sẵn)
+      function loadSlide(media, i) {
+        const img = $$('.card-track img', media)[i];
+        if (!img || img.getAttribute('src') || !img.dataset.src) return;
+        const box = img.parentElement;
+        if (box) box.classList.remove('ib-idle');
+        img.src = img.dataset.src;
+      }
       function cardStep(btn, dir) {
         const media = btn.closest('.card-media');
         if (!media) return;
@@ -2804,9 +2958,22 @@
         const n = track.children.length;
         const i = (Number(media.dataset.idx || 0) + dir + n) % n;
         media.dataset.idx = i;
+        loadSlide(media, i);
+        loadSlide(media, (i + 1) % n); // nạp trước ảnh kế tiếp để lướt liên tục không phải chờ
         track.style.transform = `translate3d(${-i * 100}%,0,0)`;
         $$('.card-dots i', media).forEach((dot, k) => dot.classList.toggle('on', k === i));
       }
+
+      // Hover chuột / focus bàn phím lên thẻ → chỉ nạp ảnh slide kế tiếp (cảm ứng: nạp khi bấm ‹ ›)
+      function warmCard(e) {
+        if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+        const m = e.target && e.target.closest ? e.target.closest('.card-media') : null;
+        if (!m) return;
+        const n = m.querySelectorAll('.card-track img').length;
+        if (n > 1) loadSlide(m, (Number(m.dataset.idx || 0) + 1) % n);
+      }
+      document.addEventListener('pointerover', warmCard);
+      document.addEventListener('focusin', warmCard);
 
       // ---- Active filter chips (keyed diff: bật nảy vào / ra) ----
       function activeChips() {
@@ -2998,7 +3165,7 @@
         cmpBarKey = key;
         const props = state.compare.map(propById).filter(Boolean);
         cmpBar.innerHTML = `
-          <div class="flex items-center -space-x-2" aria-hidden="true">${props.map((p) => `<img src="${U(p.images[0], 120)}" alt="" ${ONERR} />`).join('')}</div>
+          <div class="flex items-center -space-x-2" aria-hidden="true">${props.map((p) => imgBox({ src: p.images[0], w: IMG_W.thumb, place: destName(p.dest), box: 'cmp-av' })).join('')}</div>
           <div class="min-w-0 leading-tight">
             <div class="text-sm font-extrabold whitespace-nowrap">${props.length} chỗ nghỉ đã chọn</div>
             <div class="text-[11px] text-white/70 hidden sm:block">Tối đa 3 · đối chiếu giá, điểm &amp; chính sách</div>
@@ -3037,7 +3204,7 @@
               ${props.map((p) => `
                 <th scope="col">
                   <div class="relative">
-                    <img src="${U(p.images[0], 500)}" alt="${esc(p.name)}" ${ONERR} class="w-full aspect-[16/10] object-cover rounded-xl" />
+                    ${imgBox({ src: p.images[0], w: IMG_W.card, alt: p.name, place: destName(p.dest), ratio: '16 / 10', box: 'w-full rounded-xl' })}
                     <button type="button" data-act="compare-remove" data-id="${p.id}" aria-label="Bỏ ${esc(p.name)} khỏi so sánh" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/95 font-bold shadow">✕</button>
                   </div>
                   <div class="font-extrabold leading-snug mt-2 text-[14px]">${esc(p.name)}</div>
@@ -3189,29 +3356,50 @@
       let lbIdx = 0;
       const lightbox = $('#lightbox');
       lightbox.addEventListener('close', () => lockScroll(false));
+      let lbPlace = '';
+      let lbToken = 0;
+      function buildLbThumbs() {
+        $('#lb-thumbs').innerHTML = lbImages.length > 1
+          ? lbImages.map((im, i) => `<button type="button" data-act="lb-go" data-idx="${i}" aria-label="Ảnh ${i + 1}" aria-current="${i === lbIdx}" class="lb-thumb ${i === lbIdx ? 'on' : ''}">${imgBox({ src: im, w: IMG_W.thumb, place: lbPlace, box: 'w-full h-full' })}</button>`).join('')
+          : '';
+      }
       function showLb(dir = 0) {
         const img = $('#lb-img');
-        img.src = U(lbImages[lbIdx], 1600);
-        img.alt = `Ảnh ${lbIdx + 1} / ${lbImages.length}`;
+        const skel = $('#lb-skel');
+        const token = ++lbToken;
+        const url = optimizeImgUrl(lbImages[lbIdx], IMG_W.full); // bản nét cao w=1600 chỉ tải khi người dùng mở Lightbox
         $('#lb-count').textContent = `${lbIdx + 1} / ${lbImages.length}`;
         const multi = lbImages.length > 1;
         $$('[data-act="lb-prev"],[data-act="lb-next"]', lightbox).forEach((b) => b.classList.toggle('hidden', !multi));
-        $('#lb-thumbs').innerHTML = multi
-          ? lbImages.map((im, i) => `<button type="button" data-act="lb-go" data-idx="${i}" aria-label="Ảnh ${i + 1}" aria-current="${i === lbIdx}" class="lb-thumb ${i === lbIdx ? 'on' : ''}"><img src="${U(im, 160)}" alt="" ${ONERR} /></button>`).join('')
-          : '';
-        if (dir && !reduced()) {
-          if (!springAnimate(img, { opacity: [0, 1], x: [dir * 80, 0], scale: [0.96, 1] }) && img.animate) img.animate(
-            [{ transform: `translate3d(${dir * 80}px,0,0) scale(.96)`, opacity: 0 }, { transform: 'translate3d(0,0,0) scale(1)', opacity: 1 }],
-            { duration: 520, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }
-          );
-        }
-        const on = $('.lb-thumb.on', lightbox);
-        if (on) on.scrollIntoView({ inline: 'center', block: 'nearest' });
+        $$('.lb-thumb', lightbox).forEach((b, i) => { const on = i === lbIdx; b.classList.toggle('on', on); b.setAttribute('aria-current', String(on)); });
+        const onThumb = $('.lb-thumb.on', lightbox);
+        if (onThumb) onThumb.scrollIntoView({ inline: 'center', block: 'nearest' });
+        img.alt = `Ảnh ${lbIdx + 1} / ${lbImages.length}`;
+        img.dataset.place = lbPlace;
+        img.classList.remove('is-loaded'); // ảnh cũ mờ dần, hiện skeleton
+        skel.hidden = false;
+        const show = () => {
+          if (token !== lbToken) return; // người dùng đã chuyển sang ảnh khác
+          delete img.dataset.fbDone;
+          img.src = url; // ảnh đã nằm trong cache → hiện ngay, đồng thời load → fade-in
+          requestAnimationFrame(() => { if (token === lbToken && img.complete && img.naturalWidth > 0) markImg(img); });
+          if (dir && !reduced()) {
+            if (!springAnimate(img, { opacity: [0, 1], x: [dir * 80, 0], scale: [0.96, 1] }) && img.animate) img.animate(
+              [{ transform: `translate3d(${dir * 80}px,0,0) scale(.96)`, opacity: 0 }, { transform: 'translate3d(0,0,0) scale(1)', opacity: 1 }],
+              { duration: 520, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }
+            );
+          }
+        };
+        const pre = new Image();
+        pre.onload = show;
+        pre.onerror = show; // lỗi → gán src để bộ xử lý lỗi toàn cục thay bằng ảnh dự phòng
+        pre.src = url;
       }
       function lbStep(d) { lbIdx = (lbIdx + d + lbImages.length) % lbImages.length; showLb(d); }
       function lbGo(i) { const dir = i === lbIdx ? 0 : (i > lbIdx ? 1 : -1); lbIdx = i; showLb(dir); }
-      function openLightbox(images, idx) {
-        lbImages = images; lbIdx = idx;
+      function openLightbox(images, idx, place) {
+        lbImages = images; lbIdx = idx; lbPlace = place || '';
+        buildLbThumbs();
         showLb(0);
         if (!lightbox.open) { lightbox.showModal(); lockScroll(true); }
       }
@@ -3296,10 +3484,10 @@
           case 'toggle-filters': $('#filter-panel')?.classList.toggle('mobile-open'); break;
           case 'lightbox': {
             const p = propById(currentRoute().arg);
-            if (p) openLightbox(p.images, Number(el.dataset.idx));
+            if (p) openLightbox(p.images, Number(el.dataset.idx), destName(p.dest));
             break;
           }
-          case 'lightbox-room': openLightbox([el.dataset.img], 0); break;
+          case 'lightbox-room': openLightbox([el.dataset.img], 0, destName((propById(currentRoute().arg) || {}).dest)); break;
           case 'lb-close': lightbox.close(); break;
           case 'lb-go': lbGo(Number(el.dataset.idx)); break;
           case 'lb-prev': lbStep(-1); break;
@@ -3350,7 +3538,7 @@
         const t = e.target.closest('[data-swap]');
         if (!t) return;
         const main = t.closest('article')?.querySelector('.main-img');
-        if (main) main.src = U(t.dataset.swap, 700);
+        if (main) swapImg(main, optimizeImgUrl(t.dataset.swap, IMG_W.card));
       });
 
       function syncSearchForms() {
