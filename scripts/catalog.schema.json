@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://banlatravel.vn/catalog.schema.json",
+  "title": "BanlaTravel.vn catalog",
+  "type": "object",
+  "required": ["version", "generated_at", "site", "regions", "items", "totals"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"type": "integer", "minimum": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "site": {"const": "BanlaTravel.vn"},
+    "totals": {
+      "type": "object",
+      "required": ["items", "images", "complete", "partial", "missing", "bytes"],
+      "properties": {
+        "items": {"type": "integer"}, "images": {"type": "integer"}, "complete": {"type": "integer"},
+        "partial": {"type": "integer"}, "missing": {"type": "integer"}, "bytes": {"type": "integer"}
+      }
+    },
+    "regions": {
+      "type": "array", "minItems": 16, "maxItems": 16,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["slug", "name", "province", "batch", "item_count"],
+        "properties": {
+          "slug": {"$ref": "#/$defs/slug"}, "name": {"type": "string", "minLength": 2},
+          "province": {"type": "string"}, "batch": {"type": "integer", "minimum": 1, "maximum": 4},
+          "item_count": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "items": {"type": "array", "minItems": 86, "maxItems": 86, "items": {"$ref": "#/$defs/item"}}
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+    "image": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "role", "width", "height", "bytes", "source_url", "source_page", "source_domain", "source_kind", "credit", "license_note"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^\\./assets/places/[a-z0-9-]+/[a-z0-9-]+-0[1-9]\\.webp$"},
+        "role": {"enum": ["hero", "gallery"]},
+        "width": {"const": 1280},
+        "height": {"type": "integer", "minimum": 673, "maximum": 985},
+        "bytes": {"type": "integer", "minimum": 8000, "maximum": 160000},
+        "source_url": {"type": "string", "format": "uri"},
+        "source_page": {"type": "string"},
+        "source_domain": {"type": "string"},
+        "source_kind": {"enum": ["official", "press", "review/blog"]},
+        "credit": {"type": "string"},
+        "license_note": {"type": "string"}
+      }
+    },
+    "item": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "slug", "name", "region", "region_name", "province", "area", "category", "batch",
+                   "hero_image", "images", "photo_count", "photo_status", "notes"],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "slug": {"$ref": "#/$defs/slug"},
+        "name": {"type": "string", "minLength": 2},
+        "region": {"$ref": "#/$defs/slug"},
+        "region_name": {"type": "string"},
+        "province": {"type": "string"},
+        "area": {"type": "string"},
+        "category": {"enum": ["hotel", "resort", "homestay", "villa", "apartment", "train", "ticket"]},
+        "batch": {"type": "integer", "minimum": 1, "maximum": 4},
+        "hero_image": {"type": ["string", "null"]},
+        "images": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/image"}},
+        "photo_count": {"type": "integer", "minimum": 0, "maximum": 5},
+        "photo_status": {"enum": ["complete", "partial", "missing"]},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}
