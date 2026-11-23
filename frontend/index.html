@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BANLA // NOMAD — Expeditions & Boutique Stays</title>
+  <title>BANLA TRAVEL OTA — Đặt Khách Sạn, Homestay, Resort & Villa Giá Tốt</title>
 
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,21 +20,16 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            mist: '#F8F9FA',
-            obsidian: '#0B0C0E',
-            'obsidian-elevated': '#111215',
-            carbon: '#0D0E11',
-            muted: '#6B7280',
-            crimson: '#E63946',
-            pine: '#10B981',
-            cloud: '#9CA3AF',
-            ocean: '#3B82F6',
-            golden: '#EAB308',
-            'telemetry-alert': '#FF4D4D',
-            'telemetry-ok': '#34D399',
+            'booking-navy': '#003580',
+            'booking-dark': '#00224F',
+            'ota-blue': '#006CE4',
+            'traveloka-sky': '#0194F3',
+            'agoda-red': '#E12D2D',
+            'ota-amber': '#FF8000',
+            'ota-gold': '#FFB700',
+            'ota-bg': '#F2F6FA',
           },
         },
       },
@@ -41,933 +37,1121 @@
   </script>
 
   <style>
-    html {
-      scroll-behavior: smooth;
-      background-color: #F8F9FA;
-      color: #0D0E11;
-    }
-
     body {
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background-color: #F2F6FA;
+      color: #1A1A1A;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    .mono-label {
-      font-family: 'JetBrains Mono', monospace;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+    .hero-ota-bg {
+      background-image:
+        linear-gradient(105deg, rgba(0, 34, 79, 0.88) 0%, rgba(0, 53, 128, 0.72) 52%, rgba(0, 53, 128, 0.45) 100%),
+        url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1800&q=80');
+      background-size: cover;
+      background-position: center;
     }
 
-    .swiss-grid-light {
-      background-image: linear-gradient(to right, rgba(13, 14, 17, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(13, 14, 17, 0.035) 1px, transparent 1px);
-      background-size: 48px 48px;
+    .cat-card.is-active {
+      border-color: #006CE4;
+      background-color: #EFF6FF;
+      box-shadow: 0 10px 24px -10px rgba(0, 108, 228, 0.35);
     }
 
-    .swiss-grid-dark {
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    @keyframes radar-ping {
-      0% {
-        transform: scale(1);
-        opacity: 0.85;
-      }
-
-      75%,
-      100% {
-        transform: scale(2.4);
-        opacity: 0;
-      }
-    }
-
-    .radar-ring {
-      animation: radar-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-
-    @keyframes pendulum-sway {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      20% {
-        transform: rotate(4.2deg);
-      }
-
-      45% {
-        transform: rotate(-3.2deg);
-      }
-
-      68% {
-        transform: rotate(1.8deg);
-      }
-
-      85% {
-        transform: rotate(-0.8deg);
-      }
-
-      100% {
-        transform: rotate(0deg);
-      }
-    }
-
-    .hang-tag-pivot {
-      transform-origin: 50% 0%;
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
-    }
-
-    .hang-tag-pivot:hover,
-    .hang-tag-pivot.is-swinging {
-      animation: pendulum-sway 1.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .hang-tag-pivot.is-active {
-      box-shadow: 0 22px 45px -16px rgba(13, 14, 17, 0.22);
-    }
-
-    .blueprint-layer {
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, filter 0.35s ease;
-      cursor: pointer;
-    }
-
-    .blueprint-svg.has-focus .blueprint-layer:not(.is-highlighted) {
-      opacity: 0.28;
-    }
-
-    .blueprint-layer.is-highlighted {
-      transform: translateY(-7px);
-      filter: drop-shadow(0 12px 18px rgba(230, 57, 70, 0.14));
-    }
-
-    .blueprint-layer.is-highlighted .layer-stroke-primary {
-      stroke: #E63946;
-      stroke-width: 2;
-    }
-
-    .blueprint-layer.is-highlighted .layer-fill-tint {
-      fill: rgba(230, 57, 70, 0.08);
-    }
-
-    .blueprint-node {
-      transition: transform 0.3s ease, fill 0.3s ease;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-
-    .blueprint-layer.is-highlighted .blueprint-node {
-      fill: #E63946;
-      transform: scale(1.35);
-    }
-
-    .telemetry-curve-draw {
-      stroke-dasharray: 520;
-      stroke-dashoffset: 520;
-      transition: stroke-dashoffset 1.9s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .telemetry-curve-draw.is-drawn {
-      stroke-dashoffset: 0;
-    }
-
-    @keyframes subtle-float {
+    @keyframes cart-bounce {
 
       0%,
       100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
-    }
-
-    .cabin-float {
-      animation: subtle-float 5.5s ease-in-out infinite;
-    }
-
-    @keyframes counter-pop {
-      0% {
         transform: scale(1);
       }
 
-      40% {
-        transform: scale(1.12);
-        background-color: #E63946;
-        color: #FFFFFF;
-      }
-
-      100% {
-        transform: scale(1);
+      45% {
+        transform: scale(1.1);
       }
     }
 
-    .bag-pop {
-      animation: counter-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    .cart-pop {
+      animation: cart-bounce 0.4s ease;
     }
 
-    .payment-option.is-selected {
-      border-color: #0D0E11;
-      background-color: #FFFFFF;
-      box-shadow: 0 10px 26px -14px rgba(13, 14, 17, 0.22);
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F2F6FA;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #003580;
     }
   </style>
 </head>
 
-<body class="bg-mist text-carbon antialiased selection:bg-crimson selection:text-white">
+<body class="antialiased selection:bg-ota-blue selection:text-white">
 
-  <!-- 1. STICKY NAVIGATION HEADER -->
-  <header class="backdrop-blur-md bg-white/80 border-b border-black/5 sticky top-0 z-50">
+  <!-- ===================================================================== -->
+  <!-- 1. TOP PROMO BAR & BOOKING/AGODA STYLE HEADER                         -->
+  <!-- ===================================================================== -->
+  <div class="bg-booking-dark text-white text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="bg-ota-amber text-white font-bold px-2 py-0.5 rounded text-[11px]">ƯU ĐÃI ĐẶT SỚM</span>
+        <span>Giảm bậc thang tự động: <strong class="text-ota-gold">1 đêm -5% · 2 đêm -10% · 3+ đêm -15%</strong> + Đổi
+          lịch miễn phí</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 text-white/85">
+        <span>Đối tác chuẩn: <strong>Booking · Agoda · Traveloka</strong></span>
+        <span>|</span>
+        <a href="tel:0358341934" class="font-bold text-ota-gold hover:underline">Hotline/Zalo: 0358.341.934</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="bg-booking-navy text-white sticky top-0 z-40 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-      <a href="#strategy" class="flex items-center gap-2.5">
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="radar-ring absolute inline-flex h-full w-full rounded-full bg-[#E63946] opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E63946]"></span>
-        </span>
-        <span class="font-mono font-bold text-sm sm:text-[15px] tracking-[0.08em] text-[#0D0E11]">BANLA // NOMAD</span>
+      <!-- Brand Logo + OTA Dots -->
+      <a href="#top" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-sm">
+          <span class="font-extrabold text-booking-navy text-lg leading-none">B</span>
+        </div>
+        <div>
+          <div class="font-extrabold text-base sm:text-lg tracking-tight leading-none flex items-center gap-1.5">
+            <span>BanlaTravel</span>
+            <span class="text-ota-gold">.vn</span>
+          </div>
+          <!-- Agoda-inspired multicolor dots -->
+          <div class="flex items-center gap-1 mt-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E12D2D]"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#FFB700]"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#0194F3]"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]"></span>
+            <span class="text-[10px] text-white/75 ml-1 font-medium">OTA Direct Booking</span>
+          </div>
+        </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-7 lg:gap-9">
-        <a href="#strategy" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Strategy</a>
-        <a href="#destinations" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Destinations</a>
-        <a href="#blueprint" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Blueprint</a>
-        <a href="#telemetry" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Live Weather</a>
-        <a href="#packages" class="text-[13px] font-medium text-[#0D0E11]/75 hover:text-[#0D0E11]">Packages</a>
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-white/90">
+        <a href="#categories" class="hover:text-ota-gold transition-colors">Loại hình lưu trú</a>
+        <a href="#hotel-list" class="hover:text-ota-gold transition-colors">Khách sạn &amp; Phòng trống</a>
+        <a href="#ota-benefits" class="hover:text-ota-gold transition-colors">Cam kết chất lượng</a>
       </nav>
 
+      <!-- Right Controls -->
       <div class="flex items-center gap-2.5">
-        <button id="header-bot-status-btn" type="button"
-          class="hidden sm:inline-flex items-center gap-1.5 mono-label text-[10px] font-semibold px-2.5 py-1.5 rounded-full border border-[#229ED9]/30 bg-[#229ED9]/10 text-[#0284C7] hover:bg-[#229ED9] hover:text-white transition-colors cursor-pointer">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>
+        <!-- Bot Connection Badge -->
+        <button id="header-bot-btn" type="button"
+          class="hidden md:inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+          title="Cấu hình cầu nối Telegram @CSN1503_ai_Bot">
+          <span class="w-2 h-2 rounded-full bg-[#34D399]"></span>
           <span>@CSN1503_ai_Bot</span>
         </button>
 
+        <!-- Currency Switcher -->
         <button id="currency-toggle" type="button"
-          class="mono-label text-[11px] font-medium text-[#6B7280] hover:text-[#0D0E11] px-2.5 py-1.5 rounded-full border border-black/10 bg-white/70 cursor-pointer">
-          VN / USD
+          class="bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer">
+          VND (₫)
         </button>
 
-        <button id="booking-bag-btn" type="button"
-          class="mono-label text-[11px] font-semibold bg-[#0D0E11] text-white hover:bg-[#E63946] px-4 py-2 rounded-full transition-colors flex items-center gap-2 cursor-pointer">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>
-          <span id="booking-bag-label">Booking (0)</span>
+        <!-- Booking Cart CTA -->
+        <button id="open-cart-btn" type="button"
+          class="bg-ota-amber hover:bg-[#e67300] text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-lg shadow transition-all flex items-center gap-2 cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span id="cart-count-label">Đơn đặt (0)</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- 2. HERO SECTION WITH TOPOGRAPHIC CONTOUR SVG -->
-  <section id="strategy"
-    class="relative overflow-hidden swiss-grid-light pt-12 pb-16 sm:pt-16 sm:pb-24 border-b border-black/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-        <div class="lg:col-span-6 flex flex-col items-start">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-black/10 mb-7">
-            <span class="relative flex h-2 w-2">
-              <span class="radar-ring absolute inline-flex h-full w-full rounded-full bg-[#E63946] opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#E63946]"></span>
-            </span>
-            <span class="mono-label text-[10px] sm:text-[11px] font-semibold text-[#0D0E11]">CURATED STAYS FOR DEEP
-              EXPLORERS</span>
-          </div>
+  <!-- ===================================================================== -->
+  <!-- 2. OTA HERO BANNER + FLOATING SEARCH ENGINE                           -->
+  <!-- ===================================================================== -->
+  <section id="top" class="hero-ota-bg pt-10 pb-20 sm:pt-14 sm:pb-24 text-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Partner Trust Pills -->
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span
+          class="bg-white text-booking-navy font-extrabold text-xs px-3 py-1 rounded-md shadow-sm">Booking.com</span>
+        <span class="bg-white text-[#1A1A1A] font-extrabold text-xs px-3 py-1 rounded-md shadow-sm">agoda</span>
+        <span class="bg-white text-traveloka-sky font-extrabold text-xs px-3 py-1 rounded-md shadow-sm">traveloka</span>
+        <span class="bg-ota-gold/20 border border-ota-gold/50 text-ota-gold font-bold text-xs px-3 py-1 rounded-md">
+          ★ Nền tảng đặt phòng xác thực 24/7
+        </span>
+      </div>
 
-          <h1 class="text-5xl sm:text-6xl lg:text-[68px] leading-[1.03] tracking-[-0.03em] text-[#0D0E11] mb-6">
-            <span class="block font-light">Quiet luxury</span>
-            <span class="block font-extrabold italic">for wild horizons.</span>
-          </h1>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight max-w-3xl leading-tight mb-3">
+        Tìm phòng khách sạn, Homestay săn mây &amp; Resort giá tốt nhất
+      </h1>
+      <p class="text-sm sm:text-base text-white/90 max-w-2xl mb-8">
+        Hình ảnh thực tế 100%, giá minh bạch đã gồm ưu đãi đặt trực tiếp, thanh toán VietQR nhanh chóng và xác nhận giữ
+        phòng tức thì.
+      </p>
 
-          <p class="text-base sm:text-lg text-[#6B7280] leading-relaxed max-w-xl mb-9">
-            Architectural retreats and private cloud-hunting itineraries for travelers who plan every detail twice.
-          </p>
-
-          <div class="flex flex-wrap items-center gap-3.5 mb-12">
-            <a href="#packages"
-              class="inline-flex items-center justify-center rounded-full bg-[#0D0E11] text-white hover:bg-[#E63946] px-6 py-3.5 text-sm font-medium transition-all">
-              [ Explore packages -&gt; ]
-            </a>
-            <a href="#telemetry"
-              class="inline-flex items-center justify-center rounded-full bg-white/80 hover:bg-white text-[#0D0E11] border border-black/15 hover:border-[#0D0E11] px-6 py-3.5 text-sm font-medium transition-all">
-              [ Live altitude &amp; weather ]
-            </a>
-          </div>
-
-          <div class="w-full grid grid-cols-3 gap-3 pt-6 border-t border-black/10">
-            <div class="bg-white/90 border border-black/[0.06] rounded-xl px-3.5 py-3">
-              <div class="mono-label text-[9px] text-[#6B7280] mb-1">ELEVATION</div>
-              <div class="text-xs sm:text-sm font-semibold text-[#0D0E11]">1,650 m Peak View</div>
-            </div>
-            <div class="bg-white/90 border border-black/[0.06] rounded-xl px-3.5 py-3">
-              <div class="mono-label text-[9px] text-[#6B7280] mb-1">OCCUPANCY</div>
-              <div class="text-xs sm:text-sm font-semibold text-[#0D0E11]">94% Guest Return</div>
-            </div>
-            <div class="bg-white/90 border border-black/[0.06] rounded-xl px-3.5 py-3">
-              <div class="mono-label text-[9px] text-[#6B7280] mb-1">BOT BRIDGE</div>
-              <div class="text-xs sm:text-sm font-semibold text-[#0D0E11]">Secure Proxy Push</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-6">
+      <!-- Booking.com Yellow-Bordered Search Box -->
+      <div class="bg-ota-gold p-1.5 rounded-2xl shadow-2xl">
+        <form id="ota-search-form"
+          class="bg-white text-[#1A1A1A] rounded-xl p-3 sm:p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+          <!-- Destination -->
           <div
-            class="relative bg-white border border-black/10 rounded-3xl p-4 sm:p-6 shadow-[0_24px_60px_-24px_rgba(13,14,17,0.12)] overflow-hidden">
-            <div class="flex items-center justify-between pb-3 mb-2 border-b border-black/5">
-              <div class="mono-label text-[10px] text-[#6B7280] flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                TOPO // RIDGE SECTOR 21.25°N 104.46°E
-              </div>
-              <div class="mono-label text-[10px] text-[#0D0E11] font-semibold">SCALE 1:25,000</div>
-            </div>
+            class="md:col-span-4 border border-slate-200 hover:border-ota-blue rounded-xl px-3.5 py-2.5 transition-colors">
+            <label for="filter-dest" class="block text-[11px] font-bold text-slate-500 uppercase">
+              📍 Bạn muốn đi đâu?
+            </label>
+            <select id="filter-dest"
+              class="w-full bg-transparent text-sm font-bold text-slate-900 focus:outline-none mt-0.5 cursor-pointer">
+              <option value="all">Tất cả điểm đến (Đà Lạt · Tà Xùa · Phú Quốc)</option>
+              <option value="dalat">Đà Lạt — Khách sạn &amp; Villa đồi thông</option>
+              <option value="taxua">Tà Xùa — Homestay săn mây 1,650m</option>
+              <option value="phuquoc">Phú Quốc — Resort &amp; Sunset Dinner Show</option>
+            </select>
+          </div>
 
-            <div class="relative w-full aspect-[4/3.3]">
-              <svg viewBox="0 0 640 520" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="ridgeGlow" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#10B981" stop-opacity="0.14" />
-                    <stop offset="55%" stop-color="#3B82F6" stop-opacity="0.06" />
-                    <stop offset="100%" stop-color="#E63946" stop-opacity="0.08" />
-                  </linearGradient>
-                  <linearGradient id="cabinGlass" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.22" />
-                    <stop offset="100%" stop-color="#10B981" stop-opacity="0.10" />
-                  </linearGradient>
-                  <pattern id="microGrid" width="32" height="32" patternUnits="userSpaceOnUse">
-                    <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#0D0E11" stroke-opacity="0.045"
-                      stroke-width="0.75" />
-                  </pattern>
-                </defs>
-                <rect x="0" y="0" width="640" height="520" rx="16" fill="#F8F9FA" />
-                <rect x="0" y="0" width="640" height="520" rx="16" fill="url(#microGrid)" />
-                <ellipse cx="325" cy="275" rx="230" ry="155" fill="url(#ridgeGlow)" />
-                <path
-                  d="M42 425 C 110 360, 145 255, 225 205 C 315 148, 430 142, 520 212 C 585 262, 605 348, 578 415 C 545 488, 390 495, 265 480 C 165 468, 82 470, 42 425 Z"
-                  stroke="#0D0E11" stroke-opacity="0.10" stroke-width="1" />
-                <path
-                  d="M128 378 C 170 330, 198 262, 260 228 C 328 190, 408 192, 470 242 C 512 276, 524 332, 498 374 C 468 422, 368 430, 282 420 C 214 412, 155 410, 128 378 Z"
-                  stroke="#0D0E11" stroke-opacity="0.18" stroke-width="1.1" />
-                <path
-                  d="M222 328 C 244 300, 262 270, 302 252 C 344 234, 388 238, 418 268 C 440 290, 444 318, 426 338 C 406 360, 352 365, 306 360 C 268 355, 236 346, 222 328 Z"
-                  stroke="#0D0E11" stroke-opacity="0.34" stroke-width="1.35" stroke-dasharray="4 3" />
-                <path
-                  d="M268 308 C 282 290, 298 274, 324 266 C 350 258, 378 262, 394 282 C 406 296, 404 314, 390 326 C 374 338, 340 340, 314 336 C 292 332, 274 320, 268 308 Z"
-                  stroke="#E63946" stroke-opacity="0.45" stroke-width="1.4" />
-                <g class="cabin-float">
-                  <polygon points="262,286 334,250 412,284 340,320" fill="#FFFFFF" stroke="#0D0E11"
-                    stroke-width="1.6" />
-                  <polygon points="282,276 334,250 334,212 282,238" fill="#0D0E11" fill-opacity="0.92" stroke="#0D0E11"
-                    stroke-width="1.4" />
-                  <polygon points="334,250 392,275 392,237 334,212" fill="url(#cabinGlass)" stroke="#0D0E11"
-                    stroke-width="1.4" />
-                  <polygon points="268,236 336,202 406,233 338,267" fill="#FFFFFF" stroke="#0D0E11"
-                    stroke-width="1.75" />
-                </g>
-                <g>
-                  <polyline points="274,288 188,164 166,164" stroke="#0D0E11" stroke-width="1.2" fill="none" />
-                  <circle cx="274" cy="288" r="4" fill="#E63946" />
-                  <rect x="20" y="138" width="232" height="46" rx="10" fill="#FFFFFF" stroke="#0D0E11"
-                    stroke-opacity="0.15" />
-                  <text x="36" y="158" font-family="JetBrains Mono" font-size="10.5" font-weight="600"
-                    fill="#0D0E11">panoramic glass deck</text>
-                  <text x="36" y="173" font-family="JetBrains Mono" font-size="10" fill="#6B7280">[1,650m] // ZERO
-                    OBSTRUCTION</text>
-                </g>
-                <g>
-                  <polyline points="384,268 444,398 462,398" stroke="#0D0E11" stroke-width="1.2" fill="none" />
-                  <circle cx="384" cy="268" r="4" fill="#0D0E11" />
-                  <rect x="358" y="376" width="262" height="46" rx="10" fill="#0D0E11" />
-                  <text x="374" y="396" font-family="JetBrains Mono" font-size="10.5" font-weight="600"
-                    fill="#FFFFFF">cloudflare -> @CSN1503_ai_Bot</text>
-                  <text x="374" y="411" font-family="JetBrains Mono" font-size="10" fill="#9CA3AF">[ZERO TOKEN LEAK] //
-                    LIVE PUSH</text>
-                </g>
+          <!-- Check-in -->
+          <div
+            class="md:col-span-2 border border-slate-200 hover:border-ota-blue rounded-xl px-3 py-2.5 transition-colors">
+            <label for="checkin-date" class="block text-[11px] font-bold text-slate-500 uppercase">
+              📅 Nhận phòng
+            </label>
+            <input id="checkin-date" type="date"
+              class="w-full bg-transparent text-xs sm:text-sm font-bold text-slate-900 focus:outline-none mt-0.5 cursor-pointer" />
+          </div>
+
+          <!-- Check-out -->
+          <div
+            class="md:col-span-2 border border-slate-200 hover:border-ota-blue rounded-xl px-3 py-2.5 transition-colors">
+            <div class="flex items-center justify-between">
+              <label for="checkout-date" class="text-[11px] font-bold text-slate-500 uppercase">📅 Trả phòng</label>
+              <span id="nights-pill"
+                class="text-[10px] font-extrabold bg-blue-100 text-ota-blue px-1.5 py-0.5 rounded">2 đêm</span>
+            </div>
+            <input id="checkout-date" type="date"
+              class="w-full bg-transparent text-xs sm:text-sm font-bold text-slate-900 focus:outline-none mt-0.5 cursor-pointer" />
+          </div>
+
+          <!-- Guests -->
+          <div
+            class="md:col-span-2 border border-slate-200 hover:border-ota-blue rounded-xl px-3 py-2.5 transition-colors">
+            <label for="guest-select" class="block text-[11px] font-bold text-slate-500 uppercase">
+              👥 Số khách
+            </label>
+            <select id="guest-select"
+              class="w-full bg-transparent text-xs sm:text-sm font-bold text-slate-900 focus:outline-none mt-0.5 cursor-pointer">
+              <option value="2 người lớn · 1 phòng">2 người lớn · 1 phòng</option>
+              <option value="1 người lớn · 1 phòng">1 người lớn · 1 phòng</option>
+              <option value="4 người lớn · 2 phòng">4 người lớn · 2 phòng</option>
+              <option value="Gia đình / Đoàn riêng">Gia đình / Đoàn riêng</option>
+            </select>
+          </div>
+
+          <!-- Search Button -->
+          <div class="md:col-span-2 h-full">
+            <button type="submit"
+              class="w-full h-full min-h-[54px] rounded-xl bg-ota-blue hover:bg-booking-navy text-white font-extrabold text-sm sm:text-base shadow-md transition-colors flex items-center justify-center gap-2 cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-            </div>
+              <span>Tìm phòng</span>
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- 3. INTERACTIVE 5-TAG HANGING RACK -->
-  <section id="destinations" class="scroll-mt-16 py-20 sm:py-28 bg-[#F8F9FA] border-b border-black/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-14">
-        <div class="mono-label text-[11px] font-semibold text-[#E63946] mb-3">01 // CURATED DESTINATIONS</div>
-        <h2 class="text-3xl sm:text-5xl font-bold tracking-[-0.025em] text-[#0D0E11] mb-4">Pick your whole journey.</h2>
-        <p class="text-base sm:text-lg text-[#6B7280]">Color-coded regional itineraries matching seasonal
-          micro-climates.</p>
+  <!-- ===================================================================== -->
+  <!-- 3. 5 ACCOMMODATION CATEGORIES BAR (INSPIRED BY IMAGE 2)               -->
+  <!-- ===================================================================== -->
+  <section id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+    <div class="bg-white rounded-2xl shadow-lg border border-slate-200/80 p-4 sm:p-5">
+      <div class="flex items-center justify-between mb-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-booking-navy">
+          Phù hợp với mọi nhu cầu lưu trú
+        </span>
+        <span id="discount-tier-banner"
+          class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+          ✓ Đang chọn 2 đêm: Tự động giảm thêm 10%
+        </span>
       </div>
 
-      <div class="relative pt-6 pb-4">
-        <div class="relative w-full h-3 flex items-center">
-          <div class="w-4 h-4 rounded-full bg-[#0D0E11] border-2 border-white shadow"></div>
-          <div class="flex-1 h-[3px] bg-gradient-to-r from-[#0D0E11] via-[#6B7280] to-[#0D0E11]"></div>
-          <div class="w-4 h-4 rounded-full bg-[#0D0E11] border-2 border-white shadow"></div>
-        </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <button type="button" data-cat="all"
+          class="cat-card is-active rounded-xl border-2 border-slate-200 p-3 flex flex-col items-center text-center transition-all cursor-pointer">
+          <span class="text-2xl mb-1">🌟</span>
+          <span class="text-xs font-extrabold text-booking-navy">TẤT CẢ</span>
+          <span class="text-[11px] text-slate-500">6 chỗ nghỉ nổi bật</span>
+        </button>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-4 -mt-1.5 relative z-10">
-          <div class="flex flex-col items-center">
-            <div class="w-[1.5px] h-8 bg-[#0D0E11]"></div>
-            <button type="button" data-route-id="sunset-town"
-              class="destination-tag hang-tag-pivot is-active w-full text-left bg-white rounded-2xl border-2 border-[#E63946] p-4 cursor-pointer">
-              <div class="h-1.5 w-full rounded-full bg-[#E63946] mb-3"></div>
-              <span class="mono-label text-[10px] font-semibold text-[#E63946]">RT-01 // 4.98★</span>
-              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Sunset Town</h3>
-              <p class="mono-label text-[10px] text-[#6B7280] mt-1">42m // COASTAL CLIFF</p>
-            </button>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="w-[1.5px] h-10 bg-[#0D0E11]"></div>
-            <button type="button" data-route-id="ta-xua"
-              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
-              <div class="h-1.5 w-full rounded-full bg-[#9CA3AF] mb-3"></div>
-              <span class="mono-label text-[10px] font-semibold text-[#6B7280]">RT-02 // 4.98★</span>
-              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Ta Xua Ridge</h3>
-              <p class="mono-label text-[10px] text-[#6B7280] mt-1">1,650m // SEA OF CLOUDS</p>
-            </button>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="w-[1.5px] h-7 bg-[#0D0E11]"></div>
-            <button type="button" data-route-id="phu-quoc"
-              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
-              <div class="h-1.5 w-full rounded-full bg-[#3B82F6] mb-3"></div>
-              <span class="mono-label text-[10px] font-semibold text-[#3B82F6]">RT-03 // 4.98★</span>
-              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Phu Quoc Bay</h3>
-              <p class="mono-label text-[10px] text-[#6B7280] mt-1">12m // ISLAND HORIZON</p>
-            </button>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="w-[1.5px] h-11 bg-[#0D0E11]"></div>
-            <button type="button" data-route-id="dalat"
-              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
-              <div class="h-1.5 w-full rounded-full bg-[#10B981] mb-3"></div>
-              <span class="mono-label text-[10px] font-semibold text-[#10B981]">RT-04 // 4.98★</span>
-              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Dalat Highlands</h3>
-              <p class="mono-label text-[10px] text-[#6B7280] mt-1">1,500m // PINE MIST</p>
-            </button>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="w-[1.5px] h-9 bg-[#0D0E11]"></div>
-            <button type="button" data-route-id="bavaria"
-              class="destination-tag hang-tag-pivot w-full text-left bg-white rounded-2xl border border-black/10 p-4 cursor-pointer">
-              <div class="h-1.5 w-full rounded-full bg-[#EAB308] mb-3"></div>
-              <span class="mono-label text-[10px] font-semibold text-[#CA8A04]">RT-05 // 4.98★</span>
-              <h3 class="text-base font-bold text-[#0D0E11] mt-1">Bavaria Dinner</h3>
-              <p class="mono-label text-[10px] text-[#6B7280] mt-1">18:00 // GASTRO SHOW</p>
-            </button>
-          </div>
-        </div>
-      </div>
+        <button type="button" data-cat="hotel"
+          class="cat-card rounded-xl border-2 border-slate-200 hover:border-ota-blue p-3 flex flex-col items-center text-center transition-all cursor-pointer">
+          <span class="text-2xl mb-1">🏨</span>
+          <span class="text-xs font-extrabold text-booking-navy">KHÁCH SẠN</span>
+          <span class="text-[11px] text-slate-500">Boutique trung tâm</span>
+        </button>
 
-      <div
-        class="mt-10 bg-white border border-black/10 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div class="flex items-center gap-4">
-          <div id="route-swatch" class="w-3 h-12 rounded-full bg-[#E63946]"></div>
-          <div>
-            <div id="route-code" class="mono-label text-[10px] font-bold text-[#0D0E11]">ACTIVE ROUTE // RT-01</div>
-            <h3 id="route-title" class="text-lg sm:text-xl font-bold text-[#0D0E11]">Sunset Town — Mediterranean
-              Cliffside &amp; Dusk Fireworks</h3>
-            <p id="route-desc" class="text-sm text-[#6B7280]">Optimal dry coastal breeze window (17:15–21:30).</p>
-          </div>
-        </div>
-        <a href="#packages"
-          class="mono-label text-[10px] font-semibold bg-[#0D0E11] hover:bg-[#E63946] text-white px-4 py-2.5 rounded-full transition-colors self-start md:self-auto">VIEW
-          PACKAGE →</a>
+        <button type="button" data-cat="homestay"
+          class="cat-card rounded-xl border-2 border-slate-200 hover:border-ota-blue p-3 flex flex-col items-center text-center transition-all cursor-pointer">
+          <span class="text-2xl mb-1">🏡</span>
+          <span class="text-xs font-extrabold text-booking-navy">HOMESTAY</span>
+          <span class="text-[11px] text-slate-500">View săn mây đỉnh núi</span>
+        </button>
+
+        <button type="button" data-cat="resort"
+          class="cat-card rounded-xl border-2 border-slate-200 hover:border-ota-blue p-3 flex flex-col items-center text-center transition-all cursor-pointer">
+          <span class="text-2xl mb-1">🌴</span>
+          <span class="text-xs font-extrabold text-booking-navy">RESORT</span>
+          <span class="text-[11px] text-slate-500">Hồ bơi &amp; biển riêng</span>
+        </button>
+
+        <button type="button" data-cat="apartment"
+          class="cat-card rounded-xl border-2 border-slate-200 hover:border-ota-blue p-3 flex flex-col items-center text-center transition-all cursor-pointer">
+          <span class="text-2xl mb-1">🏢</span>
+          <span class="text-xs font-extrabold text-booking-navy">CĂN HỘ DỊCH VỤ</span>
+          <span class="text-[11px] text-slate-500">Tiện nghi dài ngày</span>
+        </button>
+
+        <button type="button" data-cat="villa"
+          class="cat-card rounded-xl border-2 border-slate-200 hover:border-ota-blue p-3 flex flex-col items-center text-center transition-all cursor-pointer">
+          <span class="text-2xl mb-1">🏘️</span>
+          <span class="text-xs font-extrabold text-booking-navy">VILLA NGHỈ DƯỠNG</span>
+          <span class="text-[11px] text-slate-500">Nguyên căn riêng tư</span>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- 4. EXPERIENCE BLUEPRINT EXPLODED VIEW -->
-  <section id="blueprint" class="scroll-mt-16 py-20 sm:py-28 bg-white border-b border-black/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-14">
-        <div class="mono-label text-[11px] font-semibold text-[#E63946] mb-3">02 // EXPERIENCE BLUEPRINT</div>
-        <h2 class="text-3xl sm:text-5xl tracking-[-0.025em] text-[#0D0E11]">
-          <span class="font-bold">Four layers.</span><span class="font-extrabold italic"> Zero guesswork.</span>
+  <!-- ===================================================================== -->
+  <!-- 4. HOTEL & ROOM LISTINGS (BOOKING.COM & AGODA CARD LAYOUT)            -->
+  <!-- ===================================================================== -->
+  <section id="hotel-list" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
+      <div>
+        <div class="inline-flex items-center gap-1.5 text-xs font-extrabold text-ota-blue uppercase mb-1">
+          <span>●</span>
+          <span>Lịch phòng &amp; Giá bán đồng bộ trực tiếp</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Chỗ nghỉ &amp; Gói trải nghiệm được đánh giá cao nhất
         </h2>
+        <p id="listing-count-text" class="text-sm text-slate-600 mt-1">
+          Hiển thị 6 chỗ nghỉ xác thực · Cam kết không overbooking
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <div class="lg:col-span-6">
-          <div class="bg-[#F8F9FA] border border-black/10 rounded-3xl p-4 sm:p-6">
-            <svg id="blueprint-svg" viewBox="0 0 540 500" class="blueprint-svg w-full h-auto" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <line x1="255" y1="36" x2="255" y2="470" stroke="#0D0E11" stroke-opacity="0.14" stroke-dasharray="4 5" />
-              <g class="blueprint-layer" data-layer="4">
-                <polygon points="255,336 395,402 255,468 115,402" class="layer-stroke-primary layer-fill-tint"
-                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.35" />
-                <ellipse cx="255" cy="402" rx="52" ry="24" stroke="#10B981" stroke-width="1.2" stroke-dasharray="3 3" />
-                <circle class="blueprint-node" cx="395" cy="402" r="4.5" fill="#0D0E11" />
-              </g>
-              <g class="blueprint-layer" data-layer="3">
-                <polygon points="255,246 395,312 255,378 115,312" class="layer-stroke-primary layer-fill-tint"
-                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.35" />
-                <path d="M158 312 L 246 312 L 298 288" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" />
-                <circle class="blueprint-node" cx="395" cy="312" r="4.5" fill="#0D0E11" />
-              </g>
-              <g class="blueprint-layer" data-layer="2">
-                <polygon points="255,156 395,222 255,288 115,222" class="layer-stroke-primary layer-fill-tint"
-                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.35" />
-                <polygon points="222,216 266,196 302,213 258,233" fill="#EAB308" fill-opacity="0.18" stroke="#0D0E11"
-                  stroke-width="1.2" />
-                <circle class="blueprint-node" cx="395" cy="222" r="4.5" fill="#0D0E11" />
-              </g>
-              <g class="blueprint-layer" data-layer="1">
-                <polygon points="255,74 395,140 255,206 115,140" class="layer-stroke-primary layer-fill-tint"
-                  fill="#FFFFFF" stroke="#0D0E11" stroke-width="1.4" />
-                <polygon points="255,38 352,84 255,130 158,84" class="layer-stroke-primary" fill="#FFFFFF"
-                  stroke="#0D0E11" stroke-width="1.5" />
-                <circle class="blueprint-node" cx="395" cy="140" r="4.5" fill="#0D0E11" />
-              </g>
-            </svg>
+      <!-- Sort Control -->
+      <div class="flex items-center gap-2 self-start sm:self-auto">
+        <button id="reset-filter-btn" type="button"
+          class="hidden text-xs font-bold text-agoda-red bg-red-50 border border-red-200 px-3 py-2 rounded-xl hover:bg-red-100 cursor-pointer">
+          ✕ Xóa lọc
+        </button>
+        <div class="bg-white border border-slate-200 rounded-xl px-3.5 py-2 flex items-center gap-2 shadow-sm">
+          <span class="text-xs font-semibold text-slate-500">Sắp xếp:</span>
+          <select id="sort-select"
+            class="text-xs sm:text-sm font-bold text-booking-navy bg-transparent focus:outline-none cursor-pointer">
+            <option value="popular">Phổ biến nhất</option>
+            <option value="price-asc">Giá thấp nhất trước</option>
+            <option value="score-desc">Điểm đánh giá cao nhất</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamically rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 5. OTA QUALITY SHIELD & OPERATIONS TRUST BANNER (FROM IMAGE 2)        -->
+  <!-- ===================================================================== -->
+  <section id="ota-benefits" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="bg-booking-navy rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+      <div class="pointer-events-none absolute -right-16 -bottom-16 w-72 h-72 rounded-full bg-ota-blue/30 blur-3xl">
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        <!-- Left Shield & 5 Gold Stars -->
+        <div class="lg:col-span-5 flex flex-col items-start">
+          <div class="inline-flex items-center gap-3 bg-white/10 border border-white/15 rounded-2xl px-4 py-3 mb-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-ota-gold text-booking-dark flex items-center justify-center font-extrabold text-xl shadow">
+              ✓
+            </div>
+            <div>
+              <div class="text-xs font-bold text-ota-gold uppercase tracking-wider">Bảo chứng đặt phòng trực tiếp</div>
+              <div class="text-sm font-extrabold text-white">NỀN TẢNG VỮNG CHẮC – GIÁ MINH BẠCH</div>
+            </div>
           </div>
+
+          <h3 class="text-2xl sm:text-3xl font-extrabold leading-snug mb-3">
+            Trải nghiệm chuẩn OTA quốc tế, hỗ trợ tận tâm 24/7 tại Việt Nam
+          </h3>
+          <div class="flex items-center gap-1 text-ota-gold text-xl mb-3" aria-label="5 sao">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <span class="text-xs text-white/80 font-semibold ml-2">4.9/5 từ hơn 1.800 lượt khách lưu trú</span>
+          </div>
+          <p class="text-sm text-white/80 leading-relaxed">
+            Mọi đơn đặt phòng đều được kiểm tra tình trạng phòng thực tế, tạo mã VietQR tự động và đẩy thẳng về hệ thống
+            Concierge để xác nhận dưới 3 phút.
+          </p>
         </div>
 
-        <div class="lg:col-span-6 flex flex-col gap-4">
-          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
-            data-layer="1">
-            <h3 class="text-base font-bold text-[#0D0E11]">01. Sanctuary - Acoustic timber suite (verified)</h3>
-            <p class="text-sm text-[#6B7280] mt-1">Double-glazed valley view framing sea-of-clouds sunrises.</p>
+        <!-- Right 4 Feature Pillars -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white/10 border border-white/10 rounded-2xl p-4">
+            <div class="w-9 h-9 rounded-lg bg-ota-amber text-white flex items-center justify-center font-bold mb-2.5">📷
+            </div>
+            <h4 class="font-bold text-sm mb-1">Hình ảnh &amp; Hạng phòng thật 100%</h4>
+            <p class="text-xs text-white/75">Thông tin diện tích, hướng nhìn đồi thông, biển mây và hồ bơi đúng chuẩn
+              thực tế.</p>
           </div>
-          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
-            data-layer="2">
-            <h3 class="text-base font-bold text-[#0D0E11]">02. Gastronomy - Private sunset table (verified)</h3>
-            <p class="text-sm text-[#6B7280] mt-1">Curated coastal &amp; highland tasting menus with reserved front-row
-              seating.</p>
+
+          <div class="bg-white/10 border border-white/10 rounded-2xl p-4">
+            <div class="w-9 h-9 rounded-lg bg-ota-amber text-white flex items-center justify-center font-bold mb-2.5">📅
+            </div>
+            <h4 class="font-bold text-sm mb-1">Đồng bộ lịch phòng – Chống Overbooking</h4>
+            <p class="text-xs text-white/75">Khóa quỹ phòng ngay khi tạo mã đơn và duyệt cọc trực tiếp qua Telegram Bot.
+            </p>
           </div>
-          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
-            data-layer="3">
-            <h3 class="text-base font-bold text-[#0D0E11]">03. Logistics - Seamless door-to-door transfer (verified)
-            </h3>
-            <p class="text-sm text-[#6B7280] mt-1">Direct airport fast-track and private SUV transit.</p>
+
+          <div class="bg-white/10 border border-white/10 rounded-2xl p-4">
+            <div class="w-9 h-9 rounded-lg bg-ota-amber text-white flex items-center justify-center font-bold mb-2.5">💳
+            </div>
+            <h4 class="font-bold text-sm mb-1">Thanh toán linh hoạt – Cọc chỉ từ 30%</h4>
+            <p class="text-xs text-white/75">Hỗ trợ quét mã VietQR MB Bank tự động điền nội dung đơn, không phát sinh
+              phí ẩn.</p>
           </div>
-          <div class="blueprint-card rounded-2xl border border-black/10 bg-white p-5 cursor-pointer transition-all"
-            data-layer="4">
-            <h3 class="text-base font-bold text-[#0D0E11]">04. Guarantee - Flexible 100% weather-shift policy (verified)
-            </h3>
-            <p class="text-sm text-[#6B7280] mt-1">Complimentary date rescheduling for peak atmospheric conditions.</p>
+
+          <div class="bg-white/10 border border-white/10 rounded-2xl p-4">
+            <div class="w-9 h-9 rounded-lg bg-ota-amber text-white flex items-center justify-center font-bold mb-2.5">
+              🛡️</div>
+            <h4 class="font-bold text-sm mb-1">Hỗ trợ đổi lịch thời tiết miễn phí</h4>
+            <p class="text-xs text-white/75">Linh hoạt bảo lưu hoặc dời ngày cho các hành trình săn mây Tà Xùa &amp; Đà
+              Lạt.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. LIVE FIELD TELEMETRY HUD -->
-  <section id="telemetry" class="scroll-mt-16 py-24 bg-[#0B0C0E] text-white swiss-grid-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
-        <div>
-          <div class="mono-label text-[11px] font-semibold text-[#FF4D4D] mb-3">03 // LIVE FIELD TELEMETRY</div>
-          <h2 class="text-3xl sm:text-5xl font-bold">Built for the golden hour.</h2>
-        </div>
-        <span id="telemetry-clock"
-          class="mono-label text-xs text-[#34D399] bg-white/5 border border-white/10 px-4 py-2 rounded-full">ICT
-          --:--:--</span>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="rounded-3xl bg-[#111215] border border-white/10 p-6">
-          <span class="mono-label text-[11px] text-[#9CA3AF]">CLOUD SEA PROBABILITY</span>
-          <div class="font-mono text-5xl font-bold text-white my-3"><span id="counter-cloud"
-              data-target="88.5">0.0</span>%</div>
-          <div class="w-full h-2.5 rounded-full bg-white/10 overflow-hidden">
-            <div id="bar-cloud"
-              class="h-full rounded-full bg-gradient-to-r from-[#3B82F6] to-[#34D399] transition-all duration-1000"
-              style="width: 0%;"></div>
-          </div>
-        </div>
-        <div class="rounded-3xl bg-[#111215] border border-white/10 p-6">
-          <span class="mono-label text-[11px] text-[#9CA3AF]">PEAK SEASON OCCUPANCY</span>
-          <div class="font-mono text-5xl font-bold text-[#FF4D4D] my-3"><span id="counter-occupancy"
-              data-target="94.2">0.0</span>%</div>
-          <div class="w-full h-2.5 rounded-full bg-white/10 overflow-hidden">
-            <div id="bar-occupancy"
-              class="h-full rounded-full bg-gradient-to-r from-[#EAB308] to-[#FF4D4D] transition-all duration-1000"
-              style="width: 0%;"></div>
-          </div>
-        </div>
-        <div class="rounded-3xl bg-[#111215] border border-white/10 p-6 flex flex-col justify-between">
+  <!-- ===================================================================== -->
+  <!-- 6. NAVY HOTLINE & TRUST FOOTER (INSPIRED BY IMAGE 2)                  -->
+  <!-- ===================================================================== -->
+  <footer class="bg-booking-dark text-white border-t-4 border-ota-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-8 border-b border-white/10">
+        <div class="md:col-span-5 flex items-center gap-4">
           <div
-            class="mono-label text-sm font-bold text-[#34D399] bg-[#34D399]/10 border border-[#34D399]/25 rounded-xl px-3.5 py-2.5 inline-block">
-            ✓ PASS // ZERO HIDDEN FEE
+            class="w-14 h-14 rounded-full bg-ota-gold/15 border-2 border-ota-gold flex items-center justify-center text-2xl">
+            📞
           </div>
-          <svg viewBox="0 0 320 90" class="w-full h-24 mt-4" fill="none">
-            <path id="telemetry-elev-path" class="telemetry-curve-draw"
-              d="M 8 76 C 52 70, 72 24, 108 18 C 148 12, 185 38, 228 28 C 265 20, 290 42, 312 36" stroke="#34D399"
-              stroke-width="2.2" stroke-linecap="round" />
-          </svg>
+          <div>
+            <div class="text-xs font-bold uppercase text-white/75">Tư vấn đặt phòng &amp; Combo miễn phí</div>
+            <a href="tel:0358341934" class="text-2xl sm:text-3xl font-extrabold text-ota-gold hover:underline block">
+              0358 341 934
+            </a>
+            <div class="text-xs text-white/80 font-semibold">ZALO / HOTLINE / TELEGRAM @CSN1503_ai_Bot</div>
+          </div>
+        </div>
+
+        <div class="md:col-span-7 grid grid-cols-3 gap-4 text-xs">
+          <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+            <div class="font-extrabold text-ota-gold mb-1">🛡️ UY TÍN</div>
+            <p class="text-white/75">Hệ thống lưu trú vận hành trực tiếp tại Đà Lạt, Tà Xùa &amp; Phú Quốc.</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+            <div class="font-extrabold text-ota-gold mb-1">🎧 TẬN TÂM</div>
+            <p class="text-white/75">Hỗ trợ check-in nhanh, xe đưa đón sân bay &amp; giữ bàn ăn VIP.</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+            <div class="font-extrabold text-ota-gold mb-1">📈 GIÁ GỐC</div>
+            <p class="text-white/75">Ưu đãi giảm tới 15% khi đặt trực tiếp từ 3 đêm trên website.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- 6. PACKAGES -->
-  <section id="packages" class="scroll-mt-16 py-20 sm:py-28 bg-[#F8F9FA]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-        <div>
-          <div class="mono-label text-[11px] font-semibold text-[#E63946] mb-3">04 // READY TO DEPART</div>
-          <h2 class="text-3xl sm:text-5xl font-bold text-[#0D0E11]">One booking. Every detail.</h2>
-        </div>
-        <div class="mono-label text-[10px] text-[#6B7280]">CLOUDFLARE WORKER / PYTHON BOT READY // ZERO SECRET LEAK
-        </div>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/65">
+        <div>© 2026 <strong>BanlaTravel OTA</strong> — Banla Boutique Hotel Đà Lạt · Nhà của An Tà Xùa · Phú Quốc
+          Sunset.</div>
+        <div>Thanh toán an toàn: <strong>VietQR · MB Bank · Visa · Apple Pay</strong></div>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="bg-white rounded-3xl border border-black/10 p-6 sm:p-7 flex flex-col justify-between">
-          <div>
-            <span
-              class="mono-label text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#9CA3AF]/15 text-[#374151] inline-block mb-4">TA
-              XUA // 1,650m</span>
-            <h3 class="text-xl font-bold text-[#0D0E11] mb-3">Ta Xua Cloud-Hunting Escape (3D2N)</h3>
-            <p class="text-sm text-[#6B7280] mb-6">2 Nights Panoramic Ridge Suite, SUV Transfer &amp; 100% Weather-Shift
-              Guarantee.</p>
-          </div>
-          <div class="pt-5 border-t border-black/10">
-            <div class="flex items-end justify-between mb-4">
-              <div class="package-price-sub font-mono text-xs font-semibold text-[#E63946]" data-usd="185"
-                data-vnd="4690000">4.690.000₫</div>
-              <span class="package-price font-mono text-3xl font-bold text-[#0D0E11]" data-usd="185"
-                data-vnd="4690000">$185</span>
-            </div>
-            <button type="button"
-              class="quick-checkout-btn w-full rounded-full bg-[#0D0E11] hover:bg-[#E63946] text-white py-3.5 px-5 text-sm font-semibold transition-all cursor-pointer"
-              data-package-id="pkg-taxua">
-              Đặt ngay &amp; Bắn về Bot →
-            </button>
-          </div>
-        </article>
-
-        <article class="bg-[#0D0E11] text-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl">
-          <div>
-            <span
-              class="mono-label text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#10B981]/20 text-[#34D399] inline-block mb-4">DALAT
-              // MOST CURATED</span>
-            <h3 class="text-xl font-bold mb-3">Dalat Boutique Retreat &amp; Dining (3D2N)</h3>
-            <p class="text-sm text-[#9CA3AF] mb-6">2 Nights Pine Mist Villa, Highland Tasting Menu &amp; Private Airport
-              SUV.</p>
-          </div>
-          <div class="pt-5 border-t border-white/15">
-            <div class="flex items-end justify-between mb-4">
-              <div class="package-price-sub font-mono text-xs font-semibold text-[#34D399]" data-usd="240"
-                data-vnd="6090000">6.090.000₫</div>
-              <span class="package-price font-mono text-3xl font-bold text-white" data-usd="240"
-                data-vnd="6090000">$240</span>
-            </div>
-            <button type="button"
-              class="quick-checkout-btn w-full rounded-full bg-[#E63946] hover:bg-white hover:text-[#0D0E11] text-white py-3.5 px-5 text-sm font-semibold transition-all cursor-pointer"
-              data-package-id="pkg-dalat">
-              Đặt ngay &amp; Bắn về Bot →
-            </button>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-3xl border border-black/10 p-6 sm:p-7 flex flex-col justify-between">
-          <div>
-            <span
-              class="mono-label text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#3B82F6]/15 text-[#2563EB] inline-block mb-4">PHU
-              QUOC // COASTAL</span>
-            <h3 class="text-xl font-bold text-[#0D0E11] mb-3">Phu Quoc Sunset Show &amp; VIP Pass</h3>
-            <p class="text-sm text-[#6B7280] mb-6">VIP Front-Row Sunset Show, Reserved Sun Bavaria Dinner Table &amp;
-              Private Transfer.</p>
-          </div>
-          <div class="pt-5 border-t border-black/10">
-            <div class="flex items-end justify-between mb-4">
-              <div class="package-price-sub font-mono text-xs font-semibold text-[#E63946]" data-usd="125"
-                data-vnd="3190000">3.190.000₫</div>
-              <span class="package-price font-mono text-3xl font-bold text-[#0D0E11]" data-usd="125"
-                data-vnd="3190000">$125</span>
-            </div>
-            <button type="button"
-              class="quick-checkout-btn w-full rounded-full bg-[#0D0E11] hover:bg-[#E63946] text-white py-3.5 px-5 text-sm font-semibold transition-all cursor-pointer"
-              data-package-id="pkg-phuquoc">
-              Đặt ngay &amp; Bắn về Bot →
-            </button>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-white border-t border-black/10 py-10">
-    <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B7280]">
-      <div class="mono-label font-semibold text-[#0D0E11]">BANLA // NOMAD © 2026 // Curated in Vietnam.</div>
-      <div class="mono-label">TELEGRAM BOT: <a href="https://t.me/CSN1503_ai_Bot" target="_blank"
-          rel="noopener noreferrer" class="font-bold text-[#0D0E11]">@CSN1503_ai_Bot</a></div>
     </div>
   </footer>
 
-  <!-- SECURE CHECKOUT DRAWER -->
+  <!-- ===================================================================== -->
+  <!-- ROOM DETAIL MODAL ("XEM PHÒNG")                                       -->
+  <!-- ===================================================================== -->
+  <div id="room-modal-overlay"
+    class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-200">
+      <div class="relative h-56 bg-slate-200">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+        <button id="close-modal-btn" type="button"
+          class="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 text-white font-bold hover:bg-black cursor-pointer">✕</button>
+        <span id="modal-badge"
+          class="absolute bottom-3 left-3 bg-booking-navy text-white text-xs font-bold px-3 py-1 rounded-lg"></span>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 id="modal-title" class="text-xl font-extrabold text-slate-900"></h3>
+            <p id="modal-location" class="text-xs font-semibold text-ota-blue mt-0.5"></p>
+          </div>
+          <div class="bg-booking-navy text-white font-extrabold text-sm px-2.5 py-1.5 rounded-lg" id="modal-score">
+          </div>
+        </div>
+        <p id="modal-desc" class="text-sm text-slate-600 leading-relaxed"></p>
+        <div id="modal-amenities" class="flex flex-wrap gap-2"></div>
+        <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-slate-500">Giá ưu đãi hôm nay</div>
+            <div id="modal-price" class="text-2xl font-extrabold text-agoda-red"></div>
+          </div>
+          <button id="modal-select-btn" type="button"
+            class="bg-ota-blue hover:bg-booking-navy text-white font-extrabold text-sm px-6 py-3 rounded-xl shadow cursor-pointer">
+            Chọn phòng này →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- OTA CHECKOUT & VIETQR + @CSN1503_ai_Bot DRAWER                        -->
+  <!-- ===================================================================== -->
   <div id="bag-overlay"
-    class="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+    class="fixed inset-0 bg-slate-900/55 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
 
   <aside id="bag-drawer"
-    class="fixed top-0 right-0 h-full w-full max-w-xl bg-white z-50 shadow-2xl border-l border-black/10 translate-x-full transition-transform duration-300 flex flex-col">
-    <div class="px-6 py-4 border-b border-black/10 flex items-center justify-between">
+    class="fixed top-0 right-0 h-full w-full max-w-xl bg-white z-50 shadow-2xl border-l border-slate-200 translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="px-6 py-4 bg-booking-navy text-white flex items-center justify-between">
       <div>
-        <div class="mono-label text-[10px] text-[#E63946] font-bold">BANLA // SECURE ORDER BRIDGE</div>
-        <h3 class="text-lg font-bold text-[#0D0E11]">Đặt chỗ &amp; Bắn đơn về @CSN1503_ai_Bot</h3>
+        <div class="text-[11px] font-bold text-ota-gold uppercase">Xác nhận đặt phòng &amp; Giữ chỗ trực tiếp</div>
+        <h3 class="text-lg font-extrabold">Đơn đặt phòng của bạn</h3>
       </div>
       <button id="close-bag-btn" type="button"
-        class="p-2 rounded-full border border-black/10 hover:bg-black/5 cursor-pointer">✕</button>
+        class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold cursor-pointer">✕</button>
     </div>
 
     <div class="flex-1 overflow-y-auto p-6 space-y-5">
-      <div id="bag-items-container" class="space-y-2.5"></div>
+      <!-- Dates Banner -->
+      <div class="rounded-xl bg-blue-50 border border-blue-200 px-4 py-3 flex items-center justify-between text-xs">
+        <div>
+          <span class="text-slate-500 font-semibold block">Lịch nhận – trả phòng:</span>
+          <strong id="drawer-dates" class="text-booking-navy text-sm"></strong>
+        </div>
+        <span id="drawer-discount-pill" class="bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-full"></span>
+      </div>
 
-      <!-- Voucher Box -->
+      <!-- Selected Rooms -->
+      <div id="bag-items-container" class="space-y-3"></div>
+
+      <!-- Voucher Input -->
       <div class="flex gap-2">
-        <input id="voucher-input" type="text" placeholder="Mã ưu đãi (BANLA10 hoặc CLOUDVIP)"
-          class="flex-1 rounded-xl border border-black/15 px-3.5 py-2 text-xs font-mono uppercase" />
+        <input id="voucher-input" type="text" placeholder="Nhập mã giảm giá (BANLA10 hoặc CLOUDVIP)"
+          class="flex-1 rounded-xl border border-slate-300 px-3.5 py-2.5 text-xs font-semibold uppercase focus:outline-none focus:border-ota-blue" />
         <button id="apply-voucher-btn" type="button"
-          class="mono-label text-[10px] font-semibold px-4 py-2 rounded-xl bg-[#0D0E11] text-white cursor-pointer">ÁP
-          DỤNG</button>
+          class="bg-booking-navy hover:bg-ota-blue text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors cursor-pointer">
+          Áp dụng
+        </button>
       </div>
-      <div id="voucher-feedback" class="hidden text-xs font-semibold"></div>
+      <div id="voucher-feedback" class="hidden text-xs font-bold"></div>
 
-      <!-- Customer Form -->
-      <div class="rounded-2xl border border-black/10 bg-[#F8F9FA] p-4 space-y-3">
-        <div class="mono-label text-[10px] font-bold text-[#0D0E11]">THÔNG TIN KHÁCH HÀNG &amp; LỊCH TRÌNH</div>
+      <!-- Guest Form -->
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-3">
+        <div class="text-xs font-extrabold text-booking-navy uppercase">Thông tin người nhận phòng</div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <input id="cust-name" type="text" placeholder="Họ và tên *"
-            class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm" />
-          <input id="cust-phone" type="tel" placeholder="Số điện thoại Zalo *"
-            class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm font-mono" />
+          <input id="cust-name" type="text" placeholder="Họ và tên khách *"
+            class="rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm focus:outline-none focus:border-ota-blue" />
+          <input id="cust-phone" type="tel" placeholder="Số điện thoại / Zalo *"
+            class="rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm focus:outline-none focus:border-ota-blue" />
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <input id="cust-date" type="date"
-            class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm font-mono" />
-          <select id="cust-guests" class="rounded-xl border border-black/15 bg-white px-3.5 py-2.5 text-sm">
-            <option value="2 người lớn" selected>2 người lớn</option>
-            <option value="1 người lớn">1 người lớn</option>
-            <option value="3-4 người">3–4 người</option>
-            <option value="5+ người (Đoàn riêng)">5+ người (Đoàn riêng)</option>
-          </select>
-        </div>
-        <textarea id="cust-note" rows="2" placeholder="Ghi chú đón sân bay, yêu cầu đặc biệt..."
-          class="w-full rounded-xl border border-black/15 bg-white px-3.5 py-2 text-xs"></textarea>
+        <textarea id="cust-note" rows="2" placeholder="Yêu cầu đặc biệt (nhận phòng sớm, đón sân bay, bàn ăn tối...)"
+          class="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs focus:outline-none focus:border-ota-blue"></textarea>
 
-        <div class="pt-2 flex flex-wrap gap-2">
+        <!-- Deposit Option -->
+        <div class="pt-1 flex flex-wrap gap-2">
           <button type="button" data-ratio="0.3"
-            class="deposit-ratio-btn bg-[#0D0E11] text-white mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer">Cọc
-            VietQR 30%</button>
+            class="deposit-ratio-btn bg-ota-blue text-white text-xs font-bold px-3.5 py-2 rounded-xl cursor-pointer">
+            Đặt cọc giữ phòng 30%
+          </button>
           <button type="button" data-ratio="1"
-            class="deposit-ratio-btn bg-white text-[#0D0E11] border border-black/15 mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer">Thanh
-            toán 100%</button>
+            class="deposit-ratio-btn bg-white text-slate-700 border border-slate-300 text-xs font-bold px-3.5 py-2 rounded-xl cursor-pointer">
+            Thanh toán trọn gói 100%
+          </button>
         </div>
       </div>
 
-      <!-- Secure Bridge Endpoint (Local Python Port 8787 or Cloudflare Worker) -->
-      <div class="rounded-2xl border border-[#229ED9]/35 bg-[#229ED9]/[0.04] p-4 space-y-2">
-        <div class="mono-label text-[10px] font-bold text-[#0284C7]">⚙ ENDPOINT NHẬN ĐƠN (LOCAL PYTHON / CLOUDFLARE
-          WORKER)</div>
-        <p class="text-[11px] text-[#6B7280]">
-          An toàn 100% khi đẩy lên GitHub Pages (không chứa Bot Token). Mặc định trỏ về
-          <code>http://127.0.0.1:8787/order</code> hoặc URL Cloudflare Worker của bạn.
+      <!-- Bridge Endpoint Config (Compatible with bot_listener.py & Cloudflare Worker) -->
+      <details class="rounded-2xl border border-blue-200 bg-blue-50/60 p-3.5 text-xs">
+        <summary class="font-bold text-booking-navy cursor-pointer">
+          ⚙️ Cấu hình cổng nhận đơn Telegram Bot (@CSN1503_ai_Bot)
+        </summary>
+        <p class="text-slate-600 mt-2 mb-2">
+          Mặc định kết nối Local Python (<code>http://127.0.0.1:8787/order</code>) hoặc dán URL Cloudflare Worker để
+          hoạt động 24/7 không lộ Token.
         </p>
         <input id="bridge-url-input" type="url" value="http://127.0.0.1:8787/order"
-          class="w-full rounded-xl border border-black/15 bg-white px-3 py-2 text-xs font-mono" />
-      </div>
+          class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-mono" />
+      </details>
 
       <div id="checkout-error"
-        class="hidden rounded-xl bg-[#FF4D4D]/10 border border-[#FF4D4D]/30 px-4 py-2.5 text-xs font-semibold text-[#DC2626]">
-      </div>
+        class="hidden rounded-xl bg-red-50 border border-red-200 px-4 py-2.5 text-xs font-bold text-red-600"></div>
 
-      <!-- VietQR & Bot Confirmation Receipt -->
-      <div id="receipt-box" class="hidden rounded-2xl border border-black/15 bg-white p-4 space-y-3">
-        <div id="bot-status-line" class="rounded-xl bg-[#229ED9]/10 px-3 py-2 text-xs font-semibold text-[#0369A1]">
-        </div>
+      <!-- VietQR & Bot Push Receipt -->
+      <div id="receipt-box" class="hidden rounded-2xl border-2 border-ota-blue bg-white p-4 space-y-3 shadow-md">
+        <div id="bot-status-line" class="rounded-xl bg-blue-50 px-3 py-2 text-xs font-bold text-ota-blue"></div>
         <div class="flex flex-col sm:flex-row items-center gap-4">
-          <img id="vietqr-img" src="" alt="VietQR" class="w-40 h-40 rounded-xl border border-black/10 object-contain" />
+          <img id="vietqr-img" src="" alt="VietQR MB Bank"
+            class="w-40 h-40 rounded-xl border border-slate-200 object-contain" />
           <div class="text-xs space-y-1.5">
-            <div class="mono-label text-[10px] text-[#6B7280]">MÃ ĐƠN: <strong id="receipt-code"
-                class="text-[#0D0E11]"></strong></div>
+            <div class="text-slate-500 font-bold">MÃ ĐẶT PHÒNG: <strong id="receipt-code"
+                class="text-booking-navy text-sm"></strong></div>
             <div>Ngân hàng: <strong>MB Bank — BANLA NOMAD EXPEDITIONS</strong></div>
-            <div>STK: <strong class="font-mono">0901650888</strong></div>
-            <div>Cần chuyển: <strong id="receipt-pay-now" class="font-mono text-[#E63946] text-sm"></strong></div>
-            <div class="pt-1 text-[11px] text-[#047857] font-medium">✓ Admin sẽ bấm [Duyệt cọc] ngay trên Telegram sau
-              khi nhận khoản chuyển.</div>
+            <div>Số tài khoản: <strong class="font-mono text-sm">0901650888</strong></div>
+            <div>Số tiền thanh toán: <strong id="receipt-pay-now"
+                class="text-agoda-red text-base font-extrabold"></strong></div>
+            <div class="text-emerald-700 font-semibold pt-1">✓ Bộ phận lễ tân sẽ bấm [Duyệt cọc] ngay trên Telegram sau
+              khi bạn quét mã.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="p-5 border-t border-black/10 bg-[#F8F9FA]">
+    <!-- Sticky Drawer Footer -->
+    <div class="p-5 border-t border-slate-200 bg-slate-50">
       <div class="flex items-center justify-between mb-3">
-        <span class="mono-label text-[10px] text-[#6B7280]">TỔNG THANH TOÁN</span>
-        <span id="bag-total-vnd" class="font-mono text-2xl font-bold text-[#0D0E11]">0₫</span>
+        <span class="text-xs font-bold text-slate-600 uppercase">Tổng cộng (Đã áp dụng ưu đãi)</span>
+        <span id="bag-total-vnd" class="text-2xl font-extrabold text-agoda-red">0₫</span>
       </div>
       <button id="submit-order-btn" type="button"
-        class="w-full rounded-full bg-[#E63946] hover:bg-[#0D0E11] text-white py-3.5 px-5 text-sm font-bold transition-colors cursor-pointer">
-        Tạo VietQR &amp; Bắn đơn kèm nút [Duyệt cọc] về Bot
+        class="w-full rounded-xl bg-ota-amber hover:bg-[#e67300] text-white py-3.5 px-5 text-sm font-extrabold shadow-md transition-colors cursor-pointer">
+        Xác nhận đặt phòng &amp; Tạo mã VietQR →
       </button>
     </div>
   </aside>
 
+  <!-- Toast Banner -->
+  <div id="toast-banner"
+    class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-300">
+    <div
+      class="bg-booking-navy text-white text-xs font-bold px-5 py-3 rounded-full shadow-xl border border-white/20 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-ota-gold"></span>
+      <span id="toast-msg">Đã thêm phòng vào đơn đặt!</span>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- OTA CONTROLLER + COMPATIBLE BOT PAYLOAD ENGINE                        -->
+  <!-- ===================================================================== -->
   <script>
     (function () {
       'use strict';
 
-      // Grok Bot sẽ tự động thay thế hằng số này bằng URL Cloudflare Worker khi deploy lên GitHub Pages
-      const DEFAULT_PROXY_WEBHOOK_URL = 'https://banla-order-bridge.h30188410.workers.dev/order';
+      const DEFAULT_PROXY_WEBHOOK_URL = 'http://127.0.0.1:8787/order';
+      const VND_PER_USD = 25400;
 
-      const OFFICIAL_PACKAGES = {
-        'pkg-taxua': { id: 'pkg-taxua', name: 'Ta Xua Cloud-Hunting Escape (3D2N)', priceUsd: 185, priceVnd: 4690000 },
-        'pkg-dalat': { id: 'pkg-dalat', name: 'Dalat Boutique Retreat & Dining (3D2N)', priceUsd: 240, priceVnd: 6090000 },
-        'pkg-phuquoc': { id: 'pkg-phuquoc', name: 'Phu Quoc Sunset Show & VIP Pass', priceUsd: 125, priceVnd: 3190000 },
-      };
+      const PROPERTIES = [
+        {
+          id: 'pkg-dalat',
+          category: 'hotel',
+          categoryBadge: 'Khách sạn Boutique',
+          dest: 'dalat',
+          location: '47 Nguyễn Đình Chiểu, P.9, Đà Lạt',
+          name: 'Banla Boutique Hotel Đà Lạt — Pine View Suite',
+          stars: 5,
+          score: 9.6,
+          scoreLabel: 'Xuất sắc',
+          reviews: 428,
+          isNightly: true,
+          originalVnd: 1650000,
+          priceVnd: 1290000,
+          roomsLeft: 2,
+          image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=80',
+          amenities: ['📶 Wi-Fi', '🍳 Bữa sáng', '🌲 View đồi thông', '🚐 Đưa đón sân bay'],
+          desc: 'Phòng Suite thiết kế ấm cúng ngay Đà Lạt, cửa kính lớn đón nắng sớm, tặng kèm cocktail buổi tối tại The Roof by Banla.',
+        },
+        {
+          id: 'pkg-taxua',
+          category: 'homestay',
+          categoryBadge: 'Homestay Săn Mây',
+          dest: 'taxua',
+          location: 'Đỉnh Tà Xùa, Bắc Yên, Sơn La',
+          name: 'Homestay Nhà của An Tà Xùa — Bungalow Kính Săn Mây',
+          stars: 5,
+          score: 9.5,
+          scoreLabel: 'Tuyệt hảo',
+          reviews: 315,
+          isNightly: true,
+          originalVnd: 1450000,
+          priceVnd: 1090000,
+          roomsLeft: 3,
+          image: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=80',
+          amenities: ['📶 Wi-Fi', '☁️ Sát biển mây', '🔥 Lò sưởi / Trà nóng', '🛡️ Đổi lịch thời tiết'],
+          desc: 'Tọa lạc ở độ cao 1.650m nhìn thẳng ra thung lũng mây Tà Xùa ngay từ trên giường ngủ. Áp dụng giảm giá tới 15% khi ở từ 3 đêm.',
+        },
+        {
+          id: 'pkg-phuquoc',
+          category: 'resort',
+          categoryBadge: 'Resort & Dinner Show',
+          dest: 'phuquoc',
+          location: 'Sunset Town, Nam Phú Quốc',
+          name: 'Sea View Resort & Combo VIP Sun Bavaria Dinner Show',
+          stars: 5,
+          score: 9.8,
+          scoreLabel: 'Tuyệt hảo',
+          reviews: 519,
+          isNightly: false,
+          originalVnd: 3890000,
+          priceVnd: 3190000,
+          roomsLeft: 4,
+          image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80',
+          amenities: ['🏊 Hồ bơi vô cực', '🍽️ Buffet tối 18:00', '🎆 Vé Show 19:30', '🚐 Đưa đón sân bay'],
+          desc: 'Trọn gói nghỉ dưỡng hướng biển Nam Đảo kết hợp bàn VIP thưởng thức Buffet tối 18:00 và xem trình diễn pháo hoa lúc 19:30.',
+        },
+        {
+          id: 'velora-dalat-villa',
+          category: 'villa',
+          categoryBadge: 'Villa Nghỉ Dưỡng',
+          dest: 'dalat',
+          location: 'Trung tâm Đồi Thông, TP. Đà Lạt',
+          name: 'Velora Highland Villa Đà Lạt — Khuôn Viên Sân Vườn Riêng',
+          stars: 5,
+          score: 9.3,
+          scoreLabel: 'Tuyệt hảo',
+          reviews: 186,
+          isNightly: true,
+          originalVnd: 4500000,
+          priceVnd: 3590000,
+          roomsLeft: 1,
+          image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80',
+          amenities: ['📶 Wi-Fi', '🍳 Bếp & BBQ riêng', '🚗 Đỗ xe miễn phí', '🚐 Đưa đón sân bay'],
+          desc: 'Villa biệt lập dành cho gia đình hoặc nhóm bạn 4–8 khách, sân nướng BBQ ngoài trời và quản gia hỗ trợ 24/7.',
+        },
+        {
+          id: 'panorama-studio-apt',
+          category: 'apartment',
+          categoryBadge: 'Căn Hộ Dịch Vụ',
+          dest: 'dalat',
+          location: 'Phường 9, TP. Đà Lạt',
+          name: 'Banla Executive Panorama Apartment — Căn Hộ Có Bếp',
+          stars: 4,
+          score: 9.1,
+          scoreLabel: 'Tuyệt vời',
+          reviews: 142,
+          isNightly: true,
+          originalVnd: 1350000,
+          priceVnd: 990000,
+          roomsLeft: 3,
+          image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80',
+          amenities: ['📶 Wi-Fi tốc độ cao', '🍳 Bếp riêng', '🧺 Máy giặt sấy', '☕ Ban công thoáng'],
+          desc: 'Căn hộ dịch vụ hiện đại đầy đủ bếp nấu, bàn làm việc từ xa và ban công đón gió mát, tối ưu cho kỳ nghỉ dài ngày.',
+        },
+        {
+          id: 'mercure-resort-combo',
+          category: 'resort',
+          categoryBadge: 'Resort Pháp Cổ',
+          dest: 'dalat',
+          location: 'Khu Phố Pháp, TP. Đà Lạt',
+          name: 'Combo Nghỉ Dưỡng Resort Kiến Trúc Pháp 3N2Đ + Xe Đón',
+          stars: 5,
+          score: 9.4,
+          scoreLabel: 'Tuyệt hảo',
+          reviews: 274,
+          isNightly: false,
+          originalVnd: 6900000,
+          priceVnd: 5690000,
+          roomsLeft: 2,
+          image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80',
+          amenities: ['📶 Wi-Fi', '🍳 Buffet sáng Âu-Á', '🌿 Vườn hoa cổ điển', '🚐 SUV đón Liên Khương'],
+          desc: 'Gói 3 ngày 2 đêm giữa những căn biệt thự Pháp cổ kính, bao gồm buffet sáng hàng ngày và xe riêng đón sân bay.',
+        },
+      ];
 
       const VOUCHERS = {
         BANLA10: { type: 'percent', value: 0.10, label: 'BANLA10 (-10%)' },
         CLOUDVIP: { type: 'fixed', value: 300000, label: 'CLOUDVIP (-300.000₫)' },
       };
 
-      const routeCatalog = {
-        'sunset-town': { code: 'ACTIVE ROUTE // RT-01', color: '#E63946', title: 'Sunset Town — Mediterranean Cliffside & Dusk Fireworks', desc: 'Optimal dry coastal breeze window (17:15–21:30).' },
-        'ta-xua': { code: 'ACTIVE ROUTE // RT-02', color: '#9CA3AF', title: 'Ta Xua Ridge — Cloud-Hunting Spine & Timber Sanctuary', desc: 'Timed 05:15 ascent to the ridge crest before sunrise.' },
-        'phu-quoc': { code: 'ACTIVE ROUTE // RT-03', color: '#3B82F6', title: 'Phu Quoc Bay — Turquoise Cove & Private Charter', desc: 'Calm western swell window with private speedboat access.' },
-        'dalat': { code: 'ACTIVE ROUTE // RT-04', color: '#10B981', title: 'Dalat Highlands — Pine Mist Architectural Retreats', desc: 'Cool highland micro-climate framed by ancient pine forests.' },
-        'bavaria': { code: 'ACTIVE ROUTE // RT-05', color: '#EAB308', title: 'Bavaria Dinner — Golden Hour Waterfront Tasting', desc: 'Front-row sunset dining experience at 18:00 & 19:30 show.' },
+      const BANK_CONFIG = {
+        bankSlug: 'MB',
+        accountNo: '0901650888',
+        accountName: 'BANLA NOMAD EXPEDITIONS',
       };
 
-      const BANK_CONFIG = { bankSlug: 'MB', accountNo: '0901650888', accountName: 'BANLA NOMAD EXPEDITIONS' };
-
-      let displayCurrency = 'USD';
-      let bookingBag = [];
+      let currency = 'VND';
+      let selectedCat = 'all';
+      let selectedDest = 'all';
+      let selectedSort = 'popular';
+      let nights = 2;
+      let cart = [];
       let activeVoucher = null;
       let depositRatio = 0.3;
 
+      const checkinEl = document.getElementById('checkin-date');
+      const checkoutEl = document.getElementById('checkout-date');
       const bridgeUrlInput = document.getElementById('bridge-url-input');
       bridgeUrlInput.value = localStorage.getItem('banla_bridge_url') || DEFAULT_PROXY_WEBHOOK_URL;
       bridgeUrlInput.addEventListener('change', () => localStorage.setItem('banla_bridge_url', bridgeUrlInput.value.trim()));
 
-      const custDateInput = document.getElementById('cust-date');
-      const today = new Date();
-      custDateInput.min = today.toISOString().split('T')[0];
-      custDateInput.value = new Date(today.getTime() + 3 * 86400000).toISOString().split('T')[0];
+      // Init default dates
+      const dIn = new Date();
+      dIn.setDate(dIn.getDate() + 1);
+      const dOut = new Date();
+      dOut.setDate(dOut.getDate() + 3);
+      checkinEl.value = dIn.toISOString().split('T')[0];
+      checkoutEl.value = dOut.toISOString().split('T')[0];
 
-      function formatVnd(n) { return Math.round(n).toLocaleString('vi-VN') + '₫'; }
-      function formatUsd(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+      function getNightDiscountRate(n) {
+        if (n >= 3) return 0.15;
+        if (n === 2) return 0.10;
+        return 0.05;
+      }
 
+      function formatMoney(vnd) {
+        if (currency === 'USD') {
+          return '$' + Math.round(vnd / VND_PER_USD).toLocaleString('en-US');
+        }
+        return Math.round(vnd).toLocaleString('vi-VN') + '₫';
+      }
+
+      function getEffectivePriceVnd(item) {
+        if (!item.isNightly) return item.priceVnd;
+        const rate = getNightDiscountRate(nights);
+        return Math.round((item.priceVnd * (1 - rate)) / 10000) * 10000;
+      }
+
+      function updateNightsState() {
+        const t1 = new Date(checkinEl.value);
+        const t2 = new Date(checkoutEl.value);
+        let diff = Math.round((t2 - t1) / 86400000);
+        if (isNaN(diff) || diff < 1) {
+          diff = 1;
+          const next = new Date(t1.getTime() + 86400000);
+          checkoutEl.value = next.toISOString().split('T')[0];
+        }
+        nights = diff;
+        const pct = Math.round(getNightDiscountRate(nights) * 100);
+        document.getElementById('nights-pill').textContent = `${nights} đêm`;
+        document.getElementById('discount-tier-banner').textContent = `✓ Đang chọn ${nights} đêm: Tự động giảm thêm ${pct}% giá phòng`;
+        document.getElementById('drawer-dates').textContent = `${checkinEl.value} → ${checkoutEl.value} (${nights} đêm)`;
+        document.getElementById('drawer-discount-pill').textContent = `Giảm -${pct}%`;
+        renderProperties();
+        renderCart();
+      }
+
+      checkinEl.addEventListener('change', updateNightsState);
+      checkoutEl.addEventListener('change', updateNightsState);
+
+      document.getElementById('currency-toggle').addEventListener('click', function () {
+        currency = currency === 'VND' ? 'USD' : 'VND';
+        this.textContent = currency === 'VND' ? 'VND (₫)' : 'USD ($)';
+        renderProperties();
+        renderCart();
+      });
+
+      function renderProperties() {
+        const grid = document.getElementById('properties-grid');
+        const resetBtn = document.getElementById('reset-filter-btn');
+        resetBtn.classList.toggle('hidden', selectedCat === 'all' && selectedDest === 'all');
+
+        const list = PROPERTIES.filter((p) => {
+          const okCat = selectedCat === 'all' || p.category === selectedCat;
+          const okDest = selectedDest === 'all' || p.dest === selectedDest;
+          return okCat && okDest;
+        }).sort((a, b) => {
+          if (selectedSort === 'price-asc') return getEffectivePriceVnd(a) - getEffectivePriceVnd(b);
+          if (selectedSort === 'score-desc') return b.score - a.score;
+          return 0;
+        });
+
+        document.getElementById('listing-count-text').textContent =
+          `Tìm thấy ${list.length} chỗ nghỉ phù hợp · Giá minh bạch, xác nhận tức thì`;
+
+        if (list.length === 0) {
+          grid.innerHTML = `
+            <div class="col-span-full bg-white rounded-2xl border border-slate-200 p-10 text-center">
+              <p class="font-extrabold text-slate-800 mb-2">Không có phòng khớp bộ lọc hiện tại</p>
+              <button id="empty-clear-btn" type="button" class="bg-ota-blue text-white text-xs font-bold px-5 py-2.5 rounded-xl cursor-pointer">Xem tất cả 6 chỗ nghỉ</button>
+            </div>
+          `;
+          document.getElementById('empty-clear-btn').addEventListener('click', clearFilters);
+          return;
+        }
+
+        grid.innerHTML = list
+          .map((p) => {
+            const unitVnd = getEffectivePriceVnd(p);
+            const savePct = Math.round(((p.originalVnd - unitVnd) / p.originalVnd) * 100);
+            const starsStr = '★'.repeat(p.stars);
+
+            return `
+              <article class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <!-- Real Room Photo + Top Badges -->
+                  <div class="relative h-52 overflow-hidden bg-slate-200">
+                    <img
+                      src="${p.image}"
+                      alt="${p.name}"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <span class="absolute top-3 left-3 bg-booking-navy/90 backdrop-blur-xs text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                      ${p.categoryBadge}
+                    </span>
+                    <span class="absolute top-3 right-3 bg-agoda-red text-white text-[11px] font-extrabold px-2.5 py-1 rounded-lg shadow">
+                      -${savePct}% HÔM NAY
+                    </span>
+                    <span class="absolute bottom-2.5 left-3 bg-black/65 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded">
+                      🔥 Chỉ còn ${p.roomsLeft} phòng giá này
+                    </span>
+                  </div>
+
+                  <!-- Card Body (Booking.com / Agoda Laptop & Mobile Screen Layout) -->
+                  <div class="p-5">
+                    <div class="flex items-start justify-between gap-2 mb-2">
+                      <div>
+                        <div class="text-ota-gold text-xs tracking-wider font-bold">${starsStr}</div>
+                        <div class="text-[11px] font-semibold text-ota-blue mt-0.5">📍 ${p.location}</div>
+                      </div>
+
+                      <!-- Booking.com Blue Rating Score Badge -->
+                      <div class="flex items-center gap-2 flex-shrink-0">
+                        <div class="text-right">
+                          <div class="text-xs font-extrabold text-slate-900 leading-none">${p.scoreLabel}</div>
+                          <div class="text-[10px] text-slate-500 mt-0.5">${p.reviews} đánh giá</div>
+                        </div>
+                        <div class="bg-booking-navy text-white font-extrabold text-sm px-2.5 py-1.5 rounded-t-lg rounded-br-lg">
+                          ${p.score.toFixed(1)}
+                        </div>
+                      </div>
+                    </div>
+
+                    <h3 class="text-base sm:text-[17px] font-extrabold text-slate-900 leading-snug mb-3">
+                      ${p.name}
+                    </h3>
+
+                    <!-- Amenity Icons Row -->
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                      ${p.amenities
+                .map(
+                  (am) => `<span class="text-[11px] font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">${am}</span>`
+                )
+                .join('')}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Price & Dual OTA Buttons ("Xem phòng" / "Chọn phòng") -->
+                <div class="px-5 pb-5 pt-3 border-t border-slate-100 bg-slate-50/50">
+                  <div class="flex items-end justify-between mb-3.5">
+                    <div>
+                      <span class="text-xs text-slate-400 line-through block">${formatMoney(p.originalVnd)}</span>
+                      <span class="text-[11px] font-semibold text-emerald-700">✓ Miễn phí xác nhận ngay</span>
+                    </div>
+                    <div class="text-right">
+                      <span class="text-2xl font-extrabold text-agoda-red leading-none">${formatMoney(unitVnd)}</span>
+                      <span class="text-[11px] text-slate-500 block">${p.isNightly ? '/ đêm' : '/ trọn gói'}</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-5 gap-2">
+                    <button
+                      type="button"
+                      data-view-id="${p.id}"
+                      class="view-room-btn col-span-2 rounded-xl border border-ota-blue text-ota-blue hover:bg-blue-50 font-bold text-xs py-2.5 transition-colors cursor-pointer"
+                    >
+                      Xem phòng
+                    </button>
+                    <button
+                      type="button"
+                      data-book-id="${p.id}"
+                      class="book-room-btn col-span-3 rounded-xl bg-ota-blue hover:bg-booking-navy text-white font-extrabold text-xs sm:text-sm py-2.5 shadow-sm transition-colors cursor-pointer"
+                    >
+                      Chọn phòng
+                    </button>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join('');
+
+        grid.querySelectorAll('.view-room-btn').forEach((b) => {
+          b.addEventListener('click', () => openRoomModal(b.dataset.viewId));
+        });
+        grid.querySelectorAll('.book-room-btn').forEach((b) => {
+          b.addEventListener('click', () => addRoomToCart(b.dataset.bookId, true));
+        });
+      }
+
+      // Category Filter Click
+      document.querySelectorAll('.cat-card').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedCat = btn.dataset.cat;
+          document.querySelectorAll('.cat-card').forEach((c) => c.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          renderProperties();
+        });
+      });
+
+      function clearFilters() {
+        selectedCat = 'all';
+        selectedDest = 'all';
+        document.getElementById('filter-dest').value = 'all';
+        document.querySelectorAll('.cat-card').forEach((c) => c.classList.toggle('is-active', c.dataset.cat === 'all'));
+        renderProperties();
+      }
+
+      document.getElementById('reset-filter-btn').addEventListener('click', clearFilters);
+      document.getElementById('filter-dest').addEventListener('change', (e) => {
+        selectedDest = e.target.value;
+        renderProperties();
+      });
+      document.getElementById('sort-select').addEventListener('change', (e) => {
+        selectedSort = e.target.value;
+        renderProperties();
+      });
+      document.getElementById('ota-search-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        selectedDest = document.getElementById('filter-dest').value;
+        renderProperties();
+        document.getElementById('hotel-list').scrollIntoView({ behavior: 'smooth' });
+        showToast('Đã lọc danh sách phòng trống theo lịch trình của bạn!');
+      });
+
+      // Room Detail Modal
+      const modalOverlay = document.getElementById('room-modal-overlay');
+      function openRoomModal(id) {
+        const p = PROPERTIES.find((x) => x.id === id);
+        if (!p) return;
+        document.getElementById('modal-img').src = p.image;
+        document.getElementById('modal-badge').textContent = p.categoryBadge;
+        document.getElementById('modal-title').textContent = p.name;
+        document.getElementById('modal-location').textContent = '📍 ' + p.location;
+        document.getElementById('modal-score').textContent = `${p.score.toFixed(1)} ${p.scoreLabel}`;
+        document.getElementById('modal-desc').textContent = p.desc;
+        document.getElementById('modal-price').textContent =
+          formatMoney(getEffectivePriceVnd(p)) + (p.isNightly ? ' / đêm' : ' / gói');
+        document.getElementById('modal-amenities').innerHTML = p.amenities
+          .map((a) => `<span class="text-xs font-semibold bg-blue-50 text-booking-navy px-3 py-1 rounded-lg">${a}</span>`)
+          .join('');
+
+        const selectBtn = document.getElementById('modal-select-btn');
+        selectBtn.onclick = () => {
+          modalOverlay.classList.add('hidden');
+          modalOverlay.classList.remove('flex');
+          addRoomToCart(p.id, true);
+        };
+
+        modalOverlay.classList.remove('hidden');
+        modalOverlay.classList.add('flex');
+      }
+
+      document.getElementById('close-modal-btn').addEventListener('click', () => {
+        modalOverlay.classList.add('hidden');
+        modalOverlay.classList.remove('flex');
+      });
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          modalOverlay.classList.add('hidden');
+          modalOverlay.classList.remove('flex');
+        }
+      });
+
+      // Cart & Checkout Drawer
       function calcTotals() {
-        const subVnd = bookingBag.reduce((s, i) => s + i.priceVnd * i.qty, 0);
-        const subUsd = bookingBag.reduce((s, i) => s + i.priceUsd * i.qty, 0);
+        const subVnd = cart.reduce((sum, entry) => {
+          const p = PROPERTIES.find((x) => x.id === entry.id);
+          if (!p) return sum;
+          const unit = getEffectivePriceVnd(p);
+          return sum + (p.isNightly ? unit * nights * entry.qty : unit * entry.qty);
+        }, 0);
+
         let disc = 0;
         if (activeVoucher && VOUCHERS[activeVoucher] && subVnd > 0) {
           const v = VOUCHERS[activeVoucher];
           disc = v.type === 'percent' ? Math.round(subVnd * v.value) : Math.min(v.value, subVnd);
         }
         const totalVnd = Math.max(0, subVnd - disc);
-        const totalUsd = subVnd > 0 ? Math.round(subUsd * (totalVnd / subVnd)) : 0;
-        return { subVnd, disc, totalVnd, totalUsd, payNowVnd: Math.round(totalVnd * depositRatio) };
+        return {
+          subVnd,
+          disc,
+          totalVnd,
+          totalUsd: Math.round(totalVnd / VND_PER_USD),
+          payNowVnd: Math.round(totalVnd * depositRatio),
+        };
       }
 
-      // Destination rack click
-      document.querySelectorAll('.destination-tag').forEach((tag) => {
-        tag.addEventListener('click', () => {
-          const d = routeCatalog[tag.dataset.routeId];
-          if (!d) return;
-          document.querySelectorAll('.destination-tag').forEach((t) => {
-            t.classList.remove('is-active', 'border-2');
-            t.style.borderColor = '';
-          });
-          tag.classList.add('is-active', 'border-2');
-          tag.style.borderColor = d.color;
-          document.getElementById('route-swatch').style.backgroundColor = d.color;
-          document.getElementById('route-code').textContent = d.code;
-          document.getElementById('route-title').textContent = d.title;
-          document.getElementById('route-desc').textContent = d.desc;
-        });
-      });
+      function addRoomToCart(id, openDrawerNow) {
+        const ex = cart.find((x) => x.id === id);
+        if (ex) ex.qty += 1;
+        else cart.push({ id, qty: 1 });
 
-      // Blueprint hover sync
-      const bpSvg = document.getElementById('blueprint-svg');
-      const bpLayers = document.querySelectorAll('.blueprint-layer');
-      const bpCards = document.querySelectorAll('.blueprint-card');
-      function syncBp(id) {
-        bpSvg.classList.toggle('has-focus', Boolean(id));
-        bpLayers.forEach((l) => l.classList.toggle('is-highlighted', l.dataset.layer === id));
-        bpCards.forEach((c) => {
-          const m = c.dataset.layer === id;
-          c.classList.toggle('border-[#E63946]', m);
-          c.classList.toggle('bg-[#F8F9FA]', m);
-        });
+        const cartBtn = document.getElementById('open-cart-btn');
+        cartBtn.classList.remove('cart-pop');
+        void cartBtn.offsetWidth;
+        cartBtn.classList.add('cart-pop');
+
+        document.getElementById('receipt-box').classList.add('hidden');
+        renderCart();
+        showToast('Đã thêm phòng vào đơn đặt!');
+        if (openDrawerNow) openDrawer();
       }
-      bpCards.forEach((c) => {
-        c.addEventListener('mouseenter', () => syncBp(c.dataset.layer));
-        c.addEventListener('mouseleave', () => syncBp(null));
-      });
-      bpLayers.forEach((l) => {
-        l.addEventListener('mouseenter', () => syncBp(l.dataset.layer));
-        l.addEventListener('mouseleave', () => syncBp(null));
-      });
 
-      // Telemetry observer & clock
-      let telDone = false;
-      const telObs = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && !telDone) {
-          telDone = true;
-          document.getElementById('counter-cloud').textContent = '88.5';
-          document.getElementById('counter-occupancy').textContent = '94.2';
-          document.getElementById('bar-cloud').style.width = '88%';
-          document.getElementById('bar-occupancy').style.width = '94%';
-          document.getElementById('telemetry-elev-path').classList.add('is-drawn');
-        }
-      }, { threshold: 0.2 });
-      telObs.observe(document.getElementById('telemetry'));
+      function renderCart() {
+        const totalItems = cart.reduce((s, x) => s + x.qty, 0);
+        document.getElementById('cart-count-label').textContent = `Đơn đặt (${totalItems})`;
 
-      setInterval(() => {
-        const now = new Date();
-        const ict = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + 7 * 3600000);
-        document.getElementById('telemetry-clock').textContent = `ICT ${String(ict.getHours()).padStart(2, '0')}:${String(ict.getMinutes()).padStart(2, '0')}:${String(ict.getSeconds()).padStart(2, '0')}`;
-      }, 1000);
-
-      // Currency switch
-      document.getElementById('currency-toggle').addEventListener('click', () => {
-        displayCurrency = displayCurrency === 'USD' ? 'VND' : 'USD';
-        document.querySelectorAll('.package-price').forEach((el) => {
-          el.textContent = displayCurrency === 'VND' ? formatVnd(Number(el.dataset.vnd)) : formatUsd(Number(el.dataset.usd));
-        });
-        document.querySelectorAll('.package-price-sub').forEach((el) => {
-          el.textContent = displayCurrency === 'VND' ? '≈ ' + formatUsd(Number(el.dataset.usd)) : formatVnd(Number(el.dataset.vnd));
-        });
-      });
-
-      // Bag & Voucher
-      function renderBag() {
-        const count = bookingBag.reduce((s, i) => s + i.qty, 0);
         const totals = calcTotals();
-        document.getElementById('booking-bag-label').textContent = `Booking (${count})`;
-        document.getElementById('bag-total-vnd').textContent = formatVnd(totals.totalVnd);
+        document.getElementById('bag-total-vnd').textContent = formatMoney(totals.totalVnd);
 
         const container = document.getElementById('bag-items-container');
-        if (bookingBag.length === 0) {
-          container.innerHTML = '<div class="text-xs text-[#6B7280] py-4 text-center">Chưa có gói nào. Hãy chọn gói từ mục Packages.</div>';
+        if (cart.length === 0) {
+          container.innerHTML =
+            '<div class="text-center py-6 text-xs text-slate-500 bg-slate-50 rounded-xl border border-slate-200">Chưa có phòng nào được chọn. Bấm "Chọn phòng" ở danh sách để đặt ngay.</div>';
           return;
         }
-        container.innerHTML = bookingBag.map((item) => `
-          <div class="rounded-xl border border-black/10 bg-[#F8F9FA] p-3 flex items-center justify-between gap-2">
-            <div>
-              <div class="text-xs font-bold text-[#0D0E11]">${item.name}</div>
-              <div class="font-mono text-xs text-[#E63946]">${formatVnd(item.priceVnd)} × ${item.qty}</div>
-            </div>
-            <div class="flex items-center gap-1">
-              <button type="button" data-id="${item.id}" data-d="-1" class="qty-btn w-7 h-7 rounded border border-black/15 bg-white text-xs font-bold cursor-pointer">−</button>
-              <button type="button" data-id="${item.id}" data-d="1" class="qty-btn w-7 h-7 rounded border border-black/15 bg-white text-xs font-bold cursor-pointer">+</button>
-            </div>
-          </div>
-        `).join('');
+
+        container.innerHTML = cart
+          .map((entry) => {
+            const p = PROPERTIES.find((x) => x.id === entry.id);
+            if (!p) return '';
+            const lineVnd = (p.isNightly ? getEffectivePriceVnd(p) * nights : getEffectivePriceVnd(p)) * entry.qty;
+            return `
+              <div class="rounded-xl border border-slate-200 bg-white p-3.5 flex items-center justify-between gap-3 shadow-2xs">
+                <div>
+                  <div class="text-xs font-extrabold text-slate-900">${p.name}</div>
+                  <div class="text-[11px] font-semibold text-ota-blue mt-0.5">
+                    Số lượng: ${entry.qty} ${p.isNightly ? `× ${nights} đêm` : 'gói'} — <strong class="text-agoda-red">${formatMoney(lineVnd)}</strong>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <button type="button" data-id="${p.id}" data-d="-1" class="qty-btn w-7 h-7 rounded-lg border border-slate-300 bg-slate-50 font-bold text-xs cursor-pointer">−</button>
+                  <button type="button" data-id="${p.id}" data-d="1" class="qty-btn w-7 h-7 rounded-lg border border-slate-300 bg-slate-50 font-bold text-xs cursor-pointer">+</button>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
 
         container.querySelectorAll('.qty-btn').forEach((b) => {
           b.addEventListener('click', () => {
-            const idx = bookingBag.findIndex((x) => x.id === b.dataset.id);
+            const idx = cart.findIndex((x) => x.id === b.dataset.id);
             if (idx !== -1) {
-              bookingBag[idx].qty += Number(b.dataset.d);
-              if (bookingBag[idx].qty <= 0) bookingBag.splice(idx, 1);
-              renderBag();
+              cart[idx].qty += Number(b.dataset.d);
+              if (cart[idx].qty <= 0) cart.splice(idx, 1);
+              renderCart();
             }
           });
         });
@@ -976,21 +1160,21 @@
       document.getElementById('apply-voucher-btn').addEventListener('click', () => {
         const code = document.getElementById('voucher-input').value.trim().toUpperCase();
         const fb = document.getElementById('voucher-feedback');
-        fb.classList.remove('hidden', 'text-[#10B981]', 'text-[#DC2626]');
+        fb.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
         if (VOUCHERS[code]) {
           activeVoucher = code;
           fb.textContent = '✓ Đã áp dụng ' + VOUCHERS[code].label;
-          fb.classList.add('text-[#10B981]');
+          fb.classList.add('text-emerald-600');
         } else {
           activeVoucher = null;
           fb.textContent = '✕ Mã không hợp lệ (Thử BANLA10 hoặc CLOUDVIP)';
-          fb.classList.add('text-[#DC2626]');
+          fb.classList.add('text-red-600');
         }
-        renderBag();
+        renderCart();
       });
 
       function openDrawer() {
-        renderBag();
+        renderCart();
         const ov = document.getElementById('bag-overlay');
         const dr = document.getElementById('bag-drawer');
         ov.classList.remove('hidden');
@@ -1008,52 +1192,39 @@
         setTimeout(() => ov.classList.add('hidden'), 300);
       }
 
-      document.getElementById('booking-bag-btn').addEventListener('click', openDrawer);
-      document.getElementById('header-bot-status-btn').addEventListener('click', openDrawer);
+      document.getElementById('open-cart-btn').addEventListener('click', openDrawer);
+      document.getElementById('header-bot-btn').addEventListener('click', openDrawer);
       document.getElementById('close-bag-btn').addEventListener('click', closeDrawer);
       document.getElementById('bag-overlay').addEventListener('click', closeDrawer);
-
-      document.querySelectorAll('.quick-checkout-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const pkg = OFFICIAL_PACKAGES[btn.dataset.packageId];
-          if (pkg) {
-            const ex = bookingBag.find((x) => x.id === pkg.id);
-            if (ex) ex.qty += 1;
-            else bookingBag.push({ ...pkg, qty: 1 });
-          }
-          document.getElementById('receipt-box').classList.add('hidden');
-          openDrawer();
-        });
-      });
 
       document.querySelectorAll('.deposit-ratio-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
           depositRatio = Number(btn.dataset.ratio);
           document.querySelectorAll('.deposit-ratio-btn').forEach((b) => {
-            b.className = 'deposit-ratio-btn bg-white text-[#0D0E11] border border-black/15 mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer';
+            b.className = 'deposit-ratio-btn bg-white text-slate-700 border border-slate-300 text-xs font-bold px-3.5 py-2 rounded-xl cursor-pointer';
           });
-          btn.className = 'deposit-ratio-btn bg-[#0D0E11] text-white mono-label text-[10px] font-semibold px-3 py-1.5 rounded-full cursor-pointer';
+          btn.className = 'deposit-ratio-btn bg-ota-blue text-white text-xs font-bold px-3.5 py-2 rounded-xl cursor-pointer';
         });
       });
 
+      // Submit Booking -> Generate VietQR + Push compatible JSON to bot_listener.py / Cloudflare Worker
       document.getElementById('submit-order-btn').addEventListener('click', async () => {
         const errEl = document.getElementById('checkout-error');
         errEl.classList.add('hidden');
 
-        if (bookingBag.length === 0) {
-          errEl.textContent = 'Vui lòng chọn ít nhất 1 gói hành trình.';
+        if (cart.length === 0) {
+          errEl.textContent = 'Vui lòng chọn ít nhất 1 phòng trước khi xác nhận.';
           errEl.classList.remove('hidden');
           return;
         }
 
         const name = document.getElementById('cust-name').value.trim();
         const phone = document.getElementById('cust-phone').value.replace(/\s+/g, '');
-        const date = custDateInput.value;
-        const guests = document.getElementById('cust-guests').value;
         const note = document.getElementById('cust-note').value.trim();
+        const guests = document.getElementById('guest-select').value;
 
         if (!name || !/^(\+84|84|0)(3|5|7|8|9)[0-9]{8}$/.test(phone)) {
-          errEl.textContent = 'Vui lòng nhập đầy đủ Họ tên và Số điện thoại Việt Nam hợp lệ.';
+          errEl.textContent = 'Vui lòng nhập đầy đủ Họ tên và Số điện thoại Zalo hợp lệ.';
           errEl.classList.remove('hidden');
           return;
         }
@@ -1062,10 +1233,29 @@
         const now = new Date();
         const orderCode = `BNL-${String(now.getFullYear()).slice(-2)}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${Math.floor(100 + Math.random() * 900)}`;
 
+        // Exact schema compatible with bot_listener.py & worker.js
+        const itemsPayload = cart.map((entry) => {
+          const p = PROPERTIES.find((x) => x.id === entry.id);
+          const lineUnitVnd = p.isNightly ? getEffectivePriceVnd(p) * nights : getEffectivePriceVnd(p);
+          return {
+            id: p.id,
+            name: p.isNightly ? `${p.name} (${nights} đêm)` : p.name,
+            priceVnd: lineUnitVnd,
+            priceUsd: Math.round(lineUnitVnd / VND_PER_USD),
+            qty: entry.qty,
+          };
+        });
+
         const order = {
           orderCode,
-          customer: { name, phone, date, guests, note },
-          items: bookingBag.map((x) => ({ ...x })),
+          customer: {
+            name,
+            phone,
+            date: `${checkinEl.value} -> ${checkoutEl.value}`,
+            guests,
+            note,
+          },
+          items: itemsPayload,
           voucherCode: activeVoucher,
           discountVnd: totals.disc,
           totalVnd: totals.totalVnd,
@@ -1079,34 +1269,46 @@
         const botStatusLine = document.getElementById('bot-status-line');
         receiptBox.classList.remove('hidden');
         document.getElementById('receipt-code').textContent = orderCode;
-        document.getElementById('receipt-pay-now').textContent = formatVnd(totals.payNowVnd);
+        document.getElementById('receipt-pay-now').textContent = formatMoney(totals.payNowVnd);
 
         const memo = orderCode.replace(/-/g, ' ');
-        document.getElementById('vietqr-img').src = `https://img.vietqr.io/image/${BANK_CONFIG.bankSlug}-${BANK_CONFIG.accountNo}-compact2.png?amount=${totals.payNowVnd}&addInfo=${encodeURIComponent(memo)}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
+        document.getElementById('vietqr-img').src =
+          `https://img.vietqr.io/image/${BANK_CONFIG.bankSlug}-${BANK_CONFIG.accountNo}-compact2.png?amount=${totals.payNowVnd}&addInfo=${encodeURIComponent(memo)}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
 
         const bridgeUrl = bridgeUrlInput.value.trim();
-        botStatusLine.textContent = 'Đang bắn đơn sang @CSN1503_ai_Bot...';
-        botStatusLine.className = 'rounded-xl bg-[#229ED9]/10 px-3 py-2 text-xs font-semibold text-[#0369A1]';
+        botStatusLine.textContent = 'Đang gửi phiếu đặt phòng sang Telegram @CSN1503_ai_Bot...';
+        botStatusLine.className = 'rounded-xl bg-blue-50 px-3 py-2 text-xs font-bold text-ota-blue';
 
         try {
           const resp = await fetch(bridgeUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ source: 'BANLA // NOMAD', order }),
+            body: JSON.stringify({ source: 'BanlaTravel OTA', order }),
           });
           const resJson = await resp.json();
           if (resp.ok && resJson.ok) {
             botStatusLine.textContent = '✓ Đã bắn đơn kèm nút [✅ Duyệt cọc] / [❌ Báo hết phòng] về Telegram!';
-            botStatusLine.className = 'rounded-xl bg-[#10B981]/15 px-3 py-2 text-xs font-semibold text-[#047857]';
+            botStatusLine.className = 'rounded-xl bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-700';
           } else {
-            botStatusLine.textContent = '⚠ Cầu nối báo lỗi: ' + (resJson.error || resJson.description || resp.status);
-            botStatusLine.className = 'rounded-xl bg-[#EAB308]/20 px-3 py-2 text-xs font-semibold text-[#A16207]';
+            botStatusLine.textContent = '⚠ Cầu nối phản hồi lỗi: ' + (resJson.error || resJson.description || resp.status);
+            botStatusLine.className = 'rounded-xl bg-amber-50 px-3 py-2 text-xs font-bold text-amber-700';
           }
         } catch (_) {
-          botStatusLine.textContent = '⚠ Chưa bật bot_listener.py (cổng 8787) hoặc chưa gắn URL Cloudflare Worker.';
-          botStatusLine.className = 'rounded-xl bg-[#FF4D4D]/15 px-3 py-2 text-xs font-semibold text-[#DC2626]';
+          botStatusLine.textContent = '⚠ Chưa bật bot_listener.py (cổng 8787) hoặc chưa dán URL Cloudflare Worker.';
+          botStatusLine.className = 'rounded-xl bg-red-50 px-3 py-2 text-xs font-bold text-red-600';
         }
       });
+
+      let toastTimer = null;
+      function showToast(msg) {
+        const banner = document.getElementById('toast-banner');
+        document.getElementById('toast-msg').textContent = msg;
+        banner.classList.remove('opacity-0', 'translate-y-3');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => banner.classList.add('opacity-0', 'translate-y-3'), 2400);
+      }
+
+      updateNightsState();
     })();
   </script>
 </body>
