@@ -14,14 +14,14 @@
   <meta property="og:url" content="https://lytaothoc1503.github.io/OTA/frontend/" />
   <meta property="og:title" content="BanlaTravel.vn — Đặt Khách Sạn, Homestay, Resort &amp; Villa Giá Tốt" />
   <meta property="og:description" content="Đặt phòng trực tiếp tại Đà Lạt, Tà Xùa, Phú Quốc, Sa Pa: giá minh bạch, ưu đãi đến 15% theo số đêm, thanh toán VietQR và xác nhận giữ phòng 24/7." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80" />
+  <meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Man%20alone%20in%20T%E1%BA%A3%20X%C3%B9a%2003-03-2017.jpg?width=1200" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Phòng suite ấm cúng tại BanlaTravel.vn" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="BanlaTravel.vn — Đặt Khách Sạn, Homestay, Resort &amp; Villa Giá Tốt" />
   <meta name="twitter:description" content="Giá minh bạch, ưu đãi đến 15% theo số đêm, thanh toán VietQR và xác nhận giữ phòng 24/7." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80" />
+  <meta name="twitter:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Man%20alone%20in%20T%E1%BA%A3%20X%C3%B9a%2003-03-2017.jpg?width=1200" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"BanlaTravel.vn","url":"https://lytaothoc1503.github.io/OTA/frontend/","telephone":"+84358341934","description":"Nền tảng đặt phòng trực tuyến: khách sạn, homestay săn mây, resort, căn hộ dịch vụ và villa tại Đà Lạt, Tà Xùa, Phú Quốc, Sa Pa.","areaServed":"VN","sameAs":["https://t.me/CSN1503_ai_Bot"]}</script>
   <title>BanlaTravel.vn — Đặt Khách Sạn, Homestay, Resort &amp; Villa Giá Tốt</title>
   <meta name="description"
@@ -29,7 +29,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://commons.wikimedia.org" />
+  <link rel="preconnect" href="https://upload.wikimedia.org" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
@@ -87,9 +88,7 @@
     }
 
     .hero-ota-bg {
-      background-image:
-        linear-gradient(180deg, rgba(50, 157, 210, 0.92) 0%, rgba(91, 184, 232, 0.78) 48%, rgba(248, 250, 252, 0.96) 100%),
-        url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1800&q=75');
+      background-image: linear-gradient(180deg, rgba(50, 157, 210, 0.92) 0%, rgba(91, 184, 232, 0.78) 48%, rgba(248, 250, 252, 0.96) 100%);
       background-size: cover;
       background-position: center;
     }
@@ -354,6 +353,53 @@
     .hero-3d.hero-shader-on .fx-drift,
     .hero-3d.hero-shader-on .fx-float,
     .hero-3d.hero-shader-on .grid-3d { animation: none; }
+
+    .ico { width: 1.05em; height: 1.05em; display: inline-block; vertical-align: -0.18em; flex: none; }
+    .ico-lg { width: 22px; height: 22px; }
+    .ico-sky { color: #329DD2; }
+    .ico-scarlet { color: #EB2F33; }
+    .ico-ok { color: #047857; width: .95em; height: .95em; }
+    .star-row { display: inline-flex; align-items: center; gap: 1px; color: #FFB700; }
+    .star-row .ico { width: 13px; height: 13px; vertical-align: 0; }
+
+    .hero-split { display: grid; gap: 8px; }
+    @media (min-width: 1024px) {
+      .hero-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 36px; align-items: center; }
+    }
+    .hero-collage { position: relative; height: 210px; margin: 4px 8px 8px; }
+    @media (min-width: 640px) { .hero-collage { height: 280px; } }
+    @media (min-width: 1024px) { .hero-collage { height: 360px; margin: 0 12px 0 0; } }
+    .hero-shot {
+      position: absolute; overflow: hidden; border-radius: 22px;
+      border: 3px solid #fff; background: #E0F2FE;
+      box-shadow: 0 18px 40px -16px rgba(15, 23, 42, .38);
+    }
+    .hero-shot .ib { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-shot .cap {
+      position: absolute; left: 10px; bottom: 10px; z-index: 2;
+      font-size: 11px; font-weight: 800; color: #0F172A;
+      background: rgba(255, 255, 255, .9); border-radius: 999px; padding: 4px 8px;
+    }
+    .shot-a { width: 56%; height: 70%; left: 0; top: 12%; transform: rotate(-6deg); }
+    .shot-b { width: 52%; height: 64%; right: 0; top: 0; transform: rotate(4deg); z-index: 2; }
+    .shot-c { width: 46%; height: 48%; right: 8%; bottom: 0; transform: rotate(-2deg); z-index: 3; }
+    @media (prefers-reduced-motion: reduce) {
+      .shot-a, .shot-b, .shot-c { transform: none; }
+    }
+
+    .trust-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 768px) { .trust-grid { grid-template-columns: repeat(4, 1fr); } }
+    .trust-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 20px; padding: 18px 16px;
+      box-shadow: 0 10px 24px -16px rgba(15, 23, 42, .28);
+    }
+    .trust-card h3 { font-size: 14px; font-weight: 800; color: #0F172A; margin: 10px 0 4px; }
+    .trust-card p { font-size: 12px; color: #475569; line-height: 1.45; }
+    .review-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 24px -18px rgba(15, 23, 42, .3); display: flex; flex-direction: column; }
+    .avatar-letter {
+      width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center;
+      background: #E0F2FE; color: #1E78A8; font-weight: 800; font-size: 15px; flex: none;
+    }
 
     .hero-layer {
       position: absolute;
@@ -1187,11 +1233,11 @@
       // MOCK DATA
       // =====================================================================
       const CATS = {
-        hotel: { label: 'Khách sạn', icon: '🏨', sub: 'Boutique trung tâm' },
-        homestay: { label: 'Homestay', icon: '🏡', sub: 'View săn mây' },
-        resort: { label: 'Resort', icon: '🌴', sub: 'Hồ bơi & biển' },
-        apartment: { label: 'Căn hộ dịch vụ', icon: '🏢', sub: 'Tiện nghi dài ngày' },
-        villa: { label: 'Villa', icon: '🏘️', sub: 'Nguyên căn riêng tư' },
+        hotel: { label: 'Khách sạn', icon: 'hotel', sub: 'Boutique trung tâm' },
+        homestay: { label: 'Homestay', icon: 'home', sub: 'View săn mây' },
+        resort: { label: 'Resort', icon: 'palm', sub: 'Hồ bơi & biển' },
+        apartment: { label: 'Căn hộ dịch vụ', icon: 'building', sub: 'Tiện nghi dài ngày' },
+        villa: { label: 'Villa', icon: 'villa', sub: 'Nguyên căn riêng tư' },
       };
 
       const QUICK = {
@@ -1202,24 +1248,27 @@
       };
 
       const AMEN = {
-        pool: '🏊 Hồ bơi',
-        kitchen: '🍳 Bếp & BBQ',
-        cloud: '☁️ Ban công săn mây',
-        parking: '🚗 Bãi đỗ xe',
-        wifi: '📶 Wi-Fi miễn phí',
-        spa: '💆 Spa',
-        beach: '🏖️ Gần biển',
-        fireplace: '🔥 Lò sưởi',
-        gym: '🏋️ Phòng gym',
+        pool: { icon: 'waves', label: 'Hồ bơi' },
+        kitchen: { icon: 'utensils', label: 'Bếp & BBQ' },
+        cloud: { icon: 'cloud', label: 'Ban công săn mây' },
+        parking: { icon: 'car', label: 'Bãi đỗ xe' },
+        wifi: { icon: 'wifi', label: 'Wi-Fi miễn phí' },
+        spa: { icon: 'sparkles', label: 'Spa' },
+        beach: { icon: 'waves', label: 'Gần biển' },
+        fireplace: { icon: 'flame', label: 'Lò sưởi' },
+        gym: { icon: 'dumbbell', label: 'Phòng gym' },
       };
+      const amenHTML = (key) => `${ico(AMEN[key].icon, 'ico ico-sky')} ${esc(AMEN[key].label)}`;
 
       const DESTS = [
-        { key: 'dalat', name: 'Đà Lạt', sub: 'Thành phố ngàn hoa', img: 'photo-1501785888041-af3ef285b470' },
-        { key: 'taxua', name: 'Tà Xùa', sub: 'Thiên đường săn mây', img: 'photo-1506905925346-21bda4d32df4' },
-        { key: 'phuquoc', name: 'Phú Quốc', sub: 'Đảo ngọc hoàng hôn', img: 'photo-1507525428034-b723cf961d3e' },
-        { key: 'sapa', name: 'Sa Pa', sub: 'Ruộng bậc thang & sương', img: 'photo-1470071459604-3b5ec3a7fe05' },
-        { key: 'nhatrang', name: 'Nha Trang', sub: 'Vịnh biển xanh', img: 'photo-1499793983690-e29da59ef1c2' },
-        { key: 'danang', name: 'Đà Nẵng', sub: 'Biển Mỹ Khê & Sơn Trà', img: 'photo-1520250497591-112f2f40a3f4' },
+        { key: 'dalat', name: 'Đà Lạt', sub: 'Hồ Xuân Hương & đồi thông', img: placePhoto('Xuan Huong Lake 11.jpg') },
+        { key: 'taxua', name: 'Tà Xùa', sub: 'Thiên đường săn mây', img: placePhoto('Man alone in Tả Xùa 03-03-2017.jpg') },
+        { key: 'phuquoc', name: 'Phú Quốc', sub: 'Hoàng hôn đảo ngọc', img: placePhoto('Sunset on Phu Quoc island.jpg') },
+        { key: 'sapa', name: 'Sa Pa', sub: 'Ruộng bậc thang Mường Hoa', img: placePhoto('Rice terraces in Lao Chải 01.jpg') },
+        { key: 'nhatrang', name: 'Nha Trang', sub: 'Biển Trần Phú', img: placePhoto('Nha Trang Beach, Vietnam.jpg') },
+        { key: 'danang', name: 'Đà Nẵng', sub: 'Bán đảo Sơn Trà', img: placePhoto('Son Tra Peninsula.jpg') },
+        { key: 'hagiang', name: 'Hà Giang', sub: 'Đèo Mã Pí Lèng', img: placePhoto('Ma Pi Leng pass plateau in 2014.jpg') },
+        { key: 'mocchau', name: 'Mộc Châu', sub: 'Thị trấn cao nguyên', img: placePhoto('Thị trấn Mộc Châu, Sơn La.jpg') },
       ];
 
       const P = (o) => o; // readability helper
@@ -1229,168 +1278,193 @@
           id: 'pkg-dalat', category: 'hotel', dest: 'dalat', stars: 5, score: 9.6, reviews: 428,
           name: 'Banla Boutique Hotel Đà Lạt — Pine View Suite',
           location: '47 Nguyễn Đình Chiểu, P.9, Đà Lạt', lat: 11.9465, lng: 108.4512,
-          images: ['photo-1566665797739-1674de7a421a', 'photo-1590490360182-c33d57733427', 'photo-1611892440504-42a792e24d32', 'photo-1578683010236-d716f9a3f461', 'photo-1445019980597-93fa8acb246c'],
+          images: [placePhoto('Xuan Huong Lake 11.jpg'), placePhoto('Xuan Huong Lake (31404267520).jpg'), placePhoto('Xuan Huong Lake 08.jpg'), placePhoto('Xuan Huong Lake 11.jpg', 960), placePhoto('Xuan Huong Lake 08.jpg', 960)],
           quick: ['freeCancel', 'breakfast', 'airport', 'instant'], amen: ['wifi', 'parking', 'fireplace', 'gym'],
           recent: 'Vừa có người đặt 4 phút trước',
           desc: 'Khách sạn boutique nằm giữa đồi thông trung tâm Đà Lạt, chỉ cách chợ Đà Lạt 1,2 km. Phòng Suite ấm áp với cửa kính lớn đón nắng sớm, bữa sáng tinh tế và ly cocktail chào đón tại The Roof by Banla mỗi buổi tối.',
           rooms: [
-            { id: 'deluxe', name: 'Phòng Deluxe Đồi Thông', size: 28, bed: '1 giường đôi lớn', capacity: 2, image: 'photo-1590490360182-c33d57733427', priceVnd: 1290000, originalVnd: 1650000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Ban công', 'Bồn tắm', 'Smart TV'] },
-            { id: 'suite', name: 'Pine View Suite', size: 38, bed: '1 giường King + sofa bed', capacity: 3, image: 'photo-1611892440504-42a792e24d32', priceVnd: 1690000, originalVnd: 2100000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View đồi thông', 'Bồn tắm', 'Máy pha cà phê'] },
-            { id: 'family', name: 'Family Suite 2 phòng ngủ', size: 55, bed: '2 giường đôi', capacity: 5, image: 'photo-1578683010236-d716f9a3f461', priceVnd: 2490000, originalVnd: 3100000, left: 1, perks: { breakfast: true, freeChange: false, deposit30: true }, feats: ['Phòng khách riêng', 'Lò sưởi', '2 phòng tắm'] },
+            { id: 'deluxe', name: 'Phòng Deluxe Đồi Thông', size: 28, bed: '1 giường đôi lớn', capacity: 2, image: placePhoto('Xuan Huong Lake (31404267520).jpg'), priceVnd: 1290000, originalVnd: 1650000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Ban công', 'Bồn tắm', 'Smart TV'] },
+            { id: 'suite', name: 'Pine View Suite', size: 38, bed: '1 giường King + sofa bed', capacity: 3, image: placePhoto('Xuan Huong Lake 11.jpg'), priceVnd: 1690000, originalVnd: 2100000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View đồi thông', 'Bồn tắm', 'Máy pha cà phê'] },
+            { id: 'family', name: 'Family Suite 2 phòng ngủ', size: 55, bed: '2 giường đôi', capacity: 5, image: placePhoto('Xuan Huong Lake 08.jpg'), priceVnd: 2490000, originalVnd: 3100000, left: 1, perks: { breakfast: true, freeChange: false, deposit30: true }, feats: ['Phòng khách riêng', 'Lò sưởi', '2 phòng tắm'] },
           ],
         }),
         P({
           id: 'pkg-taxua', category: 'homestay', dest: 'taxua', stars: 5, score: 9.5, reviews: 315,
           name: 'Homestay Nhà của An Tà Xùa — Bungalow Kính Săn Mây',
           location: 'Đỉnh Tà Xùa, Bắc Yên, Sơn La', lat: 21.3216, lng: 104.4851,
-          images: ['photo-1510798831971-661eb04b3739', 'photo-1506905925346-21bda4d32df4', 'photo-1464822759023-fed622ff2c3b', 'photo-1505693416388-ac5ce068fe85', 'photo-1470071459604-3b5ec3a7fe05'],
+          images: [placePhoto('Man alone in Tả Xùa 03-03-2017.jpg'), placePhoto('Tà Xùa in morning mist.png'), placePhoto('Wooden house Vietnam.jpg'), placePhoto('Man alone in Tả Xùa 03-03-2017.jpg', 960), placePhoto('Tà Xùa in morning mist.png', 960)],
           quick: ['freeCancel', 'breakfast', 'instant'], amen: ['cloud', 'fireplace', 'wifi', 'parking'],
           recent: 'Vừa có người đặt 9 phút trước',
           desc: 'Đặt chân ở độ cao 1.650 m, mở cửa kính là thung lũng mây Tà Xùa trải dài ngay trước giường ngủ. Lò sưởi ấm, trà nóng và bữa tối đồ nướng bản địa được chuẩn bị riêng mỗi tối — nơi lý tưởng để săn mây bình minh.',
           rooms: [
-            { id: 'wood', name: 'Phòng Tiêu chuẩn Gỗ Thông', size: 20, bed: '1 giường đôi', capacity: 2, image: 'photo-1505693416388-ac5ce068fe85', priceVnd: 790000, originalVnd: 990000, left: 4, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Chăn điện', 'Trà nóng'] },
-            { id: 'glass', name: 'Bungalow Kính View Săn Mây', size: 26, bed: '1 giường đôi lớn', capacity: 2, image: 'photo-1510798831971-661eb04b3739', priceVnd: 1090000, originalVnd: 1450000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Vách kính 180°', 'Ban công săn mây', 'Lò sưởi'] },
-            { id: 'stilt', name: 'Nhà Sàn Nguyên Căn (Đoàn)', size: 80, bed: '8 nệm đơn', capacity: 8, image: 'photo-1464822759023-fed622ff2c3b', priceVnd: 2890000, originalVnd: 3500000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp chung', 'Sân lửa trại'] },
+            { id: 'wood', name: 'Phòng Tiêu chuẩn Gỗ Thông', size: 20, bed: '1 giường đôi', capacity: 2, image: placePhoto('Wooden house Vietnam.jpg'), priceVnd: 790000, originalVnd: 990000, left: 4, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Chăn điện', 'Trà nóng'] },
+            { id: 'glass', name: 'Bungalow Kính View Săn Mây', size: 26, bed: '1 giường đôi lớn', capacity: 2, image: placePhoto('Man alone in Tả Xùa 03-03-2017.jpg'), priceVnd: 1090000, originalVnd: 1450000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Vách kính 180°', 'Ban công săn mây', 'Lò sưởi'] },
+            { id: 'stilt', name: 'Nhà Sàn Nguyên Căn (Đoàn)', size: 80, bed: '8 nệm đơn', capacity: 8, image: placePhoto('Tà Xùa in morning mist.png'), priceVnd: 2890000, originalVnd: 3500000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp chung', 'Sân lửa trại'] },
           ],
         }),
         P({
           id: 'pkg-phuquoc', category: 'resort', dest: 'phuquoc', stars: 5, score: 9.8, reviews: 519,
           name: 'Sea View Resort & Combo VIP Sun Bavaria Dinner Show',
           location: 'Sunset Town, Nam Phú Quốc', lat: 10.0284, lng: 104.0127,
-          images: ['photo-1571896349842-33c89424de2d', 'photo-1499793983690-e29da59ef1c2', 'photo-1584132967334-10e028bd69f7', 'photo-1520250497591-112f2f40a3f4', 'photo-1507525428034-b723cf961d3e'],
+          images: [placePhoto('Sunset on Phu Quoc island.jpg'), placePhoto('Amazing beach on Phu Quoc island Vietnam (38647607275).jpg'), placePhoto('Phu Quoc Beach.jpg'), placePhoto('Phu quoc plage sao.jpg'), placePhoto('Sunset on Phu Quoc island.jpg', 960)],
           quick: ['breakfast', 'airport', 'instant'], amen: ['pool', 'beach', 'spa', 'wifi'],
           recent: 'Vừa có người đặt 2 phút trước',
           desc: 'Kỳ nghỉ trọn gói hướng biển Nam đảo: phòng nghỉ nhìn ra đại dương, bàn VIP buffet tối lúc 18:00 và vé xem trình diễn pháo hoa lúc 19:30 tại Sunset Town, kèm xe đưa đón sân bay.',
           rooms: [
-            { id: 'combo-deluxe', name: 'Combo Deluxe Hướng Biển + Dinner Show', size: 35, bed: '1 giường King', capacity: 2, image: 'photo-1571896349842-33c89424de2d', priceVnd: 3190000, originalVnd: 3890000, left: 4, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['2N1Đ', 'Vé show 19:30', 'Buffet tối'] },
-            { id: 'combo-pool', name: 'Combo Pool Villa + Dinner Show', size: 70, bed: '1 King + 1 Queen', capacity: 4, image: 'photo-1584132967334-10e028bd69f7', priceVnd: 5490000, originalVnd: 6500000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['2N1Đ', 'Hồ bơi riêng', 'Xe điện nội khu'] },
+            { id: 'combo-deluxe', name: 'Combo Deluxe Hướng Biển + Dinner Show', size: 35, bed: '1 giường King', capacity: 2, image: placePhoto('Sunset on Phu Quoc island.jpg'), priceVnd: 3190000, originalVnd: 3890000, left: 4, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['2N1Đ', 'Vé show 19:30', 'Buffet tối'] },
+            { id: 'combo-pool', name: 'Combo Pool Villa + Dinner Show', size: 70, bed: '1 King + 1 Queen', capacity: 4, image: placePhoto('Amazing beach on Phu Quoc island Vietnam (38647607275).jpg'), priceVnd: 5490000, originalVnd: 6500000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['2N1Đ', 'Hồ bơi riêng', 'Xe điện nội khu'] },
           ],
         }),
         P({
           id: 'velora-dalat-villa', category: 'villa', dest: 'dalat', stars: 5, score: 9.3, reviews: 186,
           name: 'Velora Highland Villa Đà Lạt — Khuôn Viên Sân Vườn Riêng',
           location: 'Đồi Thông Trại Mát, TP. Đà Lạt', lat: 11.9312, lng: 108.4787,
-          images: ['photo-1613490493576-7fde63acd811', 'photo-1564501049412-61c2a3083791', 'photo-1505693416388-ac5ce068fe85', 'photo-1631049307264-da0ec9d70304', 'photo-1501785888041-af3ef285b470'],
+          images: [placePhoto('Xuan Huong Lake 08.jpg'), placePhoto('Xuan Huong Lake 11.jpg'), placePhoto('Xuan Huong Lake (31404267520).jpg'), placePhoto('Xuan Huong Lake 08.jpg', 960), placePhoto('Xuan Huong Lake 11.jpg', 960)],
           quick: ['freeCancel', 'airport'], amen: ['kitchen', 'parking', 'wifi', 'fireplace'],
           recent: 'Vừa có người đặt 18 phút trước',
           desc: 'Biệt thự riêng tư giữa khuôn viên sân vườn Đà Lạt, phù hợp gia đình hoặc nhóm bạn 6–10 khách. Sân nướng BBQ ngoài trời, lò sưởi phòng khách và quản gia hỗ trợ 24/7 để kỳ nghỉ của bạn trọn vẹn.',
           rooms: [
-            { id: 'v3', name: 'Villa Nguyên Căn 3 phòng ngủ', size: 160, bed: '3 giường King', capacity: 8, image: 'photo-1613490493576-7fde63acd811', priceVnd: 3590000, originalVnd: 4500000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp đầy đủ', 'Sân BBQ', 'Lò sưởi'] },
-            { id: 'v4', name: 'Villa Nguyên Căn 4 phòng ngủ + Karaoke', size: 220, bed: '4 King + 2 đơn', capacity: 10, image: 'photo-1564501049412-61c2a3083791', priceVnd: 4690000, originalVnd: 5600000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Karaoke', 'Sân vườn 300m²', 'Bãi đỗ 3 xe'] },
+            { id: 'v3', name: 'Villa Nguyên Căn 3 phòng ngủ', size: 160, bed: '3 giường King', capacity: 8, image: placePhoto('Xuan Huong Lake 08.jpg'), priceVnd: 3590000, originalVnd: 4500000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp đầy đủ', 'Sân BBQ', 'Lò sưởi'] },
+            { id: 'v4', name: 'Villa Nguyên Căn 4 phòng ngủ + Karaoke', size: 220, bed: '4 King + 2 đơn', capacity: 10, image: placePhoto('Xuan Huong Lake (31404267520).jpg'), priceVnd: 4690000, originalVnd: 5600000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Karaoke', 'Sân vườn 300m²', 'Bãi đỗ 3 xe'] },
           ],
         }),
         P({
           id: 'panorama-studio-apt', category: 'apartment', dest: 'dalat', stars: 4, score: 9.1, reviews: 142,
           name: 'Banla Executive Panorama Apartment — Căn Hộ Có Bếp',
           location: 'Phường 9, TP. Đà Lạt', lat: 11.9521, lng: 108.4433,
-          images: ['photo-1522708323590-d24dbb6b0267', 'photo-1496417263034-38ec4f0b665a', 'photo-1631049307264-da0ec9d70304', 'photo-1590490360182-c33d57733427', 'photo-1505693416388-ac5ce068fe85'],
+          images: [placePhoto('Xuan Huong Lake (31404267520).jpg'), placePhoto('Xuan Huong Lake 11.jpg'), placePhoto('Xuan Huong Lake 08.jpg'), placePhoto('Xuan Huong Lake (31404267520).jpg', 960), placePhoto('Xuan Huong Lake 11.jpg', 800)],
           quick: ['freeCancel', 'instant'], amen: ['kitchen', 'wifi', 'parking'],
           recent: 'Vừa có người đặt 25 phút trước',
           desc: 'Căn hộ dịch vụ hiện đại với bếp đầy đủ, máy giặt sấy, bàn làm việc rộng và ban công đón gió mát. Không gian tiện nghi như ở nhà, lý tưởng cho kỳ nghỉ dài ngày hoặc làm việc từ xa.',
           rooms: [
-            { id: 'studio', name: 'Studio Panorama', size: 32, bed: '1 giường Queen', capacity: 2, image: 'photo-1522708323590-d24dbb6b0267', priceVnd: 990000, originalVnd: 1350000, left: 3, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp riêng', 'Máy giặt', 'Bàn làm việc'] },
-            { id: 'one-bed', name: 'Căn 1 Phòng ngủ có Bếp', size: 48, bed: '1 King + sofa bed', capacity: 3, image: 'photo-1496417263034-38ec4f0b665a', priceVnd: 1290000, originalVnd: 1690000, left: 2, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Phòng khách', 'Ban công', 'Máy sấy'] },
+            { id: 'studio', name: 'Studio Panorama', size: 32, bed: '1 giường Queen', capacity: 2, image: placePhoto('Xuan Huong Lake (31404267520).jpg'), priceVnd: 990000, originalVnd: 1350000, left: 3, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Bếp riêng', 'Máy giặt', 'Bàn làm việc'] },
+            { id: 'one-bed', name: 'Căn 1 Phòng ngủ có Bếp', size: 48, bed: '1 King + sofa bed', capacity: 3, image: placePhoto('Xuan Huong Lake 11.jpg'), priceVnd: 1290000, originalVnd: 1690000, left: 2, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Phòng khách', 'Ban công', 'Máy sấy'] },
           ],
         }),
         P({
           id: 'mercure-resort-combo', category: 'resort', dest: 'dalat', stars: 5, score: 9.4, reviews: 274,
           name: 'Combo Nghỉ Dưỡng Resort Kiến Trúc Pháp 3N2Đ + Xe Đón',
           location: 'Khu Phố Pháp, TP. Đà Lạt', lat: 11.9378, lng: 108.4401,
-          images: ['photo-1542314831-068cd1dbfeeb', 'photo-1445019980597-93fa8acb246c', 'photo-1611892440504-42a792e24d32', 'photo-1578683010236-d716f9a3f461', 'photo-1564501049412-61c2a3083791'],
+          images: [placePhoto('Xuan Huong Lake 11.jpg'), placePhoto('Xuan Huong Lake 08.jpg'), placePhoto('Xuan Huong Lake (31404267520).jpg'), placePhoto('Xuan Huong Lake 11.jpg', 800), placePhoto('Xuan Huong Lake 08.jpg', 800)],
           quick: ['freeCancel', 'breakfast', 'airport'], amen: ['pool', 'spa', 'gym', 'wifi'],
           recent: 'Vừa có người đặt 12 phút trước',
           desc: 'Hành trình 3 ngày 2 đêm trong biệt thự kiến trúc Pháp cổ kính: buffet sáng Âu – Á mỗi ngày, liệu trình spa thư giãn và xe SUV riêng đón tại sân bay Liên Khương.',
           rooms: [
-            { id: 'sup', name: 'Combo 3N2Đ Phòng Superior + Xe đón', size: 30, bed: '1 giường Queen', capacity: 2, image: 'photo-1611892440504-42a792e24d32', priceVnd: 5690000, originalVnd: 6900000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['3N2Đ', 'SUV đón Liên Khương', 'Buffet sáng'] },
-            { id: 'jr', name: 'Combo 3N2Đ Junior Suite + Spa 60 phút', size: 45, bed: '1 giường King', capacity: 3, image: 'photo-1578683010236-d716f9a3f461', priceVnd: 6890000, originalVnd: 8200000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['3N2Đ', 'Spa 60 phút', 'Ban công vườn hoa'] },
+            { id: 'sup', name: 'Combo 3N2Đ Phòng Superior + Xe đón', size: 30, bed: '1 giường Queen', capacity: 2, image: placePhoto('Xuan Huong Lake 11.jpg'), priceVnd: 5690000, originalVnd: 6900000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['3N2Đ', 'SUV đón Liên Khương', 'Buffet sáng'] },
+            { id: 'jr', name: 'Combo 3N2Đ Junior Suite + Spa 60 phút', size: 45, bed: '1 giường King', capacity: 3, image: placePhoto('Xuan Huong Lake 08.jpg'), priceVnd: 6890000, originalVnd: 8200000, left: 2, isPackage: true, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['3N2Đ', 'Spa 60 phút', 'Ban công vườn hoa'] },
           ],
         }),
         P({
           id: 'taxua-cloud-hotel', category: 'hotel', dest: 'taxua', stars: 4, score: 8.7, reviews: 142,
           name: 'Tà Xùa Cloud Hotel — Gần Sống Lưng Khủng Long',
           location: 'Bản Bẹ, Tà Xùa, Bắc Yên', lat: 21.3089, lng: 104.4702,
-          images: ['photo-1496417263034-38ec4f0b665a', 'photo-1464822759023-fed622ff2c3b', 'photo-1505693416388-ac5ce068fe85', 'photo-1506905925346-21bda4d32df4', 'photo-1631049307264-da0ec9d70304'],
+          images: [placePhoto('Tà Xùa in morning mist.png'), placePhoto('Man alone in Tả Xùa 03-03-2017.jpg'), placePhoto('Wooden house Vietnam.jpg'), placePhoto('Tà Xùa in morning mist.png', 960), placePhoto('Man alone in Tả Xùa 03-03-2017.jpg', 800)],
           quick: ['breakfast', 'instant'], amen: ['cloud', 'parking', 'wifi'],
           recent: 'Vừa có người đặt 31 phút trước',
           desc: 'Khách sạn mới nằm trên cung đường săn mây, cách Sống Lưng Khủng Long khoảng 3 km. Phòng sạch sẽ, ấm cúng; hỗ trợ thuê xe máy và hướng dẫn viên địa phương để bạn khám phá trọn vẹn.',
           rooms: [
-            { id: 'double', name: 'Phòng Đôi Tiêu chuẩn', size: 22, bed: '1 giường đôi', capacity: 2, image: 'photo-1496417263034-38ec4f0b665a', priceVnd: 650000, originalVnd: 850000, left: 5, perks: { breakfast: true, freeChange: false, deposit30: true }, feats: ['Chăn điện', 'Nước nóng'] },
-            { id: 'fam', name: 'Phòng Gia đình View Núi', size: 34, bed: '2 giường đôi', capacity: 4, image: 'photo-1631049307264-da0ec9d70304', priceVnd: 1150000, originalVnd: 1450000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View núi', 'Ban công săn mây'] },
+            { id: 'double', name: 'Phòng Đôi Tiêu chuẩn', size: 22, bed: '1 giường đôi', capacity: 2, image: placePhoto('Wooden house Vietnam.jpg'), priceVnd: 650000, originalVnd: 850000, left: 5, perks: { breakfast: true, freeChange: false, deposit30: true }, feats: ['Chăn điện', 'Nước nóng'] },
+            { id: 'fam', name: 'Phòng Gia đình View Núi', size: 34, bed: '2 giường đôi', capacity: 4, image: placePhoto('Tà Xùa in morning mist.png'), priceVnd: 1150000, originalVnd: 1450000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View núi', 'Ban công săn mây'] },
           ],
         }),
         P({
           id: 'sapa-mountain-resort', category: 'resort', dest: 'sapa', stars: 5, score: 9.2, reviews: 367,
           name: 'Sa Pa Mountain Retreat & Spa — Thung Lũng Mường Hoa',
           location: 'Đường Mường Hoa, TX. Sa Pa, Lào Cai', lat: 22.3302, lng: 103.8476,
-          images: ['photo-1520250497591-112f2f40a3f4', 'photo-1470071459604-3b5ec3a7fe05', 'photo-1590490360182-c33d57733427', 'photo-1584132967334-10e028bd69f7', 'photo-1445019980597-93fa8acb246c'],
+          images: [placePhoto('Rice terraces in Lao Chải 01.jpg'), placePhoto('Fansipan cable car terraced rice fields valley aerial view Sa Pa Vietnam.jpg'), placePhoto('Rice terraces in Lao Chải 01.jpg', 960), placePhoto('Fansipan cable car terraced rice fields valley aerial view Sa Pa Vietnam.jpg', 960), placePhoto('Rice terraces in Lao Chải 01.jpg', 800)],
           quick: ['freeCancel', 'breakfast'], amen: ['spa', 'cloud', 'fireplace', 'pool', 'wifi'],
           recent: 'Vừa có người đặt 7 phút trước',
           desc: 'Resort nhìn trọn thung lũng Mường Hoa với hồ bơi nước ấm vô cực, spa thảo dược Dao Đỏ và lò sưởi riêng trong từng phòng — chốn nghỉ dưỡng yên tĩnh giữa núi rừng Tây Bắc.',
           rooms: [
-            { id: 'valley', name: 'Phòng Deluxe View Thung Lũng', size: 32, bed: '1 giường King', capacity: 2, image: 'photo-1590490360182-c33d57733427', priceVnd: 1890000, originalVnd: 2400000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View thung lũng', 'Lò sưởi'] },
-            { id: 'cloud-suite', name: 'Suite Ban Công Săn Mây', size: 48, bed: '1 King + 1 đơn', capacity: 3, image: 'photo-1445019980597-93fa8acb246c', priceVnd: 2690000, originalVnd: 3300000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Ban công 15m²', 'Bồn tắm gỗ'] },
+            { id: 'valley', name: 'Phòng Deluxe View Thung Lũng', size: 32, bed: '1 giường King', capacity: 2, image: placePhoto('Rice terraces in Lao Chải 01.jpg'), priceVnd: 1890000, originalVnd: 2400000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View thung lũng', 'Lò sưởi'] },
+            { id: 'cloud-suite', name: 'Suite Ban Công Săn Mây', size: 48, bed: '1 King + 1 đơn', capacity: 3, image: placePhoto('Fansipan cable car terraced rice fields valley aerial view Sa Pa Vietnam.jpg'), priceVnd: 2690000, originalVnd: 3300000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Ban công 15m²', 'Bồn tắm gỗ'] },
           ],
         }),
         P({
           id: 'nhatrang-beach-apt', category: 'apartment', dest: 'nhatrang', stars: 4, score: 8.9, reviews: 211,
           name: 'Ocean Front Apartment Nha Trang — Đường Trần Phú',
           location: '28 Trần Phú, TP. Nha Trang', lat: 12.2431, lng: 109.1960,
-          images: ['photo-1499793983690-e29da59ef1c2', 'photo-1522708323590-d24dbb6b0267', 'photo-1496417263034-38ec4f0b665a', 'photo-1507525428034-b723cf961d3e', 'photo-1631049307264-da0ec9d70304'],
+          images: [placePhoto('Nha Trang Beach, Vietnam.jpg'), placePhoto('Beach at Nha Trang, Vietnam.jpg'), placePhoto('Đường Trần Phú Nha Trang .jpg'), placePhoto('Nha Trang Beach, Vietnam.jpg', 960), placePhoto('Beach at Nha Trang, Vietnam.jpg', 800)],
           quick: ['freeCancel', 'instant'], amen: ['beach', 'kitchen', 'pool', 'wifi'],
           recent: 'Vừa có người đặt 15 phút trước',
           desc: 'Căn hộ hướng biển ngay đường Trần Phú, hồ bơi tầng thượng ngắm hoàng hôn và chỉ 2 phút đi bộ ra bãi biển. Không gian rộng rãi, phù hợp cho gia đình và nhóm bạn.',
           rooms: [
-            { id: 'sea-studio', name: 'Studio Hướng Biển', size: 35, bed: '1 giường Queen', capacity: 2, image: 'photo-1522708323590-d24dbb6b0267', priceVnd: 890000, originalVnd: 1150000, left: 4, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['View biển', 'Bếp nhỏ'] },
-            { id: 'sea-2br', name: 'Căn 2 Phòng ngủ Hướng Biển', size: 72, bed: '2 giường Queen', capacity: 5, image: 'photo-1496417263034-38ec4f0b665a', priceVnd: 1790000, originalVnd: 2250000, left: 2, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['2 phòng tắm', 'Bếp đầy đủ', 'Máy giặt'] },
+            { id: 'sea-studio', name: 'Studio Hướng Biển', size: 35, bed: '1 giường Queen', capacity: 2, image: placePhoto('Nha Trang Beach, Vietnam.jpg'), priceVnd: 890000, originalVnd: 1150000, left: 4, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['View biển', 'Bếp nhỏ'] },
+            { id: 'sea-2br', name: 'Căn 2 Phòng ngủ Hướng Biển', size: 72, bed: '2 giường Queen', capacity: 5, image: placePhoto('Đường Trần Phú Nha Trang .jpg'), priceVnd: 1790000, originalVnd: 2250000, left: 2, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['2 phòng tắm', 'Bếp đầy đủ', 'Máy giặt'] },
           ],
         }),
         P({
           id: 'danang-villa', category: 'villa', dest: 'danang', stars: 5, score: 9.4, reviews: 176,
           name: 'Sơn Trà Pool Villa Đà Nẵng — Hồ Bơi Riêng',
           location: 'Bán đảo Sơn Trà, Q. Sơn Trà, Đà Nẵng', lat: 16.0890, lng: 108.2471,
-          images: ['photo-1584132967334-10e028bd69f7', 'photo-1613490493576-7fde63acd811', 'photo-1564501049412-61c2a3083791', 'photo-1499793983690-e29da59ef1c2', 'photo-1631049307264-da0ec9d70304'],
+          images: [placePhoto('Son Tra Peninsula.jpg'), placePhoto('Marble Mountains, Vietnam.jpg'), placePhoto('Marble Mountains View 3.JPG'), placePhoto('Son Tra Peninsula.jpg', 960), placePhoto('Marble Mountains, Vietnam.jpg', 800)],
           quick: ['freeCancel', 'airport'], amen: ['pool', 'kitchen', 'beach', 'parking', 'wifi'],
           recent: 'Vừa có người đặt 22 phút trước',
           desc: 'Biệt thự riêng tư trên bán đảo Sơn Trà, cách biển Mỹ Khê 5 phút lái xe. Hồ bơi riêng, khu BBQ ngoài trời, quản gia chăm sóc và xe đưa đón sân bay miễn phí.',
           rooms: [
-            { id: 'pv3', name: 'Villa 3 phòng ngủ Hồ Bơi Riêng', size: 180, bed: '3 giường King', capacity: 8, image: 'photo-1584132967334-10e028bd69f7', priceVnd: 4290000, originalVnd: 5200000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Hồ bơi riêng', 'Sân BBQ', 'Quản gia'] },
+            { id: 'pv3', name: 'Villa 3 phòng ngủ Hồ Bơi Riêng', size: 180, bed: '3 giường King', capacity: 8, image: placePhoto('Son Tra Peninsula.jpg'), priceVnd: 4290000, originalVnd: 5200000, left: 1, perks: { breakfast: false, freeChange: true, deposit30: true }, feats: ['Hồ bơi riêng', 'Sân BBQ', 'Quản gia'] },
           ],
         }),
         P({
           id: 'phuquoc-sunset-homestay', category: 'homestay', dest: 'phuquoc', stars: 4, score: 8.8, reviews: 198,
           name: 'Sunset Bungalow Phú Quốc — Bãi Trường',
           location: 'Bãi Trường, Dương Tơ, Phú Quốc', lat: 10.1702, lng: 103.9681,
-          images: ['photo-1507525428034-b723cf961d3e', 'photo-1499793983690-e29da59ef1c2', 'photo-1505693416388-ac5ce068fe85', 'photo-1571896349842-33c89424de2d', 'photo-1590490360182-c33d57733427'],
+          images: [placePhoto('Phu quoc plage sao.jpg'), placePhoto('Phu Quoc Beach.jpg'), placePhoto('Amazing beach on Phu Quoc island Vietnam (38647607275).jpg'), placePhoto('Sunset on Phu Quoc island.jpg'), placePhoto('Phu Quoc Beach.jpg', 800)],
           quick: ['freeCancel', 'breakfast'], amen: ['beach', 'parking', 'wifi'],
           recent: 'Vừa có người đặt 40 phút trước',
           desc: 'Bungalow mái lá giữa vườn dừa, chỉ cách bãi biển hoàng hôn Bãi Trường 50 m. Bữa sáng hải sản tươi, hiên võng thư giãn và dịch vụ thuê xe máy tiện lợi.',
           rooms: [
-            { id: 'garden', name: 'Bungalow Vườn Dừa', size: 24, bed: '1 giường đôi', capacity: 2, image: 'photo-1505693416388-ac5ce068fe85', priceVnd: 690000, originalVnd: 890000, left: 4, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Hiên võng', 'Vòi sen ngoài trời'] },
-            { id: 'beachfront', name: 'Bungalow Sát Biển', size: 30, bed: '1 giường King', capacity: 3, image: 'photo-1590490360182-c33d57733427', priceVnd: 1190000, originalVnd: 1490000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View hoàng hôn', 'Hiên riêng'] },
+            { id: 'garden', name: 'Bungalow Vườn Dừa', size: 24, bed: '1 giường đôi', capacity: 2, image: placePhoto('Phu quoc plage sao.jpg'), priceVnd: 690000, originalVnd: 890000, left: 4, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Hiên võng', 'Vòi sen ngoài trời'] },
+            { id: 'beachfront', name: 'Bungalow Sát Biển', size: 30, bed: '1 giường King', capacity: 3, image: placePhoto('Sunset on Phu Quoc island.jpg'), priceVnd: 1190000, originalVnd: 1490000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View hoàng hôn', 'Hiên riêng'] },
+          ],
+        }),
+        P({
+          id: 'hagiang-mapileng', category: 'homestay', dest: 'hagiang', stars: 4, score: 9.0, reviews: 128,
+          name: 'Mã Pí Lèng Ecolodge — View đèo Hà Giang',
+          location: 'Đèo Mã Pí Lèng, Đồng Văn, Hà Giang', lat: 23.2412, lng: 105.3984,
+          images: [placePhoto('Ma Pi Leng pass plateau in 2014.jpg'), placePhoto('Le col de Ma Pi Leng (Dong Van-Meo Vac).jpg'), placePhoto('Flycam view of road at Ma Pi Leng pass.png'), placePhoto('Ma Pi Leng pass plateau in 2014.jpg', 960), placePhoto('Le col de Ma Pi Leng (Dong Van-Meo Vac).jpg', 800)],
+          quick: ['breakfast', 'instant'], amen: ['cloud', 'parking', 'wifi'],
+          recent: 'Vừa có người đặt 28 phút trước',
+          desc: 'Nhà nghỉ nhìn thẳng xuống sông Nho Quế trên đèo Mã Pí Lèng. Ban công săn mây buổi sớm, bữa sáng địa phương và chỉ dẫn cung đường Đồng Văn – Mèo Vạc.',
+          rooms: [
+            { id: 'pass-double', name: 'Phòng đôi view đèo', size: 22, bed: '1 giường đôi', capacity: 2, image: placePhoto('Ma Pi Leng pass plateau in 2014.jpg'), priceVnd: 890000, originalVnd: 1150000, left: 3, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Ban công', 'View sông Nho Quế'] },
+            { id: 'pass-family', name: 'Phòng gia đình view cao nguyên', size: 34, bed: '2 giường đôi', capacity: 4, image: placePhoto('Le col de Ma Pi Leng (Dong Van-Meo Vac).jpg'), priceVnd: 1390000, originalVnd: 1750000, left: 2, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['View cao nguyên đá', 'Nước nóng'] },
+          ],
+        }),
+        P({
+          id: 'mocchau-town', category: 'homestay', dest: 'mocchau', stars: 4, score: 8.8, reviews: 96,
+          name: 'Mộc Châu Highland House — Thị trấn cao nguyên',
+          location: 'Thị trấn Mộc Châu, Sơn La', lat: 20.8426, lng: 104.6311,
+          images: [placePhoto('Thị trấn Mộc Châu, Sơn La.jpg'), placePhoto('Thị trấn Mộc Châu, Sơn La.jpg', 960), placePhoto('Thị trấn Mộc Châu, Sơn La.jpg', 800)],
+          quick: ['breakfast', 'freeCancel'], amen: ['parking', 'wifi', 'cloud'],
+          recent: 'Vừa có người đặt 36 phút trước',
+          desc: 'Nhà nghỉ trong thị trấn Mộc Châu, điểm dừng trên cao nguyên chè. Buổi sáng mát, dễ đi các đồi chè và thác quanh thị trấn.',
+          rooms: [
+            { id: 'mc-double', name: 'Phòng đôi cao nguyên', size: 22, bed: '1 giường đôi', capacity: 2, image: placePhoto('Thị trấn Mộc Châu, Sơn La.jpg'), priceVnd: 750000, originalVnd: 950000, left: 4, perks: { breakfast: true, freeChange: true, deposit30: true }, feats: ['Nước nóng', 'Ban công'] },
           ],
         }),
       ];
 
       // ⚠ Bài đánh giá MẪU: thay bằng đánh giá thật của khách đã lưu trú trước khi vận hành chính thức.
       const REVIEWS = [
-        { propId: 'pkg-taxua', name: 'Minh Anh', from: 'Hà Nội', type: 'Cặp đôi', month: '10/2026', score: 9.8, photo: 'photo-1506905925346-21bda4d32df4', text: 'Thức dậy giữa biển mây trắng xóa ngay trước cửa kính là trải nghiệm khó quên. Chủ nhà chu đáo, bữa tối nướng ấm cúng — chúng tôi chắc chắn sẽ quay lại vào mùa săn mây năm sau.' },
-        { propId: 'pkg-dalat', name: 'Quốc Bảo', from: 'TP. HCM', type: 'Gia đình', month: '09/2026', score: 9.6, photo: 'photo-1611892440504-42a792e24d32', text: 'Phòng Suite rộng rãi, sạch sẽ, nhìn ra đồi thông rất thư thái. Xe đón sân bay đúng giờ và lễ tân xác nhận đặt phòng chỉ sau vài phút. Cả nhà đều hài lòng.' },
-        { propId: 'pkg-phuquoc', name: 'Thu Trang', from: 'Đà Nẵng', type: 'Bạn bè', month: '11/2026', score: 10, photo: 'photo-1571896349842-33c89424de2d', text: 'Combo rất đáng giá: phòng hướng biển, buffet tối và vị trí xem pháo hoa ngay trước mắt. Thanh toán VietQR nhanh gọn, mọi thứ đúng như mô tả.' },
-        { propId: 'sapa-mountain-resort', name: 'Hoàng Long', from: 'Hải Phòng', type: 'Công tác', month: '08/2026', score: 9.2, photo: 'photo-1520250497591-112f2f40a3f4', text: 'Hồ bơi nước ấm nhìn ra thung lũng là điểm nhấn tuyệt vời. Liệu trình spa thảo dược giúp tôi hồi phục hoàn toàn sau chuyến trekking dài.' },
-        { propId: 'velora-dalat-villa', name: 'Ngọc Hân', from: 'Cần Thơ', type: 'Nhóm 8 người', month: '07/2026', score: 9.4, photo: 'photo-1613490493576-7fde63acd811', text: 'Biệt thự rộng rãi, sân BBQ thoải mái cho cả nhóm. Quản gia hỗ trợ chuẩn bị đồ nướng rất chu đáo — một kỳ nghỉ cuối tuần trọn vẹn bên bạn bè.' },
-        { propId: 'danang-villa', name: 'David Tran', from: 'Sydney', type: 'Gia đình', month: '06/2026', score: 9.5, photo: 'photo-1584132967334-10e028bd69f7', text: 'Private pool, quiet surroundings and a complimentary airport pickup — our children loved every moment. Booking and deposit were effortless.' },
-        { propId: 'nhatrang-beach-apt', name: 'Phương Linh', from: 'Huế', type: 'Cặp đôi', month: '10/2026', score: 8.9, photo: 'photo-1499793983690-e29da59ef1c2', text: 'Căn hộ sạch đẹp, hướng biển và hồ bơi tầng thượng ngắm hoàng hôn thật tuyệt. Vị trí trung tâm, đi bộ vài phút là tới biển và các quán ăn.' },
-        { propId: 'panorama-studio-apt', name: 'Tuấn Kiệt', from: 'Hà Nội', type: 'Làm việc từ xa', month: '09/2026', score: 9.1, photo: 'photo-1522708323590-d24dbb6b0267', text: 'Wi-Fi ổn định, bàn làm việc thoải mái cùng bếp và máy giặt đầy đủ giúp tôi làm việc suốt 10 ngày rất dễ chịu. Ưu đãi lưu trú dài ngày cũng rất hợp lý.' },
-        { propId: 'mercure-resort-combo', name: 'Bảo Ngọc', from: 'Vũng Tàu', type: 'Cặp đôi', month: '05/2026', score: 9.4, photo: 'photo-1542314831-068cd1dbfeeb', text: 'Kiến trúc Pháp cổ điển lên hình cực đẹp, buffet sáng phong phú và xe SUV đón tận sân bay giúp chuyến đi nhẹ nhàng, sang trọng từ đầu đến cuối.' },
-        { propId: 'taxua-cloud-hotel', name: 'Văn Hùng', from: 'Thái Nguyên', type: 'Phượt', month: '11/2026', score: 8.6, photo: 'photo-1464822759023-fed622ff2c3b', text: 'Giá hợp lý, gần điểm săn mây. Chủ khách sạn chỉ dẫn tận tình lộ trình lên Sống Lưng Khủng Long nên chuyến đi rất thuận lợi.' },
-        { propId: 'phuquoc-sunset-homestay', name: 'Mai Chi', from: 'TP. HCM', type: 'Bạn bè', month: '04/2026', score: 8.8, photo: 'photo-1507525428034-b723cf961d3e', text: 'Bungalow xinh xắn, ra biển ngắm hoàng hôn chỉ vài bước chân. Bữa sáng hải sản tươi ngon là điều bất ngờ thú vị.' },
+        { propId: 'pkg-taxua', name: 'Minh Anh', from: 'Hà Nội', type: 'Cặp đôi', month: '10/2026', score: 9.8, photo: placePhoto('Man alone in Tả Xùa 03-03-2017.jpg'), text: 'Thức dậy giữa biển mây trắng xóa ngay trước cửa kính là trải nghiệm khó quên. Chủ nhà chu đáo, bữa tối nướng ấm cúng — chúng tôi chắc chắn sẽ quay lại vào mùa săn mây năm sau.' },
+        { propId: 'pkg-dalat', name: 'Quốc Bảo', from: 'TP. HCM', type: 'Gia đình', month: '09/2026', score: 9.6, photo: placePhoto('Xuan Huong Lake 11.jpg'), text: 'Phòng Suite rộng rãi, sạch sẽ, nhìn ra đồi thông rất thư thái. Xe đón sân bay đúng giờ và lễ tân xác nhận đặt phòng chỉ sau vài phút. Cả nhà đều hài lòng.' },
+        { propId: 'pkg-phuquoc', name: 'Thu Trang', from: 'Đà Nẵng', type: 'Bạn bè', month: '11/2026', score: 10, photo: placePhoto('Sunset on Phu Quoc island.jpg'), text: 'Combo rất đáng giá: phòng hướng biển, buffet tối và vị trí xem pháo hoa ngay trước mắt. Thanh toán VietQR nhanh gọn, mọi thứ đúng như mô tả.' },
+        { propId: 'sapa-mountain-resort', name: 'Hoàng Long', from: 'Hải Phòng', type: 'Công tác', month: '08/2026', score: 9.2, photo: placePhoto('Rice terraces in Lao Chải 01.jpg'), text: 'Hồ bơi nước ấm nhìn ra thung lũng là điểm nhấn tuyệt vời. Liệu trình spa thảo dược giúp tôi hồi phục hoàn toàn sau chuyến trekking dài.' },
+        { propId: 'velora-dalat-villa', name: 'Ngọc Hân', from: 'Cần Thơ', type: 'Nhóm 8 người', month: '07/2026', score: 9.4, photo: placePhoto('Xuan Huong Lake 08.jpg'), text: 'Biệt thự rộng rãi, sân BBQ thoải mái cho cả nhóm. Quản gia hỗ trợ chuẩn bị đồ nướng rất chu đáo — một kỳ nghỉ cuối tuần trọn vẹn bên bạn bè.' },
+        { propId: 'danang-villa', name: 'David Tran', from: 'Sydney', type: 'Gia đình', month: '06/2026', score: 9.5, photo: placePhoto('Son Tra Peninsula.jpg'), text: 'Private pool, quiet surroundings and a complimentary airport pickup — our children loved every moment. Booking and deposit were effortless.' },
+        { propId: 'nhatrang-beach-apt', name: 'Phương Linh', from: 'Huế', type: 'Cặp đôi', month: '10/2026', score: 8.9, photo: placePhoto('Nha Trang Beach, Vietnam.jpg'), text: 'Căn hộ sạch đẹp, hướng biển và hồ bơi tầng thượng ngắm hoàng hôn thật tuyệt. Vị trí trung tâm, đi bộ vài phút là tới biển và các quán ăn.' },
+        { propId: 'panorama-studio-apt', name: 'Tuấn Kiệt', from: 'Hà Nội', type: 'Làm việc từ xa', month: '09/2026', score: 9.1, photo: placePhoto('Xuan Huong Lake (31404267520).jpg'), text: 'Wi-Fi ổn định, bàn làm việc thoải mái cùng bếp và máy giặt đầy đủ giúp tôi làm việc suốt 10 ngày rất dễ chịu. Ưu đãi lưu trú dài ngày cũng rất hợp lý.' },
+        { propId: 'mercure-resort-combo', name: 'Bảo Ngọc', from: 'Vũng Tàu', type: 'Cặp đôi', month: '05/2026', score: 9.4, photo: placePhoto('Xuan Huong Lake 11.jpg'), text: 'Kiến trúc Pháp cổ điển lên hình cực đẹp, buffet sáng phong phú và xe SUV đón tận sân bay giúp chuyến đi nhẹ nhàng, sang trọng từ đầu đến cuối.' },
+        { propId: 'taxua-cloud-hotel', name: 'Văn Hùng', from: 'Thái Nguyên', type: 'Phượt', month: '11/2026', score: 8.6, photo: placePhoto('Tà Xùa in morning mist.png'), text: 'Giá hợp lý, gần điểm săn mây. Chủ khách sạn chỉ dẫn tận tình lộ trình lên Sống Lưng Khủng Long nên chuyến đi rất thuận lợi.' },
+        { propId: 'phuquoc-sunset-homestay', name: 'Mai Chi', from: 'TP. HCM', type: 'Bạn bè', month: '04/2026', score: 8.8, photo: placePhoto('Phu quoc plage sao.jpg'), text: 'Bungalow xinh xắn, ra biển ngắm hoàng hôn chỉ vài bước chân. Bữa sáng hải sản tươi ngon là điều bất ngờ thú vị.' },
       ];
 
       const PROMOS = [
-        { code: 'BANLA10', title: 'Giảm 10% khi thanh toán VietQR', desc: 'Áp dụng mọi chỗ nghỉ, nhập mã ở bước thanh toán.', color: 'from-brand-sky-deep to-brand-sky', img: 'photo-1566665797739-1674de7a421a' },
-        { code: null, title: 'Ưu đãi đặt dài ngày đến 15%', desc: 'Tự động: 1 đêm -5% · 2 đêm -10% · 3+ đêm -15% giá phòng.', color: 'from-accent-scarlet to-accent-scarlet-hover', img: 'photo-1611892440504-42a792e24d32' },
-        { code: 'CLOUDVIP', title: 'Giảm ngay 300.000₫ cho đơn đặt phòng', desc: 'Nhập mã ở bước thanh toán để được trừ trực tiếp 300.000₫.', color: 'from-[#0F766E] to-[#10B981]', img: 'photo-1506905925346-21bda4d32df4' },
-        { code: null, title: 'Đổi lịch miễn phí do thời tiết', desc: 'Bảo lưu hoặc dời ngày khi có mưa bão, không mất cọc.', color: 'from-[#6D28D9] to-[#8B5CF6]', img: 'photo-1470071459604-3b5ec3a7fe05' },
+        { code: 'BANLA10', title: 'Giảm 10% khi thanh toán VietQR', desc: 'Áp dụng mọi chỗ nghỉ, nhập mã ở bước thanh toán.', color: 'from-brand-sky-deep to-brand-sky', img: placePhoto('Xuan Huong Lake 11.jpg') },
+        { code: null, title: 'Ưu đãi đặt dài ngày đến 15%', desc: 'Tự động: 1 đêm -5% · 2 đêm -10% · 3+ đêm -15% giá phòng.', color: 'from-accent-scarlet to-accent-scarlet-hover', img: placePhoto('Sunset on Phu Quoc island.jpg') },
+        { code: 'CLOUDVIP', title: 'Giảm ngay 300.000₫ cho đơn đặt phòng', desc: 'Nhập mã ở bước thanh toán để được trừ trực tiếp 300.000₫.', color: 'from-[#0F766E] to-[#10B981]', img: placePhoto('Man alone in Tả Xùa 03-03-2017.jpg') },
+        { code: null, title: 'Đổi lịch miễn phí do thời tiết', desc: 'Bảo lưu hoặc dời ngày khi có mưa bão, không mất cọc.', color: 'from-[#6D28D9] to-[#8B5CF6]', img: placePhoto('Ma Pi Leng pass plateau in 2014.jpg') },
       ];
 
       // =====================================================================
@@ -1416,7 +1490,48 @@
       const propById = (id) => PROPERTIES.find((p) => p.id === id);
       const destName = (k) => (DESTS.find((d) => d.key === k) || {}).name || 'Tất cả điểm đến';
       const scoreLabel = (s) => (s >= 9.5 ? 'Tuyệt hảo' : s >= 9 ? 'Xuất sắc' : s >= 8.5 ? 'Tuyệt vời' : s >= 8 ? 'Rất tốt' : 'Tốt');
-      const HEART_SVG = '<svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3.3 5 6.9 5c2 0 3.4 1.1 4.1 2.3C11.7 6.1 13.1 5 15.1 5c3.6 0 5.7 3.6 4.4 6.8C19.5 16.4 12 21 12 21z"/></svg>';
+      const HEART_SVG = '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>';
+
+      // Lucide-style strokes, stroke-width 1.75. Sky / Scarlet come from CSS classes.
+      const LUCIDE = {
+        star: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+        check: '<path d="M20 6 9 17l-5-5"/>',
+        zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+        camera: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+        calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+        card: '<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/>',
+        shield: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>',
+        pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+        users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+        bed: '<path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>',
+        sparkles: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>',
+        hotel: '<path d="M10 22v-6.57"/><path d="M12 11h.01"/><path d="M12 7h.01"/><path d="M14 15.43V22"/><path d="M15 16a5 5 0 0 0-6 0"/><path d="M16 11h.01"/><path d="M16 7h.01"/><path d="M8 11h.01"/><path d="M8 7h.01"/><rect x="4" y="2" width="16" height="20" rx="2"/>',
+        home: '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+        palm: '<path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M10.1 8.9 7 22"/>',
+        building: '<rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>',
+        villa: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>',
+        waves: '<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>',
+        utensils: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
+        wifi: '<path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/>',
+        car: '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
+        cloud: '<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>',
+        flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+        dumbbell: '<path d="M14.4 14.4 9.6 9.6"/><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/>',
+        heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+        list: '<path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/>',
+        map: '<polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/>',
+        search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+        user: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+        ruler: '<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/>',
+        settings: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+      };
+      function ico(name, cls) {
+        return `<svg class="${cls || 'ico'}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${LUCIDE[name] || ''}</svg>`;
+      }
+
+      function placePhoto(file, w = 1280) {
+        return 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(file) + '?width=' + w;
+      }
 
       // =====================================================================
       // STATE (đồng bộ xuyên suốt qua localStorage)
@@ -1501,7 +1616,8 @@
       }
 
       function stars(n) {
-        return `<span class="text-ota-gold tracking-wider" aria-label="${n} sao">${'★'.repeat(n)}</span>`;
+        const one = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/></svg>';
+        return `<span class="star-row" aria-label="${n} sao">${one.repeat(n)}</span>`;
       }
 
       function scoreBadge(p, size = 'md') {
@@ -1533,32 +1649,32 @@
         return `
           <form class="sf-form ${glass ? 'bg-transparent p-1.5 sm:p-2' : 'bg-white ' + (compact ? 'p-2.5' : 'p-3 sm:p-4')} text-booking-navy rounded-xl grid grid-cols-2 md:grid-cols-12 gap-2.5 items-stretch" aria-label="Tìm chỗ nghỉ">
             <div class="col-span-2 md:col-span-4 ${field}">
-              <label for="${prefix}-dest" class="${lbl}">📍 Bạn muốn đi đâu?</label>
+              <label for="${prefix}-dest" class="${lbl}">${ico('pin', 'ico ico-sky')} Bạn muốn đi đâu?</label>
               <select id="${prefix}-dest" data-sf="dest" class="${inp}">
                 <option value="all" ${s.dest === 'all' ? 'selected' : ''}>Tất cả điểm đến</option>
                 ${DESTS.map((d) => `<option value="${d.key}" ${s.dest === d.key ? 'selected' : ''}>${d.name} — ${d.sub}</option>`).join('')}
               </select>
             </div>
             <div class="md:col-span-2 ${field}">
-              <label for="${prefix}-in" class="${lbl}">📅 Nhận phòng</label>
+              <label for="${prefix}-in" class="${lbl}">${ico('calendar', 'ico ico-sky')} Nhận phòng</label>
               <input id="${prefix}-in" type="date" data-sf="checkin" min="${todayISO()}" value="${s.checkin}" class="${inp}" />
             </div>
             <div class="md:col-span-2 ${field}">
               <div class="flex items-center justify-between">
-                <label for="${prefix}-out" class="${lbl} whitespace-nowrap">📅 Trả phòng</label>
+                <label for="${prefix}-out" class="${lbl} whitespace-nowrap">${ico('calendar', 'ico ico-sky')} Trả phòng</label>
                 <span class="nights-text hidden min-[400px]:inline-block text-[10px] font-extrabold bg-brand-sky-soft text-brand-sky-deep px-1.5 py-0.5 rounded">${nights} đêm</span>
               </div>
               <input id="${prefix}-out" type="date" data-sf="checkout" min="${addDays(s.checkin, 1)}" value="${s.checkout}" class="${inp}" />
             </div>
             <div class="col-span-2 md:col-span-2 ${field} grid grid-cols-2 gap-1">
               <div>
-                <label for="${prefix}-adults" class="${lbl}">👥 Khách</label>
+                <label for="${prefix}-adults" class="${lbl}">${ico('users', 'ico ico-sky')} Khách</label>
                 <select id="${prefix}-adults" data-sf="adults" class="${inp}">
                   ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => `<option value="${n}" ${s.adults === n ? 'selected' : ''}>${n}</option>`).join('')}
                 </select>
               </div>
               <div>
-                <label for="${prefix}-rooms" class="${lbl}">🛏 Phòng</label>
+                <label for="${prefix}-rooms" class="${lbl}">${ico('bed', 'ico ico-sky')} Phòng</label>
                 <select id="${prefix}-rooms" data-sf="rooms" class="${inp}">
                   ${[1, 2, 3, 4].map((n) => `<option value="${n}" ${s.rooms === n ? 'selected' : ''}>${n}</option>`).join('')}
                 </select>
@@ -1576,19 +1692,19 @@
       function dockTabsHTML() {
         const f = state.filters;
         const active = f.cats.size === 1 ? [...f.cats][0] : 'all';
-        const tabs = [['all', '🌟', 'Tất cả'], ['hotel', '🏨', 'Khách sạn'], ['homestay', '🏡', 'Homestay'], ['resort', '🌴', 'Resort'], ['apartment', '🏢', 'Căn hộ'], ['villa', '🏘️', 'Villa']];
+        const tabs = [['all', 'sparkles', 'Tất cả'], ['hotel', 'hotel', 'Khách sạn'], ['homestay', 'home', 'Homestay'], ['resort', 'palm', 'Resort'], ['apartment', 'building', 'Căn hộ'], ['villa', 'villa', 'Villa']];
         return `
           <div id="dock-tabs" class="dock-tabs" role="tablist" aria-label="Loại hình lưu trú">
             <div class="dock-tabs-inner">
               <span class="dock-pill" aria-hidden="true"></span>
-              ${tabs.map(([k, i, l]) => `<button type="button" role="tab" aria-selected="${k === active}" data-act="dock-tab" data-cat="${k}" class="dock-tab"><span aria-hidden="true">${i}</span> ${l}</button>`).join('')}
+              ${tabs.map(([k, i, l]) => `<button type="button" role="tab" aria-selected="${k === active}" data-act="dock-tab" data-cat="${k}" class="dock-tab"><span aria-hidden="true">${ico(i, 'ico')}</span> ${l}</button>`).join('')}
             </div>
           </div>`;
       }
 
       function tierText() {
         const n = getNights();
-        return `✓ ${n} đêm: tự động giảm ${Math.round(getNightDiscountRate(n) * 100)}% giá phòng`;
+        return `${n} đêm: tự động giảm ${Math.round(getNightDiscountRate(n) * 100)}% giá phòng`;
       }
 
       // =====================================================================
@@ -1616,19 +1732,19 @@
                 ${save > 0 ? `<span class="absolute bottom-3 right-3 z-[2] bg-agoda-red text-white text-[11px] font-extrabold px-2 py-1 rounded-lg shadow">-${save}%</span>` : ''}
                 ${left <= 2
                   ? `<span class="absolute bottom-3 left-3 z-[2] max-w-[62%] truncate bg-accent-scarlet-soft text-accent-scarlet-hover text-[11px] font-semibold px-2.5 py-1 rounded">🔥 Chỉ còn ${left} phòng</span>`
-                  : `<span class="absolute bottom-3 left-3 z-[2] max-w-[62%] truncate bg-emerald-600/95 text-white text-[11px] font-semibold px-2.5 py-1 rounded">⚡ ${esc(p.recent)}</span>`}
+                  : `<span class="absolute bottom-3 left-3 z-[2] max-w-[62%] truncate bg-emerald-600/95 text-white text-[11px] font-semibold px-2.5 py-1 rounded">${ico('zap','ico ico-ok')} ${esc(p.recent)}</span>`}
               </div>
               <div class="p-4 flex-1 flex flex-col">
                 <div class="flex items-start justify-between gap-2 mb-1.5">
                   <div class="min-w-0">
                     <div class="text-xs">${stars(p.stars)}</div>
-                    <div class="text-[11px] font-semibold text-ota-blue mt-0.5 truncate">📍 ${esc(destName(p.dest))} · ${esc(p.location)}</div>
+                    <div class="text-[11px] font-semibold text-ota-blue mt-0.5 truncate">${ico('pin','ico ico-sky')} ${esc(destName(p.dest))} · ${esc(p.location)}</div>
                   </div>
                   <div class="bg-ota-blue text-white font-extrabold text-sm px-2 py-1 rounded-t-lg rounded-br-lg shrink-0">${p.score.toFixed(1)}</div>
                 </div>
                 <a href="#/property/${p.id}" class="text-[15px] font-extrabold text-slate-900 leading-snug hover:text-ota-blue line-clamp-2">${esc(p.name)}</a>
                 <div class="flex flex-wrap gap-1 mt-2">
-                  ${p.quick.slice(0, 2).map((q) => `<span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">✓ ${QUICK[q]}</span>`).join('')}
+                  ${p.quick.slice(0, 2).map((q) => `<span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">${ico('check','ico ico-ok')} ${QUICK[q]}</span>`).join('')}
                 </div>
                 <div class="mt-auto pt-3 flex items-end justify-between">
                   <div>
@@ -1671,14 +1787,14 @@
                 </div>
                 <div class="flex items-center gap-1.5 shrink-0">${cmpBtn(p.id, 'border border-slate-200')}${heartBtn(p.id, 'border border-slate-200')}</div>
               </div>
-              <div class="text-xs font-semibold text-ota-blue mt-1">📍 ${esc(p.location)}</div>
-              <div class="text-[11px] text-emerald-700 font-bold mt-1">⚡ ${esc(p.recent)}</div>
+              <div class="text-xs font-semibold text-ota-blue mt-1">${ico('pin','ico ico-sky')} ${esc(p.location)}</div>
+              <div class="text-[11px] text-emerald-700 font-bold mt-1">${ico('zap','ico ico-ok')} ${esc(p.recent)}</div>
               <p class="text-xs text-slate-600 mt-2 line-clamp-2">${esc(p.desc)}</p>
               <div class="flex flex-wrap gap-1.5 mt-2.5">
-                ${p.quick.map((q) => `<span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded">✓ ${QUICK[q]}</span>`).join('')}
+                ${p.quick.map((q) => `<span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded">${ico('check','ico ico-ok')} ${QUICK[q]}</span>`).join('')}
               </div>
               <div class="flex flex-wrap gap-1.5 mt-1.5">
-                ${p.amen.slice(0, 4).map((a) => `<span class="text-[11px] text-slate-600 bg-slate-100 px-2 py-0.5 rounded">${AMEN[a]}</span>`).join('')}
+                ${p.amen.slice(0, 4).map((a) => `<span class="text-[11px] text-slate-600 bg-slate-100 px-2 py-0.5 rounded inline-flex items-center gap-1">${amenHTML(a)}</span>`).join('')}
               </div>
             </div>
             <div class="md:col-span-3 p-4 border-t md:border-t-0 md:border-l border-slate-100 flex flex-col justify-between gap-3 md:text-right bg-slate-50/50">
@@ -1768,14 +1884,23 @@
                 <div class="hero-shade"></div>
               </div>
               <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="flex flex-wrap items-center gap-2 mb-4">
-                  <span class="hero-pill">★ Lễ tân xác nhận 24/7</span>
-                  <span class="hero-pill">✓ Giá minh bạch, không phí ẩn</span>
-                  <span class="hero-pill">⚡ Thanh toán VietQR</span>
+                <div class="hero-split">
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                      <span class="hero-pill">${ico('star', 'ico ico-sky')} Lễ tân xác nhận 24/7</span>
+                      <span class="hero-pill">${ico('check', 'ico ico-sky')} Giá minh bạch, không phí ẩn</span>
+                      <span class="hero-pill">${ico('zap', 'ico ico-scarlet')} Thanh toán VietQR</span>
+                    </div>
+                    <h1 class="hero-title text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-3xl leading-[1.1] mb-3">Tìm phòng khách sạn, Homestay săn mây &amp; Resort giá tốt nhất</h1>
+                    <p class="text-sm sm:text-base text-slate-600 max-w-2xl">Hình ảnh thực tế, giá minh bạch đã gồm ưu đãi đặt trực tiếp, thanh toán VietQR và xác nhận giữ phòng nhanh chóng.</p>
+                  </div>
+                  <div class="hero-collage" aria-hidden="true">
+                    <div class="hero-shot shot-a">${imgBox({ src: placePhoto('Man alone in Tả Xùa 03-03-2017.jpg', 960), w: IMG_W.card, alt: '', place: 'Tà Xùa' })}<span class="cap">Săn mây Tà Xùa</span></div>
+                    <div class="hero-shot shot-b">${imgBox({ src: placePhoto('Sunset on Phu Quoc island.jpg', 960), w: IMG_W.card, alt: '', place: 'Phú Quốc' })}<span class="cap">Hoàng hôn Phú Quốc</span></div>
+                    <div class="hero-shot shot-c">${imgBox({ src: placePhoto('Xuan Huong Lake 11.jpg', 800), w: IMG_W.card, alt: '', place: 'Đà Lạt' })}<span class="cap">Hồ Xuân Hương</span></div>
+                  </div>
                 </div>
-                <h1 class="hero-title text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-3xl leading-[1.1] mb-3">Tìm phòng khách sạn, Homestay săn mây &amp; Resort giá tốt nhất</h1>
-                <p class="text-sm sm:text-base text-slate-600 max-w-2xl mb-8">Hình ảnh thực tế, giá minh bạch đã gồm ưu đãi đặt trực tiếp, thanh toán VietQR và xác nhận giữ phòng nhanh chóng.</p>
-                <div class="glass-dock">
+                <div class="glass-dock mt-6 lg:mt-8">
                   ${dockTabsHTML()}
                   ${searchForm('h', 'glass')}
                 </div>
@@ -1790,11 +1915,11 @@
                 </div>
                 <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
                   <button type="button" data-act="cat" data-cat="all" class="rounded-xl border-2 border-ota-blue bg-brand-sky-soft p-3 flex flex-col items-center text-center">
-                    <span class="text-2xl mb-1" aria-hidden="true">🌟</span><span class="text-xs font-extrabold text-booking-navy">TẤT CẢ</span><span class="text-[11px] text-slate-500 hidden sm:block">${PROPERTIES.length} chỗ nghỉ</span>
+                    <span class="mb-1 text-brand-sky" aria-hidden="true">${ico('sparkles', 'ico ico-lg')}</span><span class="text-xs font-extrabold text-booking-navy">TẤT CẢ</span><span class="text-[11px] text-slate-500 hidden sm:block">${PROPERTIES.length} chỗ nghỉ</span>
                   </button>
                   ${Object.entries(CATS).map(([k, c]) => `
                     <button type="button" data-act="cat" data-cat="${k}" class="rounded-xl border-2 border-slate-200 hover:border-ota-blue hover:bg-brand-sky-soft p-3 flex flex-col items-center text-center transition-colors">
-                      <span class="text-2xl mb-1" aria-hidden="true">${c.icon}</span><span class="text-xs font-extrabold text-booking-navy uppercase">${c.label}</span><span class="text-[11px] text-slate-500 hidden sm:block">${c.sub}</span>
+                      <span class="mb-1 text-brand-sky" aria-hidden="true">${ico(c.icon, 'ico ico-lg')}</span><span class="text-xs font-extrabold text-booking-navy uppercase">${c.label}</span><span class="text-[11px] text-slate-500 hidden sm:block">${c.sub}</span>
                     </button>`).join('')}
                 </div>
               </div>
@@ -1842,19 +1967,20 @@
                 ${homeReviews.map((r) => {
                   const p = propById(r.propId);
                   return `
-                  <figure class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col">
-                    ${imgBox({ src: r.photo, w: IMG_W.card, alt: `Ảnh thực tế tại ${p.name}`, place: destName(p.dest), ratio: '2 / 1', box: 'w-full' })}
-                    <div class="p-4 flex-1 flex flex-col">
-                      <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                          <div class="w-9 h-9 rounded-full bg-booking-navy text-white font-extrabold flex items-center justify-center">${esc(r.name[0])}</div>
-                          <div><div class="text-sm font-extrabold">${esc(r.name)}</div><div class="text-[11px] text-slate-500">${esc(r.from)} · ${esc(r.type)}</div></div>
+                  <figure class="review-card">
+                    ${imgBox({ src: r.photo, w: IMG_W.card, alt: `Ảnh thực tế tại ${p.name}`, place: destName(p.dest), ratio: '16 / 9', box: 'w-full' })}
+                    <div class="p-5 flex-1 flex flex-col">
+                      <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                          <div class="avatar-letter" aria-hidden="true">${esc(r.name.trim().charAt(0))}</div>
+                          <div class="min-w-0"><div class="text-sm font-extrabold truncate">${esc(r.name)}</div><div class="text-[11px] text-slate-500">${esc(r.from)} · ${esc(r.type)}</div></div>
                         </div>
-                        <span class="bg-ota-blue text-white text-sm font-extrabold px-2 py-1 rounded-t-lg rounded-br-lg">${r.score.toFixed(1)}</span>
+                        <span class="bg-ota-blue text-white text-sm font-extrabold px-2 py-1 rounded-t-lg rounded-br-lg shrink-0">${r.score.toFixed(1)}</span>
                       </div>
-                      <blockquote class="text-sm text-slate-700 mt-3 leading-relaxed flex-1">“${esc(r.text)}”</blockquote>
-                      <figcaption class="mt-3 pt-3 border-t border-slate-100 text-[11px]">
-                        <span class="text-emerald-700 font-bold">✓ Đã lưu trú ${esc(r.month)}</span> ·
+                      <blockquote class="text-sm text-slate-700 mt-4 leading-relaxed flex-1">“${esc(r.text)}”</blockquote>
+                      <figcaption class="mt-4 pt-3 border-t border-slate-100 text-[12px] flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                        <span class="inline-flex items-center gap-1 text-emerald-700 font-bold">${ico('check', 'ico ico-ok')} Lưu trú ${esc(r.month)}</span>
+                        <span class="text-slate-300" aria-hidden="true">·</span>
                         <a href="#/property/${p.id}" class="text-ota-blue font-bold hover:underline">${esc(p.name.split(' — ')[0])}</a>
                       </figcaption>
                     </div>
@@ -1864,9 +1990,9 @@
             </section>
 
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14">
-              <div class="bg-booking-navy rounded-3xl p-6 sm:p-10 text-white shadow-xl grid grid-cols-1 md:grid-cols-4 gap-5" data-stagger>
-                ${[['📷', 'Ảnh & hạng phòng thật 100%', 'Diện tích, hướng nhìn và tiện nghi đúng thực tế.'], ['📅', 'Lịch phòng luôn chính xác', 'Phòng được giữ 15 phút ngay khi bạn tạo mã thanh toán.'], ['💳', 'Cọc chỉ từ 30% qua VietQR', 'Tự điền số tiền & nội dung, không phí ẩn.'], ['🛡️', 'Đổi lịch do thời tiết', 'Linh hoạt dời ngày cho hành trình săn mây.']]
-                  .map(([i, t, d]) => `<div class="bg-white/10 border border-white/10 rounded-2xl p-4"><div class="w-9 h-9 rounded-lg bg-brand-sky flex items-center justify-center mb-2" aria-hidden="true">${i}</div><h3 class="font-bold text-sm mb-1">${t}</h3><p class="text-xs text-white/75">${d}</p></div>`).join('')}
+              <div class="trust-grid" data-stagger>
+                ${[['camera', 'Ảnh & hạng phòng thật 100%', 'Diện tích, hướng nhìn và tiện nghi đúng thực tế.'], ['calendar', 'Lịch phòng luôn chính xác', 'Phòng được giữ 15 phút ngay khi bạn tạo mã thanh toán.'], ['card', 'Cọc chỉ từ 30% qua VietQR', 'Tự điền số tiền và nội dung, không phí ẩn.'], ['shield', 'Đổi lịch do thời tiết', 'Linh hoạt dời ngày cho hành trình săn mây.']]
+                  .map(([i, t, d]) => `<div class="trust-card"><div class="w-10 h-10 rounded-xl bg-brand-sky-soft text-brand-sky flex items-center justify-center" aria-hidden="true">${ico(i, 'ico ico-lg')}</div><h3>${t}</h3><p>${d}</p></div>`).join('')}
               </div>
             </section>
           </div>`;
@@ -1946,7 +2072,7 @@
             <div class="p-4">
               <div class="text-sm font-extrabold mb-1">Bộ lọc nhanh</div>
               ${Object.entries(QUICK).map(([k, l]) => checkbox('quick', k, l, f.quick.has(k), countBy((p) => p.quick.includes(k)))).join('')}
-              ${checkbox('fav', '1', '❤️ Chỉ chỗ nghỉ đã lưu', f.favOnly, state.favorites.length)}
+              ${checkbox('fav', '1', `${ico('heart', 'ico ico-scarlet')} Chỉ chỗ nghỉ đã lưu`, f.favOnly, state.favorites.length)}
             </div>
             <div class="p-4">
               <div class="text-sm font-extrabold mb-2">Hạng sao</div>
@@ -1954,7 +2080,7 @@
                 ${[5, 4, 3, 2, 1].map((n) => `
                   <label class="cursor-pointer">
                     <input type="checkbox" class="peer sr-only" data-filter="stars" value="${n}" ${f.stars.has(n) ? 'checked' : ''} />
-                    <span class="inline-flex items-center gap-1 text-xs font-bold border border-slate-300 rounded-lg px-2.5 py-1.5 peer-checked:bg-ota-blue peer-checked:text-white peer-checked:border-ota-blue peer-focus-visible:ring-2 peer-focus-visible:ring-ota-blue">${n} ★</span>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold border border-slate-300 rounded-lg px-2.5 py-1.5 peer-checked:bg-ota-blue peer-checked:text-white peer-checked:border-ota-blue peer-focus-visible:ring-2 peer-focus-visible:ring-ota-blue">${n} ${ico('star', 'ico')}</span>
                   </label>`).join('')}
               </div>
             </div>
@@ -1968,11 +2094,11 @@
             </div>
             <div class="p-4">
               <div class="text-sm font-extrabold mb-1">Loại hình lưu trú</div>
-              ${Object.entries(CATS).map(([k, c]) => checkbox('cats', k, `${c.icon} ${c.label}`, f.cats.has(k), countBy((p) => p.category === k))).join('')}
+              ${Object.entries(CATS).map(([k, c]) => checkbox('cats', k, `${ico(c.icon, 'ico ico-sky')} ${esc(c.label)}`, f.cats.has(k), countBy((p) => p.category === k))).join('')}
             </div>
             <div class="p-4">
               <div class="text-sm font-extrabold mb-1">Tiện nghi</div>
-              ${Object.entries(AMEN).map(([k, l]) => checkbox('amen', k, l, f.amen.has(k), countBy((p) => p.amen.includes(k)))).join('')}
+              ${Object.entries(AMEN).map(([k]) => checkbox('amen', k, amenHTML(k), f.amen.has(k), countBy((p) => p.amen.includes(k)))).join('')}
             </div>
           </div>
           <div class="lg:hidden fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-slate-200">
@@ -2000,10 +2126,10 @@
                       <p class="text-xs text-slate-600 mt-0.5">${fmtDate(state.search.checkin)} → ${fmtDate(state.search.checkout)} · <span class="nights-text">${getNights()} đêm</span> · ${guestsLabel()} · <span class="tier-text text-emerald-700 font-bold">${tierText()}</span></p>
                     </div>
                     <div class="flex items-center gap-2">
-                      <button type="button" data-act="toggle-filters" class="lg:hidden bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold">⚙️ Bộ lọc</button>
+                      <button type="button" data-act="toggle-filters" class="lg:hidden bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold">${ico('settings','ico ico-sky')} Bộ lọc</button>
                       <div class="bg-white border border-slate-200 rounded-xl p-1 flex" role="group" aria-label="Chế độ xem">
-                        <button type="button" data-act="view" data-view="list" aria-pressed="${f.view === 'list'}" class="px-3.5 py-2.5 rounded-lg text-xs font-bold ${f.view === 'list' ? 'bg-ota-blue text-white' : 'text-slate-600'}">☰ Danh sách</button>
-                        <button type="button" data-act="view" data-view="map" aria-pressed="${f.view === 'map'}" class="px-3.5 py-2.5 rounded-lg text-xs font-bold ${f.view === 'map' ? 'bg-ota-blue text-white' : 'text-slate-600'}">🗺 Bản đồ</button>
+                        <button type="button" data-act="view" data-view="list" aria-pressed="${f.view === 'list'}" class="px-3.5 py-2.5 rounded-lg text-xs font-bold inline-flex items-center gap-1 ${f.view === 'list' ? 'bg-ota-blue text-white' : 'text-slate-600'}">${ico('list','ico')} Danh sách</button>
+                        <button type="button" data-act="view" data-view="map" aria-pressed="${f.view === 'map'}" class="px-3.5 py-2.5 rounded-lg text-xs font-bold inline-flex items-center gap-1 ${f.view === 'map' ? 'bg-ota-blue text-white' : 'text-slate-600'}">${ico('map','ico')} Bản đồ</button>
                       </div>
                     </div>
                   </div>
@@ -2040,7 +2166,7 @@
           if (!list.length) {
             box.innerHTML = `
               <div class="bg-white rounded-2xl border border-slate-200 p-10 text-center">
-                <div class="text-4xl mb-2" aria-hidden="true">🔍</div>
+                <div class="mb-2 text-brand-sky flex justify-center" aria-hidden="true">${ico('search','ico ico-lg')}</div>
                 <p class="font-extrabold text-slate-800 mb-1">Không có chỗ nghỉ khớp bộ lọc hiện tại</p>
                 <p class="text-sm text-slate-500 mb-4">Thử nới khoảng giá, bỏ bớt tiện nghi hoặc chọn "Tất cả điểm đến".</p>
                 <button type="button" data-act="clear-filters" class="bg-ota-blue text-white text-sm font-bold px-5 py-2.5 rounded-xl">Xóa tất cả bộ lọc</button>
@@ -2166,20 +2292,20 @@
                 ${imgBox({ src: r.image, w: IMG_W.thumb, alt: r.name, place: destName(p.dest), box: 'w-28 h-24 rounded-lg shrink-0 cursor-zoom-in', attrs: `data-act="lightbox-room" data-img="${r.image}"` })}
                 <div class="min-w-0">
                   <div class="font-extrabold text-ota-blue leading-snug">${esc(r.name)}</div>
-                  <div class="text-xs text-slate-600 mt-1">📐 ${r.size} m² · 🛏 ${esc(r.bed)}</div>
+                  <div class="text-xs text-slate-600 mt-1">${ico('ruler','ico ico-sky')} ${r.size} m² · ${ico('bed','ico ico-sky')} ${esc(r.bed)}</div>
                   <div class="flex flex-wrap gap-1 mt-1.5">${r.feats.map((ft) => `<span class="text-[10px] bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded">${esc(ft)}</span>`).join('')}</div>
                 </div>
               </div>
               <div class="md:col-span-1 text-sm">
                 <div class="md:hidden text-[11px] font-bold text-slate-500 uppercase">Sức chứa</div>
-                <div class="font-bold" aria-label="Tối đa ${r.capacity} khách">${'👤'.repeat(Math.min(r.capacity, 4))}${r.capacity > 4 ? ` ×${r.capacity}` : ''}</div>
+                <div class="font-bold inline-flex items-center gap-1 text-brand-sky" aria-label="Tối đa ${r.capacity} khách">${ico('user','ico')} <span class="text-slate-800">${r.capacity}</span></div>
                 <div class="text-[11px] text-slate-500">Tối đa ${r.capacity}</div>
               </div>
               <div class="md:col-span-3 text-xs space-y-1">
-                <div class="${r.perks.breakfast ? 'text-emerald-700 font-bold' : 'text-slate-500'}">${r.perks.breakfast ? '✓ Bao gồm bữa sáng' : '– Không gồm bữa sáng'}</div>
-                <div class="${r.perks.freeChange ? 'text-emerald-700 font-bold' : 'text-slate-500'}">${r.perks.freeChange ? '✓ Đổi lịch miễn phí' : '– Không hoàn hủy'}</div>
-                <div class="${r.perks.deposit30 ? 'text-emerald-700 font-bold' : 'text-slate-500'}">${r.perks.deposit30 ? '✓ Chỉ cần cọc 30%' : '– Thanh toán 100%'}</div>
-                ${r.left <= 2 ? `<div class="text-agoda-red font-bold">🔥 Chỉ còn ${r.left} phòng</div>` : ''}
+                <div class="${r.perks.breakfast ? 'text-emerald-700 font-bold' : 'text-slate-500'}">${r.perks.breakfast ? ico('check','ico ico-ok') + ' Bao gồm bữa sáng' : '– Không gồm bữa sáng'}</div>
+                <div class="${r.perks.freeChange ? 'text-emerald-700 font-bold' : 'text-slate-500'}">${r.perks.freeChange ? ico('check','ico ico-ok') + ' Đổi lịch miễn phí' : '– Không hoàn hủy'}</div>
+                <div class="${r.perks.deposit30 ? 'text-emerald-700 font-bold' : 'text-slate-500'}">${r.perks.deposit30 ? ico('check','ico ico-ok') + ' Chỉ cần cọc 30%' : '– Thanh toán 100%'}</div>
+                ${r.left <= 2 ? `<div class="text-agoda-red font-bold inline-flex items-center gap-1">${ico('flame','ico ico-scarlet')} Chỉ còn ${r.left} phòng</div>` : ''}
               </div>
               <div class="md:col-span-2">
                 ${r.isPackage ? '' : `<span class="inline-block text-[10px] font-extrabold text-white bg-emerald-600 px-1.5 py-0.5 rounded">-${pct}% · ${nights} đêm</span>`}
@@ -2212,7 +2338,7 @@
                 <div>
                   <div class="flex items-center gap-2 text-sm">${stars(p.stars)}<span class="bg-booking-navy text-white text-[11px] font-bold px-2 py-0.5 rounded">${CATS[p.category].label}</span></div>
                   <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">${esc(p.name)}</h1>
-                  <div class="text-sm font-semibold text-ota-blue mt-1">📍 ${esc(p.location)}</div>
+                  <div class="text-sm font-semibold text-ota-blue mt-1">${ico('pin','ico ico-sky')} ${esc(p.location)}</div>
                 </div>
                 <div class="flex items-center gap-3">${heartBtn(p.id, 'border border-slate-200')}${scoreBadge(p, 'lg')}</div>
               </div>
@@ -2221,7 +2347,7 @@
                 ${p.images.slice(0, 5).map((im, i) => `
                   <button type="button" data-act="lightbox" data-idx="${i}" class="relative overflow-hidden bg-slate-200 ${i === 0 ? 'col-span-4 sm:col-span-2 row-span-2' : 'hidden sm:block'}" aria-label="Mở ảnh ${i + 1}">
                     ${imgBox({ src: im, w: IMG_W.card, alt: `${p.name} – ảnh ${i + 1}`, place: destName(p.dest), priority: i === 0, srcset: i === 0 ? imgSrcset(im, [IMG_W.card, 1280]) : '', sizes: '(min-width: 1280px) 600px, (min-width: 640px) 50vw, 100vw', box: 'w-full h-full', img: 'hover:scale-105' })}
-                    ${i === 4 || (i === 0) ? `<span class="${i === 0 ? 'sm:hidden' : ''} absolute bottom-3 right-3 bg-black/65 text-white text-xs font-bold px-3 py-1.5 rounded-lg">📷 Xem tất cả ${p.images.length} ảnh</span>` : ''}
+                    ${i === 4 || (i === 0) ? `<span class="${i === 0 ? 'sm:hidden' : ''} absolute bottom-3 right-3 bg-black/65 text-white text-xs font-bold px-3 py-1.5 rounded-lg">${ico('camera','ico')} Xem tất cả ${p.images.length} ảnh</span>` : ''}
                   </button>`).join('')}
               </div>
             </div>
@@ -2237,8 +2363,8 @@
                 <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 p-5">
                   <h2 class="text-lg font-extrabold mb-2">Tổng quan</h2>
                   <p class="text-sm text-slate-700 leading-relaxed">${esc(p.desc)}</p>
-                  <div class="flex flex-wrap gap-2 mt-4">${p.quick.map((q) => `<span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-lg">✓ ${QUICK[q]}</span>`).join('')}</div>
-                  <div class="text-xs text-emerald-700 font-bold mt-3">⚡ ${esc(p.recent)}</div>
+                  <div class="flex flex-wrap gap-2 mt-4">${p.quick.map((q) => `<span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-lg">${ico('check','ico ico-ok')} ${QUICK[q]}</span>`).join('')}</div>
+                  <div class="text-xs text-emerald-700 font-bold mt-3">${ico('zap','ico ico-ok')} ${esc(p.recent)}</div>
                 </div>
                 <div class="bg-white rounded-2xl border border-slate-200 p-5">
                   <div class="text-xs font-bold text-slate-500 uppercase">Giá tốt nhất cho lịch của bạn</div>
@@ -2263,8 +2389,8 @@
               <section id="sec-amen" data-sec class="bg-white rounded-2xl border border-slate-200 p-5 scroll-mt-44">
                 <h2 class="text-lg font-extrabold mb-3">Tiện nghi nổi bật</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
-                  ${p.amen.map((a) => `<div class="bg-brand-sky-soft text-booking-navy text-sm font-semibold rounded-xl px-3 py-2.5">${AMEN[a]}</div>`).join('')}
-                  ${p.quick.map((q) => `<div class="bg-emerald-50 text-emerald-800 text-sm font-semibold rounded-xl px-3 py-2.5">✓ ${QUICK[q]}</div>`).join('')}
+                  ${p.amen.map((a) => `<div class="bg-brand-sky-soft text-booking-navy text-sm font-semibold rounded-xl px-3 py-2.5 inline-flex items-center gap-1.5">${amenHTML(a)}</div>`).join('')}
+                  ${p.quick.map((q) => `<div class="bg-emerald-50 text-emerald-800 text-sm font-semibold rounded-xl px-3 py-2.5">${ico('check','ico ico-ok')} ${QUICK[q]}</div>`).join('')}
                 </div>
               </section>
 
@@ -2288,7 +2414,7 @@
                         <span class="bg-ota-blue text-white text-xs font-extrabold px-2 py-1 rounded-t-lg rounded-br-lg">${r.score.toFixed(1)}</span>
                       </div>
                       <blockquote class="text-sm text-slate-700 mt-2">“${esc(r.text)}”</blockquote>
-                      <figcaption class="text-[11px] text-emerald-700 font-bold mt-2">✓ Đã lưu trú ${esc(r.month)}</figcaption>
+                      <figcaption class="text-[11px] text-emerald-700 font-bold mt-2">${ico('check','ico ico-ok')} Đã lưu trú ${esc(r.month)}</figcaption>
                     </figure>`).join('')}
                 </div>
               </section>
@@ -2376,7 +2502,7 @@
       function stepper(step) {
         const item = (n, l) => `
           <div class="flex items-center gap-2 ${step >= n ? 'text-ota-blue' : 'text-slate-400'}">
-            <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold ${step > n ? 'bg-emerald-600 text-white' : step === n ? 'bg-ota-blue text-white' : 'bg-slate-200 text-slate-500'}">${step > n ? '✓' : n}</span>
+            <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold ${step > n ? 'bg-emerald-600 text-white' : step === n ? 'bg-ota-blue text-white' : 'bg-slate-200 text-slate-500'}">${step > n ? ico('check', 'ico') : n}</span>
             <span class="text-sm font-extrabold">${l}</span>
           </div>`;
         return `<div class="flex items-center gap-3 mb-5" aria-label="Tiến trình đặt phòng">${item(1, 'Thông tin khách')}<span class="flex-1 h-0.5 bg-slate-200 max-w-[80px]"></span>${item(2, 'Thanh toán VietQR')}</div>`;
@@ -2392,7 +2518,7 @@
           <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
             <div class="flex gap-3 p-4 border-b border-slate-100">
               ${imgBox({ src: p.images[0], w: IMG_W.thumb, place: destName(p.dest), box: 'w-20 h-20 rounded-xl shrink-0' })}
-              <div><div class="text-xs">${stars(p.stars)}</div><div class="font-extrabold leading-snug text-sm">${esc(p.name)}</div><div class="text-[11px] text-ota-blue font-semibold">📍 ${esc(p.location)}</div></div>
+              <div><div class="text-xs">${stars(p.stars)}</div><div class="font-extrabold leading-snug text-sm">${esc(p.name)}</div><div class="text-[11px] text-ota-blue font-semibold">${ico('pin','ico ico-sky')} ${esc(p.location)}</div></div>
             </div>
             <div class="p-4 space-y-2 text-sm">
               <div class="flex justify-between"><span class="text-slate-500">Nhận – trả phòng</span><span class="font-bold text-right">${fmtDate(checkin)} → ${fmtDate(checkout)}</span></div>
@@ -2445,10 +2571,10 @@
                       <input id="voucher-input" type="text" value="${esc(state.voucher || '')}" placeholder="BANLA10 hoặc CLOUDVIP" class="flex-1 rounded-xl border border-slate-300 px-3.5 py-3 text-sm font-semibold uppercase focus:outline-none focus:border-ota-blue" />
                       <button type="button" data-act="apply-voucher" class="bg-booking-navy hover:bg-ota-blue text-white text-sm font-bold px-5 rounded-xl">Áp dụng</button>
                     </div>
-                    <div id="voucher-feedback" class="text-xs font-bold mt-1.5 ${state.voucher ? 'text-emerald-600' : 'hidden'}">${state.voucher ? '✓ Đã áp dụng ' + VOUCHERS[state.voucher].label : ''}</div>
+                    <div id="voucher-feedback" class="text-xs font-bold mt-1.5 ${state.voucher ? 'text-emerald-600' : 'hidden'}">${state.voucher ? ico('check','ico ico-ok') + ' Đã áp dụng ' + VOUCHERS[state.voucher].label : ''}</div>
                   </div>
                   <details id="dev-bridge" class="${/[?&]dev=1/.test(location.search) ? '' : 'hidden'} mt-4 rounded-xl border border-blue-200 bg-blue-50/60 p-3 text-xs">
-                    <summary class="font-bold text-booking-navy cursor-pointer">⚙️ Cổng nhận đơn Telegram Bot (@CSN1503_ai_Bot)</summary>
+                    <summary class="font-bold text-booking-navy cursor-pointer">${ico('settings','ico ico-sky')} Cổng nhận đơn Telegram Bot (@CSN1503_ai_Bot)</summary>
                     <p class="text-slate-600 mt-2 mb-2">Mặc định Cloudflare Worker 24/7 (không lộ Token). Có thể dán <code>http://127.0.0.1:8787/order</code> khi chạy bot_listener.py ở máy.</p>
                     <input id="bridge-url-input" type="url" value="${esc(bridgeVal)}" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-mono" aria-label="URL cổng nhận đơn" />
                   </details>
@@ -2589,11 +2715,11 @@
                     </dl>
                   </div>
                   <div id="bot-status-line" class="mt-4 rounded-xl px-3 py-2.5 text-sm font-bold ${b.status === 'pending_approval' ? 'bg-emerald-50 text-emerald-700' : b.status === 'expired' ? 'bg-slate-100 text-slate-600' : 'bg-blue-50 text-ota-blue'}">
-                    ${b.status === 'pending_approval' ? '✓ Đã gửi yêu cầu duyệt cọc tới lễ tân . Bạn sẽ được liên hệ qua Zalo/SĐT để xác nhận.'
+                    ${b.status === 'pending_approval' ? ico('check','ico ico-ok') + ' Đã gửi yêu cầu duyệt cọc tới lễ tân. Bạn sẽ được liên hệ qua Zalo/SĐT để xác nhận.'
                       : b.status === 'expired' ? 'Đơn đã hết thời gian giữ phòng. Vui lòng đặt lại để nhận mã thanh toán mới.'
                       : 'Quét mã bằng app ngân hàng, sau đó bấm "Tôi đã chuyển khoản" để lễ tân duyệt cọc.'}
                   </div>
-                  ${b.status === 'awaiting_payment' ? `<button type="button" id="paid-btn" data-act="paid" data-code="${esc(b.code)}" class="w-full mt-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-4 text-base font-extrabold shadow-md">✓ Tôi đã chuyển khoản</button>` : ''}
+                  ${b.status === 'awaiting_payment' ? `<button type="button" id="paid-btn" data-act="paid" data-code="${esc(b.code)}" class="w-full mt-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-4 text-base font-extrabold shadow-md">${ico('check','ico ico-ok')} Tôi đã chuyển khoản</button>` : ''}
                   ${b.status === 'expired' ? `<a href="#/property/${p.id}" class="block text-center w-full mt-4 rounded-xl bg-ota-blue text-white py-3.5 font-extrabold">Đặt lại chỗ nghỉ này</a>` : ''}
                 </div>
                 <div class="bg-white rounded-2xl border border-slate-200 p-5 text-sm">
@@ -2635,7 +2761,7 @@
                     <span class="text-[11px] font-extrabold bg-white/20 border border-white/30 px-3 py-1.5 rounded-full">⏳ CHỜ XÁC NHẬN</span>
                   </div>
                   <div class="mt-5 text-xl sm:text-2xl font-extrabold leading-snug">${esc(p.name)}</div>
-                  <div class="text-sm text-white/80 mt-1">📍 ${esc(p.location)}</div>
+                  <div class="text-sm text-white/80 mt-1">${ico('pin','ico ico-sky')} ${esc(p.location)}</div>
                   <dl class="grid grid-cols-2 gap-x-6 gap-y-3 mt-5 text-sm">
                     <div><dt class="text-[11px] font-bold text-white/60 uppercase">Nhận phòng</dt><dd class="font-extrabold">${fmtDate(b.checkin)} <span class="text-white/70 font-semibold">· từ 14:00</span></dd></div>
                     <div><dt class="text-[11px] font-bold text-white/60 uppercase">Trả phòng</dt><dd class="font-extrabold">${fmtDate(b.checkout)} <span class="text-white/70 font-semibold">· trước 12:00</span></dd></div>
@@ -3113,10 +3239,10 @@
         const f = state.filters;
         const out = [];
         f.quick.forEach((k) => out.push({ key: 'quick:' + k, label: QUICK[k] }));
-        f.stars.forEach((n) => out.push({ key: 'stars:' + n, label: n + ' ★' }));
+        f.stars.forEach((n) => out.push({ key: 'stars:' + n, label: n + ' sao' }));
         if (f.scoreMin) out.push({ key: 'score:' + f.scoreMin, label: `Điểm ${f.scoreMin}+` });
         f.cats.forEach((k) => out.push({ key: 'cats:' + k, label: CATS[k].label }));
-        f.amen.forEach((k) => out.push({ key: 'amen:' + k, label: AMEN[k].replace(/^\S+\s/, '') }));
+        f.amen.forEach((k) => out.push({ key: 'amen:' + k, label: AMEN[k].label }));
         if (f.favOnly) out.push({ key: 'fav:1', label: 'Đã lưu' });
         if (f.priceMin > 0 || f.priceMax < PRICE_MAX) {
           out.push({ key: 'price:x', label: `${formatMoney(f.priceMin)} – ${f.priceMax >= PRICE_MAX ? formatMoney(PRICE_MAX) + '+' : formatMoney(f.priceMax)}` });
@@ -3271,7 +3397,7 @@
       const isCmp = (id) => state.compare.includes(id);
       function cmpBtn(id, extra) {
         const on = isCmp(id);
-        return `<button type="button" data-act="compare" data-id="${id}" aria-pressed="${on}" class="cmp-btn ${on ? 'is-on' : ''} ${extra || ''}">${on ? '✓ Đã chọn' : '+ So sánh'}</button>`;
+        return `<button type="button" data-act="compare" data-id="${id}" aria-pressed="${on}" class="cmp-btn ${on ? 'is-on' : ''} ${extra || ''}">${on ? ico('check','ico') + ' Đã chọn' : '+ So sánh'}</button>`;
       }
       function saveCompare() { LS.set('bt_compare', state.compare); syncCompareUI(); }
       function toggleCompare(id) {
@@ -3311,7 +3437,7 @@
           const on = isCmp(b.dataset.id);
           b.classList.toggle('is-on', on);
           b.setAttribute('aria-pressed', String(on));
-          b.textContent = on ? '✓ Đã chọn' : '+ So sánh';
+          b.textContent = on ? 'Đã chọn' : '+ So sánh';
         });
         updateCompareBar();
       }
@@ -3341,19 +3467,19 @@
                     <button type="button" data-act="compare-remove" data-id="${p.id}" aria-label="Bỏ ${esc(p.name)} khỏi so sánh" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/95 font-bold shadow">✕</button>
                   </div>
                   <div class="font-extrabold leading-snug mt-2 text-[14px]">${esc(p.name)}</div>
-                  <div class="text-[11px] font-semibold text-ota-blue mt-0.5">📍 ${esc(p.location)}</div>
+                  <div class="text-[11px] font-semibold text-ota-blue mt-0.5">${ico('pin','ico ico-sky')} ${esc(p.location)}</div>
                 </th>`).join('')}
             </tr></thead>
             <tbody>
-              ${row('Điểm đánh giá', (p) => `<div class="flex items-center gap-2"><span class="bg-ota-blue text-white font-extrabold px-2 py-1 rounded-t-lg rounded-br-lg">${p.score.toFixed(1)}</span><div><div class="font-extrabold leading-tight">${scoreLabel(p.score)}</div><div class="text-[11px] text-slate-500">${p.reviews} đánh giá</div></div></div>${multi && p.score === bestScore ? '<div class="cmp-tag">★ Điểm cao nhất</div>' : ''}`, (p) => multi && p.score === bestScore)}
+              ${row('Điểm đánh giá', (p) => `<div class="flex items-center gap-2"><span class="bg-ota-blue text-white font-extrabold px-2 py-1 rounded-t-lg rounded-br-lg">${p.score.toFixed(1)}</span><div><div class="font-extrabold leading-tight">${scoreLabel(p.score)}</div><div class="text-[11px] text-slate-500">${p.reviews} đánh giá</div></div></div>${multi && p.score === bestScore ? '<div class="cmp-tag">' + ico('star','ico') + ' Điểm cao nhất</div>' : ''}`, (p) => multi && p.score === bestScore)}
               ${row('Giá sau ưu đãi', (p) => { const r = cheapestRoom(p); return `<div class="text-xs text-slate-400 line-through">${formatMoney(r.originalVnd)}</div><div class="text-xl font-extrabold text-agoda-red leading-none">${formatMoney(propFrom(p))}</div><div class="text-[11px] text-slate-500">${r.isPackage ? 'combo trọn gói' : `/ đêm · đã giảm ${pct}% (${nights} đêm)`}</div>${multi && comparable && propFrom(p) === bestPrice ? '<div class="cmp-tag">Giá tốt nhất</div>' : ''}`; }, (p) => multi && comparable && propFrom(p) === bestPrice)}
               ${row('Tổng kỳ lưu trú', (p) => { const r = cheapestRoom(p); const total = (r.isPackage ? r.priceVnd : roomNightly(r) * nights) * rooms; return `<div class="font-extrabold">${formatMoney(total)}</div><div class="text-[11px] text-slate-500">${r.isPackage ? 'Combo trọn gói' : `${nights} đêm`} · ${rooms} phòng · đã gồm thuế &amp; phí</div>`; })}
-              ${row('Loại hình', (p) => `<div class="font-bold">${CATS[p.category].icon} ${CATS[p.category].label}</div><div class="text-xs">${stars(p.stars)}</div>`)}
+              ${row('Loại hình', (p) => `<div class="font-bold inline-flex items-center gap-1">${ico(CATS[p.category].icon, 'ico ico-sky')} ${esc(CATS[p.category].label)}</div><div class="text-xs">${stars(p.stars)}</div>`)}
               ${row('Diện tích phòng', (p) => `<div class="font-bold">${sizes(p)}</div><div class="text-[11px] text-slate-500">${p.rooms.length} hạng phòng</div>`)}
               ${row('Sức chứa', (p) => `Tối đa ${propMaxCap(p)} khách / phòng`)}
-              ${row('Tiện ích nổi bật', (p) => p.amen.slice(0, 5).map((a) => `<div class="py-0.5">${AMEN[a]}</div>`).join(''))}
-              ${row('Ưu đãi kèm theo', (p) => (p.quick.length ? p.quick.map((q) => `<div class="py-0.5 text-emerald-700 font-semibold">✓ ${QUICK[q]}</div>`).join('') : '<span class="text-slate-500">—</span>'))}
-              ${row('Chính sách hoàn hủy', (p) => `<div class="${p.quick.includes('freeCancel') ? 'text-emerald-700 font-semibold' : 'text-slate-600'}">${p.quick.includes('freeCancel') ? '✓ Hủy miễn phí trước 72 giờ so với ngày nhận phòng' : 'Không hoàn tiền cọc · hỗ trợ đổi lịch theo tình trạng phòng'}</div><div class="text-[11px] text-slate-500 mt-1">Đổi lịch miễn phí khi có cảnh báo thời tiết xấu</div>`)}
+              ${row('Tiện ích nổi bật', (p) => p.amen.slice(0, 5).map((a) => `<div class="py-0.5 inline-flex items-center gap-1">${amenHTML(a)}</div>`).join(''))}
+              ${row('Ưu đãi kèm theo', (p) => (p.quick.length ? p.quick.map((q) => `<div class="py-0.5 text-emerald-700 font-semibold">${ico('check','ico ico-ok')} ${QUICK[q]}</div>`).join('') : '<span class="text-slate-500">—</span>'))}
+              ${row('Chính sách hoàn hủy', (p) => `<div class="${p.quick.includes('freeCancel') ? 'text-emerald-700 font-semibold' : 'text-slate-600'}">${p.quick.includes('freeCancel') ? ico('check','ico ico-ok') + ' Hủy miễn phí trước 72 giờ so với ngày nhận phòng' : 'Không hoàn tiền cọc · hỗ trợ đổi lịch theo tình trạng phòng'}</div><div class="text-[11px] text-slate-500 mt-1">Đổi lịch miễn phí khi có cảnh báo thời tiết xấu</div>`)}
               <tr><th scope="row"><span class="sr-only">Hành động</span></th>${props.map((p) => `<td><button type="button" data-act="compare-pick" data-id="${p.id}" class="w-full rounded-xl cta-scarlet hover:bg-accent-scarlet-hover text-white font-extrabold text-sm py-3 shadow-sm">Chọn phòng này</button></td>`).join('')}</tr>
             </tbody>
           </table>`;
@@ -3497,7 +3623,7 @@
         const on = isFav(id);
         $$(`.heart[data-id="${id}"]`).forEach((b) => { b.classList.toggle('is-fav', on); b.setAttribute('aria-pressed', on); });
         updateHeaderCounts();
-        showToast(on ? '❤️ Đã lưu vào danh sách yêu thích' : 'Đã bỏ khỏi danh sách yêu thích');
+        showToast(on ? 'Đã lưu vào danh sách yêu thích' : 'Đã bỏ khỏi danh sách yêu thích');
         if (currentRoute().page === 'search' && state.filters.favOnly) renderResults();
       }
 
@@ -3704,7 +3830,7 @@
             const code = $('#voucher-input').value.trim().toUpperCase();
             const fb = $('#voucher-feedback');
             fb.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
-            if (VOUCHERS[code]) { state.voucher = code; fb.textContent = '✓ Đã áp dụng ' + VOUCHERS[code].label; fb.classList.add('text-emerald-600'); }
+            if (VOUCHERS[code]) { state.voucher = code; fb.textContent = 'Đã áp dụng ' + VOUCHERS[code].label; fb.classList.add('text-emerald-600'); }
             else { state.voucher = null; fb.textContent = '✕ Mã không hợp lệ (Thử BANLA10 hoặc CLOUDVIP)'; fb.classList.add('text-red-600'); }
             refreshCheckoutSummary();
             break;

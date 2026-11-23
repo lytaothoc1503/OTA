@@ -62,7 +62,11 @@ Phong cách **Bầu trời tươi mới & Điểm nhấn Đỏ Scarlet**. Phân 
 - **Không** dùng cam `#F97316` làm CTA nữa — đã thay bằng Scarlet.
 
 ### Hero & Header (Light Glass + Aurora Sky Mesh)
-- **Hero:** gradient `#329DD2` → `#5BB8E8` → `#F8FAFC` (Aurora Sky Mesh) là nền tĩnh và là fallback. Khi có WebGL và không bật `prefers-reduced-motion`, sau lần vẽ đầu trang nạp `frontend/hero-shader.js` (build từ `tools/hero-shader/`, gói `@designcodeio/threeui@1.2.0` `LiquidFormBackground`) vào `#hero-shader`. Màu qua prop thật của component: `tintHue: 200`, `tintAmount: 0.88` (sepia + hue-rotate ra Sky `#329DD2`, highlight gần Cloud White). Canvas `mix-blend-mode: screen`, `pointer-events: none`, không che input. Thiếu WebGL hoặc reduced-motion thì không nạp script, Aurora Sky Mesh giữ nguyên. Chữ tiêu đề tối (`--text-primary`), không nền hero tối.
+- **Hero:** gradient `#329DD2` → `#5BB8E8` → `#F8FAFC` (Aurora Sky Mesh) là nền tĩnh và là fallback. Khi có WebGL và không bật `prefers-reduced-motion`, sau lần vẽ đầu trang nạp `frontend/hero-shader.js` (build từ `tools/hero-shader/`, gói `@designcodeio/threeui@1.2.0` `LiquidFormBackground`) vào `#hero-shader`. Màu qua prop thật của component: `tintHue: 200`, `tintAmount: 0.88` (sepia + hue-rotate ra Sky `#329DD2`, highlight gần Cloud White). Canvas `mix-blend-mode: screen`, `pointer-events: none`, không che input. Thiếu WebGL hoặc reduced-motion thì không nạp script, Aurora Sky Mesh giữ nguyên. Bên phải tiêu đề là collage 3 khung ảnh bo góc (săn mây Tà Xùa, hoàng hôn Phú Quốc, Hồ Xuân Hương). Chữ tiêu đề tối (`--text-primary`), không nền hero tối.
+- **Ảnh chỗ nghỉ:** ảnh thật đúng địa danh trên Wikimedia Commons (`placePhoto`, CC), có `onerror` về SVG thương hiệu. Không dùng ảnh stock lệch địa điểm.
+- **Icon:** nét Lucide inline `stroke-width="1.75"` (`ico()`), màu Sky `#329DD2` hoặc Scarlet `#EB2F33`. Không dùng emoji làm icon.
+- **4 cam kết:** thẻ trắng `#FFFFFF`, viền `#E2E8F0`, bóng mềm, icon Sky — không nền navy.
+- **Đánh giá:** avatar chữ cái trên nền `#E0F2FE`, ngày lưu trú, ảnh địa danh của chỗ nghỉ.
 - **Header kính mờ sáng:** `rgba(248, 250, 252, 0.85)` + `backdrop-filter: blur(20px)`; menu chữ tối; tab đang chọn nền/gạch chân `#329DD2`.
 - **Search dock nổi:** nền `#FFFFFF`, đổ bóng mềm; tab chọn nền `#329DD2` chữ trắng; nút **Tìm phòng** Scarlet + `box-shadow: 0 8px 20px rgba(235, 47, 51, 0.3)`.
 
