@@ -62,7 +62,7 @@ Phong cách **Bầu trời tươi mới & Điểm nhấn Đỏ Scarlet**. Phân 
 - **Không** dùng cam `#F97316` làm CTA nữa — đã thay bằng Scarlet.
 
 ### Hero & Header (Light Glass + Aurora Sky Mesh)
-- **Hero:** gradient `#329DD2` → `#5BB8E8` → `#F8FAFC` (Aurora Sky Mesh); quả cầu 3D trắng ngọc / xanh da trời trong suốt; chữ tiêu đề tối (`--text-primary`), không nền hero tối.
+- **Hero:** gradient `#329DD2` → `#5BB8E8` → `#F8FAFC` (Aurora Sky Mesh) là nền tĩnh và là fallback. Khi có WebGL và không bật `prefers-reduced-motion`, sau lần vẽ đầu trang nạp `frontend/hero-shader.js` (build từ `tools/hero-shader/`, gói `@designcodeio/threeui@1.2.0` `LiquidFormBackground`) vào `#hero-shader`. Màu qua prop thật của component: `tintHue: 200`, `tintAmount: 0.88` (sepia + hue-rotate ra Sky `#329DD2`, highlight gần Cloud White). Canvas `mix-blend-mode: screen`, `pointer-events: none`, không che input. Thiếu WebGL hoặc reduced-motion thì không nạp script, Aurora Sky Mesh giữ nguyên. Chữ tiêu đề tối (`--text-primary`), không nền hero tối.
 - **Header kính mờ sáng:** `rgba(248, 250, 252, 0.85)` + `backdrop-filter: blur(20px)`; menu chữ tối; tab đang chọn nền/gạch chân `#329DD2`.
 - **Search dock nổi:** nền `#FFFFFF`, đổ bóng mềm; tab chọn nền `#329DD2` chữ trắng; nút **Tìm phòng** Scarlet + `box-shadow: 0 8px 20px rgba(235, 47, 51, 0.3)`.
 
@@ -86,7 +86,7 @@ box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 12px 24px -6px rgba(15, 23, 42
 - **Reveal khi cuộn:** `translateY(24px) → 0` + `opacity`, trễ nối tiếp 70ms/phần tử (tối đa 8 bước).
 - **Sliding pill:** dock tabs, chuyển bằng `transform` + `--spring-bounce`.
 - **Chỉ animate `transform` và `opacity`** (kèm `scale`/`translate`). Không animate `width/height/top/left/box-shadow` liên tục. `will-change` chỉ đặt khi đang tương tác.
-- **Tôn trọng `prefers-reduced-motion: reduce`:** tắt parallax, tilt, reveal, aurora, Lenis, confetti, spring.
+- **Tôn trọng `prefers-reduced-motion: reduce`:** tắt parallax, tilt, reveal, aurora, Lenis, confetti, spring, và không nạp shader hero.
 
 ## 4. Thư viện chuyển động (nhúng nhẹ, không chặn hiển thị)
 | Thư viện | Phiên bản (ghim cứng) | Dùng cho |

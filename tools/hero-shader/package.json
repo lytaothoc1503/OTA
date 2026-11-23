@@ -1,0 +1,19 @@
+{
+  "name": "banla-hero-shader",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Prebuilt island that mounts @designcodeio/threeui LiquidFormBackground into the static BanlaTravel hero.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@designcodeio/threeui": "1.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.149.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}
