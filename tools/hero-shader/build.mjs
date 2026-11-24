@@ -1,6 +1,6 @@
 import * as esbuild from "esbuild";
 import { gzipSync } from "node:zlib";
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -66,7 +66,15 @@ if (forbidden.length) {
   process.exit(1);
 }
 
-const js = readFileSync(outfile, "utf8");
+let js = readFileSync(outfile, "utf8");
+// The pinned component hard-codes its DPR cap and exposes no dpr prop.
+const defaultDprCap = "Math.min(window.devicePixelRatio||1,1.5)";
+if (js.split(defaultDprCap).length - 1 !== 1) {
+  console.error("Expected one LiquidFormBackground DPR cap in the bundled renderer");
+  process.exit(1);
+}
+js = js.replace(defaultDprCap, "Math.min(window.devicePixelRatio||1,1.25)");
+writeFileSync(outfile, js);
 if (!js.includes("Meng To") || !js.includes("MIT License")) {
   console.error("MIT notice missing from bundle");
   process.exit(1);
